@@ -322,6 +322,40 @@
 <dep name=".\source\asw\main.c" />
 </file>
 <file name=".\source\asw\main.c" />
+<file name=".\CortexM3\ARM_GCC_541\Debug\ErikaOS_eecfg.o">
+<dep name=".\Generated_Source\PSoC5\ErikaOS_ISR_definition.inc" />
+<dep name=".\Generated_Source\PSoC5\ErikaOS_common_ee_compiler_gcc.inc" />
+<dep name=".\Generated_Source\PSoC5\ErikaOS_common_ee_hal_structs.inc" />
+<dep name=".\Generated_Source\PSoC5\ErikaOS_common_ee_irqstub.inc" />
+<dep name=".\Generated_Source\PSoC5\ErikaOS_common_ee_primitives.inc" />
+<dep name=".\Generated_Source\PSoC5\ErikaOS_common_ee_types.inc" />
+<dep name=".\Generated_Source\PSoC5\ErikaOS_cortex_mx_ee_context.inc" />
+<dep name=".\Generated_Source\PSoC5\ErikaOS_cortex_mx_ee_cpu.inc" />
+<dep name=".\Generated_Source\PSoC5\ErikaOS_cortex_mx_ee_irq.inc" />
+<dep name=".\Generated_Source\PSoC5\ErikaOS_cortex_mx_ee_irq_cng_cont.inc" />
+<dep name=".\Generated_Source\PSoC5\ErikaOS_cortex_mx_ee_nvic.inc" />
+<dep name=".\Generated_Source\PSoC5\ErikaOS_cortex_mx_ee_systick.inc" />
+<dep name=".\Generated_Source\PSoC5\ErikaOS_ee.h" />
+<dep name=".\Generated_Source\PSoC5\ErikaOS_ee_api.inc" />
+<dep name=".\Generated_Source\PSoC5\ErikaOS_ee_as_kernel.inc" />
+<dep name=".\Generated_Source\PSoC5\ErikaOS_ee_as_timing_prot.inc" />
+<dep name=".\Generated_Source\PSoC5\ErikaOS_ee_irq.inc" />
+<dep name=".\Generated_Source\PSoC5\ErikaOS_ee_oo_api.inc" />
+<dep name=".\Generated_Source\PSoC5\ErikaOS_ee_oo_common.inc" />
+<dep name=".\Generated_Source\PSoC5\ErikaOS_ee_oo_inline.inc" />
+<dep name=".\Generated_Source\PSoC5\ErikaOS_ee_oo_intfunc.inc" />
+<dep name=".\Generated_Source\PSoC5\ErikaOS_ee_oo_irq.inc" />
+<dep name=".\Generated_Source\PSoC5\ErikaOS_ee_oo_kernel.inc" />
+<dep name=".\Generated_Source\PSoC5\ErikaOS_ee_rtdruid_versions.inc" />
+<dep name=".\Generated_Source\PSoC5\ErikaOS_eecfg.c" />
+<dep name=".\Generated_Source\PSoC5\ErikaOS_eecfg.inc" />
+<dep name=".\Generated_Source\PSoC5\ErikaOS_event_definition.inc" />
+<dep name=".\Generated_Source\PSoC5\ErikaOS_resource_priorities.inc" />
+<dep name=".\Generated_Source\PSoC5\ErikaOS_task_priorities.inc" />
+</file>
+<file name=".\Generated_Source\PSoC5\ErikaOS_eecfg.c" />
+<file name=".\Generated_Source\PSoC5\ErikaOS_resource_priorities.inc" />
+<file name=".\Generated_Source\PSoC5\ErikaOS_task_priorities.inc" />
 <file name=".\CortexM3\ARM_GCC_541\Debug\seven.o">
 <dep name=".\Generated_Source\PSoC5\ButtonLeft.h" />
 <dep name=".\Generated_Source\PSoC5\ButtonLeft_aliases.h" />
@@ -2551,40 +2585,6 @@
 <dep name=".\Generated_Source\PSoC5\ErikaOS_event_definition.inc" />
 </file>
 <file name=".\Generated_Source\PSoC5\ErikaOS_ee_ulockres.c" />
-<file name=".\CortexM3\ARM_GCC_541\Debug\ErikaOS_eecfg.o">
-<dep name=".\Generated_Source\PSoC5\ErikaOS_ISR_definition.inc" />
-<dep name=".\Generated_Source\PSoC5\ErikaOS_common_ee_compiler_gcc.inc" />
-<dep name=".\Generated_Source\PSoC5\ErikaOS_common_ee_hal_structs.inc" />
-<dep name=".\Generated_Source\PSoC5\ErikaOS_common_ee_irqstub.inc" />
-<dep name=".\Generated_Source\PSoC5\ErikaOS_common_ee_primitives.inc" />
-<dep name=".\Generated_Source\PSoC5\ErikaOS_common_ee_types.inc" />
-<dep name=".\Generated_Source\PSoC5\ErikaOS_cortex_mx_ee_context.inc" />
-<dep name=".\Generated_Source\PSoC5\ErikaOS_cortex_mx_ee_cpu.inc" />
-<dep name=".\Generated_Source\PSoC5\ErikaOS_cortex_mx_ee_irq.inc" />
-<dep name=".\Generated_Source\PSoC5\ErikaOS_cortex_mx_ee_irq_cng_cont.inc" />
-<dep name=".\Generated_Source\PSoC5\ErikaOS_cortex_mx_ee_nvic.inc" />
-<dep name=".\Generated_Source\PSoC5\ErikaOS_cortex_mx_ee_systick.inc" />
-<dep name=".\Generated_Source\PSoC5\ErikaOS_ee.h" />
-<dep name=".\Generated_Source\PSoC5\ErikaOS_ee_api.inc" />
-<dep name=".\Generated_Source\PSoC5\ErikaOS_ee_as_kernel.inc" />
-<dep name=".\Generated_Source\PSoC5\ErikaOS_ee_as_timing_prot.inc" />
-<dep name=".\Generated_Source\PSoC5\ErikaOS_ee_irq.inc" />
-<dep name=".\Generated_Source\PSoC5\ErikaOS_ee_oo_api.inc" />
-<dep name=".\Generated_Source\PSoC5\ErikaOS_ee_oo_common.inc" />
-<dep name=".\Generated_Source\PSoC5\ErikaOS_ee_oo_inline.inc" />
-<dep name=".\Generated_Source\PSoC5\ErikaOS_ee_oo_intfunc.inc" />
-<dep name=".\Generated_Source\PSoC5\ErikaOS_ee_oo_irq.inc" />
-<dep name=".\Generated_Source\PSoC5\ErikaOS_ee_oo_kernel.inc" />
-<dep name=".\Generated_Source\PSoC5\ErikaOS_ee_rtdruid_versions.inc" />
-<dep name=".\Generated_Source\PSoC5\ErikaOS_eecfg.c" />
-<dep name=".\Generated_Source\PSoC5\ErikaOS_eecfg.inc" />
-<dep name=".\Generated_Source\PSoC5\ErikaOS_event_definition.inc" />
-<dep name=".\Generated_Source\PSoC5\ErikaOS_resource_priorities.inc" />
-<dep name=".\Generated_Source\PSoC5\ErikaOS_task_priorities.inc" />
-</file>
-<file name=".\Generated_Source\PSoC5\ErikaOS_eecfg.c" />
-<file name=".\Generated_Source\PSoC5\ErikaOS_resource_priorities.inc" />
-<file name=".\Generated_Source\PSoC5\ErikaOS_task_priorities.inc" />
 <file name=".\Generated_Source\PSoC5\isr_ButtonLeft.h" />
 <file name=".\Generated_Source\PSoC5\isr_ButtonRight.h" />
 <file name=".\CortexM3\ARM_GCC_541\Debug\isr_ButtonLeft.o">
@@ -3512,7 +3512,7 @@
 <v>C:\H_Da Softwares &amp; Projects\PSoC Creator\4.4\PSoC Creator\warp\lib\common\stdlogic\rtlpkg.vif</v>
 <v>C:\H_Da Softwares &amp; Projects\PSoC Creator\4.4\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3.vif</v>
 </warp_dep>
-<deps_time v="134081086633968774" />
+<deps_time v="134082868128890895" />
 <top_block v="TopDesign" />
 <last_generation v="0" />
 <pdl_path v="" />
@@ -3522,7 +3522,7 @@
 <dataGuid v="769d31ea-68b1-4f0c-b90a-7c10a43ee563">
 <CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563 type_name="CyDesigner.Common.ProjMgmt.Model.CyLinkCustomData" version="1">
 <link_deps_times>
-<name_val_pair name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM3" v="134081109499500385" />
+<name_val_pair name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM3" v="134082893906887778" />
 </link_deps_times>
 </CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563>
 </dataGuid>

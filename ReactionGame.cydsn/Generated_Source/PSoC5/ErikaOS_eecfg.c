@@ -1027,7 +1027,7 @@
         #endif
     #endif
     #if EE_MAX_TASK > 3
-        #if 2
+        #if 4
         ,1U
         #else
         ,0U

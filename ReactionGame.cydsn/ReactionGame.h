@@ -106,7 +106,7 @@ typedef struct {
     /* Measurement & Record Data */
     uint32_t m_totalTime;   // total time taken for 10 rounds
     uint32_t m_score;       // score of the game
-    uint32_t m_roundPlayed; // count of the rounds
+    uint32_t m_roundPlayed; // count of the rounds // Keep it here or local?
 } RG_t;
 
 // Wrapper to allow representing the file in Together as class
