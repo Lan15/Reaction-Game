@@ -1,0 +1,2540 @@
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"seven.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.SEVEN_writeRandom,"ax",%progbits
+  20              		.align	2
+  21              		.global	SEVEN_writeRandom
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	SEVEN_writeRandom, %function
+  25              	SEVEN_writeRandom:
+  26              	.LFB111:
+  27              		.file 1 "source\\bsw\\LabBoard\\seven.c"
+   1:source\bsw\LabBoard/seven.c **** /**
+   2:source\bsw\LabBoard/seven.c **** * \file seven.c
+   3:source\bsw\LabBoard/seven.c **** * \author P. Fromm
+   4:source\bsw\LabBoard/seven.c **** * \date 28.8.17
+   5:source\bsw\LabBoard/seven.c **** *
+   6:source\bsw\LabBoard/seven.c **** * \brief Driver for 7 segment displays
+   7:source\bsw\LabBoard/seven.c **** *
+   8:source\bsw\LabBoard/seven.c **** * \copyright Copyright ©2016
+   9:source\bsw\LabBoard/seven.c **** * Department of electrical engineering and information technology, Hochschule Darmstadt - Universit
+  10:source\bsw\LabBoard/seven.c **** * Permission to use, copy, modify, and distribute this software and its documentation for education
+  11:source\bsw\LabBoard/seven.c **** * (unless permitted by h_da) and official h_da projects, is hereby granted for enrolled students of
+  12:source\bsw\LabBoard/seven.c **** * this paragraph and the following paragraph appear in all copies, modifications, and distributions
+  13:source\bsw\LabBoard/seven.c **** * Contact Prof.Dr.-Ing. Peter Fromm, peter.fromm@h-da.de, Birkenweg 8 64295 Darmstadt - GERMANY for
+  14:source\bsw\LabBoard/seven.c **** *
+  15:source\bsw\LabBoard/seven.c **** * \warning This software is a PROTOTYPE version and is not designed or intended for use in producti
+  16:source\bsw\LabBoard/seven.c **** * The user represents and warrants that it will NOT use or redistribute the Software for such purpo
+  17:source\bsw\LabBoard/seven.c **** * This prototype is for research purposes only. This software is provided "AS IS," without a warran
+  18:source\bsw\LabBoard/seven.c **** */
+  19:source\bsw\LabBoard/seven.c **** 
+  20:source\bsw\LabBoard/seven.c **** /*****************************************************************************/
+  21:source\bsw\LabBoard/seven.c **** /* Include files                                                             */
+  22:source\bsw\LabBoard/seven.c **** /*****************************************************************************/
+  23:source\bsw\LabBoard/seven.c **** #include "project.h"
+  24:source\bsw\LabBoard/seven.c **** #include "seven.h"
+  25:source\bsw\LabBoard/seven.c **** #include<stdlib.h>
+  26:source\bsw\LabBoard/seven.c **** 
+  27:source\bsw\LabBoard/seven.c **** 
+  28:source\bsw\LabBoard/seven.c **** 
+  29:source\bsw\LabBoard/seven.c **** /*****************************************************************************/
+  30:source\bsw\LabBoard/seven.c **** /* Local pre-processor symbols/macros ('#define')                            */
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 2
+
+
+  31:source\bsw\LabBoard/seven.c **** /*****************************************************************************/
+  32:source\bsw\LabBoard/seven.c **** 
+  33:source\bsw\LabBoard/seven.c **** #define SEVEN__A  0b10000000
+  34:source\bsw\LabBoard/seven.c **** #define SEVEN__B  0b01000000
+  35:source\bsw\LabBoard/seven.c **** #define SEVEN__C  0b00100000
+  36:source\bsw\LabBoard/seven.c **** #define SEVEN__D  0b00010000
+  37:source\bsw\LabBoard/seven.c **** #define SEVEN__E  0b00001000
+  38:source\bsw\LabBoard/seven.c **** #define SEVEN__F  0b00000100
+  39:source\bsw\LabBoard/seven.c **** #define SEVEN__G  0b00000010
+  40:source\bsw\LabBoard/seven.c **** #define SEVEN__DP 0b00000001
+  41:source\bsw\LabBoard/seven.c **** 
+  42:source\bsw\LabBoard/seven.c **** 
+  43:source\bsw\LabBoard/seven.c **** /*****************************************************************************/
+  44:source\bsw\LabBoard/seven.c **** /* Global variable definitions (declared in header file with 'extern')       */
+  45:source\bsw\LabBoard/seven.c **** /*****************************************************************************/
+  46:source\bsw\LabBoard/seven.c **** 
+  47:source\bsw\LabBoard/seven.c **** /*****************************************************************************/
+  48:source\bsw\LabBoard/seven.c **** /* Local type definitions ('typedef')                                        */
+  49:source\bsw\LabBoard/seven.c **** /*****************************************************************************/
+  50:source\bsw\LabBoard/seven.c **** 
+  51:source\bsw\LabBoard/seven.c **** /*****************************************************************************/
+  52:source\bsw\LabBoard/seven.c **** /* Local variable definitions ('static')                                     */
+  53:source\bsw\LabBoard/seven.c **** /*****************************************************************************/
+  54:source\bsw\LabBoard/seven.c **** 
+  55:source\bsw\LabBoard/seven.c **** //    ABCDEFG
+  56:source\bsw\LabBoard/seven.c **** const static uint8_t SEVEN__BitPattern[] = 
+  57:source\bsw\LabBoard/seven.c **** {
+  58:source\bsw\LabBoard/seven.c ****     0b11111100,     //0
+  59:source\bsw\LabBoard/seven.c ****     0b01100000,     //1
+  60:source\bsw\LabBoard/seven.c ****     0b11011010,     //2
+  61:source\bsw\LabBoard/seven.c ****     0b11110010,     //3
+  62:source\bsw\LabBoard/seven.c ****     0b01100110,     //4
+  63:source\bsw\LabBoard/seven.c ****     0b10110110,     //5
+  64:source\bsw\LabBoard/seven.c ****     0b10111110,     //6
+  65:source\bsw\LabBoard/seven.c ****     0b11100000,     //7
+  66:source\bsw\LabBoard/seven.c ****     0b11111110,     //8
+  67:source\bsw\LabBoard/seven.c ****     0b11110110,     //9
+  68:source\bsw\LabBoard/seven.c ****     0b11101110,     //a
+  69:source\bsw\LabBoard/seven.c ****     0b00111110,     //b
+  70:source\bsw\LabBoard/seven.c ****     0b10011100,     //c
+  71:source\bsw\LabBoard/seven.c ****     0b01111010,     //d
+  72:source\bsw\LabBoard/seven.c ****     0b10011110,     //e
+  73:source\bsw\LabBoard/seven.c ****     0b10001110,     //f
+  74:source\bsw\LabBoard/seven.c ****     0b00000001      //decimal point
+  75:source\bsw\LabBoard/seven.c **** };
+  76:source\bsw\LabBoard/seven.c ****     
+  77:source\bsw\LabBoard/seven.c **** //We need to store the last latch value per display
+  78:source\bsw\LabBoard/seven.c **** //-1 means empty
+  79:source\bsw\LabBoard/seven.c **** static sint8_t SEVEN__latch_value[2] = {-1,-1};
+  80:source\bsw\LabBoard/seven.c **** static uint8_t SEVEN__latch_pattern[2] = {0,0};
+  81:source\bsw\LabBoard/seven.c **** 
+  82:source\bsw\LabBoard/seven.c **** /*****************************************************************************/
+  83:source\bsw\LabBoard/seven.c **** /* Local function prototypes ('static')                                      */
+  84:source\bsw\LabBoard/seven.c **** /*****************************************************************************/
+  85:source\bsw\LabBoard/seven.c **** 
+  86:source\bsw\LabBoard/seven.c **** 
+  87:source\bsw\LabBoard/seven.c **** /*****************************************************************************/
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 3
+
+
+  88:source\bsw\LabBoard/seven.c **** /* Function implementation - global ('extern') and local ('static')          */
+  89:source\bsw\LabBoard/seven.c **** /*****************************************************************************/
+  90:source\bsw\LabBoard/seven.c **** 
+  91:source\bsw\LabBoard/seven.c **** 
+  92:source\bsw\LabBoard/seven.c **** 
+  93:source\bsw\LabBoard/seven.c **** /**
+  94:source\bsw\LabBoard/seven.c ****  * Initilasation of the seven segment display
+  95:source\bsw\LabBoard/seven.c ****  * @return RC_SUCCESS if function was executed correctly, other value in case of error
+  96:source\bsw\LabBoard/seven.c ****  */
+  97:source\bsw\LabBoard/seven.c **** RC_t SEVEN_Init()
+  98:source\bsw\LabBoard/seven.c **** {
+  99:source\bsw\LabBoard/seven.c ****     
+ 100:source\bsw\LabBoard/seven.c ****     SEVEN_Clear(SEVEN_0);
+ 101:source\bsw\LabBoard/seven.c ****     SEVEN_Clear(SEVEN_1);
+ 102:source\bsw\LabBoard/seven.c ****     
+ 103:source\bsw\LabBoard/seven.c ****     return RC_SUCCESS;
+ 104:source\bsw\LabBoard/seven.c **** }
+ 105:source\bsw\LabBoard/seven.c **** 
+ 106:source\bsw\LabBoard/seven.c **** /**
+ 107:source\bsw\LabBoard/seven.c ****  * Writes a random value (1 or 2) on both displays
+ 108:source\bsw\LabBoard/seven.c ****  * @return RC_SUCCESS if function was executed correctly, other value in case of error
+ 109:source\bsw\LabBoard/seven.c ****  */
+ 110:source\bsw\LabBoard/seven.c **** RC_t SEVEN_writeRandom() {  // keep here or in RG ???
+  28              		.loc 1 110 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 10B5     		push	{r4, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+ 111:source\bsw\LabBoard/seven.c ****     uint8_t randomValue = (rand() % 2) + 1;  // Generate a random number 1 or 2  
+  36              		.loc 1 111 0
+  37 0002 FFF7FEFF 		bl	rand
+  38              	.LVL0:
+  39 0006 104B     		ldr	r3, .L7
+  40 0008 1840     		ands	r0, r0, r3
+  41 000a 03D5     		bpl	.L2
+  42 000c 0138     		subs	r0, r0, #1
+  43 000e 60F00100 		orn	r0, r0, #1
+  44 0012 0130     		adds	r0, r0, #1
+  45              	.L2:
+  46 0014 0130     		adds	r0, r0, #1
+  47 0016 C0B2     		uxtb	r0, r0
+  48              	.LVL1:
+ 112:source\bsw\LabBoard/seven.c ****     uint8_t data = 0b10000000;
+ 113:source\bsw\LabBoard/seven.c ****     if(randomValue == 1)
+  49              		.loc 1 113 0
+  50 0018 0128     		cmp	r0, #1
+  51 001a 03D0     		beq	.L4
+ 114:source\bsw\LabBoard/seven.c ****      data = 0b00000110;
+ 115:source\bsw\LabBoard/seven.c ****     else if(randomValue == 2)
+  52              		.loc 1 115 0
+  53 001c 0228     		cmp	r0, #2
+  54 001e 03D0     		beq	.L5
+ 112:source\bsw\LabBoard/seven.c ****     uint8_t data = 0b10000000;
+  55              		.loc 1 112 0
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 4
+
+
+  56 0020 8024     		movs	r4, #128
+  57 0022 02E0     		b	.L3
+  58              	.L4:
+ 114:source\bsw\LabBoard/seven.c ****      data = 0b00000110;
+  59              		.loc 1 114 0
+  60 0024 0624     		movs	r4, #6
+  61 0026 00E0     		b	.L3
+  62              	.L5:
+ 116:source\bsw\LabBoard/seven.c ****      data = 0b01011011;
+  63              		.loc 1 116 0
+  64 0028 5B24     		movs	r4, #91
+  65              	.L3:
+  66              	.LVL2:
+ 117:source\bsw\LabBoard/seven.c **** 
+ 118:source\bsw\LabBoard/seven.c ****     // Set both displays to the same random value
+ 119:source\bsw\LabBoard/seven.c ****     SEVEN_SELECT_Write(0);  // Select right display
+  67              		.loc 1 119 0
+  68 002a 0020     		movs	r0, #0
+  69              	.LVL3:
+  70 002c FFF7FEFF 		bl	SEVEN_SELECT_Write
+  71              	.LVL4:
+ 120:source\bsw\LabBoard/seven.c ****     SEVEN_reg_Write(data);
+  72              		.loc 1 120 0
+  73 0030 2046     		mov	r0, r4
+  74 0032 FFF7FEFF 		bl	SEVEN_reg_Write
+  75              	.LVL5:
+ 121:source\bsw\LabBoard/seven.c **** 
+ 122:source\bsw\LabBoard/seven.c ****     SEVEN_SELECT_Write(1);  // Select left display
+  76              		.loc 1 122 0
+  77 0036 0120     		movs	r0, #1
+  78 0038 FFF7FEFF 		bl	SEVEN_SELECT_Write
+  79              	.LVL6:
+ 123:source\bsw\LabBoard/seven.c ****     SEVEN_reg_Write(data);
+  80              		.loc 1 123 0
+  81 003c 2046     		mov	r0, r4
+  82 003e FFF7FEFF 		bl	SEVEN_reg_Write
+  83              	.LVL7:
+ 124:source\bsw\LabBoard/seven.c **** 
+ 125:source\bsw\LabBoard/seven.c ****     return RC_SUCCESS;
+ 126:source\bsw\LabBoard/seven.c **** }
+  84              		.loc 1 126 0
+  85 0042 0020     		movs	r0, #0
+  86 0044 10BD     		pop	{r4, pc}
+  87              	.LVL8:
+  88              	.L8:
+  89 0046 00BF     		.align	2
+  90              	.L7:
+  91 0048 01000080 		.word	-2147483647
+  92              		.cfi_endproc
+  93              	.LFE111:
+  94              		.size	SEVEN_writeRandom, .-SEVEN_writeRandom
+  95              		.section	.text.SEVEN_Set,"ax",%progbits
+  96              		.align	2
+  97              		.global	SEVEN_Set
+  98              		.thumb
+  99              		.thumb_func
+ 100              		.type	SEVEN_Set, %function
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 5
+
+
+ 101              	SEVEN_Set:
+ 102              	.LFB112:
+ 127:source\bsw\LabBoard/seven.c **** 
+ 128:source\bsw\LabBoard/seven.c **** /**
+ 129:source\bsw\LabBoard/seven.c ****  * Sets value for one display
+ 130:source\bsw\LabBoard/seven.c ****  * @param SEVEN_id_t sevenId - identifier for the segment to be set
+ 131:source\bsw\LabBoard/seven.c ****  * @param uint8_t value - value to be set, valid range 0...15
+ 132:source\bsw\LabBoard/seven.c ****  * @return RC_SUCCESS if function was executed correctly, other value in case of error
+ 133:source\bsw\LabBoard/seven.c ****  */
+ 134:source\bsw\LabBoard/seven.c **** RC_t SEVEN_Set(SEVEN_id_t sevenId, uint8_t value)
+ 135:source\bsw\LabBoard/seven.c **** {
+ 103              		.loc 1 135 0
+ 104              		.cfi_startproc
+ 105              		@ args = 0, pretend = 0, frame = 0
+ 106              		@ frame_needed = 0, uses_anonymous_args = 0
+ 107              	.LVL9:
+ 136:source\bsw\LabBoard/seven.c ****     if (value > 0x0F)
+ 108              		.loc 1 136 0
+ 109 0000 0F29     		cmp	r1, #15
+ 110 0002 0ED8     		bhi	.L11
+ 135:source\bsw\LabBoard/seven.c ****     if (value > 0x0F)
+ 111              		.loc 1 135 0
+ 112 0004 38B5     		push	{r3, r4, r5, lr}
+ 113              		.cfi_def_cfa_offset 16
+ 114              		.cfi_offset 3, -16
+ 115              		.cfi_offset 4, -12
+ 116              		.cfi_offset 5, -8
+ 117              		.cfi_offset 14, -4
+ 118 0006 0C46     		mov	r4, r1
+ 119 0008 0546     		mov	r5, r0
+ 137:source\bsw\LabBoard/seven.c ****     {
+ 138:source\bsw\LabBoard/seven.c ****         return RC_ERROR_BAD_PARAM;
+ 139:source\bsw\LabBoard/seven.c ****     }
+ 140:source\bsw\LabBoard/seven.c ****     
+ 141:source\bsw\LabBoard/seven.c ****     //Set the selection bit for the display
+ 142:source\bsw\LabBoard/seven.c ****     SEVEN_SELECT_Write((uint8_t)sevenId);
+ 120              		.loc 1 142 0
+ 121 000a FFF7FEFF 		bl	SEVEN_SELECT_Write
+ 122              	.LVL10:
+ 143:source\bsw\LabBoard/seven.c ****     
+ 144:source\bsw\LabBoard/seven.c ****     //Set the bitpattern
+ 145:source\bsw\LabBoard/seven.c ****     //As we do not have a single port, we have to do it bit by bit
+ 146:source\bsw\LabBoard/seven.c ****     
+ 147:source\bsw\LabBoard/seven.c ****     uint8_t pattern = SEVEN__BitPattern[value];
+ 123              		.loc 1 147 0
+ 124 000e 064B     		ldr	r3, .L14
+ 125 0010 185D     		ldrb	r0, [r3, r4]	@ zero_extendqisi2
+ 126              	.LVL11:
+ 148:source\bsw\LabBoard/seven.c ****     
+ 149:source\bsw\LabBoard/seven.c ****     //Store the current pattern in the software latch (needed for the DP function)
+ 150:source\bsw\LabBoard/seven.c ****     SEVEN__latch_value[(uint8_t)sevenId] = value;
+ 127              		.loc 1 150 0
+ 128 0012 064B     		ldr	r3, .L14+4
+ 129 0014 5C55     		strb	r4, [r3, r5]
+ 151:source\bsw\LabBoard/seven.c ****     SEVEN__latch_pattern[(uint8_t)sevenId] = pattern;
+ 130              		.loc 1 151 0
+ 131 0016 064B     		ldr	r3, .L14+8
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 6
+
+
+ 132 0018 5855     		strb	r0, [r3, r5]
+ 152:source\bsw\LabBoard/seven.c ****     
+ 153:source\bsw\LabBoard/seven.c ****     SEVEN_reg_Write(pattern);
+ 133              		.loc 1 153 0
+ 134 001a FFF7FEFF 		bl	SEVEN_reg_Write
+ 135              	.LVL12:
+ 154:source\bsw\LabBoard/seven.c ****     return RC_SUCCESS;
+ 136              		.loc 1 154 0
+ 137 001e 0020     		movs	r0, #0
+ 138 0020 38BD     		pop	{r3, r4, r5, pc}
+ 139              	.LVL13:
+ 140              	.L11:
+ 141              		.cfi_def_cfa_offset 0
+ 142              		.cfi_restore 3
+ 143              		.cfi_restore 4
+ 144              		.cfi_restore 5
+ 145              		.cfi_restore 14
+ 138:source\bsw\LabBoard/seven.c ****     }
+ 146              		.loc 1 138 0
+ 147 0022 6FF01300 		mvn	r0, #19
+ 148              	.LVL14:
+ 149 0026 7047     		bx	lr
+ 150              	.L15:
+ 151              		.align	2
+ 152              	.L14:
+ 153 0028 00000000 		.word	.LANCHOR0
+ 154 002c 00000000 		.word	.LANCHOR1
+ 155 0030 00000000 		.word	.LANCHOR2
+ 156              		.cfi_endproc
+ 157              	.LFE112:
+ 158              		.size	SEVEN_Set, .-SEVEN_Set
+ 159              		.section	.text.SEVEN_Get,"ax",%progbits
+ 160              		.align	2
+ 161              		.global	SEVEN_Get
+ 162              		.thumb
+ 163              		.thumb_func
+ 164              		.type	SEVEN_Get, %function
+ 165              	SEVEN_Get:
+ 166              	.LFB113:
+ 155:source\bsw\LabBoard/seven.c ****     
+ 156:source\bsw\LabBoard/seven.c **** }
+ 157:source\bsw\LabBoard/seven.c **** 
+ 158:source\bsw\LabBoard/seven.c **** /**
+ 159:source\bsw\LabBoard/seven.c ****  * Get value for one display
+ 160:source\bsw\LabBoard/seven.c ****  * @param SEVEN_id_t sevenId - identifier for the segment to be set
+ 161:source\bsw\LabBoard/seven.c ****  * @param uint8_t value - current value, valid range 0...15
+ 162:source\bsw\LabBoard/seven.c ****  * @return RC_SUCCESS if function was executed correctly, other value in case of error
+ 163:source\bsw\LabBoard/seven.c ****  */
+ 164:source\bsw\LabBoard/seven.c **** RC_t SEVEN_Get(SEVEN_id_t sevenId, sint8_t* value)
+ 165:source\bsw\LabBoard/seven.c **** {
+ 167              		.loc 1 165 0
+ 168              		.cfi_startproc
+ 169              		@ args = 0, pretend = 0, frame = 0
+ 170              		@ frame_needed = 0, uses_anonymous_args = 0
+ 171              		@ link register save eliminated.
+ 172              	.LVL15:
+ 166:source\bsw\LabBoard/seven.c ****     *value = SEVEN__latch_value[(uint8_t)sevenId];
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 7
+
+
+ 173              		.loc 1 166 0
+ 174 0000 024B     		ldr	r3, .L17
+ 175 0002 1B56     		ldrsb	r3, [r3, r0]
+ 176 0004 0B70     		strb	r3, [r1]
+ 167:source\bsw\LabBoard/seven.c ****     return RC_SUCCESS;
+ 168:source\bsw\LabBoard/seven.c **** }
+ 177              		.loc 1 168 0
+ 178 0006 0020     		movs	r0, #0
+ 179              	.LVL16:
+ 180 0008 7047     		bx	lr
+ 181              	.L18:
+ 182 000a 00BF     		.align	2
+ 183              	.L17:
+ 184 000c 00000000 		.word	.LANCHOR1
+ 185              		.cfi_endproc
+ 186              	.LFE113:
+ 187              		.size	SEVEN_Get, .-SEVEN_Get
+ 188              		.section	.text.SEVEN_SetHex,"ax",%progbits
+ 189              		.align	2
+ 190              		.global	SEVEN_SetHex
+ 191              		.thumb
+ 192              		.thumb_func
+ 193              		.type	SEVEN_SetHex, %function
+ 194              	SEVEN_SetHex:
+ 195              	.LFB114:
+ 169:source\bsw\LabBoard/seven.c **** 
+ 170:source\bsw\LabBoard/seven.c **** 
+ 171:source\bsw\LabBoard/seven.c **** /**
+ 172:source\bsw\LabBoard/seven.c ****  * Sets both displays
+ 173:source\bsw\LabBoard/seven.c ****  * @param uint8_t value - value to be set, valid range 0...255
+ 174:source\bsw\LabBoard/seven.c ****  * @return RC_SUCCESS if function was executed correctly, other value in case of error
+ 175:source\bsw\LabBoard/seven.c ****  */
+ 176:source\bsw\LabBoard/seven.c **** RC_t SEVEN_SetHex(uint8_t value)
+ 177:source\bsw\LabBoard/seven.c **** {
+ 196              		.loc 1 177 0
+ 197              		.cfi_startproc
+ 198              		@ args = 0, pretend = 0, frame = 0
+ 199              		@ frame_needed = 0, uses_anonymous_args = 0
+ 200              	.LVL17:
+ 201 0000 10B5     		push	{r4, lr}
+ 202              		.cfi_def_cfa_offset 8
+ 203              		.cfi_offset 4, -8
+ 204              		.cfi_offset 14, -4
+ 205 0002 0446     		mov	r4, r0
+ 178:source\bsw\LabBoard/seven.c ****     SEVEN_Set(SEVEN_1, value / 16);
+ 206              		.loc 1 178 0
+ 207 0004 0109     		lsrs	r1, r0, #4
+ 208 0006 0120     		movs	r0, #1
+ 209              	.LVL18:
+ 210 0008 FFF7FEFF 		bl	SEVEN_Set
+ 211              	.LVL19:
+ 179:source\bsw\LabBoard/seven.c ****     SEVEN_Set(SEVEN_0, value % 16);
+ 212              		.loc 1 179 0
+ 213 000c 04F00F01 		and	r1, r4, #15
+ 214 0010 0020     		movs	r0, #0
+ 215 0012 FFF7FEFF 		bl	SEVEN_Set
+ 216              	.LVL20:
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 8
+
+
+ 180:source\bsw\LabBoard/seven.c ****     
+ 181:source\bsw\LabBoard/seven.c ****     return RC_SUCCESS;
+ 182:source\bsw\LabBoard/seven.c **** }
+ 217              		.loc 1 182 0
+ 218 0016 0020     		movs	r0, #0
+ 219 0018 10BD     		pop	{r4, pc}
+ 220              		.cfi_endproc
+ 221              	.LFE114:
+ 222              		.size	SEVEN_SetHex, .-SEVEN_SetHex
+ 223 001a 00BF     		.section	.text.SEVEN_SetDP,"ax",%progbits
+ 224              		.align	2
+ 225              		.global	SEVEN_SetDP
+ 226              		.thumb
+ 227              		.thumb_func
+ 228              		.type	SEVEN_SetDP, %function
+ 229              	SEVEN_SetDP:
+ 230              	.LFB115:
+ 183:source\bsw\LabBoard/seven.c **** 
+ 184:source\bsw\LabBoard/seven.c **** /**
+ 185:source\bsw\LabBoard/seven.c ****  * Sets decimal point for one display
+ 186:source\bsw\LabBoard/seven.c ****  * @param SEVEN_id_t sevenId - identifier for the segment to be set
+ 187:source\bsw\LabBoard/seven.c ****  * @param uint8_t value - value to be set, valid range 0 (OFF)...1(ON)
+ 188:source\bsw\LabBoard/seven.c ****  * @return RC_SUCCESS if function was executed correctly, other value in case of error
+ 189:source\bsw\LabBoard/seven.c ****  */
+ 190:source\bsw\LabBoard/seven.c **** RC_t SEVEN_SetDP(SEVEN_id_t sevenId, uint8_t value)
+ 191:source\bsw\LabBoard/seven.c **** {
+ 231              		.loc 1 191 0
+ 232              		.cfi_startproc
+ 233              		@ args = 0, pretend = 0, frame = 0
+ 234              		@ frame_needed = 0, uses_anonymous_args = 0
+ 235              	.LVL21:
+ 192:source\bsw\LabBoard/seven.c ****     
+ 193:source\bsw\LabBoard/seven.c ****     if (value > 1)
+ 236              		.loc 1 193 0
+ 237 0000 0129     		cmp	r1, #1
+ 238 0002 14D8     		bhi	.L24
+ 191:source\bsw\LabBoard/seven.c ****     
+ 239              		.loc 1 191 0
+ 240 0004 38B5     		push	{r3, r4, r5, lr}
+ 241              		.cfi_def_cfa_offset 16
+ 242              		.cfi_offset 3, -16
+ 243              		.cfi_offset 4, -12
+ 244              		.cfi_offset 5, -8
+ 245              		.cfi_offset 14, -4
+ 246              	.LVL22:
+ 194:source\bsw\LabBoard/seven.c ****     {
+ 195:source\bsw\LabBoard/seven.c ****         return RC_ERROR_BAD_PARAM;
+ 196:source\bsw\LabBoard/seven.c ****     }
+ 197:source\bsw\LabBoard/seven.c ****     
+ 198:source\bsw\LabBoard/seven.c ****     //Restore the last display pattern
+ 199:source\bsw\LabBoard/seven.c ****     uint8_t pattern = 0;
+ 200:source\bsw\LabBoard/seven.c ****     if (SEVEN__latch_value[(uint8_t)sevenId] != -1)
+ 247              		.loc 1 200 0
+ 248 0006 0B4B     		ldr	r3, .L28
+ 249 0008 1B56     		ldrsb	r3, [r3, r0]
+ 250 000a B3F1FF3F 		cmp	r3, #-1
+ 251 000e 02D0     		beq	.L25
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 9
+
+
+ 201:source\bsw\LabBoard/seven.c ****     {
+ 202:source\bsw\LabBoard/seven.c ****         pattern = SEVEN__latch_pattern[(uint8_t)sevenId];
+ 252              		.loc 1 202 0
+ 253 0010 094B     		ldr	r3, .L28+4
+ 254 0012 1D5C     		ldrb	r5, [r3, r0]	@ zero_extendqisi2
+ 255              	.LVL23:
+ 256 0014 00E0     		b	.L23
+ 257              	.LVL24:
+ 258              	.L25:
+ 199:source\bsw\LabBoard/seven.c ****     if (SEVEN__latch_value[(uint8_t)sevenId] != -1)
+ 259              		.loc 1 199 0
+ 260 0016 0025     		movs	r5, #0
+ 261              	.LVL25:
+ 262              	.L23:
+ 263 0018 0C46     		mov	r4, r1
+ 264              	.LVL26:
+ 203:source\bsw\LabBoard/seven.c ****     }
+ 204:source\bsw\LabBoard/seven.c ****     
+ 205:source\bsw\LabBoard/seven.c ****     //Set the selection bit for the display
+ 206:source\bsw\LabBoard/seven.c ****     SEVEN_SELECT_Write((uint8_t)sevenId);
+ 265              		.loc 1 206 0
+ 266 001a FFF7FEFF 		bl	SEVEN_SELECT_Write
+ 267              	.LVL27:
+ 207:source\bsw\LabBoard/seven.c ****     
+ 208:source\bsw\LabBoard/seven.c ****     //Set the port to the pattern currently active
+ 209:source\bsw\LabBoard/seven.c ****     SEVEN_reg_Write(pattern);
+ 268              		.loc 1 209 0
+ 269 001e 2846     		mov	r0, r5
+ 270 0020 FFF7FEFF 		bl	SEVEN_reg_Write
+ 271              	.LVL28:
+ 210:source\bsw\LabBoard/seven.c ****     
+ 211:source\bsw\LabBoard/seven.c ****     //Set the decimal point
+ 212:source\bsw\LabBoard/seven.c ****     SEVEN_DP_Write(value);
+ 272              		.loc 1 212 0
+ 273 0024 2046     		mov	r0, r4
+ 274 0026 FFF7FEFF 		bl	SEVEN_DP_Write
+ 275              	.LVL29:
+ 213:source\bsw\LabBoard/seven.c **** 
+ 214:source\bsw\LabBoard/seven.c ****     return RC_SUCCESS;
+ 276              		.loc 1 214 0
+ 277 002a 0020     		movs	r0, #0
+ 278 002c 38BD     		pop	{r3, r4, r5, pc}
+ 279              	.LVL30:
+ 280              	.L24:
+ 281              		.cfi_def_cfa_offset 0
+ 282              		.cfi_restore 3
+ 283              		.cfi_restore 4
+ 284              		.cfi_restore 5
+ 285              		.cfi_restore 14
+ 195:source\bsw\LabBoard/seven.c ****     }
+ 286              		.loc 1 195 0
+ 287 002e 6FF01300 		mvn	r0, #19
+ 288              	.LVL31:
+ 289 0032 7047     		bx	lr
+ 290              	.L29:
+ 291              		.align	2
+ 292              	.L28:
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 10
+
+
+ 293 0034 00000000 		.word	.LANCHOR1
+ 294 0038 00000000 		.word	.LANCHOR2
+ 295              		.cfi_endproc
+ 296              	.LFE115:
+ 297              		.size	SEVEN_SetDP, .-SEVEN_SetDP
+ 298              		.section	.text.SEVEN_Clear,"ax",%progbits
+ 299              		.align	2
+ 300              		.global	SEVEN_Clear
+ 301              		.thumb
+ 302              		.thumb_func
+ 303              		.type	SEVEN_Clear, %function
+ 304              	SEVEN_Clear:
+ 305              	.LFB116:
+ 215:source\bsw\LabBoard/seven.c **** }
+ 216:source\bsw\LabBoard/seven.c **** 
+ 217:source\bsw\LabBoard/seven.c **** /**
+ 218:source\bsw\LabBoard/seven.c ****  * Clears one display
+ 219:source\bsw\LabBoard/seven.c ****  * @param SEVEN_id_t sevenId - identifier for the segment to be set
+ 220:source\bsw\LabBoard/seven.c ****  * @return RC_SUCCESS if function was executed correctly, other value in case of error
+ 221:source\bsw\LabBoard/seven.c ****  */
+ 222:source\bsw\LabBoard/seven.c **** RC_t SEVEN_Clear(SEVEN_id_t sevenId)
+ 223:source\bsw\LabBoard/seven.c **** {
+ 306              		.loc 1 223 0
+ 307              		.cfi_startproc
+ 308              		@ args = 0, pretend = 0, frame = 0
+ 309              		@ frame_needed = 0, uses_anonymous_args = 0
+ 310              	.LVL32:
+ 311 0000 08B5     		push	{r3, lr}
+ 312              		.cfi_def_cfa_offset 8
+ 313              		.cfi_offset 3, -8
+ 314              		.cfi_offset 14, -4
+ 224:source\bsw\LabBoard/seven.c ****     //Set software latch to cleared
+ 225:source\bsw\LabBoard/seven.c ****     SEVEN__latch_value[(uint8_t)sevenId] = -1;
+ 315              		.loc 1 225 0
+ 316 0002 FF22     		movs	r2, #255
+ 317 0004 044B     		ldr	r3, .L32
+ 318 0006 1A54     		strb	r2, [r3, r0]
+ 226:source\bsw\LabBoard/seven.c ****     
+ 227:source\bsw\LabBoard/seven.c ****     //Set the selection bit for the display
+ 228:source\bsw\LabBoard/seven.c ****     SEVEN_SELECT_Write((uint8_t)sevenId);
+ 319              		.loc 1 228 0
+ 320 0008 FFF7FEFF 		bl	SEVEN_SELECT_Write
+ 321              	.LVL33:
+ 229:source\bsw\LabBoard/seven.c ****     
+ 230:source\bsw\LabBoard/seven.c ****     //Clear every bit
+ 231:source\bsw\LabBoard/seven.c ****     SEVEN_reg_Write(0);
+ 322              		.loc 1 231 0
+ 323 000c 0020     		movs	r0, #0
+ 324 000e FFF7FEFF 		bl	SEVEN_reg_Write
+ 325              	.LVL34:
+ 232:source\bsw\LabBoard/seven.c ****     
+ 233:source\bsw\LabBoard/seven.c ****     return RC_SUCCESS;
+ 234:source\bsw\LabBoard/seven.c **** }
+ 326              		.loc 1 234 0
+ 327 0012 0020     		movs	r0, #0
+ 328 0014 08BD     		pop	{r3, pc}
+ 329              	.L33:
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 11
+
+
+ 330 0016 00BF     		.align	2
+ 331              	.L32:
+ 332 0018 00000000 		.word	.LANCHOR1
+ 333              		.cfi_endproc
+ 334              	.LFE116:
+ 335              		.size	SEVEN_Clear, .-SEVEN_Clear
+ 336              		.section	.text.SEVEN_Init,"ax",%progbits
+ 337              		.align	2
+ 338              		.global	SEVEN_Init
+ 339              		.thumb
+ 340              		.thumb_func
+ 341              		.type	SEVEN_Init, %function
+ 342              	SEVEN_Init:
+ 343              	.LFB110:
+  98:source\bsw\LabBoard/seven.c ****     
+ 344              		.loc 1 98 0
+ 345              		.cfi_startproc
+ 346              		@ args = 0, pretend = 0, frame = 0
+ 347              		@ frame_needed = 0, uses_anonymous_args = 0
+ 348 0000 08B5     		push	{r3, lr}
+ 349              		.cfi_def_cfa_offset 8
+ 350              		.cfi_offset 3, -8
+ 351              		.cfi_offset 14, -4
+ 100:source\bsw\LabBoard/seven.c ****     SEVEN_Clear(SEVEN_1);
+ 352              		.loc 1 100 0
+ 353 0002 0020     		movs	r0, #0
+ 354 0004 FFF7FEFF 		bl	SEVEN_Clear
+ 355              	.LVL35:
+ 101:source\bsw\LabBoard/seven.c ****     
+ 356              		.loc 1 101 0
+ 357 0008 0120     		movs	r0, #1
+ 358 000a FFF7FEFF 		bl	SEVEN_Clear
+ 359              	.LVL36:
+ 104:source\bsw\LabBoard/seven.c **** 
+ 360              		.loc 1 104 0
+ 361 000e 0020     		movs	r0, #0
+ 362 0010 08BD     		pop	{r3, pc}
+ 363              		.cfi_endproc
+ 364              	.LFE110:
+ 365              		.size	SEVEN_Init, .-SEVEN_Init
+ 366 0012 00BF     		.section	.text.SEVEN_ClearAll,"ax",%progbits
+ 367              		.align	2
+ 368              		.global	SEVEN_ClearAll
+ 369              		.thumb
+ 370              		.thumb_func
+ 371              		.type	SEVEN_ClearAll, %function
+ 372              	SEVEN_ClearAll:
+ 373              	.LFB117:
+ 235:source\bsw\LabBoard/seven.c **** 
+ 236:source\bsw\LabBoard/seven.c **** /**
+ 237:source\bsw\LabBoard/seven.c ****  * Clears both displays
+ 238:source\bsw\LabBoard/seven.c ****  * @return RC_SUCCESS if function was executed correctly, other value in case of error
+ 239:source\bsw\LabBoard/seven.c ****  */
+ 240:source\bsw\LabBoard/seven.c **** RC_t SEVEN_ClearAll()
+ 241:source\bsw\LabBoard/seven.c **** {
+ 374              		.loc 1 241 0
+ 375              		.cfi_startproc
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 12
+
+
+ 376              		@ args = 0, pretend = 0, frame = 0
+ 377              		@ frame_needed = 0, uses_anonymous_args = 0
+ 378 0000 08B5     		push	{r3, lr}
+ 379              		.cfi_def_cfa_offset 8
+ 380              		.cfi_offset 3, -8
+ 381              		.cfi_offset 14, -4
+ 242:source\bsw\LabBoard/seven.c ****     //Set software latch to cleared
+ 243:source\bsw\LabBoard/seven.c ****     SEVEN__latch_value[0] = -1;
+ 382              		.loc 1 243 0
+ 383 0002 094B     		ldr	r3, .L38
+ 384 0004 FF22     		movs	r2, #255
+ 385 0006 1A70     		strb	r2, [r3]
+ 244:source\bsw\LabBoard/seven.c ****     SEVEN__latch_value[1] = -1;
+ 386              		.loc 1 244 0
+ 387 0008 5A70     		strb	r2, [r3, #1]
+ 245:source\bsw\LabBoard/seven.c ****     
+ 246:source\bsw\LabBoard/seven.c ****     //Set the selection bit for the right display
+ 247:source\bsw\LabBoard/seven.c ****     SEVEN_SELECT_Write(0);
+ 388              		.loc 1 247 0
+ 389 000a 0020     		movs	r0, #0
+ 390 000c FFF7FEFF 		bl	SEVEN_SELECT_Write
+ 391              	.LVL37:
+ 248:source\bsw\LabBoard/seven.c ****     //Clear every bit
+ 249:source\bsw\LabBoard/seven.c ****     SEVEN_reg_Write(0);
+ 392              		.loc 1 249 0
+ 393 0010 0020     		movs	r0, #0
+ 394 0012 FFF7FEFF 		bl	SEVEN_reg_Write
+ 395              	.LVL38:
+ 250:source\bsw\LabBoard/seven.c **** 
+ 251:source\bsw\LabBoard/seven.c ****     //Set the selection bit for the left display
+ 252:source\bsw\LabBoard/seven.c ****     SEVEN_SELECT_Write(1);
+ 396              		.loc 1 252 0
+ 397 0016 0120     		movs	r0, #1
+ 398 0018 FFF7FEFF 		bl	SEVEN_SELECT_Write
+ 399              	.LVL39:
+ 253:source\bsw\LabBoard/seven.c ****     SEVEN_reg_Write(0);
+ 400              		.loc 1 253 0
+ 401 001c 0020     		movs	r0, #0
+ 402 001e FFF7FEFF 		bl	SEVEN_reg_Write
+ 403              	.LVL40:
+ 254:source\bsw\LabBoard/seven.c ****     
+ 255:source\bsw\LabBoard/seven.c ****     return RC_SUCCESS;
+ 256:source\bsw\LabBoard/seven.c **** }...
+ 404              		.loc 1 256 0
+ 405 0022 0020     		movs	r0, #0
+ 406 0024 08BD     		pop	{r3, pc}
+ 407              	.L39:
+ 408 0026 00BF     		.align	2
+ 409              	.L38:
+ 410 0028 00000000 		.word	.LANCHOR1
+ 411              		.cfi_endproc
+ 412              	.LFE117:
+ 413              		.size	SEVEN_ClearAll, .-SEVEN_ClearAll
+ 414              		.section	.rodata
+ 415              		.align	2
+ 416              		.set	.LANCHOR0,. + 0
+ 417              		.type	SEVEN__BitPattern, %object
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 13
+
+
+ 418              		.size	SEVEN__BitPattern, 17
+ 419              	SEVEN__BitPattern:
+ 420 0000 FC       		.byte	-4
+ 421 0001 60       		.byte	96
+ 422 0002 DA       		.byte	-38
+ 423 0003 F2       		.byte	-14
+ 424 0004 66       		.byte	102
+ 425 0005 B6       		.byte	-74
+ 426 0006 BE       		.byte	-66
+ 427 0007 E0       		.byte	-32
+ 428 0008 FE       		.byte	-2
+ 429 0009 F6       		.byte	-10
+ 430 000a EE       		.byte	-18
+ 431 000b 3E       		.byte	62
+ 432 000c 9C       		.byte	-100
+ 433 000d 7A       		.byte	122
+ 434 000e 9E       		.byte	-98
+ 435 000f 8E       		.byte	-114
+ 436 0010 01       		.byte	1
+ 437              		.data
+ 438              		.align	2
+ 439              		.set	.LANCHOR1,. + 0
+ 440              		.type	SEVEN__latch_value, %object
+ 441              		.size	SEVEN__latch_value, 2
+ 442              	SEVEN__latch_value:
+ 443 0000 FF       		.byte	-1
+ 444 0001 FF       		.byte	-1
+ 445              		.bss
+ 446              		.align	2
+ 447              		.set	.LANCHOR2,. + 0
+ 448              		.type	SEVEN__latch_pattern, %object
+ 449              		.size	SEVEN__latch_pattern, 2
+ 450              	SEVEN__latch_pattern:
+ 451 0000 0000     		.space	2
+ 452              		.text
+ 453              	.Letext0:
+ 454              		.file 2 "c:\\h_da softwares & projects\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.1\\
+ 455              		.file 3 "c:\\h_da softwares & projects\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.1\\
+ 456              		.file 4 "Generated_Source\\PSoC5/ErikaOS_common_ee_types.inc"
+ 457              		.file 5 "Generated_Source\\PSoC5/ErikaOS_cortex_mx_ee_cpu.inc"
+ 458              		.file 6 ".\\source\\bsw/global.h"
+ 459              		.file 7 "source\\bsw\\LabBoard\\seven.h"
+ 460              		.file 8 "Generated_Source\\PSoC5/ErikaOS_ee_oo_intfunc.inc"
+ 461              		.file 9 "Generated_Source\\PSoC5/ErikaOS_cortex_mx_ee_context.inc"
+ 462              		.file 10 "Generated_Source\\PSoC5/ErikaOS_common_ee_primitives.inc"
+ 463              		.file 11 "Generated_Source\\PSoC5/core_cm3.h"
+ 464              		.file 12 "c:\\h_da softwares & projects\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.1\
+ 465              		.file 13 "Generated_Source\\PSoC5/SEVEN_SELECT.h"
+ 466              		.file 14 "Generated_Source\\PSoC5/SEVEN_reg.h"
+ 467              		.file 15 "Generated_Source\\PSoC5/SEVEN_DP.h"
+ 468              		.section	.debug_info,"",%progbits
+ 469              	.Ldebug_info0:
+ 470 0000 9A050000 		.4byte	0x59a
+ 471 0004 0400     		.2byte	0x4
+ 472 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 473 000a 04       		.byte	0x4
+ 474 000b 01       		.uleb128 0x1
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 14
+
+
+ 475 000c 3C030000 		.4byte	.LASF80
+ 476 0010 0C       		.byte	0xc
+ 477 0011 62020000 		.4byte	.LASF81
+ 478 0015 C5000000 		.4byte	.LASF82
+ 479 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 480 001d 00000000 		.4byte	0
+ 481 0021 00000000 		.4byte	.Ldebug_line0
+ 482 0025 02       		.uleb128 0x2
+ 483 0026 01       		.byte	0x1
+ 484 0027 06       		.byte	0x6
+ 485 0028 60010000 		.4byte	.LASF0
+ 486 002c 03       		.uleb128 0x3
+ 487 002d 16020000 		.4byte	.LASF4
+ 488 0031 02       		.byte	0x2
+ 489 0032 1D       		.byte	0x1d
+ 490 0033 37000000 		.4byte	0x37
+ 491 0037 02       		.uleb128 0x2
+ 492 0038 01       		.byte	0x1
+ 493 0039 08       		.byte	0x8
+ 494 003a 96020000 		.4byte	.LASF1
+ 495 003e 02       		.uleb128 0x2
+ 496 003f 02       		.byte	0x2
+ 497 0040 05       		.byte	0x5
+ 498 0041 45000000 		.4byte	.LASF2
+ 499 0045 02       		.uleb128 0x2
+ 500 0046 02       		.byte	0x2
+ 501 0047 07       		.byte	0x7
+ 502 0048 29030000 		.4byte	.LASF3
+ 503 004c 03       		.uleb128 0x3
+ 504 004d 9E040000 		.4byte	.LASF5
+ 505 0051 02       		.byte	0x2
+ 506 0052 3F       		.byte	0x3f
+ 507 0053 57000000 		.4byte	0x57
+ 508 0057 02       		.uleb128 0x2
+ 509 0058 04       		.byte	0x4
+ 510 0059 05       		.byte	0x5
+ 511 005a ED010000 		.4byte	.LASF6
+ 512 005e 02       		.uleb128 0x2
+ 513 005f 04       		.byte	0x4
+ 514 0060 07       		.byte	0x7
+ 515 0061 51040000 		.4byte	.LASF7
+ 516 0065 02       		.uleb128 0x2
+ 517 0066 08       		.byte	0x8
+ 518 0067 05       		.byte	0x5
+ 519 0068 8B010000 		.4byte	.LASF8
+ 520 006c 02       		.uleb128 0x2
+ 521 006d 08       		.byte	0x8
+ 522 006e 07       		.byte	0x7
+ 523 006f AC020000 		.4byte	.LASF9
+ 524 0073 04       		.uleb128 0x4
+ 525 0074 04       		.byte	0x4
+ 526 0075 05       		.byte	0x5
+ 527 0076 696E7400 		.ascii	"int\000"
+ 528 007a 02       		.uleb128 0x2
+ 529 007b 04       		.byte	0x4
+ 530 007c 07       		.byte	0x7
+ 531 007d C3020000 		.4byte	.LASF10
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 15
+
+
+ 532 0081 03       		.uleb128 0x3
+ 533 0082 0E010000 		.4byte	.LASF11
+ 534 0086 03       		.byte	0x3
+ 535 0087 18       		.byte	0x18
+ 536 0088 2C000000 		.4byte	0x2c
+ 537 008c 03       		.uleb128 0x3
+ 538 008d 00040000 		.4byte	.LASF12
+ 539 0091 03       		.byte	0x3
+ 540 0092 2C       		.byte	0x2c
+ 541 0093 4C000000 		.4byte	0x4c
+ 542 0097 02       		.uleb128 0x2
+ 543 0098 04       		.byte	0x4
+ 544 0099 04       		.byte	0x4
+ 545 009a 6C010000 		.4byte	.LASF13
+ 546 009e 02       		.uleb128 0x2
+ 547 009f 08       		.byte	0x8
+ 548 00a0 04       		.byte	0x4
+ 549 00a1 63040000 		.4byte	.LASF14
+ 550 00a5 02       		.uleb128 0x2
+ 551 00a6 01       		.byte	0x1
+ 552 00a7 08       		.byte	0x8
+ 553 00a8 DA030000 		.4byte	.LASF15
+ 554 00ac 02       		.uleb128 0x2
+ 555 00ad 08       		.byte	0x8
+ 556 00ae 04       		.byte	0x4
+ 557 00af 8A020000 		.4byte	.LASF16
+ 558 00b3 02       		.uleb128 0x2
+ 559 00b4 04       		.byte	0x4
+ 560 00b5 07       		.byte	0x7
+ 561 00b6 B7040000 		.4byte	.LASF17
+ 562 00ba 03       		.uleb128 0x3
+ 563 00bb 14030000 		.4byte	.LASF18
+ 564 00bf 04       		.byte	0x4
+ 565 00c0 53       		.byte	0x53
+ 566 00c1 73000000 		.4byte	0x73
+ 567 00c5 03       		.uleb128 0x3
+ 568 00c6 F7000000 		.4byte	.LASF19
+ 569 00ca 04       		.byte	0x4
+ 570 00cb 54       		.byte	0x54
+ 571 00cc 7A000000 		.4byte	0x7a
+ 572 00d0 03       		.uleb128 0x3
+ 573 00d1 87040000 		.4byte	.LASF20
+ 574 00d5 05       		.byte	0x5
+ 575 00d6 4D       		.byte	0x4d
+ 576 00d7 C5000000 		.4byte	0xc5
+ 577 00db 03       		.uleb128 0x3
+ 578 00dc 9D000000 		.4byte	.LASF21
+ 579 00e0 05       		.byte	0x5
+ 580 00e1 4F       		.byte	0x4f
+ 581 00e2 C5000000 		.4byte	0xc5
+ 582 00e6 03       		.uleb128 0x3
+ 583 00e7 01010000 		.4byte	.LASF22
+ 584 00eb 05       		.byte	0x5
+ 585 00ec 78       		.byte	0x78
+ 586 00ed BA000000 		.4byte	0xba
+ 587 00f1 03       		.uleb128 0x3
+ 588 00f2 28050000 		.4byte	.LASF23
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 16
+
+
+ 589 00f6 06       		.byte	0x6
+ 590 00f7 90       		.byte	0x90
+ 591 00f8 25000000 		.4byte	0x25
+ 592 00fc 05       		.uleb128 0x5
+ 593 00fd 01       		.byte	0x1
+ 594 00fe 25000000 		.4byte	0x25
+ 595 0102 06       		.byte	0x6
+ 596 0103 CF       		.byte	0xcf
+ 597 0104 A5010000 		.4byte	0x1a5
+ 598 0108 06       		.uleb128 0x6
+ 599 0109 26000000 		.4byte	.LASF24
+ 600 010d 00       		.byte	0
+ 601 010e 07       		.uleb128 0x7
+ 602 010f F2040000 		.4byte	.LASF25
+ 603 0113 7F       		.sleb128 -1
+ 604 0114 07       		.uleb128 0x7
+ 605 0115 F0020000 		.4byte	.LASF26
+ 606 0119 7E       		.sleb128 -2
+ 607 011a 07       		.uleb128 0x7
+ 608 011b 8F000000 		.4byte	.LASF27
+ 609 011f 7D       		.sleb128 -3
+ 610 0120 07       		.uleb128 0x7
+ 611 0121 FB040000 		.4byte	.LASF28
+ 612 0125 7C       		.sleb128 -4
+ 613 0126 07       		.uleb128 0x7
+ 614 0127 8F040000 		.4byte	.LASF29
+ 615 012b 7B       		.sleb128 -5
+ 616 012c 07       		.uleb128 0x7
+ 617 012d 4F000000 		.4byte	.LASF30
+ 618 0131 7A       		.sleb128 -6
+ 619 0132 07       		.uleb128 0x7
+ 620 0133 F6010000 		.4byte	.LASF31
+ 621 0137 79       		.sleb128 -7
+ 622 0138 07       		.uleb128 0x7
+ 623 0139 EB030000 		.4byte	.LASF32
+ 624 013d 78       		.sleb128 -8
+ 625 013e 07       		.uleb128 0x7
+ 626 013f FE020000 		.4byte	.LASF33
+ 627 0143 77       		.sleb128 -9
+ 628 0144 07       		.uleb128 0x7
+ 629 0145 08020000 		.4byte	.LASF34
+ 630 0149 76       		.sleb128 -10
+ 631 014a 07       		.uleb128 0x7
+ 632 014b 30050000 		.4byte	.LASF35
+ 633 014f 75       		.sleb128 -11
+ 634 0150 07       		.uleb128 0x7
+ 635 0151 D0020000 		.4byte	.LASF36
+ 636 0155 74       		.sleb128 -12
+ 637 0156 07       		.uleb128 0x7
+ 638 0157 75040000 		.4byte	.LASF37
+ 639 015b 73       		.sleb128 -13
+ 640 015c 07       		.uleb128 0x7
+ 641 015d 13000000 		.4byte	.LASF38
+ 642 0161 72       		.sleb128 -14
+ 643 0162 07       		.uleb128 0x7
+ 644 0163 31000000 		.4byte	.LASF39
+ 645 0167 71       		.sleb128 -15
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 17
+
+
+ 646 0168 07       		.uleb128 0x7
+ 647 0169 A5000000 		.4byte	.LASF40
+ 648 016d 70       		.sleb128 -16
+ 649 016e 07       		.uleb128 0x7
+ 650 016f 12040000 		.4byte	.LASF41
+ 651 0173 6F       		.sleb128 -17
+ 652 0174 07       		.uleb128 0x7
+ 653 0175 60000000 		.4byte	.LASF42
+ 654 0179 6E       		.sleb128 -18
+ 655 017a 07       		.uleb128 0x7
+ 656 017b BF010000 		.4byte	.LASF43
+ 657 017f 6D       		.sleb128 -19
+ 658 0180 07       		.uleb128 0x7
+ 659 0181 26040000 		.4byte	.LASF44
+ 660 0185 6C       		.sleb128 -20
+ 661 0186 07       		.uleb128 0x7
+ 662 0187 48020000 		.4byte	.LASF45
+ 663 018b 6B       		.sleb128 -21
+ 664 018c 07       		.uleb128 0x7
+ 665 018d C0040000 		.4byte	.LASF46
+ 666 0191 6A       		.sleb128 -22
+ 667 0192 07       		.uleb128 0x7
+ 668 0193 16010000 		.4byte	.LASF47
+ 669 0197 69       		.sleb128 -23
+ 670 0198 07       		.uleb128 0x7
+ 671 0199 D2010000 		.4byte	.LASF48
+ 672 019d 68       		.sleb128 -24
+ 673 019e 07       		.uleb128 0x7
+ 674 019f 72010000 		.4byte	.LASF49
+ 675 01a3 67       		.sleb128 -25
+ 676 01a4 00       		.byte	0
+ 677 01a5 03       		.uleb128 0x3
+ 678 01a6 23050000 		.4byte	.LASF50
+ 679 01aa 06       		.byte	0x6
+ 680 01ab EA       		.byte	0xea
+ 681 01ac FC000000 		.4byte	0xfc
+ 682 01b0 05       		.uleb128 0x5
+ 683 01b1 01       		.byte	0x1
+ 684 01b2 37000000 		.4byte	0x37
+ 685 01b6 07       		.byte	0x7
+ 686 01b7 5F       		.byte	0x5f
+ 687 01b8 C9010000 		.4byte	0x1c9
+ 688 01bc 06       		.uleb128 0x6
+ 689 01bd 87000000 		.4byte	.LASF51
+ 690 01c1 00       		.byte	0
+ 691 01c2 06       		.uleb128 0x6
+ 692 01c3 A4020000 		.4byte	.LASF52
+ 693 01c7 01       		.byte	0x1
+ 694 01c8 00       		.byte	0
+ 695 01c9 03       		.uleb128 0x3
+ 696 01ca 6A040000 		.4byte	.LASF53
+ 697 01ce 07       		.byte	0x7
+ 698 01cf 62       		.byte	0x62
+ 699 01d0 B0010000 		.4byte	0x1b0
+ 700 01d4 08       		.uleb128 0x8
+ 701 01d5 75000000 		.4byte	.LASF64
+ 702 01d9 01       		.byte	0x1
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 18
+
+
+ 703 01da 6E       		.byte	0x6e
+ 704 01db A5010000 		.4byte	0x1a5
+ 705 01df 00000000 		.4byte	.LFB111
+ 706 01e3 4C000000 		.4byte	.LFE111-.LFB111
+ 707 01e7 01       		.uleb128 0x1
+ 708 01e8 9C       		.byte	0x9c
+ 709 01e9 5F020000 		.4byte	0x25f
+ 710 01ed 09       		.uleb128 0x9
+ 711 01ee 1D030000 		.4byte	.LASF54
+ 712 01f2 01       		.byte	0x1
+ 713 01f3 6F       		.byte	0x6f
+ 714 01f4 81000000 		.4byte	0x81
+ 715 01f8 00000000 		.4byte	.LLST0
+ 716 01fc 09       		.uleb128 0x9
+ 717 01fd 39040000 		.4byte	.LASF55
+ 718 0201 01       		.byte	0x1
+ 719 0202 70       		.byte	0x70
+ 720 0203 81000000 		.4byte	0x81
+ 721 0207 13000000 		.4byte	.LLST1
+ 722 020b 0A       		.uleb128 0xa
+ 723 020c 06000000 		.4byte	.LVL0
+ 724 0210 71050000 		.4byte	0x571
+ 725 0214 0B       		.uleb128 0xb
+ 726 0215 30000000 		.4byte	.LVL4
+ 727 0219 7C050000 		.4byte	0x57c
+ 728 021d 27020000 		.4byte	0x227
+ 729 0221 0C       		.uleb128 0xc
+ 730 0222 01       		.uleb128 0x1
+ 731 0223 50       		.byte	0x50
+ 732 0224 01       		.uleb128 0x1
+ 733 0225 30       		.byte	0x30
+ 734 0226 00       		.byte	0
+ 735 0227 0B       		.uleb128 0xb
+ 736 0228 36000000 		.4byte	.LVL5
+ 737 022c 87050000 		.4byte	0x587
+ 738 0230 3B020000 		.4byte	0x23b
+ 739 0234 0C       		.uleb128 0xc
+ 740 0235 01       		.uleb128 0x1
+ 741 0236 50       		.byte	0x50
+ 742 0237 02       		.uleb128 0x2
+ 743 0238 74       		.byte	0x74
+ 744 0239 00       		.sleb128 0
+ 745 023a 00       		.byte	0
+ 746 023b 0B       		.uleb128 0xb
+ 747 023c 3C000000 		.4byte	.LVL6
+ 748 0240 7C050000 		.4byte	0x57c
+ 749 0244 4E020000 		.4byte	0x24e
+ 750 0248 0C       		.uleb128 0xc
+ 751 0249 01       		.uleb128 0x1
+ 752 024a 50       		.byte	0x50
+ 753 024b 01       		.uleb128 0x1
+ 754 024c 31       		.byte	0x31
+ 755 024d 00       		.byte	0
+ 756 024e 0D       		.uleb128 0xd
+ 757 024f 42000000 		.4byte	.LVL7
+ 758 0253 87050000 		.4byte	0x587
+ 759 0257 0C       		.uleb128 0xc
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 19
+
+
+ 760 0258 01       		.uleb128 0x1
+ 761 0259 50       		.byte	0x50
+ 762 025a 02       		.uleb128 0x2
+ 763 025b 74       		.byte	0x74
+ 764 025c 00       		.sleb128 0
+ 765 025d 00       		.byte	0
+ 766 025e 00       		.byte	0
+ 767 025f 0E       		.uleb128 0xe
+ 768 0260 E3010000 		.4byte	.LASF59
+ 769 0264 01       		.byte	0x1
+ 770 0265 86       		.byte	0x86
+ 771 0266 A5010000 		.4byte	0x1a5
+ 772 026a 00000000 		.4byte	.LFB112
+ 773 026e 34000000 		.4byte	.LFE112-.LFB112
+ 774 0272 01       		.uleb128 0x1
+ 775 0273 9C       		.byte	0x9c
+ 776 0274 D2020000 		.4byte	0x2d2
+ 777 0278 0F       		.uleb128 0xf
+ 778 0279 5A020000 		.4byte	.LASF56
+ 779 027d 01       		.byte	0x1
+ 780 027e 86       		.byte	0x86
+ 781 027f C9010000 		.4byte	0x1c9
+ 782 0283 33000000 		.4byte	.LLST2
+ 783 0287 0F       		.uleb128 0xf
+ 784 0288 08010000 		.4byte	.LASF57
+ 785 028c 01       		.byte	0x1
+ 786 028d 86       		.byte	0x86
+ 787 028e 81000000 		.4byte	0x81
+ 788 0292 6D000000 		.4byte	.LLST3
+ 789 0296 09       		.uleb128 0x9
+ 790 0297 0B000000 		.4byte	.LASF58
+ 791 029b 01       		.byte	0x1
+ 792 029c 93       		.byte	0x93
+ 793 029d 81000000 		.4byte	0x81
+ 794 02a1 99000000 		.4byte	.LLST4
+ 795 02a5 0B       		.uleb128 0xb
+ 796 02a6 0E000000 		.4byte	.LVL10
+ 797 02aa 7C050000 		.4byte	0x57c
+ 798 02ae B9020000 		.4byte	0x2b9
+ 799 02b2 0C       		.uleb128 0xc
+ 800 02b3 01       		.uleb128 0x1
+ 801 02b4 50       		.byte	0x50
+ 802 02b5 02       		.uleb128 0x2
+ 803 02b6 75       		.byte	0x75
+ 804 02b7 00       		.sleb128 0
+ 805 02b8 00       		.byte	0
+ 806 02b9 0D       		.uleb128 0xd
+ 807 02ba 1E000000 		.4byte	.LVL12
+ 808 02be 87050000 		.4byte	0x587
+ 809 02c2 0C       		.uleb128 0xc
+ 810 02c3 01       		.uleb128 0x1
+ 811 02c4 50       		.byte	0x50
+ 812 02c5 0A       		.uleb128 0xa
+ 813 02c6 74       		.byte	0x74
+ 814 02c7 00       		.sleb128 0
+ 815 02c8 03       		.byte	0x3
+ 816 02c9 00000000 		.4byte	.LANCHOR0
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 20
+
+
+ 817 02cd 22       		.byte	0x22
+ 818 02ce 94       		.byte	0x94
+ 819 02cf 01       		.byte	0x1
+ 820 02d0 00       		.byte	0
+ 821 02d1 00       		.byte	0
+ 822 02d2 0E       		.uleb128 0xe
+ 823 02d3 08040000 		.4byte	.LASF60
+ 824 02d7 01       		.byte	0x1
+ 825 02d8 A4       		.byte	0xa4
+ 826 02d9 A5010000 		.4byte	0x1a5
+ 827 02dd 00000000 		.4byte	.LFB113
+ 828 02e1 10000000 		.4byte	.LFE113-.LFB113
+ 829 02e5 01       		.uleb128 0x1
+ 830 02e6 9C       		.byte	0x9c
+ 831 02e7 08030000 		.4byte	0x308
+ 832 02eb 0F       		.uleb128 0xf
+ 833 02ec 5A020000 		.4byte	.LASF56
+ 834 02f0 01       		.byte	0x1
+ 835 02f1 A4       		.byte	0xa4
+ 836 02f2 C9010000 		.4byte	0x1c9
+ 837 02f6 BE000000 		.4byte	.LLST5
+ 838 02fa 10       		.uleb128 0x10
+ 839 02fb 08010000 		.4byte	.LASF57
+ 840 02ff 01       		.byte	0x1
+ 841 0300 A4       		.byte	0xa4
+ 842 0301 08030000 		.4byte	0x308
+ 843 0305 01       		.uleb128 0x1
+ 844 0306 51       		.byte	0x51
+ 845 0307 00       		.byte	0
+ 846 0308 11       		.uleb128 0x11
+ 847 0309 04       		.byte	0x4
+ 848 030a F1000000 		.4byte	0xf1
+ 849 030e 0E       		.uleb128 0xe
+ 850 030f B2010000 		.4byte	.LASF61
+ 851 0313 01       		.byte	0x1
+ 852 0314 B0       		.byte	0xb0
+ 853 0315 A5010000 		.4byte	0x1a5
+ 854 0319 00000000 		.4byte	.LFB114
+ 855 031d 1A000000 		.4byte	.LFE114-.LFB114
+ 856 0321 01       		.uleb128 0x1
+ 857 0322 9C       		.byte	0x9c
+ 858 0323 69030000 		.4byte	0x369
+ 859 0327 0F       		.uleb128 0xf
+ 860 0328 08010000 		.4byte	.LASF57
+ 861 032c 01       		.byte	0x1
+ 862 032d B0       		.byte	0xb0
+ 863 032e 81000000 		.4byte	0x81
+ 864 0332 DF000000 		.4byte	.LLST6
+ 865 0336 0B       		.uleb128 0xb
+ 866 0337 0C000000 		.4byte	.LVL19
+ 867 033b 5F020000 		.4byte	0x25f
+ 868 033f 51030000 		.4byte	0x351
+ 869 0343 0C       		.uleb128 0xc
+ 870 0344 01       		.uleb128 0x1
+ 871 0345 50       		.byte	0x50
+ 872 0346 01       		.uleb128 0x1
+ 873 0347 31       		.byte	0x31
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 21
+
+
+ 874 0348 0C       		.uleb128 0xc
+ 875 0349 01       		.uleb128 0x1
+ 876 034a 51       		.byte	0x51
+ 877 034b 04       		.uleb128 0x4
+ 878 034c 74       		.byte	0x74
+ 879 034d 00       		.sleb128 0
+ 880 034e 34       		.byte	0x34
+ 881 034f 25       		.byte	0x25
+ 882 0350 00       		.byte	0
+ 883 0351 0D       		.uleb128 0xd
+ 884 0352 16000000 		.4byte	.LVL20
+ 885 0356 5F020000 		.4byte	0x25f
+ 886 035a 0C       		.uleb128 0xc
+ 887 035b 01       		.uleb128 0x1
+ 888 035c 50       		.byte	0x50
+ 889 035d 01       		.uleb128 0x1
+ 890 035e 30       		.byte	0x30
+ 891 035f 0C       		.uleb128 0xc
+ 892 0360 01       		.uleb128 0x1
+ 893 0361 51       		.byte	0x51
+ 894 0362 04       		.uleb128 0x4
+ 895 0363 74       		.byte	0x74
+ 896 0364 00       		.sleb128 0
+ 897 0365 3F       		.byte	0x3f
+ 898 0366 1A       		.byte	0x1a
+ 899 0367 00       		.byte	0
+ 900 0368 00       		.byte	0
+ 901 0369 0E       		.uleb128 0xe
+ 902 036a DF030000 		.4byte	.LASF62
+ 903 036e 01       		.byte	0x1
+ 904 036f BE       		.byte	0xbe
+ 905 0370 A5010000 		.4byte	0x1a5
+ 906 0374 00000000 		.4byte	.LFB115
+ 907 0378 3C000000 		.4byte	.LFE115-.LFB115
+ 908 037c 01       		.uleb128 0x1
+ 909 037d 9C       		.byte	0x9c
+ 910 037e DD030000 		.4byte	0x3dd
+ 911 0382 0F       		.uleb128 0xf
+ 912 0383 5A020000 		.4byte	.LASF56
+ 913 0387 01       		.byte	0x1
+ 914 0388 BE       		.byte	0xbe
+ 915 0389 C9010000 		.4byte	0x1c9
+ 916 038d 00010000 		.4byte	.LLST7
+ 917 0391 0F       		.uleb128 0xf
+ 918 0392 08010000 		.4byte	.LASF57
+ 919 0396 01       		.byte	0x1
+ 920 0397 BE       		.byte	0xbe
+ 921 0398 81000000 		.4byte	0x81
+ 922 039c 3A010000 		.4byte	.LLST8
+ 923 03a0 09       		.uleb128 0x9
+ 924 03a1 0B000000 		.4byte	.LASF58
+ 925 03a5 01       		.byte	0x1
+ 926 03a6 C7       		.byte	0xc7
+ 927 03a7 81000000 		.4byte	0x81
+ 928 03ab 66010000 		.4byte	.LLST9
+ 929 03af 0A       		.uleb128 0xa
+ 930 03b0 1E000000 		.4byte	.LVL27
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 22
+
+
+ 931 03b4 7C050000 		.4byte	0x57c
+ 932 03b8 0B       		.uleb128 0xb
+ 933 03b9 24000000 		.4byte	.LVL28
+ 934 03bd 87050000 		.4byte	0x587
+ 935 03c1 CC030000 		.4byte	0x3cc
+ 936 03c5 0C       		.uleb128 0xc
+ 937 03c6 01       		.uleb128 0x1
+ 938 03c7 50       		.byte	0x50
+ 939 03c8 02       		.uleb128 0x2
+ 940 03c9 75       		.byte	0x75
+ 941 03ca 00       		.sleb128 0
+ 942 03cb 00       		.byte	0
+ 943 03cc 0D       		.uleb128 0xd
+ 944 03cd 2A000000 		.4byte	.LVL29
+ 945 03d1 92050000 		.4byte	0x592
+ 946 03d5 0C       		.uleb128 0xc
+ 947 03d6 01       		.uleb128 0x1
+ 948 03d7 50       		.byte	0x50
+ 949 03d8 02       		.uleb128 0x2
+ 950 03d9 74       		.byte	0x74
+ 951 03da 00       		.sleb128 0
+ 952 03db 00       		.byte	0
+ 953 03dc 00       		.byte	0
+ 954 03dd 0E       		.uleb128 0xe
+ 955 03de 7E020000 		.4byte	.LASF63
+ 956 03e2 01       		.byte	0x1
+ 957 03e3 DE       		.byte	0xde
+ 958 03e4 A5010000 		.4byte	0x1a5
+ 959 03e8 00000000 		.4byte	.LFB116
+ 960 03ec 1C000000 		.4byte	.LFE116-.LFB116
+ 961 03f0 01       		.uleb128 0x1
+ 962 03f1 9C       		.byte	0x9c
+ 963 03f2 1E040000 		.4byte	0x41e
+ 964 03f6 0F       		.uleb128 0xf
+ 965 03f7 5A020000 		.4byte	.LASF56
+ 966 03fb 01       		.byte	0x1
+ 967 03fc DE       		.byte	0xde
+ 968 03fd C9010000 		.4byte	0x1c9
+ 969 0401 9C010000 		.4byte	.LLST10
+ 970 0405 0A       		.uleb128 0xa
+ 971 0406 0C000000 		.4byte	.LVL33
+ 972 040a 7C050000 		.4byte	0x57c
+ 973 040e 0D       		.uleb128 0xd
+ 974 040f 12000000 		.4byte	.LVL34
+ 975 0413 87050000 		.4byte	0x587
+ 976 0417 0C       		.uleb128 0xc
+ 977 0418 01       		.uleb128 0x1
+ 978 0419 50       		.byte	0x50
+ 979 041a 01       		.uleb128 0x1
+ 980 041b 30       		.byte	0x30
+ 981 041c 00       		.byte	0
+ 982 041d 00       		.byte	0
+ 983 041e 08       		.uleb128 0x8
+ 984 041f 00000000 		.4byte	.LASF65
+ 985 0423 01       		.byte	0x1
+ 986 0424 61       		.byte	0x61
+ 987 0425 A5010000 		.4byte	0x1a5
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 23
+
+
+ 988 0429 00000000 		.4byte	.LFB110
+ 989 042d 12000000 		.4byte	.LFE110-.LFB110
+ 990 0431 01       		.uleb128 0x1
+ 991 0432 9C       		.byte	0x9c
+ 992 0433 5A040000 		.4byte	0x45a
+ 993 0437 0B       		.uleb128 0xb
+ 994 0438 08000000 		.4byte	.LVL35
+ 995 043c DD030000 		.4byte	0x3dd
+ 996 0440 4A040000 		.4byte	0x44a
+ 997 0444 0C       		.uleb128 0xc
+ 998 0445 01       		.uleb128 0x1
+ 999 0446 50       		.byte	0x50
+ 1000 0447 01       		.uleb128 0x1
+ 1001 0448 30       		.byte	0x30
+ 1002 0449 00       		.byte	0
+ 1003 044a 0D       		.uleb128 0xd
+ 1004 044b 0E000000 		.4byte	.LVL36
+ 1005 044f DD030000 		.4byte	0x3dd
+ 1006 0453 0C       		.uleb128 0xc
+ 1007 0454 01       		.uleb128 0x1
+ 1008 0455 50       		.byte	0x50
+ 1009 0456 01       		.uleb128 0x1
+ 1010 0457 31       		.byte	0x31
+ 1011 0458 00       		.byte	0
+ 1012 0459 00       		.byte	0
+ 1013 045a 08       		.uleb128 0x8
+ 1014 045b B6000000 		.4byte	.LASF66
+ 1015 045f 01       		.byte	0x1
+ 1016 0460 F0       		.byte	0xf0
+ 1017 0461 A5010000 		.4byte	0x1a5
+ 1018 0465 00000000 		.4byte	.LFB117
+ 1019 0469 2C000000 		.4byte	.LFE117-.LFB117
+ 1020 046d 01       		.uleb128 0x1
+ 1021 046e 9C       		.byte	0x9c
+ 1022 046f BC040000 		.4byte	0x4bc
+ 1023 0473 0B       		.uleb128 0xb
+ 1024 0474 10000000 		.4byte	.LVL37
+ 1025 0478 7C050000 		.4byte	0x57c
+ 1026 047c 86040000 		.4byte	0x486
+ 1027 0480 0C       		.uleb128 0xc
+ 1028 0481 01       		.uleb128 0x1
+ 1029 0482 50       		.byte	0x50
+ 1030 0483 01       		.uleb128 0x1
+ 1031 0484 30       		.byte	0x30
+ 1032 0485 00       		.byte	0
+ 1033 0486 0B       		.uleb128 0xb
+ 1034 0487 16000000 		.4byte	.LVL38
+ 1035 048b 87050000 		.4byte	0x587
+ 1036 048f 99040000 		.4byte	0x499
+ 1037 0493 0C       		.uleb128 0xc
+ 1038 0494 01       		.uleb128 0x1
+ 1039 0495 50       		.byte	0x50
+ 1040 0496 01       		.uleb128 0x1
+ 1041 0497 30       		.byte	0x30
+ 1042 0498 00       		.byte	0
+ 1043 0499 0B       		.uleb128 0xb
+ 1044 049a 1C000000 		.4byte	.LVL39
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 24
+
+
+ 1045 049e 7C050000 		.4byte	0x57c
+ 1046 04a2 AC040000 		.4byte	0x4ac
+ 1047 04a6 0C       		.uleb128 0xc
+ 1048 04a7 01       		.uleb128 0x1
+ 1049 04a8 50       		.byte	0x50
+ 1050 04a9 01       		.uleb128 0x1
+ 1051 04aa 31       		.byte	0x31
+ 1052 04ab 00       		.byte	0
+ 1053 04ac 0D       		.uleb128 0xd
+ 1054 04ad 22000000 		.4byte	.LVL40
+ 1055 04b1 87050000 		.4byte	0x587
+ 1056 04b5 0C       		.uleb128 0xc
+ 1057 04b6 01       		.uleb128 0x1
+ 1058 04b7 50       		.byte	0x50
+ 1059 04b8 01       		.uleb128 0x1
+ 1060 04b9 30       		.byte	0x30
+ 1061 04ba 00       		.byte	0
+ 1062 04bb 00       		.byte	0
+ 1063 04bc 12       		.uleb128 0x12
+ 1064 04bd CC040000 		.4byte	0x4cc
+ 1065 04c1 CC040000 		.4byte	0x4cc
+ 1066 04c5 13       		.uleb128 0x13
+ 1067 04c6 B3000000 		.4byte	0xb3
+ 1068 04ca 10       		.byte	0x10
+ 1069 04cb 00       		.byte	0
+ 1070 04cc 14       		.uleb128 0x14
+ 1071 04cd 81000000 		.4byte	0x81
+ 1072 04d1 15       		.uleb128 0x15
+ 1073 04d2 DE020000 		.4byte	.LASF67
+ 1074 04d6 01       		.byte	0x1
+ 1075 04d7 38       		.byte	0x38
+ 1076 04d8 E2040000 		.4byte	0x4e2
+ 1077 04dc 05       		.uleb128 0x5
+ 1078 04dd 03       		.byte	0x3
+ 1079 04de 00000000 		.4byte	SEVEN__BitPattern
+ 1080 04e2 14       		.uleb128 0x14
+ 1081 04e3 BC040000 		.4byte	0x4bc
+ 1082 04e7 12       		.uleb128 0x12
+ 1083 04e8 F1000000 		.4byte	0xf1
+ 1084 04ec F7040000 		.4byte	0x4f7
+ 1085 04f0 13       		.uleb128 0x13
+ 1086 04f1 B3000000 		.4byte	0xb3
+ 1087 04f5 01       		.byte	0x1
+ 1088 04f6 00       		.byte	0
+ 1089 04f7 15       		.uleb128 0x15
+ 1090 04f8 20020000 		.4byte	.LASF68
+ 1091 04fc 01       		.byte	0x1
+ 1092 04fd 4F       		.byte	0x4f
+ 1093 04fe E7040000 		.4byte	0x4e7
+ 1094 0502 05       		.uleb128 0x5
+ 1095 0503 03       		.byte	0x3
+ 1096 0504 00000000 		.4byte	SEVEN__latch_value
+ 1097 0508 12       		.uleb128 0x12
+ 1098 0509 81000000 		.4byte	0x81
+ 1099 050d 18050000 		.4byte	0x518
+ 1100 0511 13       		.uleb128 0x13
+ 1101 0512 B3000000 		.4byte	0xb3
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 25
+
+
+ 1102 0516 01       		.byte	0x1
+ 1103 0517 00       		.byte	0
+ 1104 0518 15       		.uleb128 0x15
+ 1105 0519 33020000 		.4byte	.LASF69
+ 1106 051d 01       		.byte	0x1
+ 1107 051e 50       		.byte	0x50
+ 1108 051f 08050000 		.4byte	0x508
+ 1109 0523 05       		.uleb128 0x5
+ 1110 0524 03       		.byte	0x3
+ 1111 0525 00000000 		.4byte	SEVEN__latch_pattern
+ 1112 0529 16       		.uleb128 0x16
+ 1113 052a 0B050000 		.4byte	.LASF70
+ 1114 052e 08       		.byte	0x8
+ 1115 052f 40       		.byte	0x40
+ 1116 0530 D0000000 		.4byte	0xd0
+ 1117 0534 16       		.uleb128 0x16
+ 1118 0535 99010000 		.4byte	.LASF71
+ 1119 0539 08       		.byte	0x8
+ 1120 053a 47       		.byte	0x47
+ 1121 053b DB000000 		.4byte	0xdb
+ 1122 053f 16       		.uleb128 0x16
+ 1123 0540 3E040000 		.4byte	.LASF72
+ 1124 0544 08       		.byte	0x8
+ 1125 0545 4A       		.byte	0x4a
+ 1126 0546 D0000000 		.4byte	0xd0
+ 1127 054a 16       		.uleb128 0x16
+ 1128 054b 47010000 		.4byte	.LASF73
+ 1129 054f 09       		.byte	0x9
+ 1130 0550 48       		.byte	0x48
+ 1131 0551 E6000000 		.4byte	0xe6
+ 1132 0555 16       		.uleb128 0x16
+ 1133 0556 32010000 		.4byte	.LASF74
+ 1134 055a 0A       		.byte	0xa
+ 1135 055b 44       		.byte	0x44
+ 1136 055c D0000000 		.4byte	0xd0
+ 1137 0560 17       		.uleb128 0x17
+ 1138 0561 E5040000 		.4byte	.LASF75
+ 1139 0565 0B       		.byte	0xb
+ 1140 0566 1207     		.2byte	0x712
+ 1141 0568 6C050000 		.4byte	0x56c
+ 1142 056c 18       		.uleb128 0x18
+ 1143 056d 8C000000 		.4byte	0x8c
+ 1144 0571 19       		.uleb128 0x19
+ 1145 0572 2D010000 		.4byte	.LASF76
+ 1146 0576 2D010000 		.4byte	.LASF76
+ 1147 057a 0C       		.byte	0xc
+ 1148 057b 88       		.byte	0x88
+ 1149 057c 19       		.uleb128 0x19
+ 1150 057d D2040000 		.4byte	.LASF77
+ 1151 0581 D2040000 		.4byte	.LASF77
+ 1152 0585 0D       		.byte	0xd
+ 1153 0586 26       		.byte	0x26
+ 1154 0587 19       		.uleb128 0x19
+ 1155 0588 CA030000 		.4byte	.LASF78
+ 1156 058c CA030000 		.4byte	.LASF78
+ 1157 0590 0E       		.byte	0xe
+ 1158 0591 2F       		.byte	0x2f
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 26
+
+
+ 1159 0592 19       		.uleb128 0x19
+ 1160 0593 A8040000 		.4byte	.LASF79
+ 1161 0597 A8040000 		.4byte	.LASF79
+ 1162 059b 0F       		.byte	0xf
+ 1163 059c 26       		.byte	0x26
+ 1164 059d 00       		.byte	0
+ 1165              		.section	.debug_abbrev,"",%progbits
+ 1166              	.Ldebug_abbrev0:
+ 1167 0000 01       		.uleb128 0x1
+ 1168 0001 11       		.uleb128 0x11
+ 1169 0002 01       		.byte	0x1
+ 1170 0003 25       		.uleb128 0x25
+ 1171 0004 0E       		.uleb128 0xe
+ 1172 0005 13       		.uleb128 0x13
+ 1173 0006 0B       		.uleb128 0xb
+ 1174 0007 03       		.uleb128 0x3
+ 1175 0008 0E       		.uleb128 0xe
+ 1176 0009 1B       		.uleb128 0x1b
+ 1177 000a 0E       		.uleb128 0xe
+ 1178 000b 55       		.uleb128 0x55
+ 1179 000c 17       		.uleb128 0x17
+ 1180 000d 11       		.uleb128 0x11
+ 1181 000e 01       		.uleb128 0x1
+ 1182 000f 10       		.uleb128 0x10
+ 1183 0010 17       		.uleb128 0x17
+ 1184 0011 00       		.byte	0
+ 1185 0012 00       		.byte	0
+ 1186 0013 02       		.uleb128 0x2
+ 1187 0014 24       		.uleb128 0x24
+ 1188 0015 00       		.byte	0
+ 1189 0016 0B       		.uleb128 0xb
+ 1190 0017 0B       		.uleb128 0xb
+ 1191 0018 3E       		.uleb128 0x3e
+ 1192 0019 0B       		.uleb128 0xb
+ 1193 001a 03       		.uleb128 0x3
+ 1194 001b 0E       		.uleb128 0xe
+ 1195 001c 00       		.byte	0
+ 1196 001d 00       		.byte	0
+ 1197 001e 03       		.uleb128 0x3
+ 1198 001f 16       		.uleb128 0x16
+ 1199 0020 00       		.byte	0
+ 1200 0021 03       		.uleb128 0x3
+ 1201 0022 0E       		.uleb128 0xe
+ 1202 0023 3A       		.uleb128 0x3a
+ 1203 0024 0B       		.uleb128 0xb
+ 1204 0025 3B       		.uleb128 0x3b
+ 1205 0026 0B       		.uleb128 0xb
+ 1206 0027 49       		.uleb128 0x49
+ 1207 0028 13       		.uleb128 0x13
+ 1208 0029 00       		.byte	0
+ 1209 002a 00       		.byte	0
+ 1210 002b 04       		.uleb128 0x4
+ 1211 002c 24       		.uleb128 0x24
+ 1212 002d 00       		.byte	0
+ 1213 002e 0B       		.uleb128 0xb
+ 1214 002f 0B       		.uleb128 0xb
+ 1215 0030 3E       		.uleb128 0x3e
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 27
+
+
+ 1216 0031 0B       		.uleb128 0xb
+ 1217 0032 03       		.uleb128 0x3
+ 1218 0033 08       		.uleb128 0x8
+ 1219 0034 00       		.byte	0
+ 1220 0035 00       		.byte	0
+ 1221 0036 05       		.uleb128 0x5
+ 1222 0037 04       		.uleb128 0x4
+ 1223 0038 01       		.byte	0x1
+ 1224 0039 0B       		.uleb128 0xb
+ 1225 003a 0B       		.uleb128 0xb
+ 1226 003b 49       		.uleb128 0x49
+ 1227 003c 13       		.uleb128 0x13
+ 1228 003d 3A       		.uleb128 0x3a
+ 1229 003e 0B       		.uleb128 0xb
+ 1230 003f 3B       		.uleb128 0x3b
+ 1231 0040 0B       		.uleb128 0xb
+ 1232 0041 01       		.uleb128 0x1
+ 1233 0042 13       		.uleb128 0x13
+ 1234 0043 00       		.byte	0
+ 1235 0044 00       		.byte	0
+ 1236 0045 06       		.uleb128 0x6
+ 1237 0046 28       		.uleb128 0x28
+ 1238 0047 00       		.byte	0
+ 1239 0048 03       		.uleb128 0x3
+ 1240 0049 0E       		.uleb128 0xe
+ 1241 004a 1C       		.uleb128 0x1c
+ 1242 004b 0B       		.uleb128 0xb
+ 1243 004c 00       		.byte	0
+ 1244 004d 00       		.byte	0
+ 1245 004e 07       		.uleb128 0x7
+ 1246 004f 28       		.uleb128 0x28
+ 1247 0050 00       		.byte	0
+ 1248 0051 03       		.uleb128 0x3
+ 1249 0052 0E       		.uleb128 0xe
+ 1250 0053 1C       		.uleb128 0x1c
+ 1251 0054 0D       		.uleb128 0xd
+ 1252 0055 00       		.byte	0
+ 1253 0056 00       		.byte	0
+ 1254 0057 08       		.uleb128 0x8
+ 1255 0058 2E       		.uleb128 0x2e
+ 1256 0059 01       		.byte	0x1
+ 1257 005a 3F       		.uleb128 0x3f
+ 1258 005b 19       		.uleb128 0x19
+ 1259 005c 03       		.uleb128 0x3
+ 1260 005d 0E       		.uleb128 0xe
+ 1261 005e 3A       		.uleb128 0x3a
+ 1262 005f 0B       		.uleb128 0xb
+ 1263 0060 3B       		.uleb128 0x3b
+ 1264 0061 0B       		.uleb128 0xb
+ 1265 0062 49       		.uleb128 0x49
+ 1266 0063 13       		.uleb128 0x13
+ 1267 0064 11       		.uleb128 0x11
+ 1268 0065 01       		.uleb128 0x1
+ 1269 0066 12       		.uleb128 0x12
+ 1270 0067 06       		.uleb128 0x6
+ 1271 0068 40       		.uleb128 0x40
+ 1272 0069 18       		.uleb128 0x18
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 28
+
+
+ 1273 006a 9742     		.uleb128 0x2117
+ 1274 006c 19       		.uleb128 0x19
+ 1275 006d 01       		.uleb128 0x1
+ 1276 006e 13       		.uleb128 0x13
+ 1277 006f 00       		.byte	0
+ 1278 0070 00       		.byte	0
+ 1279 0071 09       		.uleb128 0x9
+ 1280 0072 34       		.uleb128 0x34
+ 1281 0073 00       		.byte	0
+ 1282 0074 03       		.uleb128 0x3
+ 1283 0075 0E       		.uleb128 0xe
+ 1284 0076 3A       		.uleb128 0x3a
+ 1285 0077 0B       		.uleb128 0xb
+ 1286 0078 3B       		.uleb128 0x3b
+ 1287 0079 0B       		.uleb128 0xb
+ 1288 007a 49       		.uleb128 0x49
+ 1289 007b 13       		.uleb128 0x13
+ 1290 007c 02       		.uleb128 0x2
+ 1291 007d 17       		.uleb128 0x17
+ 1292 007e 00       		.byte	0
+ 1293 007f 00       		.byte	0
+ 1294 0080 0A       		.uleb128 0xa
+ 1295 0081 898201   		.uleb128 0x4109
+ 1296 0084 00       		.byte	0
+ 1297 0085 11       		.uleb128 0x11
+ 1298 0086 01       		.uleb128 0x1
+ 1299 0087 31       		.uleb128 0x31
+ 1300 0088 13       		.uleb128 0x13
+ 1301 0089 00       		.byte	0
+ 1302 008a 00       		.byte	0
+ 1303 008b 0B       		.uleb128 0xb
+ 1304 008c 898201   		.uleb128 0x4109
+ 1305 008f 01       		.byte	0x1
+ 1306 0090 11       		.uleb128 0x11
+ 1307 0091 01       		.uleb128 0x1
+ 1308 0092 31       		.uleb128 0x31
+ 1309 0093 13       		.uleb128 0x13
+ 1310 0094 01       		.uleb128 0x1
+ 1311 0095 13       		.uleb128 0x13
+ 1312 0096 00       		.byte	0
+ 1313 0097 00       		.byte	0
+ 1314 0098 0C       		.uleb128 0xc
+ 1315 0099 8A8201   		.uleb128 0x410a
+ 1316 009c 00       		.byte	0
+ 1317 009d 02       		.uleb128 0x2
+ 1318 009e 18       		.uleb128 0x18
+ 1319 009f 9142     		.uleb128 0x2111
+ 1320 00a1 18       		.uleb128 0x18
+ 1321 00a2 00       		.byte	0
+ 1322 00a3 00       		.byte	0
+ 1323 00a4 0D       		.uleb128 0xd
+ 1324 00a5 898201   		.uleb128 0x4109
+ 1325 00a8 01       		.byte	0x1
+ 1326 00a9 11       		.uleb128 0x11
+ 1327 00aa 01       		.uleb128 0x1
+ 1328 00ab 31       		.uleb128 0x31
+ 1329 00ac 13       		.uleb128 0x13
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 29
+
+
+ 1330 00ad 00       		.byte	0
+ 1331 00ae 00       		.byte	0
+ 1332 00af 0E       		.uleb128 0xe
+ 1333 00b0 2E       		.uleb128 0x2e
+ 1334 00b1 01       		.byte	0x1
+ 1335 00b2 3F       		.uleb128 0x3f
+ 1336 00b3 19       		.uleb128 0x19
+ 1337 00b4 03       		.uleb128 0x3
+ 1338 00b5 0E       		.uleb128 0xe
+ 1339 00b6 3A       		.uleb128 0x3a
+ 1340 00b7 0B       		.uleb128 0xb
+ 1341 00b8 3B       		.uleb128 0x3b
+ 1342 00b9 0B       		.uleb128 0xb
+ 1343 00ba 27       		.uleb128 0x27
+ 1344 00bb 19       		.uleb128 0x19
+ 1345 00bc 49       		.uleb128 0x49
+ 1346 00bd 13       		.uleb128 0x13
+ 1347 00be 11       		.uleb128 0x11
+ 1348 00bf 01       		.uleb128 0x1
+ 1349 00c0 12       		.uleb128 0x12
+ 1350 00c1 06       		.uleb128 0x6
+ 1351 00c2 40       		.uleb128 0x40
+ 1352 00c3 18       		.uleb128 0x18
+ 1353 00c4 9742     		.uleb128 0x2117
+ 1354 00c6 19       		.uleb128 0x19
+ 1355 00c7 01       		.uleb128 0x1
+ 1356 00c8 13       		.uleb128 0x13
+ 1357 00c9 00       		.byte	0
+ 1358 00ca 00       		.byte	0
+ 1359 00cb 0F       		.uleb128 0xf
+ 1360 00cc 05       		.uleb128 0x5
+ 1361 00cd 00       		.byte	0
+ 1362 00ce 03       		.uleb128 0x3
+ 1363 00cf 0E       		.uleb128 0xe
+ 1364 00d0 3A       		.uleb128 0x3a
+ 1365 00d1 0B       		.uleb128 0xb
+ 1366 00d2 3B       		.uleb128 0x3b
+ 1367 00d3 0B       		.uleb128 0xb
+ 1368 00d4 49       		.uleb128 0x49
+ 1369 00d5 13       		.uleb128 0x13
+ 1370 00d6 02       		.uleb128 0x2
+ 1371 00d7 17       		.uleb128 0x17
+ 1372 00d8 00       		.byte	0
+ 1373 00d9 00       		.byte	0
+ 1374 00da 10       		.uleb128 0x10
+ 1375 00db 05       		.uleb128 0x5
+ 1376 00dc 00       		.byte	0
+ 1377 00dd 03       		.uleb128 0x3
+ 1378 00de 0E       		.uleb128 0xe
+ 1379 00df 3A       		.uleb128 0x3a
+ 1380 00e0 0B       		.uleb128 0xb
+ 1381 00e1 3B       		.uleb128 0x3b
+ 1382 00e2 0B       		.uleb128 0xb
+ 1383 00e3 49       		.uleb128 0x49
+ 1384 00e4 13       		.uleb128 0x13
+ 1385 00e5 02       		.uleb128 0x2
+ 1386 00e6 18       		.uleb128 0x18
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 30
+
+
+ 1387 00e7 00       		.byte	0
+ 1388 00e8 00       		.byte	0
+ 1389 00e9 11       		.uleb128 0x11
+ 1390 00ea 0F       		.uleb128 0xf
+ 1391 00eb 00       		.byte	0
+ 1392 00ec 0B       		.uleb128 0xb
+ 1393 00ed 0B       		.uleb128 0xb
+ 1394 00ee 49       		.uleb128 0x49
+ 1395 00ef 13       		.uleb128 0x13
+ 1396 00f0 00       		.byte	0
+ 1397 00f1 00       		.byte	0
+ 1398 00f2 12       		.uleb128 0x12
+ 1399 00f3 01       		.uleb128 0x1
+ 1400 00f4 01       		.byte	0x1
+ 1401 00f5 49       		.uleb128 0x49
+ 1402 00f6 13       		.uleb128 0x13
+ 1403 00f7 01       		.uleb128 0x1
+ 1404 00f8 13       		.uleb128 0x13
+ 1405 00f9 00       		.byte	0
+ 1406 00fa 00       		.byte	0
+ 1407 00fb 13       		.uleb128 0x13
+ 1408 00fc 21       		.uleb128 0x21
+ 1409 00fd 00       		.byte	0
+ 1410 00fe 49       		.uleb128 0x49
+ 1411 00ff 13       		.uleb128 0x13
+ 1412 0100 2F       		.uleb128 0x2f
+ 1413 0101 0B       		.uleb128 0xb
+ 1414 0102 00       		.byte	0
+ 1415 0103 00       		.byte	0
+ 1416 0104 14       		.uleb128 0x14
+ 1417 0105 26       		.uleb128 0x26
+ 1418 0106 00       		.byte	0
+ 1419 0107 49       		.uleb128 0x49
+ 1420 0108 13       		.uleb128 0x13
+ 1421 0109 00       		.byte	0
+ 1422 010a 00       		.byte	0
+ 1423 010b 15       		.uleb128 0x15
+ 1424 010c 34       		.uleb128 0x34
+ 1425 010d 00       		.byte	0
+ 1426 010e 03       		.uleb128 0x3
+ 1427 010f 0E       		.uleb128 0xe
+ 1428 0110 3A       		.uleb128 0x3a
+ 1429 0111 0B       		.uleb128 0xb
+ 1430 0112 3B       		.uleb128 0x3b
+ 1431 0113 0B       		.uleb128 0xb
+ 1432 0114 49       		.uleb128 0x49
+ 1433 0115 13       		.uleb128 0x13
+ 1434 0116 02       		.uleb128 0x2
+ 1435 0117 18       		.uleb128 0x18
+ 1436 0118 00       		.byte	0
+ 1437 0119 00       		.byte	0
+ 1438 011a 16       		.uleb128 0x16
+ 1439 011b 34       		.uleb128 0x34
+ 1440 011c 00       		.byte	0
+ 1441 011d 03       		.uleb128 0x3
+ 1442 011e 0E       		.uleb128 0xe
+ 1443 011f 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 31
+
+
+ 1444 0120 0B       		.uleb128 0xb
+ 1445 0121 3B       		.uleb128 0x3b
+ 1446 0122 0B       		.uleb128 0xb
+ 1447 0123 49       		.uleb128 0x49
+ 1448 0124 13       		.uleb128 0x13
+ 1449 0125 3F       		.uleb128 0x3f
+ 1450 0126 19       		.uleb128 0x19
+ 1451 0127 3C       		.uleb128 0x3c
+ 1452 0128 19       		.uleb128 0x19
+ 1453 0129 00       		.byte	0
+ 1454 012a 00       		.byte	0
+ 1455 012b 17       		.uleb128 0x17
+ 1456 012c 34       		.uleb128 0x34
+ 1457 012d 00       		.byte	0
+ 1458 012e 03       		.uleb128 0x3
+ 1459 012f 0E       		.uleb128 0xe
+ 1460 0130 3A       		.uleb128 0x3a
+ 1461 0131 0B       		.uleb128 0xb
+ 1462 0132 3B       		.uleb128 0x3b
+ 1463 0133 05       		.uleb128 0x5
+ 1464 0134 49       		.uleb128 0x49
+ 1465 0135 13       		.uleb128 0x13
+ 1466 0136 3F       		.uleb128 0x3f
+ 1467 0137 19       		.uleb128 0x19
+ 1468 0138 3C       		.uleb128 0x3c
+ 1469 0139 19       		.uleb128 0x19
+ 1470 013a 00       		.byte	0
+ 1471 013b 00       		.byte	0
+ 1472 013c 18       		.uleb128 0x18
+ 1473 013d 35       		.uleb128 0x35
+ 1474 013e 00       		.byte	0
+ 1475 013f 49       		.uleb128 0x49
+ 1476 0140 13       		.uleb128 0x13
+ 1477 0141 00       		.byte	0
+ 1478 0142 00       		.byte	0
+ 1479 0143 19       		.uleb128 0x19
+ 1480 0144 2E       		.uleb128 0x2e
+ 1481 0145 00       		.byte	0
+ 1482 0146 3F       		.uleb128 0x3f
+ 1483 0147 19       		.uleb128 0x19
+ 1484 0148 3C       		.uleb128 0x3c
+ 1485 0149 19       		.uleb128 0x19
+ 1486 014a 6E       		.uleb128 0x6e
+ 1487 014b 0E       		.uleb128 0xe
+ 1488 014c 03       		.uleb128 0x3
+ 1489 014d 0E       		.uleb128 0xe
+ 1490 014e 3A       		.uleb128 0x3a
+ 1491 014f 0B       		.uleb128 0xb
+ 1492 0150 3B       		.uleb128 0x3b
+ 1493 0151 0B       		.uleb128 0xb
+ 1494 0152 00       		.byte	0
+ 1495 0153 00       		.byte	0
+ 1496 0154 00       		.byte	0
+ 1497              		.section	.debug_loc,"",%progbits
+ 1498              	.Ldebug_loc0:
+ 1499              	.LLST0:
+ 1500 0000 18000000 		.4byte	.LVL1
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 32
+
+
+ 1501 0004 2C000000 		.4byte	.LVL3
+ 1502 0008 0100     		.2byte	0x1
+ 1503 000a 50       		.byte	0x50
+ 1504 000b 00000000 		.4byte	0
+ 1505 000f 00000000 		.4byte	0
+ 1506              	.LLST1:
+ 1507 0013 18000000 		.4byte	.LVL1
+ 1508 0017 2A000000 		.4byte	.LVL2
+ 1509 001b 0300     		.2byte	0x3
+ 1510 001d 09       		.byte	0x9
+ 1511 001e 80       		.byte	0x80
+ 1512 001f 9F       		.byte	0x9f
+ 1513 0020 2A000000 		.4byte	.LVL2
+ 1514 0024 46000000 		.4byte	.LVL8
+ 1515 0028 0100     		.2byte	0x1
+ 1516 002a 54       		.byte	0x54
+ 1517 002b 00000000 		.4byte	0
+ 1518 002f 00000000 		.4byte	0
+ 1519              	.LLST2:
+ 1520 0033 00000000 		.4byte	.LVL9
+ 1521 0037 0D000000 		.4byte	.LVL10-1
+ 1522 003b 0100     		.2byte	0x1
+ 1523 003d 50       		.byte	0x50
+ 1524 003e 0D000000 		.4byte	.LVL10-1
+ 1525 0042 22000000 		.4byte	.LVL13
+ 1526 0046 0400     		.2byte	0x4
+ 1527 0048 F3       		.byte	0xf3
+ 1528 0049 01       		.uleb128 0x1
+ 1529 004a 50       		.byte	0x50
+ 1530 004b 9F       		.byte	0x9f
+ 1531 004c 22000000 		.4byte	.LVL13
+ 1532 0050 26000000 		.4byte	.LVL14
+ 1533 0054 0100     		.2byte	0x1
+ 1534 0056 50       		.byte	0x50
+ 1535 0057 26000000 		.4byte	.LVL14
+ 1536 005b 34000000 		.4byte	.LFE112
+ 1537 005f 0400     		.2byte	0x4
+ 1538 0061 F3       		.byte	0xf3
+ 1539 0062 01       		.uleb128 0x1
+ 1540 0063 50       		.byte	0x50
+ 1541 0064 9F       		.byte	0x9f
+ 1542 0065 00000000 		.4byte	0
+ 1543 0069 00000000 		.4byte	0
+ 1544              	.LLST3:
+ 1545 006d 00000000 		.4byte	.LVL9
+ 1546 0071 0D000000 		.4byte	.LVL10-1
+ 1547 0075 0100     		.2byte	0x1
+ 1548 0077 51       		.byte	0x51
+ 1549 0078 0D000000 		.4byte	.LVL10-1
+ 1550 007c 22000000 		.4byte	.LVL13
+ 1551 0080 0400     		.2byte	0x4
+ 1552 0082 F3       		.byte	0xf3
+ 1553 0083 01       		.uleb128 0x1
+ 1554 0084 51       		.byte	0x51
+ 1555 0085 9F       		.byte	0x9f
+ 1556 0086 22000000 		.4byte	.LVL13
+ 1557 008a 34000000 		.4byte	.LFE112
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 33
+
+
+ 1558 008e 0100     		.2byte	0x1
+ 1559 0090 51       		.byte	0x51
+ 1560 0091 00000000 		.4byte	0
+ 1561 0095 00000000 		.4byte	0
+ 1562              	.LLST4:
+ 1563 0099 12000000 		.4byte	.LVL11
+ 1564 009d 1D000000 		.4byte	.LVL12-1
+ 1565 00a1 0100     		.2byte	0x1
+ 1566 00a3 50       		.byte	0x50
+ 1567 00a4 1D000000 		.4byte	.LVL12-1
+ 1568 00a8 22000000 		.4byte	.LVL13
+ 1569 00ac 0800     		.2byte	0x8
+ 1570 00ae 74       		.byte	0x74
+ 1571 00af 00       		.sleb128 0
+ 1572 00b0 03       		.byte	0x3
+ 1573 00b1 00000000 		.4byte	.LANCHOR0
+ 1574 00b5 22       		.byte	0x22
+ 1575 00b6 00000000 		.4byte	0
+ 1576 00ba 00000000 		.4byte	0
+ 1577              	.LLST5:
+ 1578 00be 00000000 		.4byte	.LVL15
+ 1579 00c2 08000000 		.4byte	.LVL16
+ 1580 00c6 0100     		.2byte	0x1
+ 1581 00c8 50       		.byte	0x50
+ 1582 00c9 08000000 		.4byte	.LVL16
+ 1583 00cd 10000000 		.4byte	.LFE113
+ 1584 00d1 0400     		.2byte	0x4
+ 1585 00d3 F3       		.byte	0xf3
+ 1586 00d4 01       		.uleb128 0x1
+ 1587 00d5 50       		.byte	0x50
+ 1588 00d6 9F       		.byte	0x9f
+ 1589 00d7 00000000 		.4byte	0
+ 1590 00db 00000000 		.4byte	0
+ 1591              	.LLST6:
+ 1592 00df 00000000 		.4byte	.LVL17
+ 1593 00e3 08000000 		.4byte	.LVL18
+ 1594 00e7 0100     		.2byte	0x1
+ 1595 00e9 50       		.byte	0x50
+ 1596 00ea 08000000 		.4byte	.LVL18
+ 1597 00ee 1A000000 		.4byte	.LFE114
+ 1598 00f2 0400     		.2byte	0x4
+ 1599 00f4 F3       		.byte	0xf3
+ 1600 00f5 01       		.uleb128 0x1
+ 1601 00f6 50       		.byte	0x50
+ 1602 00f7 9F       		.byte	0x9f
+ 1603 00f8 00000000 		.4byte	0
+ 1604 00fc 00000000 		.4byte	0
+ 1605              	.LLST7:
+ 1606 0100 00000000 		.4byte	.LVL21
+ 1607 0104 1D000000 		.4byte	.LVL27-1
+ 1608 0108 0100     		.2byte	0x1
+ 1609 010a 50       		.byte	0x50
+ 1610 010b 1D000000 		.4byte	.LVL27-1
+ 1611 010f 2E000000 		.4byte	.LVL30
+ 1612 0113 0400     		.2byte	0x4
+ 1613 0115 F3       		.byte	0xf3
+ 1614 0116 01       		.uleb128 0x1
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 34
+
+
+ 1615 0117 50       		.byte	0x50
+ 1616 0118 9F       		.byte	0x9f
+ 1617 0119 2E000000 		.4byte	.LVL30
+ 1618 011d 32000000 		.4byte	.LVL31
+ 1619 0121 0100     		.2byte	0x1
+ 1620 0123 50       		.byte	0x50
+ 1621 0124 32000000 		.4byte	.LVL31
+ 1622 0128 3C000000 		.4byte	.LFE115
+ 1623 012c 0400     		.2byte	0x4
+ 1624 012e F3       		.byte	0xf3
+ 1625 012f 01       		.uleb128 0x1
+ 1626 0130 50       		.byte	0x50
+ 1627 0131 9F       		.byte	0x9f
+ 1628 0132 00000000 		.4byte	0
+ 1629 0136 00000000 		.4byte	0
+ 1630              	.LLST8:
+ 1631 013a 00000000 		.4byte	.LVL21
+ 1632 013e 1D000000 		.4byte	.LVL27-1
+ 1633 0142 0100     		.2byte	0x1
+ 1634 0144 51       		.byte	0x51
+ 1635 0145 1D000000 		.4byte	.LVL27-1
+ 1636 0149 2E000000 		.4byte	.LVL30
+ 1637 014d 0400     		.2byte	0x4
+ 1638 014f F3       		.byte	0xf3
+ 1639 0150 01       		.uleb128 0x1
+ 1640 0151 51       		.byte	0x51
+ 1641 0152 9F       		.byte	0x9f
+ 1642 0153 2E000000 		.4byte	.LVL30
+ 1643 0157 3C000000 		.4byte	.LFE115
+ 1644 015b 0100     		.2byte	0x1
+ 1645 015d 51       		.byte	0x51
+ 1646 015e 00000000 		.4byte	0
+ 1647 0162 00000000 		.4byte	0
+ 1648              	.LLST9:
+ 1649 0166 06000000 		.4byte	.LVL22
+ 1650 016a 14000000 		.4byte	.LVL23
+ 1651 016e 0200     		.2byte	0x2
+ 1652 0170 30       		.byte	0x30
+ 1653 0171 9F       		.byte	0x9f
+ 1654 0172 14000000 		.4byte	.LVL23
+ 1655 0176 16000000 		.4byte	.LVL24
+ 1656 017a 0100     		.2byte	0x1
+ 1657 017c 55       		.byte	0x55
+ 1658 017d 16000000 		.4byte	.LVL24
+ 1659 0181 18000000 		.4byte	.LVL25
+ 1660 0185 0200     		.2byte	0x2
+ 1661 0187 30       		.byte	0x30
+ 1662 0188 9F       		.byte	0x9f
+ 1663 0189 1A000000 		.4byte	.LVL26
+ 1664 018d 2E000000 		.4byte	.LVL30
+ 1665 0191 0100     		.2byte	0x1
+ 1666 0193 55       		.byte	0x55
+ 1667 0194 00000000 		.4byte	0
+ 1668 0198 00000000 		.4byte	0
+ 1669              	.LLST10:
+ 1670 019c 00000000 		.4byte	.LVL32
+ 1671 01a0 0B000000 		.4byte	.LVL33-1
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 35
+
+
+ 1672 01a4 0100     		.2byte	0x1
+ 1673 01a6 50       		.byte	0x50
+ 1674 01a7 0B000000 		.4byte	.LVL33-1
+ 1675 01ab 1C000000 		.4byte	.LFE116
+ 1676 01af 0400     		.2byte	0x4
+ 1677 01b1 F3       		.byte	0xf3
+ 1678 01b2 01       		.uleb128 0x1
+ 1679 01b3 50       		.byte	0x50
+ 1680 01b4 9F       		.byte	0x9f
+ 1681 01b5 00000000 		.4byte	0
+ 1682 01b9 00000000 		.4byte	0
+ 1683              		.section	.debug_aranges,"",%progbits
+ 1684 0000 54000000 		.4byte	0x54
+ 1685 0004 0200     		.2byte	0x2
+ 1686 0006 00000000 		.4byte	.Ldebug_info0
+ 1687 000a 04       		.byte	0x4
+ 1688 000b 00       		.byte	0
+ 1689 000c 0000     		.2byte	0
+ 1690 000e 0000     		.2byte	0
+ 1691 0010 00000000 		.4byte	.LFB111
+ 1692 0014 4C000000 		.4byte	.LFE111-.LFB111
+ 1693 0018 00000000 		.4byte	.LFB112
+ 1694 001c 34000000 		.4byte	.LFE112-.LFB112
+ 1695 0020 00000000 		.4byte	.LFB113
+ 1696 0024 10000000 		.4byte	.LFE113-.LFB113
+ 1697 0028 00000000 		.4byte	.LFB114
+ 1698 002c 1A000000 		.4byte	.LFE114-.LFB114
+ 1699 0030 00000000 		.4byte	.LFB115
+ 1700 0034 3C000000 		.4byte	.LFE115-.LFB115
+ 1701 0038 00000000 		.4byte	.LFB116
+ 1702 003c 1C000000 		.4byte	.LFE116-.LFB116
+ 1703 0040 00000000 		.4byte	.LFB110
+ 1704 0044 12000000 		.4byte	.LFE110-.LFB110
+ 1705 0048 00000000 		.4byte	.LFB117
+ 1706 004c 2C000000 		.4byte	.LFE117-.LFB117
+ 1707 0050 00000000 		.4byte	0
+ 1708 0054 00000000 		.4byte	0
+ 1709              		.section	.debug_ranges,"",%progbits
+ 1710              	.Ldebug_ranges0:
+ 1711 0000 00000000 		.4byte	.LFB111
+ 1712 0004 4C000000 		.4byte	.LFE111
+ 1713 0008 00000000 		.4byte	.LFB112
+ 1714 000c 34000000 		.4byte	.LFE112
+ 1715 0010 00000000 		.4byte	.LFB113
+ 1716 0014 10000000 		.4byte	.LFE113
+ 1717 0018 00000000 		.4byte	.LFB114
+ 1718 001c 1A000000 		.4byte	.LFE114
+ 1719 0020 00000000 		.4byte	.LFB115
+ 1720 0024 3C000000 		.4byte	.LFE115
+ 1721 0028 00000000 		.4byte	.LFB116
+ 1722 002c 1C000000 		.4byte	.LFE116
+ 1723 0030 00000000 		.4byte	.LFB110
+ 1724 0034 12000000 		.4byte	.LFE110
+ 1725 0038 00000000 		.4byte	.LFB117
+ 1726 003c 2C000000 		.4byte	.LFE117
+ 1727 0040 00000000 		.4byte	0
+ 1728 0044 00000000 		.4byte	0
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 36
+
+
+ 1729              		.section	.debug_line,"",%progbits
+ 1730              	.Ldebug_line0:
+ 1731 0000 76030000 		.section	.debug_str,"MS",%progbits,1
+ 1731      0200B902 
+ 1731      00000201 
+ 1731      FB0E0D00 
+ 1731      01010101 
+ 1732              	.LASF65:
+ 1733 0000 53455645 		.ascii	"SEVEN_Init\000"
+ 1733      4E5F496E 
+ 1733      697400
+ 1734              	.LASF58:
+ 1735 000b 70617474 		.ascii	"pattern\000"
+ 1735      65726E00 
+ 1736              	.LASF38:
+ 1737 0013 52435F45 		.ascii	"RC_ERROR_READ_ONLY\000"
+ 1737      52524F52 
+ 1737      5F524541 
+ 1737      445F4F4E 
+ 1737      4C5900
+ 1738              	.LASF24:
+ 1739 0026 52435F53 		.ascii	"RC_SUCCESS\000"
+ 1739      55434345 
+ 1739      535300
+ 1740              	.LASF39:
+ 1741 0031 52435F45 		.ascii	"RC_ERROR_WRITE_ONLY\000"
+ 1741      52524F52 
+ 1741      5F575249 
+ 1741      54455F4F 
+ 1741      4E4C5900 
+ 1742              	.LASF2:
+ 1743 0045 73686F72 		.ascii	"short int\000"
+ 1743      7420696E 
+ 1743      7400
+ 1744              	.LASF30:
+ 1745 004f 52435F45 		.ascii	"RC_ERROR_OVERRUN\000"
+ 1745      52524F52 
+ 1745      5F4F5645 
+ 1745      5252554E 
+ 1745      00
+ 1746              	.LASF42:
+ 1747 0060 52435F45 		.ascii	"RC_ERROR_WRITE_FAILS\000"
+ 1747      52524F52 
+ 1747      5F575249 
+ 1747      54455F46 
+ 1747      41494C53 
+ 1748              	.LASF64:
+ 1749 0075 53455645 		.ascii	"SEVEN_writeRandom\000"
+ 1749      4E5F7772 
+ 1749      69746552 
+ 1749      616E646F 
+ 1749      6D00
+ 1750              	.LASF51:
+ 1751 0087 53455645 		.ascii	"SEVEN_0\000"
+ 1751      4E5F3000 
+ 1752              	.LASF27:
+ 1753 008f 52435F45 		.ascii	"RC_ERROR_ZERO\000"
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 37
+
+
+ 1753      52524F52 
+ 1753      5F5A4552 
+ 1753      4F00
+ 1754              	.LASF21:
+ 1755 009d 45455F46 		.ascii	"EE_FREG\000"
+ 1755      52454700 
+ 1756              	.LASF40:
+ 1757 00a5 52435F45 		.ascii	"RC_ERROR_INVALID\000"
+ 1757      52524F52 
+ 1757      5F494E56 
+ 1757      414C4944 
+ 1757      00
+ 1758              	.LASF66:
+ 1759 00b6 53455645 		.ascii	"SEVEN_ClearAll\000"
+ 1759      4E5F436C 
+ 1759      65617241 
+ 1759      6C6C00
+ 1760              	.LASF82:
+ 1761 00c5 443A5C57 		.ascii	"D:\\WS25\\AMAEOS\\Lab\\Workspace01\\ReactionGame.cy"
+ 1761      5332355C 
+ 1761      414D4145 
+ 1761      4F535C4C 
+ 1761      61625C57 
+ 1762 00f3 64736E00 		.ascii	"dsn\000"
+ 1763              	.LASF19:
+ 1764 00f7 45455F55 		.ascii	"EE_UINT32\000"
+ 1764      494E5433 
+ 1764      3200
+ 1765              	.LASF22:
+ 1766 0101 45455F54 		.ascii	"EE_TID\000"
+ 1766      494400
+ 1767              	.LASF57:
+ 1768 0108 76616C75 		.ascii	"value\000"
+ 1768      6500
+ 1769              	.LASF11:
+ 1770 010e 75696E74 		.ascii	"uint8_t\000"
+ 1770      385F7400 
+ 1771              	.LASF47:
+ 1772 0116 52435F45 		.ascii	"RC_ERROR_INVALID_STATE\000"
+ 1772      52524F52 
+ 1772      5F494E56 
+ 1772      414C4944 
+ 1772      5F535441 
+ 1773              	.LASF76:
+ 1774 012d 72616E64 		.ascii	"rand\000"
+ 1774      00
+ 1775              	.LASF74:
+ 1776 0132 45455F49 		.ascii	"EE_IRQ_nesting_level\000"
+ 1776      52515F6E 
+ 1776      65737469 
+ 1776      6E675F6C 
+ 1776      6576656C 
+ 1777              	.LASF73:
+ 1778 0147 45455F73 		.ascii	"EE_std_endcycle_next_tid\000"
+ 1778      74645F65 
+ 1778      6E646379 
+ 1778      636C655F 
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 38
+
+
+ 1778      6E657874 
+ 1779              	.LASF0:
+ 1780 0160 7369676E 		.ascii	"signed char\000"
+ 1780      65642063 
+ 1780      68617200 
+ 1781              	.LASF13:
+ 1782 016c 666C6F61 		.ascii	"float\000"
+ 1782      7400
+ 1783              	.LASF49:
+ 1784 0172 52435F45 		.ascii	"RC_ERROR_NOT_IMPLEMENTED\000"
+ 1784      52524F52 
+ 1784      5F4E4F54 
+ 1784      5F494D50 
+ 1784      4C454D45 
+ 1785              	.LASF8:
+ 1786 018b 6C6F6E67 		.ascii	"long long int\000"
+ 1786      206C6F6E 
+ 1786      6720696E 
+ 1786      7400
+ 1787              	.LASF71:
+ 1788 0199 45455F6F 		.ascii	"EE_oo_IRQ_suspend_status\000"
+ 1788      6F5F4952 
+ 1788      515F7375 
+ 1788      7370656E 
+ 1788      645F7374 
+ 1789              	.LASF61:
+ 1790 01b2 53455645 		.ascii	"SEVEN_SetHex\000"
+ 1790      4E5F5365 
+ 1790      74486578 
+ 1790      00
+ 1791              	.LASF43:
+ 1792 01bf 52435F45 		.ascii	"RC_ERROR_NOT_MATCH\000"
+ 1792      52524F52 
+ 1792      5F4E4F54 
+ 1792      5F4D4154 
+ 1792      434800
+ 1793              	.LASF48:
+ 1794 01d2 52435F45 		.ascii	"RC_ERROR_UNKNOWN\000"
+ 1794      52524F52 
+ 1794      5F554E4B 
+ 1794      4E4F574E 
+ 1794      00
+ 1795              	.LASF59:
+ 1796 01e3 53455645 		.ascii	"SEVEN_Set\000"
+ 1796      4E5F5365 
+ 1796      7400
+ 1797              	.LASF6:
+ 1798 01ed 6C6F6E67 		.ascii	"long int\000"
+ 1798      20696E74 
+ 1798      00
+ 1799              	.LASF31:
+ 1800 01f6 52435F45 		.ascii	"RC_ERROR_UNDERRUN\000"
+ 1800      52524F52 
+ 1800      5F554E44 
+ 1800      45525255 
+ 1800      4E00
+ 1801              	.LASF34:
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 39
+
+
+ 1802 0208 52435F45 		.ascii	"RC_ERROR_BUSY\000"
+ 1802      52524F52 
+ 1802      5F425553 
+ 1802      5900
+ 1803              	.LASF4:
+ 1804 0216 5F5F7569 		.ascii	"__uint8_t\000"
+ 1804      6E74385F 
+ 1804      7400
+ 1805              	.LASF68:
+ 1806 0220 53455645 		.ascii	"SEVEN__latch_value\000"
+ 1806      4E5F5F6C 
+ 1806      61746368 
+ 1806      5F76616C 
+ 1806      756500
+ 1807              	.LASF69:
+ 1808 0233 53455645 		.ascii	"SEVEN__latch_pattern\000"
+ 1808      4E5F5F6C 
+ 1808      61746368 
+ 1808      5F706174 
+ 1808      7465726E 
+ 1809              	.LASF45:
+ 1810 0248 52435F45 		.ascii	"RC_ERROR_BAD_DATA\000"
+ 1810      52524F52 
+ 1810      5F424144 
+ 1810      5F444154 
+ 1810      4100
+ 1811              	.LASF56:
+ 1812 025a 73657665 		.ascii	"sevenId\000"
+ 1812      6E496400 
+ 1813              	.LASF81:
+ 1814 0262 736F7572 		.ascii	"source\\bsw\\LabBoard\\seven.c\000"
+ 1814      63655C62 
+ 1814      73775C4C 
+ 1814      6162426F 
+ 1814      6172645C 
+ 1815              	.LASF63:
+ 1816 027e 53455645 		.ascii	"SEVEN_Clear\000"
+ 1816      4E5F436C 
+ 1816      65617200 
+ 1817              	.LASF16:
+ 1818 028a 6C6F6E67 		.ascii	"long double\000"
+ 1818      20646F75 
+ 1818      626C6500 
+ 1819              	.LASF1:
+ 1820 0296 756E7369 		.ascii	"unsigned char\000"
+ 1820      676E6564 
+ 1820      20636861 
+ 1820      7200
+ 1821              	.LASF52:
+ 1822 02a4 53455645 		.ascii	"SEVEN_1\000"
+ 1822      4E5F3100 
+ 1823              	.LASF9:
+ 1824 02ac 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1824      206C6F6E 
+ 1824      6720756E 
+ 1824      7369676E 
+ 1824      65642069 
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 40
+
+
+ 1825              	.LASF10:
+ 1826 02c3 756E7369 		.ascii	"unsigned int\000"
+ 1826      676E6564 
+ 1826      20696E74 
+ 1826      00
+ 1827              	.LASF36:
+ 1828 02d0 52435F45 		.ascii	"RC_ERROR_OPEN\000"
+ 1828      52524F52 
+ 1828      5F4F5045 
+ 1828      4E00
+ 1829              	.LASF67:
+ 1830 02de 53455645 		.ascii	"SEVEN__BitPattern\000"
+ 1830      4E5F5F42 
+ 1830      69745061 
+ 1830      74746572 
+ 1830      6E00
+ 1831              	.LASF26:
+ 1832 02f0 52435F45 		.ascii	"RC_ERROR_NULL\000"
+ 1832      52524F52 
+ 1832      5F4E554C 
+ 1832      4C00
+ 1833              	.LASF33:
+ 1834 02fe 52435F45 		.ascii	"RC_ERROR_BUFFER_EMTPY\000"
+ 1834      52524F52 
+ 1834      5F425546 
+ 1834      4645525F 
+ 1834      454D5450 
+ 1835              	.LASF18:
+ 1836 0314 45455F49 		.ascii	"EE_INT32\000"
+ 1836      4E543332 
+ 1836      00
+ 1837              	.LASF54:
+ 1838 031d 72616E64 		.ascii	"randomValue\000"
+ 1838      6F6D5661 
+ 1838      6C756500 
+ 1839              	.LASF3:
+ 1840 0329 73686F72 		.ascii	"short unsigned int\000"
+ 1840      7420756E 
+ 1840      7369676E 
+ 1840      65642069 
+ 1840      6E7400
+ 1841              	.LASF80:
+ 1842 033c 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1842      43313120 
+ 1842      352E342E 
+ 1842      31203230 
+ 1842      31363036 
+ 1843 036f 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1843      20726576 
+ 1843      6973696F 
+ 1843      6E203233 
+ 1843      37373135 
+ 1844 03a2 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1844      66756E63 
+ 1844      74696F6E 
+ 1844      2D736563 
+ 1844      74696F6E 
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 41
+
+
+ 1845              	.LASF78:
+ 1846 03ca 53455645 		.ascii	"SEVEN_reg_Write\000"
+ 1846      4E5F7265 
+ 1846      675F5772 
+ 1846      69746500 
+ 1847              	.LASF15:
+ 1848 03da 63686172 		.ascii	"char\000"
+ 1848      00
+ 1849              	.LASF62:
+ 1850 03df 53455645 		.ascii	"SEVEN_SetDP\000"
+ 1850      4E5F5365 
+ 1850      74445000 
+ 1851              	.LASF32:
+ 1852 03eb 52435F45 		.ascii	"RC_ERROR_BUFFER_FULL\000"
+ 1852      52524F52 
+ 1852      5F425546 
+ 1852      4645525F 
+ 1852      46554C4C 
+ 1853              	.LASF12:
+ 1854 0400 696E7433 		.ascii	"int32_t\000"
+ 1854      325F7400 
+ 1855              	.LASF60:
+ 1856 0408 53455645 		.ascii	"SEVEN_Get\000"
+ 1856      4E5F4765 
+ 1856      7400
+ 1857              	.LASF41:
+ 1858 0412 52435F45 		.ascii	"RC_ERROR_READ_FAILS\000"
+ 1858      52524F52 
+ 1858      5F524541 
+ 1858      445F4641 
+ 1858      494C5300 
+ 1859              	.LASF44:
+ 1860 0426 52435F45 		.ascii	"RC_ERROR_BAD_PARAM\000"
+ 1860      52524F52 
+ 1860      5F424144 
+ 1860      5F504152 
+ 1860      414D00
+ 1861              	.LASF55:
+ 1862 0439 64617461 		.ascii	"data\000"
+ 1862      00
+ 1863              	.LASF72:
+ 1864 043e 45455F41 		.ascii	"EE_ApplicationMode\000"
+ 1864      70706C69 
+ 1864      63617469 
+ 1864      6F6E4D6F 
+ 1864      646500
+ 1865              	.LASF7:
+ 1866 0451 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1866      20756E73 
+ 1866      69676E65 
+ 1866      6420696E 
+ 1866      7400
+ 1867              	.LASF14:
+ 1868 0463 646F7562 		.ascii	"double\000"
+ 1868      6C6500
+ 1869              	.LASF53:
+ 1870 046a 53455645 		.ascii	"SEVEN_id_t\000"
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 42
+
+
+ 1870      4E5F6964 
+ 1870      5F7400
+ 1871              	.LASF37:
+ 1872 0475 52435F45 		.ascii	"RC_ERROR_CHECKSUM\000"
+ 1872      52524F52 
+ 1872      5F434845 
+ 1872      434B5355 
+ 1872      4D00
+ 1873              	.LASF20:
+ 1874 0487 45455F55 		.ascii	"EE_UREG\000"
+ 1874      52454700 
+ 1875              	.LASF29:
+ 1876 048f 52435F45 		.ascii	"RC_ERROR_RANGE\000"
+ 1876      52524F52 
+ 1876      5F52414E 
+ 1876      474500
+ 1877              	.LASF5:
+ 1878 049e 5F5F696E 		.ascii	"__int32_t\000"
+ 1878      7433325F 
+ 1878      7400
+ 1879              	.LASF79:
+ 1880 04a8 53455645 		.ascii	"SEVEN_DP_Write\000"
+ 1880      4E5F4450 
+ 1880      5F577269 
+ 1880      746500
+ 1881              	.LASF17:
+ 1882 04b7 73697A65 		.ascii	"sizetype\000"
+ 1882      74797065 
+ 1882      00
+ 1883              	.LASF46:
+ 1884 04c0 52435F45 		.ascii	"RC_ERROR_CANCELED\000"
+ 1884      52524F52 
+ 1884      5F43414E 
+ 1884      43454C45 
+ 1884      4400
+ 1885              	.LASF77:
+ 1886 04d2 53455645 		.ascii	"SEVEN_SELECT_Write\000"
+ 1886      4E5F5345 
+ 1886      4C454354 
+ 1886      5F577269 
+ 1886      746500
+ 1887              	.LASF75:
+ 1888 04e5 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1888      52784275 
+ 1888      66666572 
+ 1888      00
+ 1889              	.LASF25:
+ 1890 04f2 52435F45 		.ascii	"RC_ERROR\000"
+ 1890      52524F52 
+ 1890      00
+ 1891              	.LASF28:
+ 1892 04fb 52435F45 		.ascii	"RC_ERROR_MEMORY\000"
+ 1892      52524F52 
+ 1892      5F4D454D 
+ 1892      4F525900 
+ 1893              	.LASF70:
+ 1894 050b 45455F6F 		.ascii	"EE_oo_IRQ_disable_count\000"
+ARM GAS  C:\Users\agila\AppData\Local\Temp\cckru0c5.s 			page 43
+
+
+ 1894      6F5F4952 
+ 1894      515F6469 
+ 1894      7361626C 
+ 1894      655F636F 
+ 1895              	.LASF50:
+ 1896 0523 52435F74 		.ascii	"RC_t\000"
+ 1896      00
+ 1897              	.LASF23:
+ 1898 0528 73696E74 		.ascii	"sint8_t\000"
+ 1898      385F7400 
+ 1899              	.LASF35:
+ 1900 0530 52435F45 		.ascii	"RC_ERROR_TIME_OUT\000"
+ 1900      52524F52 
+ 1900      5F54494D 
+ 1900      455F4F55 
+ 1900      5400
+ 1901              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

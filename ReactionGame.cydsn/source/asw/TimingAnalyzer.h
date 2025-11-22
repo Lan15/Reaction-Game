@@ -1,0 +1,250 @@
+/**
+* \file <CAnalyzer.h>
+* \author <AGILAN V S>
+* \date <22-10-2025>
+*
+* \brief <Symbolic File name>
+*
+* detailed description what the file does
+*
+* \note <notes>
+* Programming rules (may be deleted in the final release of the file)
+* ===================================================================
+*
+* 1. Naming conventions:
+*    - Prefix of your module in front of every function and static data. 
+*    - Scope _ for public and __ for private functions / data / types, e.g. 
+*       Public:  void CONTROL_straightPark_Init();
+*       Private: static void CONTROL__calcDistance();
+*       Public:  typedef enum {RED, GREEN, YELLOW} CONTROL_color_t
+*    - Own type definitions e.g. for structs or enums get a postfix _t
+*    - #define's and enums are written in CAPITAL letters
+* 2. Code structure
+*    - Be aware of the scope of your modules and functions. Provide only functions which belong to your module to your files
+*    - Prepare your design before starting to code
+*    - Implement the simple most solution (Too many if then else nestings are an indicator that you have not properly analysed your task)
+*    - Avoid magic numbers, use enums and #define's instead
+*    - Make sure, that all error conditions are properly handled
+*    - If your module provides data structures, which are required in many other files, it is recommended to place them in a file_type.h file
+*	  - If your module contains configurable parts, is is recommended to place these in a file_config.h|.c file
+* 3. Data conventions
+*    - Minimize the scope of data (and functions)
+*    - Global data is not allowed outside of the signal layer (in case a signal layer is part of your design)
+*    - All static objects have to be placed in a valid linker sections
+*    - Data which is accessed in more than one task has to be volatile and needs to be protected (e.g. by using messages or semaphores)
+*    - Do not mix signed and unsigned data in the same operation
+* 4. Documentation
+*    - Use self explaining function and variable names
+*    - Use proper indentation
+*    - Provide Javadoc / Doxygen compatible comments in your header file and C-File
+*    		- Every  File has to be documented in the header
+*			- Every function parameter and return value must be documented, the valid range needs to be specified
+*     		- Logical code blocks in the C-File must be commented
+*    - For a detailed list of doxygen commands check http://www.stack.nl/~dimitri/doxygen/index.html 
+* 5. Qualification
+*    - Perform and document design and code reviews for every module
+*    - Provide test specifications for every module (focus on error conditions)
+*
+* Further information:
+*    - Check the programming rules defined in the MIMIR project guide
+*         - Code structure: https://mimir.h-da.io/public/methods/eng_codestructure/method.htm
+*         - MISRA for C: https://mimir.h-da.io/public/methods/eng_c_rules/method.htm
+*         - MISRA for C++: https://mimir.h-da.io/public/methods/eng_cpp_rules/method.htm
+*
+* \todo <todos>
+* \warning <warnings, e.g. dependencies, order of execution etc.>
+*
+*  Changelog:\n
+*  - <version; data of change; author>
+*            - <description of the change>
+*
+* \copyright Copyright ©2016
+* Department of electrical engineering and information technology, Hochschule Darmstadt - University of applied sciences (h_da). All Rights Reserved.
+* Permission to use, copy, modify, and distribute this software and its documentation for educational, and research purposes in the context of non-commercial
+* (unless permitted by h_da) and official h_da projects, is hereby granted for enrolled students of h_da, provided that the above copyright notice,
+* this paragraph and the following paragraph appear in all copies, modifications, and distributions.
+* Contact Prof.Dr.-Ing. Peter Fromm, peter.fromm@h-da.de, Birkenweg 8 64295 Darmstadt - GERMANY for commercial requests.
+*
+* \warning This software is a PROTOTYPE version and is not designed or intended for use in production, especially not for safety-critical applications!
+* The user represents and warrants that it will NOT use or redistribute the Software for such purposes.
+* This prototype is for research purposes only. This software is provided "AS IS," without a warranty of any kind.
+**/
+ 
+#ifndef TIMINGANALYZER_H
+#define TIMINGANALYZER_H
+
+#include "global.h"
+
+/*****************************************************************************/
+/* Global pre-processor symbols/macros and type declarations                 */
+/*****************************************************************************/
+
+//####################### Defines/Macros
+    
+//####################### Enumerations
+/**
+* \Analyzer configurations enum
+*
+* Enum to hold different configuration modes possible with the analyzer
+*/
+ enum eMode{
+  TA_MODE_DWT,             /**< \DWT Cycle Counter. */
+  TA_MODE_DWT_PIN,         /**< \DWT Cycle Counter + Output pin. */
+  TA_MODE_SYSTICK,         /**< \SYSTICK timer (1ms tick). */
+  TA_MODE_SYSTICK_PIN,     /**< \SYSTICK + Output pin config. */
+  TA_MODE_PIN              /**< \Output pin only (external measurement). */
+} ;
+typedef enum eMode TA_Mode_t;
+
+/**
+* \Analyzer state enum
+*
+* Enum to hold different states that the analyzer could take
+*/
+ typedef enum {
+  TA_STATE_IDLE,           /**< \Analyser in Idle state. */
+  TA_STATE_RUNNING,        /**< \Analyser in Running state. */
+  TA_STATE_PAUSED,         /**< \Analyser in Paused state. */
+  TA_STATE_STOPPED         /**< \Analyser in Paused state. */
+} TA_State_t;
+
+typedef void (*TA_PinFunc_t)(uint8_t state);  /* Function ptr to pins */
+
+//####################### Structures
+/**
+* \Analyzer instance struct
+*
+* Main structure that holds everything about one analyzer instance.
+*/
+typedef struct {
+    /* Configuration Data */
+    const char *name;               // String name for print/log    // warning ta_name?
+    TA_Mode_t mode;                 // Selected measurement mode (SysTick, DWT, etc.)
+    TA_State_t state;               // Current analyzer state
+    /* Measurement Data */
+    uint32_t start_time;            // Start time (for SysTick/DWT mode)
+    uint32_t stop_time;             // Stop time (for SysTick/DWT mode)
+    uint32_t elapsed_time;          // duration between the start and stop times
+    /* Pin Function Link */
+    TA_PinFunc_t pin_control_func;  // Unified pin control function
+} TA_t;
+
+// Wrapper to allow representing the file in Together as class
+#ifdef TOGETHER
+
+class CAnalyzer
+{
+public:
+    
+#endif /* Together */
+
+/*****************************************************************************/
+/* Extern global variables                                                   */
+/*****************************************************************************/
+
+/*****************************************************************************/
+/* API functions                                                             */
+/*****************************************************************************/
+
+/**
+ * Func to initialize of the necessary peripherals like Set up SysTick timer (1 ms), enable DWT counter, and configure GPIO pins.
+ * \param None
+ * \return RC_SUCCESS when success and RC_ERROR_INVALID_STATE when Hardware not properly initilized
+*/
+RC_t TA_init(void);
+
+/**
+ * Func to initializes an analyzer struct with configuration and assign function pointers for pin control.
+ * \param TA_t *const me                : [IN/OUT] struct of Analyzer related parameters
+ * \param TA_Mode_t const mode          : [IN] type of the configuration mode we need to run the analyzer
+ * \param TA_PinFunc_t const pin_ctrl   : [IN] func pointer to control a GPIO pin
+ * \param const char const *name        : [IN] name of the Analyzer
+ * \return RC_SUCCESS when success, RC_ERROR_NULL when a pointer param is null
+ *         RC_ERROR_BAD_PARAM when unexpected params are passed and 
+ *         RC_ERROR_BUFFER_FULL when max analyzer count is reached
+*/
+RC_t TA_create(TA_t *const me, TA_Mode_t const mode, TA_PinFunc_t const pin_ctrl, const char *name);
+
+/**
+ * Func to start counting using SysTick or DWT and set pin HIGH if configured.
+ * \param TA_t *const me            : [IN/OUT] struct of Analyzer related parameters
+ * \return RC_SUCCESS when success, RC_ERROR_NULL when the me pointer is null, 
+ *         RC_ERROR_INVALID_STATE when analyzer is not in any active state and/or when Hardware not properly initilized and 
+ *         RC_ERROR_BUSY when an analyzer is already in running state
+*/
+RC_t TA_start(TA_t *const me);
+
+/**
+ * Func to stop counting temporarily and add elapsed time since start to total time.
+ * \param TA_t *const me            : [IN/OUT] struct of Analyzer related parameters
+ * \return RC_SUCCESS when success, RC_ERROR_NULL when the me pointer is null and 
+ *         RC_ERROR_INVALID_STATE when analyzer is not in any active state and/or not running
+*/
+RC_t TA_pause(TA_t *const me);
+
+/**
+ * Func to resume measurement from paused state.
+ * \param TA_t *const me            : [IN/OUT] struct of Analyzer related parameters
+ * \return RC_SUCCESS when success, RC_ERROR_NULL when the me pointer is null, 
+ *         RC_ERROR_INVALID_STATE when analyzer is not in any active state and/or not paused
+*/
+RC_t TA_resume(TA_t *const me);
+
+/**
+ * Func to stop counting, calculate total time, and set pin LOW.
+ * \param TA_t *const me            : [IN/OUT] struct of Analyzer related parameters
+ * \return RC_SUCCESS when success, RC_ERROR_NULL when the me pointer is null and 
+ *         RC_ERROR_INVALID_STATE when analyzer is not in any active state and/or already stopped
+*/
+RC_t TA_stop(TA_t *const me);
+
+/**
+ * Func to calculate the elapsed ticks/cycles between start and stop time.
+ * \param TA_t *const me            : [IN/OUT] struct of Analyzer related parameters
+ * \return RC_SUCCESS when success
+*/
+RC_t TA_calculateElapsedTime(TA_t *const me);
+
+/**
+ * Func which returns elapsed time in ms based on SysTick or DWT reading.
+ * \param TA_t const *const me      : [IN] struct of Analyzer related parameters
+ * \return RC_SUCCESS when success and RC_ERROR_NULL when the me pointer is null
+*/
+RC_t TA_getElapsedTimeInMs(TA_t *const me); // cycles to ms conversion to RG ???
+
+/**
+ * Func which returns elapsed time based on SysTick or DWT reading.
+ * \param TA_t const *const me      : [IN] struct of Analyzer related parameters
+ * \return RC_SUCCESS when success and RC_ERROR_NULL when the me pointer is null
+*/
+RC_t TA_printStatus(TA_t *const me);
+
+/**
+ * Func to print all the available Analysers
+ * \param None
+ * \return RC_SUCCESS when success and RC_ERROR_BUFFER_EMTPY when analyzer array is empty
+*/
+RC_t TA_printAll(void);
+
+/**
+ * Func Systick Handler - used to increment the milliseconds counter each millisecond
+ * \param None
+ * \return None
+*/
+void SysTick_Handler(void);
+
+/*****************************************************************************/
+/* Private stuff, only visible for Together, declared static in cpp - File   */
+/*****************************************************************************/
+
+#ifdef TOGETHER
+//Not visible for compiler, only used for document generation
+private:
+
+
+};
+#endif /* Together */
+
+#endif /* CANALYZER_H */
+
+/* [TimingAnalyzer.h] END OF FILE */
