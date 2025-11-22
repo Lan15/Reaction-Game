@@ -98,22 +98,24 @@ TASK(tsk_game)
                 //SetRelAlarm(alrm_Tick1m, rndWait_ms, 0);
                 SetRelAlarm(alrm_Tick1m,1,1);
             break;
-            case RG_STATE_INGAME: 
-                //UART_LOG_PutString("ingame\r\n"); 
-                CancelAlarm(alrm_Tick1m);
+            case RG_STATE_DISPLAY:
                 if (ev & ev_randomDone)
                 {
-                    //UART_LOG_PutString("rnd\r\n"); 
                     //Show random number on display
                     SEVEN_writeRandom(); // Ok or a seperate task ???
                     game.m_roundPlayed++;
                     g_reactionTimeout_ms = 1000;
+                    game.m_curState = RG_STATE_PRESSED;
                     SetRelAlarm(alrm_Tick1m,1,1);
                 }
+            break;
+            case RG_STATE_PRESSED: 
+                //UART_LOG_PutString("ingame\r\n"); 
+                CancelAlarm(alrm_Tick1m);
                 if (ev & ev_buttonLeft)
                 {
                     //Handle button 1 press
-                    //UART_LOG_PutString("BUTT\r\n"); 
+                    UART_LOG_PutString("BUTT\r\n"); 
                     if (SEVEN_reg_Read() == 91) { // deci 91 = hex 5B = bin 0101 1011 = seven segment 2
                         //uint32_t time_ms = (analyzer.elapsed_time / BCLK__BUS_CLK__KHZ); //calculate here ???
                         //Buffer to assemble string
@@ -128,9 +130,6 @@ TASK(tsk_game)
                     {
                         UART_LOG_PutString("Oops - wrong button pressed!\r\n");
                     }
-                    SEVEN_ClearAll();  
-                    game.m_curState = RG_STATE_WAIT;
-                    UART_LOG_PutString("======================================================\r\n");
                 } 
                 if (ev & ev_buttonRight)
                 {
@@ -150,19 +149,19 @@ TASK(tsk_game)
                     {
                         UART_LOG_PutString("Oops - wrong button pressed!\r\n");
                     }
-                    SEVEN_ClearAll();  
-                    game.m_curState = RG_STATE_WAIT;
-                    UART_LOG_PutString("======================================================\r\n");
                 }
                 if (ev & ev_timeout)
                 {
                     //Handle timeout
                     UART_LOG_PutString("Too slow!\r\n");    // log or func ???
-                    SEVEN_ClearAll();  
-                    game.m_curState = RG_STATE_WAIT;
-                    UART_LOG_PutString("======================================================\r\n");
-                }            
+                    //game.m_curState = RG_STATE_IDLE;
+                }
                 
+                SEVEN_ClearAll();
+                
+                game.m_curState = RG_STATE_WAIT;
+                
+                UART_LOG_PutString("======================================================\r\n");
                 // One game consists out of 10 rounds - END - consider as a seperate state ???
                 
                 if (RG_MAX_ROUNDS == game.m_roundPlayed)
@@ -196,8 +195,8 @@ TASK(tsk_timer) // Keep this taks execution time below cycle time ???
         if (g_rndWait_ms == 0)
         {
             CancelAlarm(alrm_Tick1m);
-            //UART_LOG_PutString("rndwait\r\n"); 
-            game.m_curState = RG_STATE_INGAME;
+            UART_LOG_PutString("rndwait\r\n"); 
+            game.m_curState = RG_STATE_DISPLAY;
             //Signal to tsk_Game that random delay has ended
             SetEvent(tsk_game, ev_randomDone);        
         }

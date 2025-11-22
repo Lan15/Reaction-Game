@@ -91,7 +91,8 @@
  typedef enum {
   RG_STATE_IDLE = 0,       /**< \Game in Idle state. */
   RG_STATE_WAIT,
-  RG_STATE_INGAME,         /**< \Game in Running state. */
+  RG_STATE_DISPLAY,
+  RG_STATE_PRESSED,         /**< \Game in Running state. */
 } RG_State_t;
 
 //####################### Structures
