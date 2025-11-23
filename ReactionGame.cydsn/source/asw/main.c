@@ -67,6 +67,7 @@ TASK(tsk_init)
     EE_systick_start();  
 	
     //Start the cyclic alarms 
+    SetRelAlarm(alrm_Tick1m,100,1);
 
     //Activate all extended and the background task
     ActivateTask(tsk_game);

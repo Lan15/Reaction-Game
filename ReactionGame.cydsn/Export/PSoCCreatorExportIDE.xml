@@ -39,12 +39,8 @@
           <File BuildType="BUILD" Toolchain="">source\asw\main.c</File>
           <File BuildType="BUILD" Toolchain="">source\asw\TimingAnalyzer.c</File>
           <File BuildType="BUILD" Toolchain="">source\asw\TimingAnalyzer.h</File>
-        </Files>
-      </Folder>
-      <Folder BuildType="STRICT" Path="D:\WS25\AMAEOS\Lab\Workspace01\ReactionGame.cydsn">
-        <Files Root="D:\WS25\AMAEOS\Lab\Workspace01\ReactionGame.cydsn">
-          <File BuildType="BUILD" Toolchain="">ReactionGame.c</File>
-          <File BuildType="BUILD" Toolchain="">ReactionGame.h</File>
+          <File BuildType="BUILD" Toolchain="">source\asw\ReactionGame.c</File>
+          <File BuildType="BUILD" Toolchain="">source\asw\ReactionGame.h</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="D:\WS25\AMAEOS\Lab\Workspace01\ReactionGame.cydsn">

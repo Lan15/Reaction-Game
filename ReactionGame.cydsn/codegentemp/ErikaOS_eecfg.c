@@ -28,9 +28,9 @@
     #define TASK_4_STACK_SIZE 5000/4 // size = 5000 bytes
     int EE_cortex_mx_stack_4[TASK_4_STACK_SIZE];	/* Task 4 (tsk_game) */
     #endif
-    #if ((2 == 2) && (EE_MAX_TASK > 4))
-    #define TASK_5_STACK_SIZE 5000/4 // size = 5000 bytes
-    int EE_cortex_mx_stack_5[TASK_5_STACK_SIZE];	/* Task 5 (tsk_game) */
+    #if ((1 == 2) && (EE_MAX_TASK > 4))
+    #define TASK_5_STACK_SIZE 0/4 // size = 0 bytes
+    int EE_cortex_mx_stack_5[TASK_5_STACK_SIZE];	/* Task 5 (tsk_tft) */
     #endif
     #if ((2 == 2) && (EE_MAX_TASK > 5))
     #define TASK_6_STACK_SIZE 5000/4 // size = 5000 bytes
@@ -125,7 +125,7 @@
         ,Tsk4	 /* tsk_game*/
     #endif
     #if EE_MAX_TASK > 4
-        ,Tsk5	 /* tsk_game*/
+        ,Tsk5	 /* tsk_tft*/
     #endif
     #if EE_MAX_TASK > 5
         ,Tsk6	 /* tsk_game*/
@@ -153,7 +153,7 @@
         ,{(EE_ADDR)(&EE_cortex_mx_stack_4[(TASK_4_STACK_SIZE) - CORTEX_MX_INIT_TOS_OFFSET])}    /* tsk_game*/
         #endif
         #ifdef TASK_5_STACK_SIZE
-        ,{(EE_ADDR)(&EE_cortex_mx_stack_5[(TASK_5_STACK_SIZE) - CORTEX_MX_INIT_TOS_OFFSET])}    /* tsk_game*/
+        ,{(EE_ADDR)(&EE_cortex_mx_stack_5[(TASK_5_STACK_SIZE) - CORTEX_MX_INIT_TOS_OFFSET])}    /* tsk_tft*/
         #endif
         #ifdef TASK_6_STACK_SIZE
         ,{(EE_ADDR)(&EE_cortex_mx_stack_6[(TASK_6_STACK_SIZE) - CORTEX_MX_INIT_TOS_OFFSET])}    /* tsk_game*/
@@ -195,7 +195,7 @@
     DeclareTask(tsk_game);
     #endif
     #if EE_MAX_TASK > 4
-    DeclareTask(tsk_game);
+    DeclareTask(tsk_tft);
     #endif
     #if EE_MAX_TASK > 5
     DeclareTask(tsk_game);
@@ -221,7 +221,7 @@
         ,&EE_oo_thread_stub      /* thread tsk_game */
     #endif
     #if EE_MAX_TASK > 4
-        ,&EE_oo_thread_stub      /* thread tsk_game */
+        ,&EE_oo_thread_stub      /* thread tsk_tft */
     #endif
     #if EE_MAX_TASK > 5
         ,&EE_oo_thread_stub      /* thread tsk_game */
@@ -251,7 +251,7 @@
         ,&Functsk_game
     #endif
     #if EE_MAX_TASK > 4
-        ,&Functsk_game
+        ,&Functsk_tft
     #endif
     #if EE_MAX_TASK > 5
         ,&Functsk_game
@@ -279,7 +279,7 @@
         ,32U
     #endif
     #if EE_MAX_TASK > 4
-        ,32U
+        ,64U
     #endif
     #if EE_MAX_TASK > 5
         ,32U
@@ -308,7 +308,7 @@
         ,"tsk_game"
     #endif
     #if EE_MAX_TASK > 4
-        ,"tsk_game"
+        ,"tsk_tft"
     #endif
     #if EE_MAX_TASK > 5
         ,"tsk_game"
@@ -609,7 +609,7 @@
     #endif
     #if EE_MAX_TASK > 4
         #if 1
-        ,32U
+        ,64U
         #else
         ,MAX_PRIORITY
         #endif
@@ -1034,7 +1034,7 @@
         #endif
     #endif
     #if EE_MAX_TASK > 4
-        #if 2
+        #if 0
         ,1U
         #else
         ,0U
@@ -1570,7 +1570,7 @@
         {alrm_Tick1m}
     #endif
     #if EE_MAX_ALARM > 1
-        ,{Alarm_2}
+        ,{alrm_tft}
     #endif
     #if EE_MAX_ALARM > 2
         ,{Alarm_3}
@@ -1600,7 +1600,7 @@ const char* EE_ALARM_NAME[EE_MAX_ALARM]=
          "alrm_Tick1m"
     #endif
     #if EE_MAX_ALARM > 1
-        ,"Alarm_2"
+        ,"alrm_tft"
     #endif
     #if EE_MAX_ALARM > 2
         ,"Alarm_3"
@@ -1628,7 +1628,7 @@ const unsigned long EE_ALARM_ID[EE_MAX_ALARM]=
          alrm_Tick1m
     #endif
     #if EE_MAX_ALARM > 1
-        ,Alarm_2
+        ,alrm_tft
     #endif
     #if EE_MAX_ALARM > 2
         ,Alarm_3
@@ -1688,7 +1688,7 @@ const unsigned long EE_ALARM_ID[EE_MAX_ALARM]=
         {0, alrm_Tick1m, EE_ALARM }
         #endif
         #if EE_MAX_ALARM > 1
-        ,{0, Alarm_2, EE_ALARM }
+        ,{0, alrm_tft, EE_ALARM }
         #endif
         #if EE_MAX_ALARM > 2
         ,{0, Alarm_3, EE_ALARM }
@@ -1742,7 +1742,7 @@ const unsigned long EE_ALARM_ID[EE_MAX_ALARM]=
     #if EE_ACTION_ROM_SIZE > 1
         ,{0    , 
             #if 0 != 3 
-                0,
+                4,
             #else
                 0,
             #endif
@@ -1917,7 +1917,7 @@ const unsigned long EE_ALARM_ID[EE_MAX_ALARM]=
     #if 1 || 0 || 0 || 0
         ,
     #endif
-        tsk_game
+        tsk_tft
     #endif
     #if (EE_MAX_TASK > 5) && 0
     #if 1 || 0 || 0 || 0 || 0

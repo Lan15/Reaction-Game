@@ -54,9 +54,10 @@
 volatile static TA_t analyzer;
 volatile static RG_t game = {RG_STATE_WAIT, 0, 0, 0};
 
-volatile static uint16_t g_rndWait_ms = 0;          // random delay until number appears
-volatile static uint16_t g_reactionTimeout_ms = 0;  // max allowed reaction time
-volatile static uint8_t g_buttonNumber = 0;         // correct button number
+volatile static uint16_t ra_g_rndWait_ms = 0;          // random delay until number appears
+volatile static uint16_t ra_g_reactionTimeout_ms = 0;  // max allowed reaction time
+volatile static uint8_t ra_g_buttonNumber = 0;         // correct button number
+volatile static uint8_t ra_g_tftScore = 0;             // score in tft
 
 /*****************************************************************************/
 /* Local function prototypes ('static')                                      */
@@ -76,7 +77,7 @@ TASK(tsk_game)
 
     // Upon start up
     UART_LOG_PutString("\r\n\r\n============ Welcome to the Reaction Game ============\r\n"); 
-    TFT_print("Reaction Game\n");
+    SetRelAlarm(alrm_tft,110,0); // one shot alarm
     
     while (1)
     {
@@ -91,9 +92,10 @@ TASK(tsk_game)
             case RG_STATE_IDLE: 
             break;
             case RG_STATE_WAIT: // TODO: handle button comming during wait time ???
+                CancelAlarm(alrm_Tick1m);
                 //UART_LOG_PutString("wait\r\n"); 
                 //Generate random wait time
-                g_rndWait_ms = (rand() % 2000) + 1000;  // 1000 – 3000 ms
+                ra_g_rndWait_ms = (rand() % 2000) + 1000;  // 1000 – 3000 ms
                 //rndWait_ms = (rand() % 2000) + 1000; // single shot alaram instead of global var, reduction ???
                 //SetRelAlarm(alrm_Tick1m, rndWait_ms, 0);
                 SetRelAlarm(alrm_Tick1m,1,1);
@@ -104,7 +106,7 @@ TASK(tsk_game)
                     //Show random number on display
                     SEVEN_writeRandom(); // Ok or a seperate task ???
                     game.m_roundPlayed++;
-                    g_reactionTimeout_ms = 1000;
+                    ra_g_reactionTimeout_ms = 1000;
                     game.m_curState = RG_STATE_PRESSED;
                     SetRelAlarm(alrm_Tick1m,1,1);
                 }
@@ -172,6 +174,9 @@ TASK(tsk_game)
                     sprintf(buffer, "Score: %d\r\n", game.m_score);
                     UART_LOG_PutString(buffer);
                     UART_LOG_PutString("======================================================\r\n");
+                    ra_g_tftScore = game.m_score;
+                    TFT_clearScreen();
+                    SetRelAlarm(alrm_tft,110,0); // one shot alarm
                 }
                 
             break;
@@ -188,11 +193,11 @@ TASK(tsk_game)
 TASK(tsk_timer) // Keep this taks execution time below cycle time ???
 {
     //Random-Wait Countdown (1–3 seconds random delay)
-    if (g_rndWait_ms > 0)
+    if (ra_g_rndWait_ms > 0)
     {
-        g_rndWait_ms--;
+        ra_g_rndWait_ms--;
         
-        if (g_rndWait_ms == 0)
+        if (ra_g_rndWait_ms == 0)
         {
             CancelAlarm(alrm_Tick1m);
             UART_LOG_PutString("rndwait\r\n"); 
@@ -203,16 +208,48 @@ TASK(tsk_timer) // Keep this taks execution time below cycle time ???
     }
 
     //Reaction Timeout Countdown
-    if (g_reactionTimeout_ms > 0)
+    if (ra_g_reactionTimeout_ms > 0)
     {
-        g_reactionTimeout_ms--;
+        ra_g_reactionTimeout_ms--;
         
-        if (g_reactionTimeout_ms == 0)
+        if (ra_g_reactionTimeout_ms == 0)
         {
             CancelAlarm(alrm_Tick1m);
             //User failed to react in time
             SetEvent(tsk_game, ev_timeout);
         }
+    }
+    
+    TerminateTask();
+}
+
+TASK(tsk_tft)
+{
+    if(!game.m_score)
+    {
+        TFT_clearScreen();
+        
+        TFT_setCursor(17, 60);
+        TFT_setTextSize(2);
+        TFT_setTextColor(RED);
+        TFT_print("REACTION\n");
+        TFT_setCursor(40, 80);
+        TFT_setTextColor(BLUE);
+        TFT_print("GAME\n");
+    }
+    
+    if(game.m_score){ // If score is atleaset 1
+        TFT_setCursor(18, 70);
+        TFT_setTextSize(2);
+        TFT_setTextColor(YELLOW);
+        
+        TFT_drawRect(12, 65, 105, 24, WHITE);
+        
+        char buffer[16];
+        sprintf(buffer, "SCORE:%d", ra_g_tftScore);
+        TFT_print(buffer);
+        
+        TFT_drawChar(55, 30, 2, YELLOW, 0, 4);
     }
     
     TerminateTask();
