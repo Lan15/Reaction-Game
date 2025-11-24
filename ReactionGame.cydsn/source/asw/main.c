@@ -49,6 +49,10 @@ TASK(tsk_init)
     TFT_init();
     TFT_setBacklight(255);
     
+    PWM_RED_Start();
+    PWM_YELLOW_Start();
+    PWM_GREEN_Start();
+    
     TA_init(); // CySysTick causes issues with OS's cnt_systick
     
     //Reconfigure ISRs with OS parameters.
@@ -60,10 +64,13 @@ TASK(tsk_init)
     EE_systick_start();  
 	
     //Start the cyclic alarms 
-    SetRelAlarm(alrm_Tick1m,100,1);
+    SetRelAlarm(alrm_Tick1m,1,1);
+    SetRelAlarm(alrm_tft,2,0);
+    SetRelAlarm(alrm_fader,3,1);
 
     //Activate all extended and the background task
     ActivateTask(tsk_game);
+    //ActivateTask(tsk_arcadian);
     ActivateTask(tsk_background);
 
     TerminateTask();

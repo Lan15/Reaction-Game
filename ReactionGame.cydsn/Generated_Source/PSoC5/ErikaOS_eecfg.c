@@ -32,9 +32,9 @@
     #define TASK_5_STACK_SIZE 0/4 // size = 0 bytes
     int EE_cortex_mx_stack_5[TASK_5_STACK_SIZE];	/* Task 5 (tsk_tft) */
     #endif
-    #if ((2 == 2) && (EE_MAX_TASK > 5))
-    #define TASK_6_STACK_SIZE 5000/4 // size = 5000 bytes
-    int EE_cortex_mx_stack_6[TASK_6_STACK_SIZE];	/* Task 6 (tsk_game) */
+    #if ((1 == 2) && (EE_MAX_TASK > 5))
+    #define TASK_6_STACK_SIZE 0/4 // size = 0 bytes
+    int EE_cortex_mx_stack_6[TASK_6_STACK_SIZE];	/* Task 6 (tsk_arcadian) */
     #endif
     #if ((1 == 2) && (EE_MAX_TASK > 6))
     #define TASK_7_STACK_SIZE 0/4 // size = 0 bytes
@@ -128,7 +128,7 @@
         ,Tsk5	 /* tsk_tft*/
     #endif
     #if EE_MAX_TASK > 5
-        ,Tsk6	 /* tsk_game*/
+        ,Tsk6	 /* tsk_arcadian*/
     #endif
     #if EE_MAX_TASK > 6
         ,Tsk7 	 /* Task_7*/
@@ -156,7 +156,7 @@
         ,{(EE_ADDR)(&EE_cortex_mx_stack_5[(TASK_5_STACK_SIZE) - CORTEX_MX_INIT_TOS_OFFSET])}    /* tsk_tft*/
         #endif
         #ifdef TASK_6_STACK_SIZE
-        ,{(EE_ADDR)(&EE_cortex_mx_stack_6[(TASK_6_STACK_SIZE) - CORTEX_MX_INIT_TOS_OFFSET])}    /* tsk_game*/
+        ,{(EE_ADDR)(&EE_cortex_mx_stack_6[(TASK_6_STACK_SIZE) - CORTEX_MX_INIT_TOS_OFFSET])}    /* tsk_arcadian*/
         #endif
         #ifdef TASK_7_STACK_SIZE
         ,{(EE_ADDR)(&EE_cortex_mx_stack_7[(TASK_7_STACK_SIZE) - CORTEX_MX_INIT_TOS_OFFSET])}    /* Task_7*/
@@ -198,7 +198,7 @@
     DeclareTask(tsk_tft);
     #endif
     #if EE_MAX_TASK > 5
-    DeclareTask(tsk_game);
+    DeclareTask(tsk_arcadian);
     #endif
     #if EE_MAX_TASK > 6
     DeclareTask(Task_7);
@@ -224,7 +224,7 @@
         ,&EE_oo_thread_stub      /* thread tsk_tft */
     #endif
     #if EE_MAX_TASK > 5
-        ,&EE_oo_thread_stub      /* thread tsk_game */
+        ,&EE_oo_thread_stub      /* thread tsk_arcadian */
     #endif
     #if EE_MAX_TASK > 6
         ,&EE_oo_thread_stub      /* thread Task_7 */
@@ -254,7 +254,7 @@
         ,&Functsk_tft
     #endif
     #if EE_MAX_TASK > 5
-        ,&Functsk_game
+        ,&Functsk_arcadian
     #endif
     #if EE_MAX_TASK > 6
         ,&FuncTask_7
@@ -279,10 +279,10 @@
         ,32U
     #endif
     #if EE_MAX_TASK > 4
-        ,64U
+        ,4U
     #endif
     #if EE_MAX_TASK > 5
-        ,32U
+        ,2U
     #endif
     #if EE_MAX_TASK > 6
         ,0U
@@ -311,7 +311,7 @@
         ,"tsk_tft"
     #endif
     #if EE_MAX_TASK > 5
-        ,"tsk_game"
+        ,"tsk_arcadian"
     #endif
     #if EE_MAX_TASK > 6
         ,"Task_7"
@@ -609,14 +609,14 @@
     #endif
     #if EE_MAX_TASK > 4
         #if 1
-        ,64U
+        ,4U
         #else
         ,MAX_PRIORITY
         #endif
     #endif
     #if EE_MAX_TASK > 5
         #if 1
-        ,32U
+        ,2U
         #else
         ,MAX_PRIORITY
         #endif
@@ -1041,7 +1041,7 @@
         #endif
     #endif
     #if EE_MAX_TASK > 5
-        #if 3
+        #if 0
         ,1U
         #else
         ,0U
@@ -1573,7 +1573,7 @@
         ,{alrm_tft}
     #endif
     #if EE_MAX_ALARM > 2
-        ,{Alarm_3}
+        ,{alrm_fader}
     #endif
     #if EE_MAX_ALARM > 3
         ,{Alarm_4}
@@ -1603,7 +1603,7 @@ const char* EE_ALARM_NAME[EE_MAX_ALARM]=
         ,"alrm_tft"
     #endif
     #if EE_MAX_ALARM > 2
-        ,"Alarm_3"
+        ,"alrm_fader"
     #endif
     #if EE_MAX_ALARM > 3
         ,"Alarm_4"
@@ -1631,7 +1631,7 @@ const unsigned long EE_ALARM_ID[EE_MAX_ALARM]=
         ,alrm_tft
     #endif
     #if EE_MAX_ALARM > 2
-        ,Alarm_3
+        ,alrm_fader
     #endif
     #if EE_MAX_ALARM > 3
         ,Alarm_4
@@ -1691,7 +1691,7 @@ const unsigned long EE_ALARM_ID[EE_MAX_ALARM]=
         ,{0, alrm_tft, EE_ALARM }
         #endif
         #if EE_MAX_ALARM > 2
-        ,{0, Alarm_3, EE_ALARM }
+        ,{0, alrm_fader, EE_ALARM }
         #endif
         #if EE_MAX_ALARM > 3
         ,{0, Alarm_4, EE_ALARM }
@@ -1761,7 +1761,7 @@ const unsigned long EE_ALARM_ID[EE_MAX_ALARM]=
     #if EE_ACTION_ROM_SIZE > 2
         ,{0    , 
             #if 0 != 3 
-                0,
+                5,
             #else
                 0,
             #endif
@@ -1923,7 +1923,7 @@ const unsigned long EE_ALARM_ID[EE_MAX_ALARM]=
     #if 1 || 0 || 0 || 0 || 0
         ,
     #endif
-        tsk_game
+        tsk_arcadian
     #endif
     #if (EE_MAX_TASK > 6) && 0
     #if 1 || 0 || 0 || 0 || 0 || 0

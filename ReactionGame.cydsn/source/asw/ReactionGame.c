@@ -38,7 +38,7 @@
 /* Local pre-processor symbols/macros ('#define')                            */
 /*****************************************************************************/ 
 #define RG_MAX_ROUNDS          (10UL)
-
+#define RG_TIMEOUT_TIME_MS     (1000UL)
 
 /*****************************************************************************/
 /* Global variable definitions (declared in header file with 'extern')       */
@@ -78,9 +78,9 @@ TASK(tsk_game)
     TA_create((TA_t *)&analyzerGame, TA_MODE_DWT, NULL_PTR, "Game Analyzer"); // do it here or in main ???
     
     // Upon start up
-    UART_LOG_PutString("\r\n\r\n============ Welcome to the Reaction Game ============\r\n"); 
-    UART_LOG_PutString("press one of the two buttons to start...\r\n\r\n"); 
-    SetRelAlarm(alrm_tft,110,0); // one shot alarm
+    UART_LOG_PutString("\r\n\r\n============ Welcome to the Reaction Game ============\r\npress one of the two buttons to start...\r\n\r\n"); 
+    //UART_LOG_PutString("press one of the two buttons to start...\r\n\r\n"); 
+    //SetRelAlarm(alrm_tft,10,0); // one shot alarm
     
     while (1)
     {
@@ -105,13 +105,13 @@ TASK(tsk_game)
                 //SetRelAlarm(alrm_Tick1m, rndWait_ms, 0);
                 SetRelAlarm(alrm_Tick1m,1,1);
             break;
-            case RG_STATE_DISPLAY:
+            case RG_STATE_DISPLAY: // If one round got over bring back to wait state ???
                 if (ev & ev_randomDone)
                 {
                     //Show random number on display
                     SEVEN_writeRandom(); // Ok or a seperate task ???
                     game.m_roundPlayed++;
-                    ra_g_reactionTimeout_ms = 1000;
+                    ra_g_reactionTimeout_ms = RG_TIMEOUT_TIME_MS;
                     game.m_curState = RG_STATE_PRESSED;
                     TA_start((TA_t *)&analyzerGame);
                     SetRelAlarm(alrm_Tick1m,1,1);
@@ -185,7 +185,7 @@ TASK(tsk_game)
                     UART_LOG_PutString(buffer);
                     UART_LOG_PutString("======================================================\r\n");
                     ra_g_tftScore = game.m_score;
-                    SetRelAlarm(alrm_tft,110,0); // one shot alarm // activate task ???
+                    SetRelAlarm(alrm_tft,1,0); // one shot alarm // activate task ???
                 }              
             break;
             default:

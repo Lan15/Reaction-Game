@@ -127,28 +127,6 @@ public:
 /* API functions                                                             */
 /*****************************************************************************/
 
-/**
- * Func to initialize the game instance data structure.
- * \param RG_t *const me                : [IN/OUT] struct of Game related parameters
- * \return RC_SUCCESS when success
-*/
-RC_t RG_init(RG_t *const me);
-
-/**
- * Func to show the reaction time
- * \param 
- * \return RC_SUCCESS when success
-*/
-RC_t RG_displayReactionTime(uint32_t const time_ms);
-
-/**
- * Func to show messages in the terminal
- * \param void
- * \return RC_SUCCESS when success
-*/
-RC_t RG_showMessage(void);
-
-
 /*****************************************************************************/
 /* Private stuff, only visible for Together, declared static in cpp - File   */
 /*****************************************************************************/

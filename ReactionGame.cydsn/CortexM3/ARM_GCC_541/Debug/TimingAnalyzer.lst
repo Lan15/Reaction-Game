@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
   28:source\asw/TimingAnalyzer.c **** #include "UART_LOG.h"
   29:source\asw/TimingAnalyzer.c **** 
   30:source\asw/TimingAnalyzer.c **** /*****************************************************************************/
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 2
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 2
 
 
   31:source\asw/TimingAnalyzer.c **** /* Local pre-processor symbols/macros ('#define')                            */
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
   76:source\asw/TimingAnalyzer.c ****     RC_t res = RC_SUCCESS;
   77:source\asw/TimingAnalyzer.c ****     
   78:source\asw/TimingAnalyzer.c ****     // Initialize SysTick timer (1 ms) // Causing issues with OS's cnt_systick
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 3
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 3
 
 
   79:source\asw/TimingAnalyzer.c ****     /*CySysTickInit();									// Activate Systick counter     // (N7)
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
   74              	TA_create:
   75              	.LFB112:
   96:source\asw/TimingAnalyzer.c **** 
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 4
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 4
 
 
   97:source\asw/TimingAnalyzer.c **** /**
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  120:source\asw/TimingAnalyzer.c ****     }
  121:source\asw/TimingAnalyzer.c ****     
  122:source\asw/TimingAnalyzer.c ****     if (strlen(name) == 0UL || mode > TA_MAX_MODES)
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 5
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 5
 
 
  106              		.loc 1 122 0 is_stmt 1
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  136 003c 2171     		strb	r1, [r4, #4]
  147:source\asw/TimingAnalyzer.c ****         me->state   = TA_STATE_IDLE;
  137              		.loc 1 147 0
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 6
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 6
 
 
  138 003e 6071     		strb	r0, [r4, #5]
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  177              	.L14:
  124:source\asw/TimingAnalyzer.c ****     }
  178              		.loc 1 124 0
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 7
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 7
 
 
  179 005e 6FF01300 		mvn	r0, #19
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  171:source\asw/TimingAnalyzer.c ****     
  172:source\asw/TimingAnalyzer.c ****     // Validate the input
  173:source\asw/TimingAnalyzer.c ****     if (me == NULL_PTR)
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 8
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 8
 
 
  220              		.loc 1 173 0
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  195:source\asw/TimingAnalyzer.c ****     // Fetching the counter FIRST for precision
  196:source\asw/TimingAnalyzer.c ****     if (TA_MODE_SYSTICK == me->mode || TA_MODE_SYSTICK_PIN  == me->mode) {
  252              		.loc 1 196 0
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 9
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 9
 
 
  253 0022 2279     		ldrb	r2, [r4, #4]	@ zero_extendqisi2
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  292              		.cfi_offset 14, -4
  181:source\asw/TimingAnalyzer.c ****     }
  293              		.loc 1 181 0
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 10
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 10
 
 
  294 004c 6FF00900 		mvn	r0, #9
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  237:source\asw/TimingAnalyzer.c ****         me->stop_time = ta_g_system_ms;  // Stop current cycle interval
  238:source\asw/TimingAnalyzer.c ****         
  239:source\asw/TimingAnalyzer.c ****     } else if (TA_MODE_DWT == me->mode || TA_MODE_DWT_PIN == me->mode) {
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 11
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 11
 
 
  240:source\asw/TimingAnalyzer.c ****         // DWT cycle counter
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  280:source\asw/TimingAnalyzer.c ****     }
  281:source\asw/TimingAnalyzer.c ****     
  282:source\asw/TimingAnalyzer.c ****     // Check state - Can only resume if paused
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 12
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 12
 
 
  283:source\asw/TimingAnalyzer.c ****     if (TA_STATE_PAUSED != me->state)
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  368 0032 04E0     		b	.L38
  369              	.L37:
  303:source\asw/TimingAnalyzer.c ****     } else if (TA_MODE_DWT == me->mode || TA_MODE_DWT_PIN == me->mode) {
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 13
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 13
 
 
  370              		.loc 1 303 0
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  410              	.LVL30:
  411              	.L44:
  412              		.align	2
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 14
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 14
 
 
  413              	.L43:
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  355:source\asw/TimingAnalyzer.c ****         {
  356:source\asw/TimingAnalyzer.c ****             me->pin_control_func(0U); /* Turn OFF pin */
  357:source\asw/TimingAnalyzer.c ****         } else {
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 15
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 15
 
 
  358:source\asw/TimingAnalyzer.c ****             return RC_ERROR_NULL;
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  452 001a 0020     		movs	r0, #0
  453              	.LVL32:
  454 001c 7047     		bx	lr
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 16
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 16
 
 
  455              		.cfi_endproc
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  501 0022 114A     		ldr	r2, .L58+4
  502 0024 5268     		ldr	r2, [r2, #4]
  503 0026 C260     		str	r2, [r0, #12]
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 17
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 17
 
 
  504              	.L51:
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  548              		.loc 1 264 0
  549 0054 7047     		bx	lr
  550              	.LVL40:
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 18
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 18
 
 
  551              	.L55:
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  333:source\asw/TimingAnalyzer.c ****     {
  599              		.loc 1 333 0
  600 0006 4279     		ldrb	r2, [r0, #5]	@ zero_extendqisi2
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 19
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 19
 
 
  601 0008 013A     		subs	r2, r2, #1
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  646 0046 5BB1     		cbz	r3, .L68
  356:source\asw/TimingAnalyzer.c ****         } else {
  647              		.loc 1 356 0
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 20
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 20
 
 
  648 0048 0020     		movs	r0, #0
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  695              		.size	TA_stop, .-TA_stop
  696              		.section	.text.TA_getElapsedTimeInMs,"ax",%progbits
  697              		.align	2
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 21
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 21
 
 
  698              		.global	TA_getElapsedTimeInMs
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  404:source\asw/TimingAnalyzer.c ****  * Func which returns elapsed time based on SysTick or DWT reading.
  405:source\asw/TimingAnalyzer.c ****  * \param TA_t *const me        : [IN] struct of Analyzer related parameters
  406:source\asw/TimingAnalyzer.c ****  * \return RC_SUCCESS when success and RC_ERROR_NULL when the me pointer is null
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 22
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 22
 
 
  407:source\asw/TimingAnalyzer.c **** */
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  768              	.L80:
  769              	.LVL60:
  427:source\asw/TimingAnalyzer.c ****             break;
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 23
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 23
 
 
  428:source\asw/TimingAnalyzer.c ****         case TA_STATE_STOPPED: 
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  804              	.LVL66:
  447:source\asw/TimingAnalyzer.c ****         rem_cycles = me->elapsed_time % BCLK__BUS_CLK__KHZ;
  805              		.loc 1 447 0
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 24
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 24
 
 
  806 003c 45F6C053 		movw	r3, #24000
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  851 007c 0169     		ldr	r1, [r0, #16]
  852 007e 0191     		str	r1, [sp, #4]
  853 0080 0092     		str	r2, [sp]
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 25
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 25
 
 
  854 0082 104A     		ldr	r2, .L90+36
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  899 00b4 F1197605 		.word	91625969
  900 00b8 40420F00 		.word	1000000
  901 00bc 28000000 		.word	.LC5
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 26
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 26
 
 
  902 00c0 68000000 		.word	.LC6
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  940              	.LVL86:
  480:source\asw/TimingAnalyzer.c ****         if ((me != NULL_PTR) && me->state)
  941              		.loc 1 480 0
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 27
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 27
 
 
  942 0010 88B1     		cbz	r0, .L96
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  978              	.L96:
  979              	.LBB8:
  980              	.LBB6:
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 28
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 28
 
 
  485:source\asw/TimingAnalyzer.c ****         }
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  1021 0000 024A     		ldr	r2, .L103
  1022 0002 1368     		ldr	r3, [r2]
  1023 0004 0133     		adds	r3, r3, #1
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 29
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 29
 
 
  1024 0006 1360     		str	r3, [r2]
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  1059 00b0 0D0A496E 		.ascii	"\015\012Info: No analyzer instance available to pri"
  1059      666F3A20 
  1059      4E6F2061 
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 30
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 30
 
 
  1059      6E616C79 
@@ -1787,67 +1787,67 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  1096 0006 00000000 		.4byte	.Ldebug_abbrev0
  1097 000a 04       		.byte	0x4
  1098 000b 01       		.uleb128 0x1
- 1099 000c E5010000 		.4byte	.LASF138
+ 1099 000c C8040000 		.4byte	.LASF138
  1100 0010 0C       		.byte	0xc
- 1101 0011 B2040000 		.4byte	.LASF139
- 1102 0015 30030000 		.4byte	.LASF140
+ 1101 0011 64050000 		.4byte	.LASF139
+ 1102 0015 3F070000 		.4byte	.LASF140
  1103 0019 40000000 		.4byte	.Ldebug_ranges0+0x40
  1104 001d 00000000 		.4byte	0
  1105 0021 00000000 		.4byte	.Ldebug_line0
  1106 0025 02       		.uleb128 0x2
  1107 0026 08       		.byte	0x8
  1108 0027 07       		.byte	0x7
- 1109 0028 5C010000 		.4byte	.LASF0
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 31
+ 1109 0028 93000000 		.4byte	.LASF0
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 31
 
 
  1110 002c 02       		.uleb128 0x2
  1111 002d 04       		.byte	0x4
  1112 002e 07       		.byte	0x7
- 1113 002f 68000000 		.4byte	.LASF1
+ 1113 002f 1C020000 		.4byte	.LASF1
  1114 0033 02       		.uleb128 0x2
  1115 0034 01       		.byte	0x1
  1116 0035 06       		.byte	0x6
- 1117 0036 FB060000 		.4byte	.LASF2
+ 1117 0036 24010000 		.4byte	.LASF2
  1118 003a 03       		.uleb128 0x3
- 1119 003b AD050000 		.4byte	.LASF6
+ 1119 003b 4F000000 		.4byte	.LASF6
  1120 003f 02       		.byte	0x2
  1121 0040 1D       		.byte	0x1d
  1122 0041 45000000 		.4byte	0x45
  1123 0045 02       		.uleb128 0x2
  1124 0046 01       		.byte	0x1
  1125 0047 08       		.byte	0x8
- 1126 0048 34060000 		.4byte	.LASF3
+ 1126 0048 3D040000 		.4byte	.LASF3
  1127 004c 02       		.uleb128 0x2
  1128 004d 02       		.byte	0x2
  1129 004e 05       		.byte	0x5
- 1130 004f 46050000 		.4byte	.LASF4
+ 1130 004f 73040000 		.4byte	.LASF4
  1131 0053 02       		.uleb128 0x2
  1132 0054 02       		.byte	0x2
  1133 0055 07       		.byte	0x7
- 1134 0056 07070000 		.4byte	.LASF5
+ 1134 0056 B5020000 		.4byte	.LASF5
  1135 005a 03       		.uleb128 0x3
- 1136 005b 96000000 		.4byte	.LASF7
+ 1136 005b BC000000 		.4byte	.LASF7
  1137 005f 02       		.byte	0x2
  1138 0060 3F       		.byte	0x3f
  1139 0061 65000000 		.4byte	0x65
  1140 0065 02       		.uleb128 0x2
  1141 0066 04       		.byte	0x4
  1142 0067 05       		.byte	0x5
- 1143 0068 59050000 		.4byte	.LASF8
+ 1143 0068 79010000 		.4byte	.LASF8
  1144 006c 03       		.uleb128 0x3
- 1145 006d 42060000 		.4byte	.LASF9
+ 1145 006d FC010000 		.4byte	.LASF9
  1146 0071 02       		.byte	0x2
  1147 0072 41       		.byte	0x41
  1148 0073 77000000 		.4byte	0x77
  1149 0077 02       		.uleb128 0x2
  1150 0078 04       		.byte	0x4
  1151 0079 07       		.byte	0x7
- 1152 007a FF050000 		.4byte	.LASF10
+ 1152 007a 7D020000 		.4byte	.LASF10
  1153 007e 02       		.uleb128 0x2
  1154 007f 08       		.byte	0x8
  1155 0080 05       		.byte	0x5
- 1156 0081 8E030000 		.4byte	.LASF11
+ 1156 0081 16010000 		.4byte	.LASF11
  1157 0085 04       		.uleb128 0x4
  1158 0086 04       		.byte	0x4
  1159 0087 05       		.byte	0x5
@@ -1855,73 +1855,73 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  1161 008c 02       		.uleb128 0x2
  1162 008d 08       		.byte	0x8
  1163 008e 04       		.byte	0x4
- 1164 008f 90040000 		.4byte	.LASF12
+ 1164 008f BB050000 		.4byte	.LASF12
  1165 0093 05       		.uleb128 0x5
  1166 0094 04       		.byte	0x4
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 32
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 32
 
 
  1167 0095 02       		.uleb128 0x2
  1168 0096 04       		.byte	0x4
  1169 0097 07       		.byte	0x7
- 1170 0098 F6050000 		.4byte	.LASF13
+ 1170 0098 6A030000 		.4byte	.LASF13
  1171 009c 02       		.uleb128 0x2
  1172 009d 01       		.byte	0x1
  1173 009e 08       		.byte	0x8
- 1174 009f B9020000 		.4byte	.LASF14
+ 1174 009f C7050000 		.4byte	.LASF14
  1175 00a3 06       		.uleb128 0x6
  1176 00a4 04       		.byte	0x4
  1177 00a5 A9000000 		.4byte	0xa9
  1178 00a9 07       		.uleb128 0x7
  1179 00aa 9C000000 		.4byte	0x9c
  1180 00ae 03       		.uleb128 0x3
- 1181 00af 28030000 		.4byte	.LASF15
+ 1181 00af F4060000 		.4byte	.LASF15
  1182 00b3 03       		.byte	0x3
  1183 00b4 18       		.byte	0x18
  1184 00b5 3A000000 		.4byte	0x3a
  1185 00b9 03       		.uleb128 0x3
- 1186 00ba 16060000 		.4byte	.LASF16
+ 1186 00ba 35040000 		.4byte	.LASF16
  1187 00be 03       		.byte	0x3
  1188 00bf 2C       		.byte	0x2c
  1189 00c0 5A000000 		.4byte	0x5a
  1190 00c4 03       		.uleb128 0x3
- 1191 00c5 12010000 		.4byte	.LASF17
+ 1191 00c5 87050000 		.4byte	.LASF17
  1192 00c9 03       		.byte	0x3
  1193 00ca 30       		.byte	0x30
  1194 00cb 6C000000 		.4byte	0x6c
  1195 00cf 02       		.uleb128 0x2
  1196 00d0 04       		.byte	0x4
  1197 00d1 04       		.byte	0x4
- 1198 00d2 39010000 		.4byte	.LASF18
+ 1198 00d2 DD030000 		.4byte	.LASF18
  1199 00d6 02       		.uleb128 0x2
  1200 00d7 08       		.byte	0x8
  1201 00d8 04       		.byte	0x4
- 1202 00d9 1A070000 		.4byte	.LASF19
+ 1202 00d9 BA010000 		.4byte	.LASF19
  1203 00dd 03       		.uleb128 0x3
- 1204 00de ED050000 		.4byte	.LASF20
+ 1204 00de E1060000 		.4byte	.LASF20
  1205 00e2 04       		.byte	0x4
  1206 00e3 53       		.byte	0x53
  1207 00e4 85000000 		.4byte	0x85
  1208 00e8 03       		.uleb128 0x3
- 1209 00e9 E1040000 		.4byte	.LASF21
+ 1209 00e9 AA060000 		.4byte	.LASF21
  1210 00ed 04       		.byte	0x4
  1211 00ee 54       		.byte	0x54
  1212 00ef 2C000000 		.4byte	0x2c
  1213 00f3 03       		.uleb128 0x3
- 1214 00f4 E5050000 		.4byte	.LASF22
+ 1214 00f4 57020000 		.4byte	.LASF22
  1215 00f8 05       		.byte	0x5
  1216 00f9 4D       		.byte	0x4d
  1217 00fa E8000000 		.4byte	0xe8
  1218 00fe 03       		.uleb128 0x3
- 1219 00ff E0000000 		.4byte	.LASF23
+ 1219 00ff 71070000 		.4byte	.LASF23
  1220 0103 05       		.byte	0x5
  1221 0104 4F       		.byte	0x4f
  1222 0105 E8000000 		.4byte	0xe8
  1223 0109 03       		.uleb128 0x3
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 33
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 33
 
 
- 1224 010a 93010000 		.4byte	.LASF24
+ 1224 010a 0F020000 		.4byte	.LASF24
  1225 010e 05       		.byte	0x5
  1226 010f 78       		.byte	0x78
  1227 0110 DD000000 		.4byte	0xdd
@@ -1942,152 +1942,152 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  1242 0131 4F03     		.2byte	0x34f
  1243 0133 63020000 		.4byte	0x263
  1244 0137 0C       		.uleb128 0xc
- 1245 0138 74070000 		.4byte	.LASF25
+ 1245 0138 74060000 		.4byte	.LASF25
  1246 013c 06       		.byte	0x6
  1247 013d 5103     		.2byte	0x351
  1248 013f 14010000 		.4byte	0x114
  1249 0143 00       		.byte	0
  1250 0144 0C       		.uleb128 0xc
- 1251 0145 62030000 		.4byte	.LASF26
+ 1251 0145 4F030000 		.4byte	.LASF26
  1252 0149 06       		.byte	0x6
  1253 014a 5203     		.2byte	0x352
  1254 014c 14010000 		.4byte	0x114
  1255 0150 04       		.byte	0x4
  1256 0151 0C       		.uleb128 0xc
- 1257 0152 61000000 		.4byte	.LASF27
+ 1257 0152 3C010000 		.4byte	.LASF27
  1258 0156 06       		.byte	0x6
  1259 0157 5303     		.2byte	0x353
  1260 0159 14010000 		.4byte	0x114
  1261 015d 08       		.byte	0x8
  1262 015e 0C       		.uleb128 0xc
- 1263 015f 4D070000 		.4byte	.LASF28
+ 1263 015f F5020000 		.4byte	.LASF28
  1264 0163 06       		.byte	0x6
  1265 0164 5403     		.2byte	0x354
  1266 0166 14010000 		.4byte	0x114
  1267 016a 0C       		.byte	0xc
  1268 016b 0C       		.uleb128 0xc
- 1269 016c 87040000 		.4byte	.LASF29
+ 1269 016c C1010000 		.4byte	.LASF29
  1270 0170 06       		.byte	0x6
  1271 0171 5503     		.2byte	0x355
  1272 0173 14010000 		.4byte	0x114
  1273 0177 10       		.byte	0x10
  1274 0178 0C       		.uleb128 0xc
- 1275 0179 A5020000 		.4byte	.LASF30
+ 1275 0179 80050000 		.4byte	.LASF30
  1276 017d 06       		.byte	0x6
  1277 017e 5603     		.2byte	0x356
  1278 0180 14010000 		.4byte	0x114
  1279 0184 14       		.byte	0x14
  1280 0185 0C       		.uleb128 0xc
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 34
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 34
 
 
- 1281 0186 AB060000 		.4byte	.LASF31
+ 1281 0186 05070000 		.4byte	.LASF31
  1282 018a 06       		.byte	0x6
  1283 018b 5703     		.2byte	0x357
  1284 018d 14010000 		.4byte	0x114
  1285 0191 18       		.byte	0x18
  1286 0192 0C       		.uleb128 0xc
- 1287 0193 1E060000 		.4byte	.LASF32
+ 1287 0193 0D070000 		.4byte	.LASF32
  1288 0197 06       		.byte	0x6
  1289 0198 5803     		.2byte	0x358
  1290 019a 19010000 		.4byte	0x119
  1291 019e 1C       		.byte	0x1c
  1292 019f 0C       		.uleb128 0xc
- 1293 01a0 11000000 		.4byte	.LASF33
+ 1293 01a0 B3030000 		.4byte	.LASF33
  1294 01a4 06       		.byte	0x6
  1295 01a5 5903     		.2byte	0x359
  1296 01a7 14010000 		.4byte	0x114
  1297 01ab 20       		.byte	0x20
  1298 01ac 0C       		.uleb128 0xc
- 1299 01ad C2030000 		.4byte	.LASF34
+ 1299 01ad 16020000 		.4byte	.LASF34
  1300 01b1 06       		.byte	0x6
  1301 01b2 5A03     		.2byte	0x35a
  1302 01b4 14010000 		.4byte	0x114
  1303 01b8 24       		.byte	0x24
  1304 01b9 0C       		.uleb128 0xc
- 1305 01ba EC020000 		.4byte	.LASF35
+ 1305 01ba 4B040000 		.4byte	.LASF35
  1306 01be 06       		.byte	0x6
  1307 01bf 5B03     		.2byte	0x35b
  1308 01c1 14010000 		.4byte	0x114
  1309 01c5 28       		.byte	0x28
  1310 01c6 0C       		.uleb128 0xc
- 1311 01c7 28050000 		.4byte	.LASF36
+ 1311 01c7 F0030000 		.4byte	.LASF36
  1312 01cb 06       		.byte	0x6
  1313 01cc 5C03     		.2byte	0x35c
  1314 01ce 1E010000 		.4byte	0x11e
  1315 01d2 2C       		.byte	0x2c
  1316 01d3 0C       		.uleb128 0xc
- 1317 01d4 17000000 		.4byte	.LASF37
+ 1317 01d4 B9030000 		.4byte	.LASF37
  1318 01d8 06       		.byte	0x6
  1319 01d9 5D03     		.2byte	0x35d
  1320 01db 14010000 		.4byte	0x114
  1321 01df 30       		.byte	0x30
  1322 01e0 0C       		.uleb128 0xc
- 1323 01e1 C8030000 		.4byte	.LASF38
+ 1323 01e1 2F040000 		.4byte	.LASF38
  1324 01e5 06       		.byte	0x6
  1325 01e6 5E03     		.2byte	0x35e
  1326 01e8 14010000 		.4byte	0x114
  1327 01ec 34       		.byte	0x34
  1328 01ed 0C       		.uleb128 0xc
- 1329 01ee F6020000 		.4byte	.LASF39
+ 1329 01ee 55040000 		.4byte	.LASF39
  1330 01f2 06       		.byte	0x6
  1331 01f3 5F03     		.2byte	0x35f
  1332 01f5 14010000 		.4byte	0x114
  1333 01f9 38       		.byte	0x38
  1334 01fa 0C       		.uleb128 0xc
- 1335 01fb 32050000 		.4byte	.LASF40
+ 1335 01fb FA030000 		.4byte	.LASF40
  1336 01ff 06       		.byte	0x6
  1337 0200 6003     		.2byte	0x360
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 35
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 35
 
 
  1338 0202 1E010000 		.4byte	0x11e
  1339 0206 3C       		.byte	0x3c
  1340 0207 0C       		.uleb128 0xc
- 1341 0208 1D000000 		.4byte	.LASF41
+ 1341 0208 BF030000 		.4byte	.LASF41
  1342 020c 06       		.byte	0x6
  1343 020d 6103     		.2byte	0x361
  1344 020f 14010000 		.4byte	0x114
  1345 0213 40       		.byte	0x40
  1346 0214 0C       		.uleb128 0xc
- 1347 0215 CE030000 		.4byte	.LASF42
+ 1347 0215 3A020000 		.4byte	.LASF42
  1348 0219 06       		.byte	0x6
  1349 021a 6203     		.2byte	0x362
  1350 021c 14010000 		.4byte	0x114
  1351 0220 44       		.byte	0x44
  1352 0221 0C       		.uleb128 0xc
- 1353 0222 00030000 		.4byte	.LASF43
+ 1353 0222 5F040000 		.4byte	.LASF43
  1354 0226 06       		.byte	0x6
  1355 0227 6303     		.2byte	0x363
  1356 0229 14010000 		.4byte	0x114
  1357 022d 48       		.byte	0x48
  1358 022e 0C       		.uleb128 0xc
- 1359 022f 3C050000 		.4byte	.LASF44
+ 1359 022f 04040000 		.4byte	.LASF44
  1360 0233 06       		.byte	0x6
  1361 0234 6403     		.2byte	0x364
  1362 0236 1E010000 		.4byte	0x11e
  1363 023a 4C       		.byte	0x4c
  1364 023b 0C       		.uleb128 0xc
- 1365 023c 23000000 		.4byte	.LASF45
+ 1365 023c C5030000 		.4byte	.LASF45
  1366 0240 06       		.byte	0x6
  1367 0241 6503     		.2byte	0x365
  1368 0243 14010000 		.4byte	0x114
  1369 0247 50       		.byte	0x50
  1370 0248 0C       		.uleb128 0xc
- 1371 0249 D4030000 		.4byte	.LASF46
+ 1371 0249 40020000 		.4byte	.LASF46
  1372 024d 06       		.byte	0x6
  1373 024e 6603     		.2byte	0x366
  1374 0250 14010000 		.4byte	0x114
  1375 0254 54       		.byte	0x54
  1376 0255 0C       		.uleb128 0xc
- 1377 0256 0A030000 		.4byte	.LASF47
+ 1377 0256 69040000 		.4byte	.LASF47
  1378 025a 06       		.byte	0x6
  1379 025b 6703     		.2byte	0x367
  1380 025d 14010000 		.4byte	0x114
  1381 0261 58       		.byte	0x58
  1382 0262 00       		.byte	0
  1383 0263 0D       		.uleb128 0xd
- 1384 0264 9C020000 		.4byte	.LASF48
+ 1384 0264 57060000 		.4byte	.LASF48
  1385 0268 06       		.byte	0x6
  1386 0269 6803     		.2byte	0x368
  1387 026b 2E010000 		.4byte	0x12e
@@ -2097,8 +2097,8 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  1391 0272 DC04     		.2byte	0x4dc
  1392 0274 AD020000 		.4byte	0x2ad
  1393 0278 0C       		.uleb128 0xc
- 1394 0279 E4060000 		.4byte	.LASF49
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 36
+ 1394 0279 A9010000 		.4byte	.LASF49
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 36
 
 
  1395 027d 06       		.byte	0x6
@@ -2106,36 +2106,36 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  1397 0280 14010000 		.4byte	0x114
  1398 0284 00       		.byte	0
  1399 0285 0C       		.uleb128 0xc
- 1400 0286 39070000 		.4byte	.LASF50
+ 1400 0286 5E000000 		.4byte	.LASF50
  1401 028a 06       		.byte	0x6
  1402 028b DF04     		.2byte	0x4df
  1403 028d 14010000 		.4byte	0x114
  1404 0291 04       		.byte	0x4
  1405 0292 0C       		.uleb128 0xc
- 1406 0293 47070000 		.4byte	.LASF51
+ 1406 0293 8D000000 		.4byte	.LASF51
  1407 0297 06       		.byte	0x6
  1408 0298 E004     		.2byte	0x4e0
  1409 029a 14010000 		.4byte	0x114
  1410 029e 08       		.byte	0x8
  1411 029f 0C       		.uleb128 0xc
- 1412 02a0 83000000 		.4byte	.LASF52
+ 1412 02a0 29040000 		.4byte	.LASF52
  1413 02a4 06       		.byte	0x6
  1414 02a5 E104     		.2byte	0x4e1
  1415 02a7 14010000 		.4byte	0x114
  1416 02ab 0C       		.byte	0xc
  1417 02ac 00       		.byte	0
  1418 02ad 0D       		.uleb128 0xd
- 1419 02ae 38040000 		.4byte	.LASF53
+ 1419 02ae F2000000 		.4byte	.LASF53
  1420 02b2 06       		.byte	0x6
  1421 02b3 E204     		.2byte	0x4e2
  1422 02b5 6F020000 		.4byte	0x26f
  1423 02b9 03       		.uleb128 0x3
- 1424 02ba D3020000 		.4byte	.LASF54
+ 1424 02ba 73030000 		.4byte	.LASF54
  1425 02be 07       		.byte	0x7
  1426 02bf 9C       		.byte	0x9c
  1427 02c0 45000000 		.4byte	0x45
  1428 02c4 03       		.uleb128 0x3
- 1429 02c5 83010000 		.4byte	.LASF55
+ 1429 02c5 12000000 		.4byte	.LASF55
  1430 02c9 07       		.byte	0x7
  1431 02ca BA       		.byte	0xba
  1432 02cb 93000000 		.4byte	0x93
@@ -2146,120 +2146,120 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  1437 02d6 CF       		.byte	0xcf
  1438 02d7 78030000 		.4byte	0x378
  1439 02db 0F       		.uleb128 0xf
- 1440 02dc BE020000 		.4byte	.LASF56
+ 1440 02dc 9D020000 		.4byte	.LASF56
  1441 02e0 00       		.byte	0
  1442 02e1 10       		.uleb128 0x10
- 1443 02e2 1B010000 		.4byte	.LASF57
+ 1443 02e2 CB030000 		.4byte	.LASF57
  1444 02e6 7F       		.sleb128 -1
  1445 02e7 10       		.uleb128 0x10
- 1446 02e8 A0000000 		.4byte	.LASF58
+ 1446 02e8 8F020000 		.4byte	.LASF58
  1447 02ec 7E       		.sleb128 -2
  1448 02ed 10       		.uleb128 0x10
- 1449 02ee 75000000 		.4byte	.LASF59
+ 1449 02ee BA040000 		.4byte	.LASF59
  1450 02f2 7D       		.sleb128 -3
  1451 02f3 10       		.uleb128 0x10
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 37
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 37
 
 
- 1452 02f4 1D040000 		.4byte	.LASF60
+ 1452 02f4 47060000 		.4byte	.LASF60
  1453 02f8 7C       		.sleb128 -4
  1454 02f9 10       		.uleb128 0x10
- 1455 02fa 65070000 		.4byte	.LASF61
+ 1455 02fa C8060000 		.4byte	.LASF61
  1456 02fe 7B       		.sleb128 -5
  1457 02ff 10       		.uleb128 0x10
- 1458 0300 23060000 		.4byte	.LASF62
+ 1458 0300 1B060000 		.4byte	.LASF62
  1459 0304 7A       		.sleb128 -6
  1460 0305 10       		.uleb128 0x10
- 1461 0306 0B040000 		.4byte	.LASF63
+ 1461 0306 2D070000 		.4byte	.LASF63
  1462 030a 79       		.sleb128 -7
  1463 030b 10       		.uleb128 0x10
- 1464 030c 72040000 		.4byte	.LASF64
+ 1464 030c E0020000 		.4byte	.LASF64
  1465 0310 78       		.sleb128 -8
  1466 0311 10       		.uleb128 0x10
- 1467 0312 4D060000 		.4byte	.LASF65
+ 1467 0312 4D010000 		.4byte	.LASF65
  1468 0316 77       		.sleb128 -9
  1469 0317 10       		.uleb128 0x10
- 1470 0318 FE040000 		.4byte	.LASF66
+ 1470 0318 14040000 		.4byte	.LASF66
  1471 031c 76       		.sleb128 -10
  1472 031d 10       		.uleb128 0x10
- 1473 031e AE000000 		.4byte	.LASF67
+ 1473 031e 00000000 		.4byte	.LASF67
  1474 0322 75       		.sleb128 -11
  1475 0323 10       		.uleb128 0x10
- 1476 0324 4E010000 		.4byte	.LASF68
+ 1476 0324 37030000 		.4byte	.LASF68
  1477 0328 74       		.sleb128 -12
  1478 0329 10       		.uleb128 0x10
- 1479 032a 73020000 		.4byte	.LASF69
+ 1479 032a 6B020000 		.4byte	.LASF69
  1480 032e 73       		.sleb128 -13
  1481 032f 10       		.uleb128 0x10
- 1482 0330 EB040000 		.4byte	.LASF70
+ 1482 0330 A8050000 		.4byte	.LASF70
  1483 0334 72       		.sleb128 -14
  1484 0335 10       		.uleb128 0x10
- 1485 0336 3C000000 		.4byte	.LASF71
+ 1485 0336 56030000 		.4byte	.LASF71
  1486 033a 71       		.sleb128 -15
  1487 033b 10       		.uleb128 0x10
- 1488 033c 9C050000 		.4byte	.LASF72
+ 1488 033c 7D030000 		.4byte	.LASF72
  1489 0340 70       		.sleb128 -16
  1490 0341 10       		.uleb128 0x10
- 1491 0342 D1050000 		.4byte	.LASF73
+ 1491 0342 7D040000 		.4byte	.LASF73
  1492 0346 6F       		.sleb128 -17
  1493 0347 10       		.uleb128 0x10
- 1494 0348 24010000 		.4byte	.LASF74
+ 1494 0348 FC020000 		.4byte	.LASF74
  1495 034c 6E       		.sleb128 -18
  1496 034d 10       		.uleb128 0x10
- 1497 034e 29000000 		.4byte	.LASF75
+ 1497 034e 24030000 		.4byte	.LASF75
  1498 0352 6D       		.sleb128 -19
  1499 0353 10       		.uleb128 0x10
- 1500 0354 0C050000 		.4byte	.LASF76
+ 1500 0354 11030000 		.4byte	.LASF76
  1501 0358 6C       		.sleb128 -20
  1502 0359 10       		.uleb128 0x10
- 1503 035a 69030000 		.4byte	.LASF77
+ 1503 035a AA000000 		.4byte	.LASF77
  1504 035e 6B       		.sleb128 -21
  1505 035f 10       		.uleb128 0x10
- 1506 0360 B0030000 		.4byte	.LASF78
+ 1506 0360 A1030000 		.4byte	.LASF78
  1507 0364 6A       		.sleb128 -22
  1508 0365 10       		.uleb128 0x10
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 38
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 38
 
 
- 1509 0366 C0000000 		.4byte	.LASF79
+ 1509 0366 29000000 		.4byte	.LASF79
  1510 036a 69       		.sleb128 -23
  1511 036b 10       		.uleb128 0x10
- 1512 036c 7C060000 		.4byte	.LASF80
+ 1512 036c 46020000 		.4byte	.LASF80
  1513 0370 68       		.sleb128 -24
  1514 0371 10       		.uleb128 0x10
- 1515 0372 6F050000 		.4byte	.LASF81
+ 1515 0372 F8050000 		.4byte	.LASF81
  1516 0376 67       		.sleb128 -25
  1517 0377 00       		.byte	0
  1518 0378 03       		.uleb128 0x3
- 1519 0379 11060000 		.4byte	.LASF82
+ 1519 0379 59000000 		.4byte	.LASF82
  1520 037d 07       		.byte	0x7
  1521 037e EA       		.byte	0xea
  1522 037f CF020000 		.4byte	0x2cf
  1523 0383 11       		.uleb128 0x11
- 1524 0384 96060000 		.4byte	.LASF141
+ 1524 0384 0E040000 		.4byte	.LASF141
  1525 0388 01       		.byte	0x1
  1526 0389 45000000 		.4byte	0x45
  1527 038d 08       		.byte	0x8
  1528 038e 5A       		.byte	0x5a
  1529 038f B2030000 		.4byte	0x3b2
  1530 0393 0F       		.uleb128 0xf
- 1531 0394 88050000 		.4byte	.LASF83
+ 1531 0394 30010000 		.4byte	.LASF83
  1532 0398 00       		.byte	0
  1533 0399 0F       		.uleb128 0xf
- 1534 039a 9A010000 		.4byte	.LASF84
+ 1534 039a 69010000 		.4byte	.LASF84
  1535 039e 01       		.byte	0x1
  1536 039f 0F       		.uleb128 0xf
- 1537 03a0 A2040000 		.4byte	.LASF85
+ 1537 03a0 2C060000 		.4byte	.LASF85
  1538 03a4 02       		.byte	0x2
  1539 03a5 0F       		.uleb128 0xf
- 1540 03a6 9C030000 		.4byte	.LASF86
+ 1540 03a6 60060000 		.4byte	.LASF86
  1541 03aa 03       		.byte	0x3
  1542 03ab 0F       		.uleb128 0xf
- 1543 03ac FF030000 		.4byte	.LASF87
+ 1543 03ac D3000000 		.4byte	.LASF87
  1544 03b0 04       		.byte	0x4
  1545 03b1 00       		.byte	0
  1546 03b2 03       		.uleb128 0x3
- 1547 03b3 E8000000 		.4byte	.LASF88
+ 1547 03b3 D1050000 		.4byte	.LASF88
  1548 03b7 08       		.byte	0x8
  1549 03b8 61       		.byte	0x61
  1550 03b9 83030000 		.4byte	0x383
@@ -2270,28 +2270,28 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  1555 03c4 68       		.byte	0x68
  1556 03c5 E2030000 		.4byte	0x3e2
  1557 03c9 0F       		.uleb128 0xf
- 1558 03ca D7010000 		.4byte	.LASF89
+ 1558 03ca 56050000 		.4byte	.LASF89
  1559 03ce 00       		.byte	0
  1560 03cf 0F       		.uleb128 0xf
- 1561 03d0 54070000 		.4byte	.LASF90
+ 1561 03d0 29020000 		.4byte	.LASF90
  1562 03d4 01       		.byte	0x1
  1563 03d5 0F       		.uleb128 0xf
- 1564 03d6 73010000 		.4byte	.LASF91
+ 1564 03d6 12070000 		.4byte	.LASF91
  1565 03da 02       		.byte	0x2
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 39
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 39
 
 
  1566 03db 0F       		.uleb128 0xf
- 1567 03dc EA060000 		.4byte	.LASF92
+ 1567 03dc 9A040000 		.4byte	.LASF92
  1568 03e0 03       		.byte	0x3
  1569 03e1 00       		.byte	0
  1570 03e2 03       		.uleb128 0x3
- 1571 03e3 91020000 		.4byte	.LASF93
+ 1571 03e3 8F010000 		.4byte	.LASF93
  1572 03e7 08       		.byte	0x8
  1573 03e8 6D       		.byte	0x6d
  1574 03e9 BD030000 		.4byte	0x3bd
  1575 03ed 03       		.uleb128 0x3
- 1576 03ee 89000000 		.4byte	.LASF94
+ 1576 03ee E3030000 		.4byte	.LASF94
  1577 03f2 08       		.byte	0x8
  1578 03f3 6F       		.byte	0x6f
  1579 03f4 F8030000 		.4byte	0x3f8
@@ -2309,53 +2309,53 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  1591 040c 77       		.byte	0x77
  1592 040d 66040000 		.4byte	0x466
  1593 0411 15       		.uleb128 0x15
- 1594 0412 B7050000 		.4byte	.LASF95
+ 1594 0412 B0020000 		.4byte	.LASF95
  1595 0416 08       		.byte	0x8
  1596 0417 79       		.byte	0x79
  1597 0418 A3000000 		.4byte	0xa3
  1598 041c 00       		.byte	0
  1599 041d 15       		.uleb128 0x15
- 1600 041e F2000000 		.4byte	.LASF96
+ 1600 041e CC050000 		.4byte	.LASF96
  1601 0422 08       		.byte	0x8
  1602 0423 7A       		.byte	0x7a
  1603 0424 B2030000 		.4byte	0x3b2
  1604 0428 04       		.byte	0x4
  1605 0429 15       		.uleb128 0x15
- 1606 042a A5060000 		.4byte	.LASF97
+ 1606 042a 63010000 		.4byte	.LASF97
  1607 042e 08       		.byte	0x8
  1608 042f 7B       		.byte	0x7b
  1609 0430 E2030000 		.4byte	0x3e2
  1610 0434 05       		.byte	0x5
  1611 0435 15       		.uleb128 0x15
- 1612 0436 2D040000 		.4byte	.LASF98
+ 1612 0436 3C060000 		.4byte	.LASF98
  1613 043a 08       		.byte	0x8
  1614 043b 7D       		.byte	0x7d
  1615 043c C4000000 		.4byte	0xc4
  1616 0440 08       		.byte	0x8
  1617 0441 15       		.uleb128 0x15
- 1618 0442 58040000 		.4byte	.LASF99
+ 1618 0442 43010000 		.4byte	.LASF99
  1619 0446 08       		.byte	0x8
  1620 0447 7E       		.byte	0x7e
  1621 0448 C4000000 		.4byte	0xc4
  1622 044c 0C       		.byte	0xc
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 40
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 40
 
 
  1623 044d 15       		.uleb128 0x15
- 1624 044e AC020000 		.4byte	.LASF100
+ 1624 044e 01010000 		.4byte	.LASF100
  1625 0452 08       		.byte	0x8
  1626 0453 7F       		.byte	0x7f
  1627 0454 C4000000 		.4byte	0xc4
  1628 0458 10       		.byte	0x10
  1629 0459 15       		.uleb128 0x15
- 1630 045a EE030000 		.4byte	.LASF101
+ 1630 045a 64000000 		.4byte	.LASF101
  1631 045e 08       		.byte	0x8
  1632 045f 81       		.byte	0x81
  1633 0460 ED030000 		.4byte	0x3ed
  1634 0464 14       		.byte	0x14
  1635 0465 00       		.byte	0
  1636 0466 03       		.uleb128 0x3
- 1637 0467 F7000000 		.4byte	.LASF102
+ 1637 0467 8A010000 		.4byte	.LASF102
  1638 046b 08       		.byte	0x8
  1639 046c 82       		.byte	0x82
  1640 046d 09040000 		.4byte	0x409
@@ -2366,20 +2366,20 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  1645 0478 18       		.byte	0x18
  1646 0479 96040000 		.4byte	0x496
  1647 047d 0F       		.uleb128 0xf
- 1648 047e 9C060000 		.4byte	.LASF103
+ 1648 047e 91040000 		.4byte	.LASF103
  1649 0482 00       		.byte	0
  1650 0483 0F       		.uleb128 0xf
- 1651 0484 09000000 		.4byte	.LASF104
+ 1651 0484 07020000 		.4byte	.LASF104
  1652 0488 01       		.byte	0x1
  1653 0489 0F       		.uleb128 0xf
- 1654 048a CE040000 		.4byte	.LASF105
+ 1654 048a 22070000 		.4byte	.LASF105
  1655 048e 02       		.byte	0x2
  1656 048f 0F       		.uleb128 0xf
- 1657 0490 50000000 		.4byte	.LASF106
+ 1657 0490 DF000000 		.4byte	.LASF106
  1658 0494 03       		.byte	0x3
  1659 0495 00       		.byte	0
  1660 0496 16       		.uleb128 0x16
- 1661 0497 94050000 		.4byte	.LASF107
+ 1661 0497 0E010000 		.4byte	.LASF107
  1662 049b 01       		.byte	0x1
  1663 049c 4A       		.byte	0x4a
  1664 049d 78030000 		.4byte	0x378
@@ -2398,11 +2398,11 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  1677 04bc 22000000 		.4byte	.LVL1
  1678 04c0 68090000 		.4byte	0x968
  1679 04c4 00       		.byte	0
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 41
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 41
 
 
  1680 04c5 16       		.uleb128 0x16
- 1681 04c6 C9020000 		.4byte	.LASF108
+ 1681 04c6 11060000 		.4byte	.LASF108
  1682 04ca 01       		.byte	0x1
  1683 04cb 6B       		.byte	0x6b
  1684 04cc 78030000 		.4byte	0x378
@@ -2418,21 +2418,21 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  1694 04e4 26050000 		.4byte	0x526
  1695 04e8 00000000 		.4byte	.LLST0
  1696 04ec 1A       		.uleb128 0x1a
- 1697 04ed F2000000 		.4byte	.LASF96
+ 1697 04ed CC050000 		.4byte	.LASF96
  1698 04f1 01       		.byte	0x1
  1699 04f2 6B       		.byte	0x6b
  1700 04f3 2B050000 		.4byte	0x52b
  1701 04f7 01       		.uleb128 0x1
  1702 04f8 51       		.byte	0x51
  1703 04f9 1A       		.uleb128 0x1a
- 1704 04fa 8D060000 		.4byte	.LASF109
+ 1704 04fa 20000000 		.4byte	.LASF109
  1705 04fe 01       		.byte	0x1
  1706 04ff 6B       		.byte	0x6b
  1707 0500 30050000 		.4byte	0x530
  1708 0504 01       		.uleb128 0x1
  1709 0505 52       		.byte	0x52
  1710 0506 1A       		.uleb128 0x1a
- 1711 0507 B7050000 		.4byte	.LASF95
+ 1711 0507 B0020000 		.4byte	.LASF95
  1712 050b 01       		.byte	0x1
  1713 050c 6B       		.byte	0x6b
  1714 050d 35050000 		.4byte	0x535
@@ -2457,8 +2457,8 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  1733 0535 07       		.uleb128 0x7
  1734 0536 A3000000 		.4byte	0xa3
  1735 053a 16       		.uleb128 0x16
- 1736 053b 50050000 		.4byte	.LASF110
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 42
+ 1736 053b FC060000 		.4byte	.LASF110
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 42
 
 
  1737 053f 01       		.byte	0x1
@@ -2491,7 +2491,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  1764 0577 00       		.byte	0
  1765 0578 00       		.byte	0
  1766 0579 1D       		.uleb128 0x1d
- 1767 057a DA030000 		.4byte	.LASF111
+ 1767 057a D7060000 		.4byte	.LASF111
  1768 057e 01       		.byte	0x1
  1769 057f 1001     		.2byte	0x110
  1770 0581 78030000 		.4byte	0x378
@@ -2518,14 +2518,14 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  1791 05b5 01       		.uleb128 0x1
  1792 05b6 50       		.byte	0x50
  1793 05b7 01       		.uleb128 0x1
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 43
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 43
 
 
  1794 05b8 31       		.byte	0x31
  1795 05b9 00       		.byte	0
  1796 05ba 00       		.byte	0
  1797 05bb 1D       		.uleb128 0x1d
- 1798 05bc 21070000 		.4byte	.LASF112
+ 1798 05bc 75000000 		.4byte	.LASF112
  1799 05c0 01       		.byte	0x1
  1800 05c1 7501     		.2byte	0x175
  1801 05c3 78030000 		.4byte	0x378
@@ -2548,7 +2548,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  1818 05f0 00       		.byte	0
  1819 05f1 00       		.byte	0
  1820 05f2 16       		.uleb128 0x16
- 1821 05f3 00000000 		.4byte	.LASF113
+ 1821 05f3 D4030000 		.4byte	.LASF113
  1822 05f7 01       		.byte	0x1
  1823 05f8 DA       		.byte	0xda
  1824 05f9 78030000 		.4byte	0x378
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  1848 0637 50       		.byte	0x50
  1849 0638 02       		.uleb128 0x2
  1850 0639 74       		.byte	0x74
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 44
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 44
 
 
  1851 063a 00       		.sleb128 0
@@ -2593,7 +2593,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  1860 0646 00       		.byte	0
  1861 0647 00       		.byte	0
  1862 0648 1D       		.uleb128 0x1d
- 1863 0649 8B010000 		.4byte	.LASF114
+ 1863 0649 90050000 		.4byte	.LASF114
  1864 064d 01       		.byte	0x1
  1865 064e 4201     		.2byte	0x142
  1866 0650 78030000 		.4byte	0x378
@@ -2635,10 +2635,10 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  1902 069f 00       		.byte	0
  1903 06a0 00       		.byte	0
  1904 06a1 1D       		.uleb128 0x1d
- 1905 06a2 FC000000 		.4byte	.LASF115
+ 1905 06a2 E2050000 		.4byte	.LASF115
  1906 06a6 01       		.byte	0x1
  1907 06a7 8901     		.2byte	0x189
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 45
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 45
 
 
  1908 06a9 C4000000 		.4byte	0xc4
@@ -2660,14 +2660,14 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  1924 06d2 78030000 		.4byte	0x378
  1925 06d6 00       		.byte	0
  1926 06d7 23       		.uleb128 0x23
- 1927 06d8 3F070000 		.4byte	.LASF116
+ 1927 06d8 82010000 		.4byte	.LASF116
  1928 06dc 01       		.byte	0x1
  1929 06dd 8E01     		.2byte	0x18e
  1930 06df C4000000 		.4byte	0xc4
  1931 06e3 E3020000 		.4byte	.LLST9
  1932 06e7 00       		.byte	0
  1933 06e8 1D       		.uleb128 0x1d
- 1934 06e9 AA010000 		.4byte	.LASF117
+ 1934 06e9 AB040000 		.4byte	.LASF117
  1935 06ed 01       		.byte	0x1
  1936 06ee 9801     		.2byte	0x198
  1937 06f0 78030000 		.4byte	0x378
@@ -2689,7 +2689,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  1953 0719 78030000 		.4byte	0x378
  1954 071d 00       		.byte	0
  1955 071e 24       		.uleb128 0x24
- 1956 071f 5A000000 		.4byte	.LASF118
+ 1956 071f DB050000 		.4byte	.LASF118
  1957 0723 01       		.byte	0x1
  1958 0724 A301     		.2byte	0x1a3
  1959 0726 26080000 		.4byte	0x826
@@ -2697,8 +2697,8 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  1961 072b 91       		.byte	0x91
  1962 072c D87E     		.sleb128 -168
  1963 072e 23       		.uleb128 0x23
- 1964 072f D7000000 		.4byte	.LASF119
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 46
+ 1964 072f E9000000 		.4byte	.LASF119
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 46
 
 
  1965 0733 01       		.byte	0x1
@@ -2710,19 +2710,19 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  1971 0743 32000000 		.4byte	.LBE2-.LBB2
  1972 0747 CC070000 		.4byte	0x7cc
  1973 074b 23       		.uleb128 0x23
- 1974 074c 47040000 		.4byte	.LASF120
+ 1974 074c 22040000 		.4byte	.LASF120
  1975 0750 01       		.byte	0x1
  1976 0751 BD01     		.2byte	0x1bd
  1977 0753 C4000000 		.4byte	0xc4
  1978 0757 04040000 		.4byte	.LLST12
  1979 075b 23       		.uleb128 0x23
- 1980 075c D9040000 		.4byte	.LASF121
+ 1980 075c A8020000 		.4byte	.LASF121
  1981 0760 01       		.byte	0x1
  1982 0761 BD01     		.2byte	0x1bd
  1983 0763 C4000000 		.4byte	0xc4
  1984 0767 17040000 		.4byte	.LLST13
  1985 076b 23       		.uleb128 0x23
- 1986 076c B9010000 		.4byte	.LASF122
+ 1986 076c AF010000 		.4byte	.LASF122
  1987 0770 01       		.byte	0x1
  1988 0771 BD01     		.2byte	0x1bd
  1989 0773 C4000000 		.4byte	0xc4
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  2019 07a1 1C       		.uleb128 0x1c
  2020 07a2 02       		.uleb128 0x2
  2021 07a3 7D       		.byte	0x7d
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 47
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 47
 
 
  2022 07a4 08       		.sleb128 8
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  2076 07ea 03       		.byte	0x3
  2077 07eb 68000000 		.4byte	.LC6
  2078 07ef 00       		.byte	0
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 48
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 48
 
 
  2079 07f0 21       		.uleb128 0x21
@@ -2863,7 +2863,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  2118 0834 95       		.byte	0x95
  2119 0835 00       		.byte	0
  2120 0836 1D       		.uleb128 0x1d
- 2121 0837 85020000 		.4byte	.LASF123
+ 2121 0837 5F020000 		.4byte	.LASF123
  2122 083b 01       		.byte	0x1
  2123 083c D701     		.2byte	0x1d7
  2124 083e 78030000 		.4byte	0x378
@@ -2878,11 +2878,11 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  2133 0856 D901     		.2byte	0x1d9
  2134 0858 78030000 		.4byte	0x378
  2135 085c 72040000 		.4byte	.LLST15
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 49
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 49
 
 
  2136 0860 23       		.uleb128 0x23
- 2137 0861 4E040000 		.4byte	.LASF124
+ 2137 0861 EA060000 		.4byte	.LASF124
  2138 0865 01       		.byte	0x1
  2139 0866 DB01     		.2byte	0x1db
  2140 0868 B9020000 		.4byte	0x2b9
@@ -2921,7 +2921,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  2173 08b8 00       		.byte	0
  2174 08b9 00       		.byte	0
  2175 08ba 29       		.uleb128 0x29
- 2176 08bb 62040000 		.4byte	.LASF142
+ 2176 08bb 98050000 		.4byte	.LASF142
  2177 08bf 01       		.byte	0x1
  2178 08c0 F901     		.2byte	0x1f9
  2179 08c2 00000000 		.4byte	.LFB121
@@ -2936,9 +2936,9 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  2188 08da 09       		.byte	0x9
  2189 08db 00       		.byte	0
  2190 08dc 2A       		.uleb128 0x2a
- 2191 08dd DD020000 		.4byte	.LASF125
+ 2191 08dd 40000000 		.4byte	.LASF125
  2192 08e1 01       		.byte	0x1
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 50
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 50
 
 
  2193 08e2 39       		.byte	0x39
@@ -2947,7 +2947,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  2196 08e8 03       		.byte	0x3
  2197 08e9 08000000 		.4byte	ta_g_analyzers
  2198 08ed 2A       		.uleb128 0x2a
- 2199 08ee 14030000 		.4byte	.LASF126
+ 2199 08ee B4060000 		.4byte	.LASF126
  2200 08f2 01       		.byte	0x1
  2201 08f3 3A       		.byte	0x3a
  2202 08f4 AE000000 		.4byte	0xae
@@ -2955,7 +2955,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  2204 08f9 03       		.byte	0x3
  2205 08fa 04000000 		.4byte	ta_g_analyzer_count
  2206 08fe 2A       		.uleb128 0x2a
- 2207 08ff 3F010000 		.4byte	.LASF127
+ 2207 08ff 9A010000 		.4byte	.LASF127
  2208 0903 01       		.byte	0x1
  2209 0904 3B       		.byte	0x3b
  2210 0905 14010000 		.4byte	0x114
@@ -2963,42 +2963,42 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  2212 090a 03       		.byte	0x3
  2213 090b 00000000 		.4byte	ta_g_system_ms
  2214 090f 2B       		.uleb128 0x2b
- 2215 0910 CC060000 		.4byte	.LASF128
+ 2215 0910 C8020000 		.4byte	.LASF128
  2216 0914 0A       		.byte	0xa
  2217 0915 40       		.byte	0x40
  2218 0916 F3000000 		.4byte	0xf3
  2219 091a 2B       		.uleb128 0x2b
- 2220 091b B3060000 		.4byte	.LASF129
+ 2220 091b CA010000 		.4byte	.LASF129
  2221 091f 0A       		.byte	0xa
  2222 0920 47       		.byte	0x47
  2223 0921 FE000000 		.4byte	0xfe
  2224 0925 2B       		.uleb128 0x2b
- 2225 0926 C4010000 		.4byte	.LASF130
+ 2225 0926 8E030000 		.4byte	.LASF130
  2226 092a 0A       		.byte	0xa
  2227 092b 4A       		.byte	0x4a
  2228 092c F3000000 		.4byte	0xf3
  2229 0930 2B       		.uleb128 0x2b
- 2230 0931 63060000 		.4byte	.LASF131
+ 2230 0931 E3010000 		.4byte	.LASF131
  2231 0935 0B       		.byte	0xb
  2232 0936 48       		.byte	0x48
  2233 0937 09010000 		.4byte	0x109
  2234 093b 2B       		.uleb128 0x2b
- 2235 093c BC050000 		.4byte	.LASF132
+ 2235 093c 95060000 		.4byte	.LASF132
  2236 0940 0C       		.byte	0xc
  2237 0941 44       		.byte	0x44
  2238 0942 F3000000 		.4byte	0xf3
  2239 0946 2C       		.uleb128 0x2c
- 2240 0947 62050000 		.4byte	.LASF133
+ 2240 0947 C6000000 		.4byte	.LASF133
  2241 094b 06       		.byte	0x6
  2242 094c 1207     		.2byte	0x712
  2243 094e 52090000 		.4byte	0x952
  2244 0952 08       		.uleb128 0x8
  2245 0953 B9000000 		.4byte	0xb9
  2246 0957 2D       		.uleb128 0x2d
- 2247 0958 9C040000 		.4byte	.LASF134
+ 2247 0958 1A000000 		.4byte	.LASF134
  2248 095c 09       		.byte	0x9
  2249 095d 1D       		.byte	0x1d
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 51
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 51
 
 
  2250 095e 71040000 		.4byte	0x471
@@ -3006,18 +3006,18 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  2252 0963 03       		.byte	0x3
  2253 0964 00000000 		.4byte	Pin_t
  2254 0968 2E       		.uleb128 0x2e
- 2255 0969 E4030000 		.4byte	.LASF135
- 2256 096d E4030000 		.4byte	.LASF135
+ 2255 0969 45030000 		.4byte	.LASF135
+ 2256 096d 45030000 		.4byte	.LASF135
  2257 0971 09       		.byte	0x9
  2258 0972 20       		.byte	0x20
  2259 0973 2E       		.uleb128 0x2e
- 2260 0974 1F050000 		.4byte	.LASF136
- 2261 0978 1F050000 		.4byte	.LASF136
+ 2260 0974 79060000 		.4byte	.LASF136
+ 2261 0978 79060000 		.4byte	.LASF136
  2262 097c 0D       		.byte	0xd
  2263 097d FD       		.byte	0xfd
  2264 097e 2E       		.uleb128 0x2e
- 2265 097f 7B030000 		.4byte	.LASF137
- 2266 0983 7B030000 		.4byte	.LASF137
+ 2265 097f 82060000 		.4byte	.LASF137
+ 2266 0983 82060000 		.4byte	.LASF137
  2267 0987 0E       		.byte	0xe
  2268 0988 8B       		.byte	0x8b
  2269 0989 00       		.byte	0
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  2304 0020 00       		.byte	0
  2305 0021 03       		.uleb128 0x3
  2306 0022 0E       		.uleb128 0xe
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 52
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 52
 
 
  2307 0023 3A       		.uleb128 0x3a
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  2361 0059 01       		.uleb128 0x1
  2362 005a 13       		.uleb128 0x13
  2363 005b 00       		.byte	0
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 53
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 53
 
 
  2364 005c 00       		.byte	0
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  2418 0092 0B       		.uleb128 0xb
  2419 0093 0B       		.uleb128 0xb
  2420 0094 49       		.uleb128 0x49
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 54
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 54
 
 
  2421 0095 13       		.uleb128 0x13
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  2475 00cb 05       		.uleb128 0x5
  2476 00cc 00       		.byte	0
  2477 00cd 49       		.uleb128 0x49
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 55
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 55
 
 
  2478 00ce 13       		.uleb128 0x13
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  2532 0105 01       		.uleb128 0x1
  2533 0106 13       		.uleb128 0x13
  2534 0107 00       		.byte	0
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 56
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 56
 
 
  2535 0108 00       		.byte	0
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  2589 0140 00       		.byte	0
  2590 0141 1B       		.uleb128 0x1b
  2591 0142 898201   		.uleb128 0x4109
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 57
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 57
 
 
  2592 0145 01       		.byte	0x1
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  2646 017f 00       		.byte	0
  2647 0180 00       		.byte	0
  2648 0181 1F       		.uleb128 0x1f
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 58
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 58
 
 
  2649 0182 34       		.uleb128 0x34
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  2703 01ba 00       		.byte	0
  2704 01bb 23       		.uleb128 0x23
  2705 01bc 34       		.uleb128 0x34
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 59
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 59
 
 
  2706 01bd 00       		.byte	0
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  2760 01f5 13       		.uleb128 0x13
  2761 01f6 00       		.byte	0
  2762 01f7 00       		.byte	0
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 60
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 60
 
 
  2763 01f8 28       		.uleb128 0x28
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  2817 022f 49       		.uleb128 0x49
  2818 0230 13       		.uleb128 0x13
  2819 0231 3F       		.uleb128 0x3f
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 61
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 61
 
 
  2820 0232 19       		.uleb128 0x19
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  2874 0268 00       		.byte	0
  2875 0269 00       		.byte	0
  2876 026a 00       		.byte	0
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 62
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 62
 
 
  2877              		.section	.debug_loc,"",%progbits
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  2931 0084 0100     		.2byte	0x1
  2932 0086 54       		.byte	0x54
  2933 0087 46000000 		.4byte	.LVL14
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 63
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 63
 
 
  2934 008b 4A000000 		.4byte	.LVL15
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  2988 0110 9F       		.byte	0x9f
  2989 0111 4C000000 		.4byte	.LVL26
  2990 0115 50000000 		.4byte	.LVL27
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 64
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 64
 
 
  2991 0119 0100     		.2byte	0x1
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  3045 01a0 54000000 		.4byte	.LVL39
  3046 01a4 56000000 		.4byte	.LVL40
  3047 01a8 0400     		.2byte	0x4
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 65
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 65
 
 
  3048 01aa F3       		.byte	0xf3
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  3102 0230 53       		.byte	0x53
  3103 0231 33000000 		.4byte	.LVL46-1
  3104 0235 54000000 		.4byte	.LVL49
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 66
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 66
 
 
  3105 0239 0100     		.2byte	0x1
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  3159 02be 00000000 		.4byte	0
  3160              	.LLST8:
  3161 02c2 00000000 		.4byte	.LVL55
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 67
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 67
 
 
  3162 02c6 04000000 		.4byte	.LVL56
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  3216 0349 F3       		.byte	0xf3
  3217 034a 01       		.uleb128 0x1
  3218 034b 50       		.byte	0x50
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 68
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 68
 
 
  3219 034c 9F       		.byte	0x9f
@@ -4078,7 +4078,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  3273 03d2 70000000 		.4byte	.LVL74
  3274 03d6 0100     		.2byte	0x1
  3275 03d8 52       		.byte	0x52
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 69
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 69
 
 
  3276 03d9 70000000 		.4byte	.LVL74
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  3330 0451 25       		.byte	0x25
  3331 0452 F7       		.byte	0xf7
  3332 0453 2C       		.uleb128 0x2c
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 70
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 70
 
 
  3333 0454 39       		.byte	0x39
@@ -4198,7 +4198,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  3387 04d8 00000000 		.4byte	0
  3388 04dc 00000000 		.4byte	0
  3389              	.LLST17:
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 71
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 71
 
 
  3390 04e0 02000000 		.4byte	.LVL84
@@ -4258,7 +4258,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  3444 0014 34000000 		.4byte	.LFE111-.LFB111
  3445 0018 00000000 		.4byte	.LFB112
  3446 001c 7C000000 		.4byte	.LFE112-.LFB112
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 72
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 72
 
 
  3447 0020 00000000 		.4byte	.LFB113
@@ -4318,7 +4318,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  3501 0080 00000000 		.4byte	.LFB119
  3502 0084 C8000000 		.4byte	.LFE119
  3503 0088 00000000 		.4byte	.LFB120
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 73
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 73
 
 
  3504 008c 50000000 		.4byte	.LFE120
@@ -4333,673 +4333,673 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 1
  3511      00000201 
  3511      FB0E0D00 
  3511      01010101 
- 3512              	.LASF113:
- 3513 0000 54415F70 		.ascii	"TA_pause\000"
- 3513      61757365 
- 3513      00
- 3514              	.LASF104:
- 3515 0009 50494E5F 		.ascii	"PIN_RED\000"
- 3515      52454400 
- 3516              	.LASF33:
- 3517 0011 434F4D50 		.ascii	"COMP0\000"
- 3517      3000
- 3518              	.LASF37:
- 3519 0017 434F4D50 		.ascii	"COMP1\000"
- 3519      3100
- 3520              	.LASF41:
- 3521 001d 434F4D50 		.ascii	"COMP2\000"
- 3521      3200
- 3522              	.LASF45:
- 3523 0023 434F4D50 		.ascii	"COMP3\000"
- 3523      3300
- 3524              	.LASF75:
- 3525 0029 52435F45 		.ascii	"RC_ERROR_NOT_MATCH\000"
- 3525      52524F52 
- 3525      5F4E4F54 
- 3525      5F4D4154 
- 3525      434800
- 3526              	.LASF71:
- 3527 003c 52435F45 		.ascii	"RC_ERROR_WRITE_ONLY\000"
- 3527      52524F52 
- 3527      5F575249 
- 3527      54455F4F 
- 3527      4E4C5900 
- 3528              	.LASF106:
- 3529 0050 50494E5F 		.ascii	"PIN_GREEN\000"
- 3529      47524545 
- 3529      4E00
- 3530              	.LASF118:
- 3531 005a 62756666 		.ascii	"buffer\000"
- 3531      657200
- 3532              	.LASF27:
- 3533 0061 43504943 		.ascii	"CPICNT\000"
- 3533      4E5400
- 3534              	.LASF1:
- 3535 0068 756E7369 		.ascii	"unsigned int\000"
- 3535      676E6564 
- 3535      20696E74 
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 74
+ 3512              	.LASF67:
+ 3513 0000 52435F45 		.ascii	"RC_ERROR_TIME_OUT\000"
+ 3513      52524F52 
+ 3513      5F54494D 
+ 3513      455F4F55 
+ 3513      5400
+ 3514              	.LASF55:
+ 3515 0012 70766F69 		.ascii	"pvoid_t\000"
+ 3515      645F7400 
+ 3516              	.LASF134:
+ 3517 001a 50696E5F 		.ascii	"Pin_t\000"
+ 3517      7400
+ 3518              	.LASF109:
+ 3519 0020 70696E5F 		.ascii	"pin_ctrl\000"
+ 3519      6374726C 
+ 3519      00
+ 3520              	.LASF79:
+ 3521 0029 52435F45 		.ascii	"RC_ERROR_INVALID_STATE\000"
+ 3521      52524F52 
+ 3521      5F494E56 
+ 3521      414C4944 
+ 3521      5F535441 
+ 3522              	.LASF125:
+ 3523 0040 74615F67 		.ascii	"ta_g_analyzers\000"
+ 3523      5F616E61 
+ 3523      6C797A65 
+ 3523      727300
+ 3524              	.LASF6:
+ 3525 004f 5F5F7569 		.ascii	"__uint8_t\000"
+ 3525      6E74385F 
+ 3525      7400
+ 3526              	.LASF82:
+ 3527 0059 52435F74 		.ascii	"RC_t\000"
+ 3527      00
+ 3528              	.LASF50:
+ 3529 005e 44435253 		.ascii	"DCRSR\000"
+ 3529      5200
+ 3530              	.LASF101:
+ 3531 0064 70696E5F 		.ascii	"pin_control_func\000"
+ 3531      636F6E74 
+ 3531      726F6C5F 
+ 3531      66756E63 
+ 3531      00
+ 3532              	.LASF112:
+ 3533 0075 54415F63 		.ascii	"TA_calculateElapsedTime\000"
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 74
 
 
- 3535      00
- 3536              	.LASF59:
- 3537 0075 52435F45 		.ascii	"RC_ERROR_ZERO\000"
- 3537      52524F52 
- 3537      5F5A4552 
- 3537      4F00
- 3538              	.LASF52:
- 3539 0083 44454D43 		.ascii	"DEMCR\000"
- 3539      5200
- 3540              	.LASF94:
- 3541 0089 54415F50 		.ascii	"TA_PinFunc_t\000"
- 3541      696E4675 
- 3541      6E635F74 
- 3541      00
- 3542              	.LASF7:
- 3543 0096 5F5F696E 		.ascii	"__int32_t\000"
- 3543      7433325F 
- 3543      7400
- 3544              	.LASF58:
- 3545 00a0 52435F45 		.ascii	"RC_ERROR_NULL\000"
- 3545      52524F52 
- 3545      5F4E554C 
- 3545      4C00
- 3546              	.LASF67:
- 3547 00ae 52435F45 		.ascii	"RC_ERROR_TIME_OUT\000"
- 3547      52524F52 
- 3547      5F54494D 
- 3547      455F4F55 
- 3547      5400
- 3548              	.LASF79:
- 3549 00c0 52435F45 		.ascii	"RC_ERROR_INVALID_STATE\000"
- 3549      52524F52 
- 3549      5F494E56 
- 3549      414C4944 
- 3549      5F535441 
- 3550              	.LASF119:
- 3551 00d7 73747253 		.ascii	"strState\000"
- 3551      74617465 
- 3551      00
- 3552              	.LASF23:
- 3553 00e0 45455F46 		.ascii	"EE_FREG\000"
- 3553      52454700 
- 3554              	.LASF88:
- 3555 00e8 54415F4D 		.ascii	"TA_Mode_t\000"
- 3555      6F64655F 
- 3555      7400
- 3556              	.LASF96:
- 3557 00f2 6D6F6465 		.ascii	"mode\000"
- 3557      00
- 3558              	.LASF102:
- 3559 00f7 54415F74 		.ascii	"TA_t\000"
- 3559      00
- 3560              	.LASF115:
- 3561 00fc 54415F67 		.ascii	"TA_getElapsedTimeInMs\000"
- 3561      6574456C 
- 3561      61707365 
- 3561      6454696D 
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 75
+ 3533      616C6375 
+ 3533      6C617465 
+ 3533      456C6170 
+ 3533      73656454 
+ 3534              	.LASF51:
+ 3535 008d 44435244 		.ascii	"DCRDR\000"
+ 3535      5200
+ 3536              	.LASF0:
+ 3537 0093 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 3537      206C6F6E 
+ 3537      6720756E 
+ 3537      7369676E 
+ 3537      65642069 
+ 3538              	.LASF77:
+ 3539 00aa 52435F45 		.ascii	"RC_ERROR_BAD_DATA\000"
+ 3539      52524F52 
+ 3539      5F424144 
+ 3539      5F444154 
+ 3539      4100
+ 3540              	.LASF7:
+ 3541 00bc 5F5F696E 		.ascii	"__int32_t\000"
+ 3541      7433325F 
+ 3541      7400
+ 3542              	.LASF133:
+ 3543 00c6 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 3543      52784275 
+ 3543      66666572 
+ 3543      00
+ 3544              	.LASF87:
+ 3545 00d3 54415F4D 		.ascii	"TA_MODE_PIN\000"
+ 3545      4F44455F 
+ 3545      50494E00 
+ 3546              	.LASF106:
+ 3547 00df 50494E5F 		.ascii	"PIN_GREEN\000"
+ 3547      47524545 
+ 3547      4E00
+ 3548              	.LASF119:
+ 3549 00e9 73747253 		.ascii	"strState\000"
+ 3549      74617465 
+ 3549      00
+ 3550              	.LASF53:
+ 3551 00f2 436F7265 		.ascii	"CoreDebug_Type\000"
+ 3551      44656275 
+ 3551      675F5479 
+ 3551      706500
+ 3552              	.LASF100:
+ 3553 0101 656C6170 		.ascii	"elapsed_time\000"
+ 3553      7365645F 
+ 3553      74696D65 
+ 3553      00
+ 3554              	.LASF107:
+ 3555 010e 54415F69 		.ascii	"TA_init\000"
+ 3555      6E697400 
+ 3556              	.LASF11:
+ 3557 0116 6C6F6E67 		.ascii	"long long int\000"
+ 3557      206C6F6E 
+ 3557      6720696E 
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 75
 
 
- 3561      65496E4D 
- 3562              	.LASF17:
- 3563 0112 75696E74 		.ascii	"uint32_t\000"
- 3563      33325F74 
- 3563      00
- 3564              	.LASF57:
- 3565 011b 52435F45 		.ascii	"RC_ERROR\000"
- 3565      52524F52 
- 3565      00
- 3566              	.LASF74:
- 3567 0124 52435F45 		.ascii	"RC_ERROR_WRITE_FAILS\000"
+ 3557      7400
+ 3558              	.LASF2:
+ 3559 0124 7369676E 		.ascii	"signed char\000"
+ 3559      65642063 
+ 3559      68617200 
+ 3560              	.LASF83:
+ 3561 0130 54415F4D 		.ascii	"TA_MODE_DWT\000"
+ 3561      4F44455F 
+ 3561      44575400 
+ 3562              	.LASF27:
+ 3563 013c 43504943 		.ascii	"CPICNT\000"
+ 3563      4E5400
+ 3564              	.LASF99:
+ 3565 0143 73746F70 		.ascii	"stop_time\000"
+ 3565      5F74696D 
+ 3565      6500
+ 3566              	.LASF65:
+ 3567 014d 52435F45 		.ascii	"RC_ERROR_BUFFER_EMTPY\000"
  3567      52524F52 
- 3567      5F575249 
- 3567      54455F46 
- 3567      41494C53 
- 3568              	.LASF18:
- 3569 0139 666C6F61 		.ascii	"float\000"
- 3569      7400
- 3570              	.LASF127:
- 3571 013f 74615F67 		.ascii	"ta_g_system_ms\000"
- 3571      5F737973 
- 3571      74656D5F 
- 3571      6D7300
- 3572              	.LASF68:
- 3573 014e 52435F45 		.ascii	"RC_ERROR_OPEN\000"
- 3573      52524F52 
- 3573      5F4F5045 
- 3573      4E00
- 3574              	.LASF0:
- 3575 015c 6C6F6E67 		.ascii	"long long unsigned int\000"
- 3575      206C6F6E 
- 3575      6720756E 
- 3575      7369676E 
- 3575      65642069 
- 3576              	.LASF91:
- 3577 0173 54415F53 		.ascii	"TA_STATE_PAUSED\000"
- 3577      54415445 
- 3577      5F504155 
- 3577      53454400 
- 3578              	.LASF55:
- 3579 0183 70766F69 		.ascii	"pvoid_t\000"
- 3579      645F7400 
- 3580              	.LASF114:
- 3581 018b 54415F73 		.ascii	"TA_stop\000"
- 3581      746F7000 
- 3582              	.LASF24:
- 3583 0193 45455F54 		.ascii	"EE_TID\000"
- 3583      494400
- 3584              	.LASF84:
- 3585 019a 54415F4D 		.ascii	"TA_MODE_DWT_PIN\000"
- 3585      4F44455F 
- 3585      4457545F 
- 3585      50494E00 
- 3586              	.LASF117:
- 3587 01aa 54415F70 		.ascii	"TA_printStatus\000"
- 3587      72696E74 
- 3587      53746174 
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 76
+ 3567      5F425546 
+ 3567      4645525F 
+ 3567      454D5450 
+ 3568              	.LASF97:
+ 3569 0163 73746174 		.ascii	"state\000"
+ 3569      6500
+ 3570              	.LASF84:
+ 3571 0169 54415F4D 		.ascii	"TA_MODE_DWT_PIN\000"
+ 3571      4F44455F 
+ 3571      4457545F 
+ 3571      50494E00 
+ 3572              	.LASF8:
+ 3573 0179 6C6F6E67 		.ascii	"long int\000"
+ 3573      20696E74 
+ 3573      00
+ 3574              	.LASF116:
+ 3575 0182 74696D65 		.ascii	"time_ms\000"
+ 3575      5F6D7300 
+ 3576              	.LASF102:
+ 3577 018a 54415F74 		.ascii	"TA_t\000"
+ 3577      00
+ 3578              	.LASF93:
+ 3579 018f 54415F53 		.ascii	"TA_State_t\000"
+ 3579      74617465 
+ 3579      5F7400
+ 3580              	.LASF127:
+ 3581 019a 74615F67 		.ascii	"ta_g_system_ms\000"
+ 3581      5F737973 
+ 3581      74656D5F 
+ 3581      6D7300
+ 3582              	.LASF49:
+ 3583 01a9 44484353 		.ascii	"DHCSR\000"
+ 3583      5200
+ 3584              	.LASF122:
+ 3585 01af 72656D5F 		.ascii	"rem_cycles\000"
+ 3585      6379636C 
+ 3585      657300
+ 3586              	.LASF19:
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 76
 
 
- 3587      757300
- 3588              	.LASF122:
- 3589 01b9 72656D5F 		.ascii	"rem_cycles\000"
- 3589      6379636C 
- 3589      657300
- 3590              	.LASF130:
- 3591 01c4 45455F41 		.ascii	"EE_ApplicationMode\000"
- 3591      70706C69 
- 3591      63617469 
- 3591      6F6E4D6F 
- 3591      646500
- 3592              	.LASF89:
- 3593 01d7 54415F53 		.ascii	"TA_STATE_IDLE\000"
- 3593      54415445 
- 3593      5F49444C 
- 3593      4500
- 3594              	.LASF138:
- 3595 01e5 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 3595      43313120 
- 3595      352E342E 
- 3595      31203230 
- 3595      31363036 
- 3596 0218 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 3596      20726576 
- 3596      6973696F 
- 3596      6E203233 
- 3596      37373135 
- 3597 024b 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 3597      66756E63 
- 3597      74696F6E 
- 3597      2D736563 
- 3597      74696F6E 
- 3598              	.LASF69:
- 3599 0273 52435F45 		.ascii	"RC_ERROR_CHECKSUM\000"
- 3599      52524F52 
- 3599      5F434845 
- 3599      434B5355 
- 3599      4D00
- 3600              	.LASF123:
- 3601 0285 54415F70 		.ascii	"TA_printAll\000"
- 3601      72696E74 
- 3601      416C6C00 
- 3602              	.LASF93:
- 3603 0291 54415F53 		.ascii	"TA_State_t\000"
- 3603      74617465 
- 3603      5F7400
- 3604              	.LASF48:
- 3605 029c 4457545F 		.ascii	"DWT_Type\000"
- 3605      54797065 
+ 3587 01ba 646F7562 		.ascii	"double\000"
+ 3587      6C6500
+ 3588              	.LASF29:
+ 3589 01c1 534C4545 		.ascii	"SLEEPCNT\000"
+ 3589      50434E54 
+ 3589      00
+ 3590              	.LASF129:
+ 3591 01ca 45455F6F 		.ascii	"EE_oo_IRQ_suspend_status\000"
+ 3591      6F5F4952 
+ 3591      515F7375 
+ 3591      7370656E 
+ 3591      645F7374 
+ 3592              	.LASF131:
+ 3593 01e3 45455F73 		.ascii	"EE_std_endcycle_next_tid\000"
+ 3593      74645F65 
+ 3593      6E646379 
+ 3593      636C655F 
+ 3593      6E657874 
+ 3594              	.LASF9:
+ 3595 01fc 5F5F7569 		.ascii	"__uint32_t\000"
+ 3595      6E743332 
+ 3595      5F7400
+ 3596              	.LASF104:
+ 3597 0207 50494E5F 		.ascii	"PIN_RED\000"
+ 3597      52454400 
+ 3598              	.LASF24:
+ 3599 020f 45455F54 		.ascii	"EE_TID\000"
+ 3599      494400
+ 3600              	.LASF34:
+ 3601 0216 4D41534B 		.ascii	"MASK0\000"
+ 3601      3000
+ 3602              	.LASF1:
+ 3603 021c 756E7369 		.ascii	"unsigned int\000"
+ 3603      676E6564 
+ 3603      20696E74 
+ 3603      00
+ 3604              	.LASF90:
+ 3605 0229 54415F53 		.ascii	"TA_STATE_RUNNING\000"
+ 3605      54415445 
+ 3605      5F52554E 
+ 3605      4E494E47 
  3605      00
- 3606              	.LASF30:
- 3607 02a5 4C535543 		.ascii	"LSUCNT\000"
- 3607      4E5400
- 3608              	.LASF100:
- 3609 02ac 656C6170 		.ascii	"elapsed_time\000"
- 3609      7365645F 
- 3609      74696D65 
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 77
-
-
- 3609      00
- 3610              	.LASF14:
- 3611 02b9 63686172 		.ascii	"char\000"
+ 3606              	.LASF42:
+ 3607 023a 4D41534B 		.ascii	"MASK2\000"
+ 3607      3200
+ 3608              	.LASF46:
+ 3609 0240 4D41534B 		.ascii	"MASK3\000"
+ 3609      3300
+ 3610              	.LASF80:
+ 3611 0246 52435F45 		.ascii	"RC_ERROR_UNKNOWN\000"
+ 3611      52524F52 
+ 3611      5F554E4B 
+ 3611      4E4F574E 
  3611      00
- 3612              	.LASF56:
- 3613 02be 52435F53 		.ascii	"RC_SUCCESS\000"
- 3613      55434345 
- 3613      535300
- 3614              	.LASF108:
- 3615 02c9 54415F63 		.ascii	"TA_create\000"
- 3615      72656174 
- 3615      6500
- 3616              	.LASF54:
- 3617 02d3 626F6F6C 		.ascii	"boolean_t\000"
- 3617      65616E5F 
- 3617      7400
- 3618              	.LASF125:
- 3619 02dd 74615F67 		.ascii	"ta_g_analyzers\000"
- 3619      5F616E61 
- 3619      6C797A65 
- 3619      727300
- 3620              	.LASF35:
- 3621 02ec 46554E43 		.ascii	"FUNCTION0\000"
- 3621      54494F4E 
- 3621      3000
- 3622              	.LASF39:
- 3623 02f6 46554E43 		.ascii	"FUNCTION1\000"
- 3623      54494F4E 
- 3623      3100
- 3624              	.LASF43:
- 3625 0300 46554E43 		.ascii	"FUNCTION2\000"
- 3625      54494F4E 
- 3625      3200
- 3626              	.LASF47:
- 3627 030a 46554E43 		.ascii	"FUNCTION3\000"
- 3627      54494F4E 
- 3627      3300
- 3628              	.LASF126:
- 3629 0314 74615F67 		.ascii	"ta_g_analyzer_count\000"
- 3629      5F616E61 
- 3629      6C797A65 
- 3629      725F636F 
- 3629      756E7400 
- 3630              	.LASF15:
- 3631 0328 75696E74 		.ascii	"uint8_t\000"
- 3631      385F7400 
- 3632              	.LASF140:
- 3633 0330 443A5C57 		.ascii	"D:\\WS25\\AMAEOS\\Lab\\Workspace01\\ReactionGame.cy"
- 3633      5332355C 
- 3633      414D4145 
- 3633      4F535C4C 
- 3633      61625C57 
- 3634 035e 64736E00 		.ascii	"dsn\000"
- 3635              	.LASF26:
- 3636 0362 43594343 		.ascii	"CYCCNT\000"
- 3636      4E5400
- 3637              	.LASF77:
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 78
+ 3612              	.LASF22:
+ 3613 0257 45455F55 		.ascii	"EE_UREG\000"
+ 3613      52454700 
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 77
 
 
- 3638 0369 52435F45 		.ascii	"RC_ERROR_BAD_DATA\000"
- 3638      52524F52 
- 3638      5F424144 
- 3638      5F444154 
- 3638      4100
- 3639              	.LASF137:
- 3640 037b 55415254 		.ascii	"UART_LOG_PutString\000"
- 3640      5F4C4F47 
- 3640      5F507574 
- 3640      53747269 
- 3640      6E6700
- 3641              	.LASF11:
- 3642 038e 6C6F6E67 		.ascii	"long long int\000"
- 3642      206C6F6E 
- 3642      6720696E 
- 3642      7400
- 3643              	.LASF86:
- 3644 039c 54415F4D 		.ascii	"TA_MODE_SYSTICK_PIN\000"
- 3644      4F44455F 
- 3644      53595354 
- 3644      49434B5F 
- 3644      50494E00 
- 3645              	.LASF78:
- 3646 03b0 52435F45 		.ascii	"RC_ERROR_CANCELED\000"
- 3646      52524F52 
- 3646      5F43414E 
- 3646      43454C45 
- 3646      4400
- 3647              	.LASF34:
- 3648 03c2 4D41534B 		.ascii	"MASK0\000"
- 3648      3000
- 3649              	.LASF38:
- 3650 03c8 4D41534B 		.ascii	"MASK1\000"
- 3650      3100
- 3651              	.LASF42:
- 3652 03ce 4D41534B 		.ascii	"MASK2\000"
- 3652      3200
- 3653              	.LASF46:
- 3654 03d4 4D41534B 		.ascii	"MASK3\000"
- 3654      3300
- 3655              	.LASF111:
- 3656 03da 54415F72 		.ascii	"TA_resume\000"
- 3656      6573756D 
- 3656      6500
- 3657              	.LASF135:
- 3658 03e4 50696E73 		.ascii	"Pins_Init\000"
- 3658      5F496E69 
- 3658      7400
- 3659              	.LASF101:
- 3660 03ee 70696E5F 		.ascii	"pin_control_func\000"
- 3660      636F6E74 
- 3660      726F6C5F 
- 3660      66756E63 
- 3660      00
- 3661              	.LASF87:
- 3662 03ff 54415F4D 		.ascii	"TA_MODE_PIN\000"
- 3662      4F44455F 
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 79
+ 3614              	.LASF123:
+ 3615 025f 54415F70 		.ascii	"TA_printAll\000"
+ 3615      72696E74 
+ 3615      416C6C00 
+ 3616              	.LASF69:
+ 3617 026b 52435F45 		.ascii	"RC_ERROR_CHECKSUM\000"
+ 3617      52524F52 
+ 3617      5F434845 
+ 3617      434B5355 
+ 3617      4D00
+ 3618              	.LASF10:
+ 3619 027d 6C6F6E67 		.ascii	"long unsigned int\000"
+ 3619      20756E73 
+ 3619      69676E65 
+ 3619      6420696E 
+ 3619      7400
+ 3620              	.LASF58:
+ 3621 028f 52435F45 		.ascii	"RC_ERROR_NULL\000"
+ 3621      52524F52 
+ 3621      5F4E554C 
+ 3621      4C00
+ 3622              	.LASF56:
+ 3623 029d 52435F53 		.ascii	"RC_SUCCESS\000"
+ 3623      55434345 
+ 3623      535300
+ 3624              	.LASF121:
+ 3625 02a8 66726163 		.ascii	"frac_ms\000"
+ 3625      5F6D7300 
+ 3626              	.LASF95:
+ 3627 02b0 6E616D65 		.ascii	"name\000"
+ 3627      00
+ 3628              	.LASF5:
+ 3629 02b5 73686F72 		.ascii	"short unsigned int\000"
+ 3629      7420756E 
+ 3629      7369676E 
+ 3629      65642069 
+ 3629      6E7400
+ 3630              	.LASF128:
+ 3631 02c8 45455F6F 		.ascii	"EE_oo_IRQ_disable_count\000"
+ 3631      6F5F4952 
+ 3631      515F6469 
+ 3631      7361626C 
+ 3631      655F636F 
+ 3632              	.LASF64:
+ 3633 02e0 52435F45 		.ascii	"RC_ERROR_BUFFER_FULL\000"
+ 3633      52524F52 
+ 3633      5F425546 
+ 3633      4645525F 
+ 3633      46554C4C 
+ 3634              	.LASF28:
+ 3635 02f5 45584343 		.ascii	"EXCCNT\000"
+ 3635      4E5400
+ 3636              	.LASF74:
+ 3637 02fc 52435F45 		.ascii	"RC_ERROR_WRITE_FAILS\000"
+ 3637      52524F52 
+ 3637      5F575249 
+ 3637      54455F46 
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 78
 
 
- 3662      50494E00 
- 3663              	.LASF63:
- 3664 040b 52435F45 		.ascii	"RC_ERROR_UNDERRUN\000"
- 3664      52524F52 
- 3664      5F554E44 
- 3664      45525255 
- 3664      4E00
- 3665              	.LASF60:
- 3666 041d 52435F45 		.ascii	"RC_ERROR_MEMORY\000"
- 3666      52524F52 
- 3666      5F4D454D 
- 3666      4F525900 
- 3667              	.LASF98:
- 3668 042d 73746172 		.ascii	"start_time\000"
- 3668      745F7469 
- 3668      6D6500
- 3669              	.LASF53:
- 3670 0438 436F7265 		.ascii	"CoreDebug_Type\000"
- 3670      44656275 
- 3670      675F5479 
- 3670      706500
- 3671              	.LASF120:
- 3672 0447 696E745F 		.ascii	"int_ms\000"
- 3672      6D7300
- 3673              	.LASF124:
- 3674 044e 616E7941 		.ascii	"anyActive\000"
- 3674      63746976 
- 3674      6500
- 3675              	.LASF99:
- 3676 0458 73746F70 		.ascii	"stop_time\000"
- 3676      5F74696D 
- 3676      6500
- 3677              	.LASF142:
- 3678 0462 53797354 		.ascii	"SysTick_Handler\000"
- 3678      69636B5F 
- 3678      48616E64 
- 3678      6C657200 
- 3679              	.LASF64:
- 3680 0472 52435F45 		.ascii	"RC_ERROR_BUFFER_FULL\000"
- 3680      52524F52 
- 3680      5F425546 
- 3680      4645525F 
- 3680      46554C4C 
- 3681              	.LASF29:
- 3682 0487 534C4545 		.ascii	"SLEEPCNT\000"
- 3682      50434E54 
- 3682      00
- 3683              	.LASF12:
- 3684 0490 6C6F6E67 		.ascii	"long double\000"
- 3684      20646F75 
- 3684      626C6500 
- 3685              	.LASF134:
- 3686 049c 50696E5F 		.ascii	"Pin_t\000"
- 3686      7400
- 3687              	.LASF85:
- 3688 04a2 54415F4D 		.ascii	"TA_MODE_SYSTICK\000"
- 3688      4F44455F 
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 80
+ 3637      41494C53 
+ 3638              	.LASF76:
+ 3639 0311 52435F45 		.ascii	"RC_ERROR_BAD_PARAM\000"
+ 3639      52524F52 
+ 3639      5F424144 
+ 3639      5F504152 
+ 3639      414D00
+ 3640              	.LASF75:
+ 3641 0324 52435F45 		.ascii	"RC_ERROR_NOT_MATCH\000"
+ 3641      52524F52 
+ 3641      5F4E4F54 
+ 3641      5F4D4154 
+ 3641      434800
+ 3642              	.LASF68:
+ 3643 0337 52435F45 		.ascii	"RC_ERROR_OPEN\000"
+ 3643      52524F52 
+ 3643      5F4F5045 
+ 3643      4E00
+ 3644              	.LASF135:
+ 3645 0345 50696E73 		.ascii	"Pins_Init\000"
+ 3645      5F496E69 
+ 3645      7400
+ 3646              	.LASF26:
+ 3647 034f 43594343 		.ascii	"CYCCNT\000"
+ 3647      4E5400
+ 3648              	.LASF71:
+ 3649 0356 52435F45 		.ascii	"RC_ERROR_WRITE_ONLY\000"
+ 3649      52524F52 
+ 3649      5F575249 
+ 3649      54455F4F 
+ 3649      4E4C5900 
+ 3650              	.LASF13:
+ 3651 036a 73697A65 		.ascii	"sizetype\000"
+ 3651      74797065 
+ 3651      00
+ 3652              	.LASF54:
+ 3653 0373 626F6F6C 		.ascii	"boolean_t\000"
+ 3653      65616E5F 
+ 3653      7400
+ 3654              	.LASF72:
+ 3655 037d 52435F45 		.ascii	"RC_ERROR_INVALID\000"
+ 3655      52524F52 
+ 3655      5F494E56 
+ 3655      414C4944 
+ 3655      00
+ 3656              	.LASF130:
+ 3657 038e 45455F41 		.ascii	"EE_ApplicationMode\000"
+ 3657      70706C69 
+ 3657      63617469 
+ 3657      6F6E4D6F 
+ 3657      646500
+ 3658              	.LASF78:
+ 3659 03a1 52435F45 		.ascii	"RC_ERROR_CANCELED\000"
+ 3659      52524F52 
+ 3659      5F43414E 
+ 3659      43454C45 
+ 3659      4400
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 79
 
 
- 3688      53595354 
- 3688      49434B00 
- 3689              	.LASF139:
- 3690 04b2 736F7572 		.ascii	"source\\asw\\TimingAnalyzer.c\000"
- 3690      63655C61 
- 3690      73775C54 
- 3690      696D696E 
- 3690      67416E61 
- 3691              	.LASF105:
- 3692 04ce 50494E5F 		.ascii	"PIN_YELLOW\000"
- 3692      59454C4C 
- 3692      4F5700
- 3693              	.LASF121:
- 3694 04d9 66726163 		.ascii	"frac_ms\000"
- 3694      5F6D7300 
- 3695              	.LASF21:
- 3696 04e1 45455F55 		.ascii	"EE_UINT32\000"
- 3696      494E5433 
- 3696      3200
- 3697              	.LASF70:
- 3698 04eb 52435F45 		.ascii	"RC_ERROR_READ_ONLY\000"
- 3698      52524F52 
- 3698      5F524541 
- 3698      445F4F4E 
- 3698      4C5900
- 3699              	.LASF66:
- 3700 04fe 52435F45 		.ascii	"RC_ERROR_BUSY\000"
- 3700      52524F52 
- 3700      5F425553 
- 3700      5900
- 3701              	.LASF76:
- 3702 050c 52435F45 		.ascii	"RC_ERROR_BAD_PARAM\000"
- 3702      52524F52 
- 3702      5F424144 
- 3702      5F504152 
- 3702      414D00
- 3703              	.LASF136:
- 3704 051f 736E7072 		.ascii	"snprintf\000"
- 3704      696E7466 
- 3704      00
- 3705              	.LASF36:
- 3706 0528 52455345 		.ascii	"RESERVED0\000"
- 3706      52564544 
- 3706      3000
- 3707              	.LASF40:
- 3708 0532 52455345 		.ascii	"RESERVED1\000"
- 3708      52564544 
- 3708      3100
- 3709              	.LASF44:
- 3710 053c 52455345 		.ascii	"RESERVED2\000"
- 3710      52564544 
- 3710      3200
- 3711              	.LASF4:
- 3712 0546 73686F72 		.ascii	"short int\000"
- 3712      7420696E 
- 3712      7400
- 3713              	.LASF110:
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 81
+ 3660              	.LASF33:
+ 3661 03b3 434F4D50 		.ascii	"COMP0\000"
+ 3661      3000
+ 3662              	.LASF37:
+ 3663 03b9 434F4D50 		.ascii	"COMP1\000"
+ 3663      3100
+ 3664              	.LASF41:
+ 3665 03bf 434F4D50 		.ascii	"COMP2\000"
+ 3665      3200
+ 3666              	.LASF45:
+ 3667 03c5 434F4D50 		.ascii	"COMP3\000"
+ 3667      3300
+ 3668              	.LASF57:
+ 3669 03cb 52435F45 		.ascii	"RC_ERROR\000"
+ 3669      52524F52 
+ 3669      00
+ 3670              	.LASF113:
+ 3671 03d4 54415F70 		.ascii	"TA_pause\000"
+ 3671      61757365 
+ 3671      00
+ 3672              	.LASF18:
+ 3673 03dd 666C6F61 		.ascii	"float\000"
+ 3673      7400
+ 3674              	.LASF94:
+ 3675 03e3 54415F50 		.ascii	"TA_PinFunc_t\000"
+ 3675      696E4675 
+ 3675      6E635F74 
+ 3675      00
+ 3676              	.LASF36:
+ 3677 03f0 52455345 		.ascii	"RESERVED0\000"
+ 3677      52564544 
+ 3677      3000
+ 3678              	.LASF40:
+ 3679 03fa 52455345 		.ascii	"RESERVED1\000"
+ 3679      52564544 
+ 3679      3100
+ 3680              	.LASF44:
+ 3681 0404 52455345 		.ascii	"RESERVED2\000"
+ 3681      52564544 
+ 3681      3200
+ 3682              	.LASF141:
+ 3683 040e 654D6F64 		.ascii	"eMode\000"
+ 3683      6500
+ 3684              	.LASF66:
+ 3685 0414 52435F45 		.ascii	"RC_ERROR_BUSY\000"
+ 3685      52524F52 
+ 3685      5F425553 
+ 3685      5900
+ 3686              	.LASF120:
+ 3687 0422 696E745F 		.ascii	"int_ms\000"
+ 3687      6D7300
+ 3688              	.LASF52:
+ 3689 0429 44454D43 		.ascii	"DEMCR\000"
+ 3689      5200
+ 3690              	.LASF38:
+ 3691 042f 4D41534B 		.ascii	"MASK1\000"
+ 3691      3100
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 80
 
 
- 3714 0550 54415F73 		.ascii	"TA_start\000"
- 3714      74617274 
- 3714      00
- 3715              	.LASF8:
- 3716 0559 6C6F6E67 		.ascii	"long int\000"
- 3716      20696E74 
- 3716      00
- 3717              	.LASF133:
- 3718 0562 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 3718      52784275 
- 3718      66666572 
- 3718      00
- 3719              	.LASF81:
- 3720 056f 52435F45 		.ascii	"RC_ERROR_NOT_IMPLEMENTED\000"
- 3720      52524F52 
- 3720      5F4E4F54 
- 3720      5F494D50 
- 3720      4C454D45 
- 3721              	.LASF83:
- 3722 0588 54415F4D 		.ascii	"TA_MODE_DWT\000"
- 3722      4F44455F 
- 3722      44575400 
- 3723              	.LASF107:
- 3724 0594 54415F69 		.ascii	"TA_init\000"
- 3724      6E697400 
- 3725              	.LASF72:
- 3726 059c 52435F45 		.ascii	"RC_ERROR_INVALID\000"
- 3726      52524F52 
- 3726      5F494E56 
- 3726      414C4944 
- 3726      00
- 3727              	.LASF6:
- 3728 05ad 5F5F7569 		.ascii	"__uint8_t\000"
- 3728      6E74385F 
- 3728      7400
- 3729              	.LASF95:
- 3730 05b7 6E616D65 		.ascii	"name\000"
- 3730      00
- 3731              	.LASF132:
- 3732 05bc 45455F49 		.ascii	"EE_IRQ_nesting_level\000"
- 3732      52515F6E 
- 3732      65737469 
- 3732      6E675F6C 
- 3732      6576656C 
- 3733              	.LASF73:
- 3734 05d1 52435F45 		.ascii	"RC_ERROR_READ_FAILS\000"
- 3734      52524F52 
- 3734      5F524541 
- 3734      445F4641 
- 3734      494C5300 
- 3735              	.LASF22:
- 3736 05e5 45455F55 		.ascii	"EE_UREG\000"
- 3736      52454700 
- 3737              	.LASF20:
- 3738 05ed 45455F49 		.ascii	"EE_INT32\000"
- 3738      4E543332 
- 3738      00
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 82
+ 3692              	.LASF16:
+ 3693 0435 696E7433 		.ascii	"int32_t\000"
+ 3693      325F7400 
+ 3694              	.LASF3:
+ 3695 043d 756E7369 		.ascii	"unsigned char\000"
+ 3695      676E6564 
+ 3695      20636861 
+ 3695      7200
+ 3696              	.LASF35:
+ 3697 044b 46554E43 		.ascii	"FUNCTION0\000"
+ 3697      54494F4E 
+ 3697      3000
+ 3698              	.LASF39:
+ 3699 0455 46554E43 		.ascii	"FUNCTION1\000"
+ 3699      54494F4E 
+ 3699      3100
+ 3700              	.LASF43:
+ 3701 045f 46554E43 		.ascii	"FUNCTION2\000"
+ 3701      54494F4E 
+ 3701      3200
+ 3702              	.LASF47:
+ 3703 0469 46554E43 		.ascii	"FUNCTION3\000"
+ 3703      54494F4E 
+ 3703      3300
+ 3704              	.LASF4:
+ 3705 0473 73686F72 		.ascii	"short int\000"
+ 3705      7420696E 
+ 3705      7400
+ 3706              	.LASF73:
+ 3707 047d 52435F45 		.ascii	"RC_ERROR_READ_FAILS\000"
+ 3707      52524F52 
+ 3707      5F524541 
+ 3707      445F4641 
+ 3707      494C5300 
+ 3708              	.LASF103:
+ 3709 0491 50494E5F 		.ascii	"PIN_NONE\000"
+ 3709      4E4F4E45 
+ 3709      00
+ 3710              	.LASF92:
+ 3711 049a 54415F53 		.ascii	"TA_STATE_STOPPED\000"
+ 3711      54415445 
+ 3711      5F53544F 
+ 3711      50504544 
+ 3711      00
+ 3712              	.LASF117:
+ 3713 04ab 54415F70 		.ascii	"TA_printStatus\000"
+ 3713      72696E74 
+ 3713      53746174 
+ 3713      757300
+ 3714              	.LASF59:
+ 3715 04ba 52435F45 		.ascii	"RC_ERROR_ZERO\000"
+ 3715      52524F52 
+ 3715      5F5A4552 
+ 3715      4F00
+ 3716              	.LASF138:
+ 3717 04c8 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 3717      43313120 
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 81
 
 
- 3739              	.LASF13:
- 3740 05f6 73697A65 		.ascii	"sizetype\000"
- 3740      74797065 
- 3740      00
- 3741              	.LASF10:
- 3742 05ff 6C6F6E67 		.ascii	"long unsigned int\000"
- 3742      20756E73 
- 3742      69676E65 
- 3742      6420696E 
- 3742      7400
- 3743              	.LASF82:
- 3744 0611 52435F74 		.ascii	"RC_t\000"
- 3744      00
- 3745              	.LASF16:
- 3746 0616 696E7433 		.ascii	"int32_t\000"
- 3746      325F7400 
- 3747              	.LASF32:
- 3748 061e 50435352 		.ascii	"PCSR\000"
- 3748      00
- 3749              	.LASF62:
- 3750 0623 52435F45 		.ascii	"RC_ERROR_OVERRUN\000"
- 3750      52524F52 
- 3750      5F4F5645 
- 3750      5252554E 
- 3750      00
- 3751              	.LASF3:
- 3752 0634 756E7369 		.ascii	"unsigned char\000"
- 3752      676E6564 
- 3752      20636861 
- 3752      7200
- 3753              	.LASF9:
- 3754 0642 5F5F7569 		.ascii	"__uint32_t\000"
- 3754      6E743332 
- 3754      5F7400
- 3755              	.LASF65:
- 3756 064d 52435F45 		.ascii	"RC_ERROR_BUFFER_EMTPY\000"
- 3756      52524F52 
- 3756      5F425546 
- 3756      4645525F 
- 3756      454D5450 
- 3757              	.LASF131:
- 3758 0663 45455F73 		.ascii	"EE_std_endcycle_next_tid\000"
- 3758      74645F65 
- 3758      6E646379 
- 3758      636C655F 
- 3758      6E657874 
- 3759              	.LASF80:
- 3760 067c 52435F45 		.ascii	"RC_ERROR_UNKNOWN\000"
- 3760      52524F52 
- 3760      5F554E4B 
- 3760      4E4F574E 
- 3760      00
- 3761              	.LASF109:
- 3762 068d 70696E5F 		.ascii	"pin_ctrl\000"
- 3762      6374726C 
- 3762      00
- 3763              	.LASF141:
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 83
+ 3717      352E342E 
+ 3717      31203230 
+ 3717      31363036 
+ 3718 04fb 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 3718      20726576 
+ 3718      6973696F 
+ 3718      6E203233 
+ 3718      37373135 
+ 3719 052e 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 3719      66756E63 
+ 3719      74696F6E 
+ 3719      2D736563 
+ 3719      74696F6E 
+ 3720              	.LASF89:
+ 3721 0556 54415F53 		.ascii	"TA_STATE_IDLE\000"
+ 3721      54415445 
+ 3721      5F49444C 
+ 3721      4500
+ 3722              	.LASF139:
+ 3723 0564 736F7572 		.ascii	"source\\asw\\TimingAnalyzer.c\000"
+ 3723      63655C61 
+ 3723      73775C54 
+ 3723      696D696E 
+ 3723      67416E61 
+ 3724              	.LASF30:
+ 3725 0580 4C535543 		.ascii	"LSUCNT\000"
+ 3725      4E5400
+ 3726              	.LASF17:
+ 3727 0587 75696E74 		.ascii	"uint32_t\000"
+ 3727      33325F74 
+ 3727      00
+ 3728              	.LASF114:
+ 3729 0590 54415F73 		.ascii	"TA_stop\000"
+ 3729      746F7000 
+ 3730              	.LASF142:
+ 3731 0598 53797354 		.ascii	"SysTick_Handler\000"
+ 3731      69636B5F 
+ 3731      48616E64 
+ 3731      6C657200 
+ 3732              	.LASF70:
+ 3733 05a8 52435F45 		.ascii	"RC_ERROR_READ_ONLY\000"
+ 3733      52524F52 
+ 3733      5F524541 
+ 3733      445F4F4E 
+ 3733      4C5900
+ 3734              	.LASF12:
+ 3735 05bb 6C6F6E67 		.ascii	"long double\000"
+ 3735      20646F75 
+ 3735      626C6500 
+ 3736              	.LASF14:
+ 3737 05c7 63686172 		.ascii	"char\000"
+ 3737      00
+ 3738              	.LASF96:
+ 3739 05cc 6D6F6465 		.ascii	"mode\000"
+ 3739      00
+ 3740              	.LASF88:
+ 3741 05d1 54415F4D 		.ascii	"TA_Mode_t\000"
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 82
 
 
- 3764 0696 654D6F64 		.ascii	"eMode\000"
- 3764      6500
- 3765              	.LASF103:
- 3766 069c 50494E5F 		.ascii	"PIN_NONE\000"
- 3766      4E4F4E45 
- 3766      00
- 3767              	.LASF97:
- 3768 06a5 73746174 		.ascii	"state\000"
- 3768      6500
- 3769              	.LASF31:
- 3770 06ab 464F4C44 		.ascii	"FOLDCNT\000"
- 3770      434E5400 
- 3771              	.LASF129:
- 3772 06b3 45455F6F 		.ascii	"EE_oo_IRQ_suspend_status\000"
- 3772      6F5F4952 
- 3772      515F7375 
- 3772      7370656E 
- 3772      645F7374 
- 3773              	.LASF128:
- 3774 06cc 45455F6F 		.ascii	"EE_oo_IRQ_disable_count\000"
- 3774      6F5F4952 
- 3774      515F6469 
- 3774      7361626C 
- 3774      655F636F 
- 3775              	.LASF49:
- 3776 06e4 44484353 		.ascii	"DHCSR\000"
- 3776      5200
- 3777              	.LASF92:
- 3778 06ea 54415F53 		.ascii	"TA_STATE_STOPPED\000"
- 3778      54415445 
- 3778      5F53544F 
- 3778      50504544 
- 3778      00
- 3779              	.LASF2:
- 3780 06fb 7369676E 		.ascii	"signed char\000"
- 3780      65642063 
- 3780      68617200 
- 3781              	.LASF5:
- 3782 0707 73686F72 		.ascii	"short unsigned int\000"
- 3782      7420756E 
- 3782      7369676E 
- 3782      65642069 
- 3782      6E7400
- 3783              	.LASF19:
- 3784 071a 646F7562 		.ascii	"double\000"
- 3784      6C6500
- 3785              	.LASF112:
- 3786 0721 54415F63 		.ascii	"TA_calculateElapsedTime\000"
- 3786      616C6375 
- 3786      6C617465 
- 3786      456C6170 
- 3786      73656454 
- 3787              	.LASF50:
- 3788 0739 44435253 		.ascii	"DCRSR\000"
- 3788      5200
- 3789              	.LASF116:
- 3790 073f 74696D65 		.ascii	"time_ms\000"
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccbnyfif.s 			page 84
+ 3741      6F64655F 
+ 3741      7400
+ 3742              	.LASF118:
+ 3743 05db 62756666 		.ascii	"buffer\000"
+ 3743      657200
+ 3744              	.LASF115:
+ 3745 05e2 54415F67 		.ascii	"TA_getElapsedTimeInMs\000"
+ 3745      6574456C 
+ 3745      61707365 
+ 3745      6454696D 
+ 3745      65496E4D 
+ 3746              	.LASF81:
+ 3747 05f8 52435F45 		.ascii	"RC_ERROR_NOT_IMPLEMENTED\000"
+ 3747      52524F52 
+ 3747      5F4E4F54 
+ 3747      5F494D50 
+ 3747      4C454D45 
+ 3748              	.LASF108:
+ 3749 0611 54415F63 		.ascii	"TA_create\000"
+ 3749      72656174 
+ 3749      6500
+ 3750              	.LASF62:
+ 3751 061b 52435F45 		.ascii	"RC_ERROR_OVERRUN\000"
+ 3751      52524F52 
+ 3751      5F4F5645 
+ 3751      5252554E 
+ 3751      00
+ 3752              	.LASF85:
+ 3753 062c 54415F4D 		.ascii	"TA_MODE_SYSTICK\000"
+ 3753      4F44455F 
+ 3753      53595354 
+ 3753      49434B00 
+ 3754              	.LASF98:
+ 3755 063c 73746172 		.ascii	"start_time\000"
+ 3755      745F7469 
+ 3755      6D6500
+ 3756              	.LASF60:
+ 3757 0647 52435F45 		.ascii	"RC_ERROR_MEMORY\000"
+ 3757      52524F52 
+ 3757      5F4D454D 
+ 3757      4F525900 
+ 3758              	.LASF48:
+ 3759 0657 4457545F 		.ascii	"DWT_Type\000"
+ 3759      54797065 
+ 3759      00
+ 3760              	.LASF86:
+ 3761 0660 54415F4D 		.ascii	"TA_MODE_SYSTICK_PIN\000"
+ 3761      4F44455F 
+ 3761      53595354 
+ 3761      49434B5F 
+ 3761      50494E00 
+ 3762              	.LASF25:
+ 3763 0674 4354524C 		.ascii	"CTRL\000"
+ 3763      00
+ 3764              	.LASF136:
+ 3765 0679 736E7072 		.ascii	"snprintf\000"
+ 3765      696E7466 
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 83
 
 
- 3790      5F6D7300 
- 3791              	.LASF51:
- 3792 0747 44435244 		.ascii	"DCRDR\000"
- 3792      5200
- 3793              	.LASF28:
- 3794 074d 45584343 		.ascii	"EXCCNT\000"
- 3794      4E5400
- 3795              	.LASF90:
- 3796 0754 54415F53 		.ascii	"TA_STATE_RUNNING\000"
- 3796      54415445 
- 3796      5F52554E 
- 3796      4E494E47 
- 3796      00
- 3797              	.LASF61:
- 3798 0765 52435F45 		.ascii	"RC_ERROR_RANGE\000"
- 3798      52524F52 
- 3798      5F52414E 
- 3798      474500
- 3799              	.LASF25:
- 3800 0774 4354524C 		.ascii	"CTRL\000"
- 3800      00
+ 3765      00
+ 3766              	.LASF137:
+ 3767 0682 55415254 		.ascii	"UART_LOG_PutString\000"
+ 3767      5F4C4F47 
+ 3767      5F507574 
+ 3767      53747269 
+ 3767      6E6700
+ 3768              	.LASF132:
+ 3769 0695 45455F49 		.ascii	"EE_IRQ_nesting_level\000"
+ 3769      52515F6E 
+ 3769      65737469 
+ 3769      6E675F6C 
+ 3769      6576656C 
+ 3770              	.LASF21:
+ 3771 06aa 45455F55 		.ascii	"EE_UINT32\000"
+ 3771      494E5433 
+ 3771      3200
+ 3772              	.LASF126:
+ 3773 06b4 74615F67 		.ascii	"ta_g_analyzer_count\000"
+ 3773      5F616E61 
+ 3773      6C797A65 
+ 3773      725F636F 
+ 3773      756E7400 
+ 3774              	.LASF61:
+ 3775 06c8 52435F45 		.ascii	"RC_ERROR_RANGE\000"
+ 3775      52524F52 
+ 3775      5F52414E 
+ 3775      474500
+ 3776              	.LASF111:
+ 3777 06d7 54415F72 		.ascii	"TA_resume\000"
+ 3777      6573756D 
+ 3777      6500
+ 3778              	.LASF20:
+ 3779 06e1 45455F49 		.ascii	"EE_INT32\000"
+ 3779      4E543332 
+ 3779      00
+ 3780              	.LASF124:
+ 3781 06ea 616E7941 		.ascii	"anyActive\000"
+ 3781      63746976 
+ 3781      6500
+ 3782              	.LASF15:
+ 3783 06f4 75696E74 		.ascii	"uint8_t\000"
+ 3783      385F7400 
+ 3784              	.LASF110:
+ 3785 06fc 54415F73 		.ascii	"TA_start\000"
+ 3785      74617274 
+ 3785      00
+ 3786              	.LASF31:
+ 3787 0705 464F4C44 		.ascii	"FOLDCNT\000"
+ 3787      434E5400 
+ 3788              	.LASF32:
+ 3789 070d 50435352 		.ascii	"PCSR\000"
+ 3789      00
+ 3790              	.LASF91:
+ 3791 0712 54415F53 		.ascii	"TA_STATE_PAUSED\000"
+ 3791      54415445 
+ 3791      5F504155 
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccxU3usW.s 			page 84
+
+
+ 3791      53454400 
+ 3792              	.LASF105:
+ 3793 0722 50494E5F 		.ascii	"PIN_YELLOW\000"
+ 3793      59454C4C 
+ 3793      4F5700
+ 3794              	.LASF63:
+ 3795 072d 52435F45 		.ascii	"RC_ERROR_UNDERRUN\000"
+ 3795      52524F52 
+ 3795      5F554E44 
+ 3795      45525255 
+ 3795      4E00
+ 3796              	.LASF140:
+ 3797 073f 443A5C57 		.ascii	"D:\\WS25\\AMAEOS\\Lab\\Workspace01\\ReactionGame.cy"
+ 3797      5332355C 
+ 3797      414D4145 
+ 3797      4F535C4C 
+ 3797      61625C57 
+ 3798 076d 64736E00 		.ascii	"dsn\000"
+ 3799              	.LASF23:
+ 3800 0771 45455F46 		.ascii	"EE_FREG\000"
+ 3800      52454700 
  3801              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

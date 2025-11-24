@@ -41,6 +41,8 @@
           <File BuildType="BUILD" Toolchain="">source\asw\TimingAnalyzer.h</File>
           <File BuildType="BUILD" Toolchain="">source\asw\ReactionGame.c</File>
           <File BuildType="BUILD" Toolchain="">source\asw\ReactionGame.h</File>
+          <File BuildType="BUILD" Toolchain="">source\asw\ArcadianLight.c</File>
+          <File BuildType="BUILD" Toolchain="">source\asw\ArcadianLight.h</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="D:\WS25\AMAEOS\Lab\Workspace01\ReactionGame.cydsn">
@@ -347,6 +349,17 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\TFT_SPI_IntClock.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\isr_button.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\isr_button.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_Clock.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_Clock.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_RED.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_RED.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_RED_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_YELLOW.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_YELLOW.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_YELLOW_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_GREEN.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_GREEN.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_GREEN_PM.c</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="D:\WS25\AMAEOS\Lab\Workspace01\ReactionGame.cydsn\Export\ARM_GCC_Generic">
