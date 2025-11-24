@@ -49,14 +49,7 @@ TASK(tsk_init)
     TFT_init();
     TFT_setBacklight(255);
     
-    //TA_init(); 
-    
-    //TA_create((TA_t *)&analyzer, TA_MODE_DWT, RED_LED_Write, " Main Game Analyzer");
-    
-    //RG_init((RG_t *)&game);
-      
-    //UART_LOG_PutString("press one of the two buttons to start...\r\n"); 
-    //TFT_print("press one of the two buttons to start...\n");
+    TA_init(); // CySysTick causes issues with OS's cnt_systick
     
     //Reconfigure ISRs with OS parameters.
     //This line MUST be called after the hardware driver initialisation!

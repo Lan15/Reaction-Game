@@ -51,7 +51,7 @@
 /*****************************************************************************/
 /* Local variable definitions ('static')                                     */
 /*****************************************************************************/
-volatile static TA_t analyzer;
+static TA_t analyzerGame;
 volatile static RG_t game = {RG_STATE_WAIT, 0, 0, 0};
 
 volatile static uint16_t ra_g_rndWait_ms = 0;          // random delay until number appears
@@ -75,8 +75,11 @@ TASK(tsk_game)
 {
     EventMaskType ev = 0;
 
+    TA_create((TA_t *)&analyzerGame, TA_MODE_DWT, NULL_PTR, "Game Analyzer"); // do it here or in main ???
+    
     // Upon start up
     UART_LOG_PutString("\r\n\r\n============ Welcome to the Reaction Game ============\r\n"); 
+    UART_LOG_PutString("press one of the two buttons to start...\r\n\r\n"); 
     SetRelAlarm(alrm_tft,110,0); // one shot alarm
     
     while (1)
@@ -87,6 +90,8 @@ TASK(tsk_game)
         ClearEvent(ev);
         //UART_LOG_PutString("event\r\n");         
 
+        uint32_t correctPress; // count of total correct presses
+        
         switch(game.m_curState) // extra while for SM ???
         {
             case RG_STATE_IDLE: // what to do ???
@@ -108,67 +113,60 @@ TASK(tsk_game)
                     game.m_roundPlayed++;
                     ra_g_reactionTimeout_ms = 1000;
                     game.m_curState = RG_STATE_PRESSED;
+                    TA_start((TA_t *)&analyzerGame);
                     SetRelAlarm(alrm_Tick1m,1,1);
                 }
             break;
             case RG_STATE_PRESSED: 
                 //UART_LOG_PutString("ingame\r\n"); 
                 CancelAlarm(alrm_Tick1m);
-                if (ev & ev_buttonLeft || ev & ev_buttonRight) // or keep as a seperate if ???
+                if (ev & ev_buttonLeft) // Keep it seperate else wrong button press also will be counted
                 {
-                    UART_LOG_PutString("BUTT\r\n"); 
-                    if (SEVEN_reg_Read() == 91) // Handle button 1 press - deci 91 = hex 5B = bin 0101 1011 = seven segment 2
+                    //UART_LOG_PutString("BUTT\r\n"); 
+                    TA_stop((TA_t *)&analyzerGame);
+                    
+                    // Handle button 1 press
+                    if (SEVEN_reg_Read() == 91) //deci 91 = hex 5B = bin 0101 1011 = seven segment 2
                     { 
-                        //uint32_t time_ms = (analyzer.elapsed_time / BCLK__BUS_CLK__KHZ); //calculate here ???
-                        //Buffer to assemble string
-                        //char buffer[150]; 
-                        
                         //Send string to UART
                         UART_LOG_PutString("Great - correct button pressed!\r\n");
-                        //snprintf(buffer, sizeof(buffer), "Reaction time in ms: %u\r\n", time_ms);
-                        //UART_LOG_PutString(buffer);
-                        game.m_score++;
-                    } else if (SEVEN_reg_Read() == 6) // Handle button 2 press - deci 6 = hex 6 = bin 0110 0000 = seven segment 1
-                    {   
-                        //uint32_t time_ms = analyzer.elapsed_time;
-                        //Buffer to assemble string
-                        //char buffer[150]; 
-                        
-                        //Send string to UART
-                        UART_LOG_PutString("Great - correct button pressed!\r\n");
-                        //snprintf(buffer, sizeof(buffer), "Reaction time in ms: %u\r\n", time_ms);
-                        //UART_LOG_PutString(buffer);
+                        char buffer[60]; 
+                        snprintf(buffer, sizeof(buffer), "Reaction time in ms: %u\r\n", TA_getElapsedTimeInMs(&analyzerGame));
+                        UART_LOG_PutString(buffer);
+                        correctPress++;
                         game.m_score++;
                     } else
                     {
                         UART_LOG_PutString("Oops - wrong button pressed!\r\n");
                     }
                 } 
-                /*if (ev & ev_buttonRight)
+                if (ev & ev_buttonRight) 
                 {
+                    TA_stop((TA_t *)&analyzerGame);
                     //Handle button 2 press
-                    if (SEVEN_reg_Read() == 6)
-                    { // deci 6 = hex 6 = bin 0110 0000 = seven segment 1
-                        //uint32_t time_ms = analyzer.elapsed_time;
-                        //Buffer to assemble string
-                        //char buffer[150]; 
-                        
+                    if (SEVEN_reg_Read() == 6) //deci 6 = hex 6 = bin 0110 0000 = seven segment 1
+                    {   
                         //Send string to UART
                         UART_LOG_PutString("Great - correct button pressed!\r\n");
-                        //snprintf(buffer, sizeof(buffer), "Reaction time in ms: %u\r\n", time_ms);
-                        //UART_LOG_PutString(buffer);
+                        char buffer[60]; 
+                        snprintf(buffer, sizeof(buffer), "Reaction time in ms: %u\r\n", TA_getElapsedTimeInMs(&analyzerGame));
+                        UART_LOG_PutString(buffer);
+                        correctPress++;
                         game.m_score++;
                     } else
                     {
                         UART_LOG_PutString("Oops - wrong button pressed!\r\n");
                     }
-                }*/
+                }
                 if (ev & ev_timeout)
                 {
+                    TA_stop((TA_t *)&analyzerGame);
                     //Handle timeout
-                    UART_LOG_PutString("Too slow!\r\n");    // log or func ???
-                    //game.m_curState = RG_STATE_IDLE;
+                    UART_LOG_PutString("\nToo slow!\r\n");    // log or func ???
                 }
+                
+                game.m_totalTime += TA_getElapsedTimeInMs(&analyzerGame);
+                analyzerGame.elapsed_time = 0;
                 
                 SEVEN_ClearAll();
                 
@@ -180,13 +178,14 @@ TASK(tsk_game)
                 if (RG_MAX_ROUNDS == game.m_roundPlayed)
                 {
                     game.m_roundPlayed = 0;
+                    uint32_t avg_time = game.m_totalTime / correctPress++;
                     /* Print for the rounds played */
-                    char buffer[50];
-                    sprintf(buffer, "Score: %u\r\n", game.m_score);
+                    char buffer[70];
+                    snprintf(buffer, sizeof(buffer), "Score: %u | Total Time: %ums | Avg Time: %ums\r\n", game.m_score, game.m_totalTime, avg_time);
                     UART_LOG_PutString(buffer);
                     UART_LOG_PutString("======================================================\r\n");
                     ra_g_tftScore = game.m_score;
-                    SetRelAlarm(alrm_tft,110,0); // one shot alarm
+                    SetRelAlarm(alrm_tft,110,0); // one shot alarm // activate task ???
                 }              
             break;
             default:
@@ -209,7 +208,7 @@ TASK(tsk_timer) // Keep this taks execution time below cycle time ???
         if (ra_g_rndWait_ms == 0)
         {
             CancelAlarm(alrm_Tick1m);
-            UART_LOG_PutString("rndwait\r\n"); 
+            //UART_LOG_PutString("rndwait\r\n"); 
             game.m_curState = RG_STATE_DISPLAY;
             //Signal to tsk_Game that random delay has ended
             SetEvent(tsk_game, ev_randomDone);        

@@ -208,9 +208,9 @@ RC_t TA_calculateElapsedTime(TA_t *const me);
 /**
  * Func which returns elapsed time in ms based on SysTick or DWT reading.
  * \param TA_t const *const me      : [IN] struct of Analyzer related parameters
- * \return RC_SUCCESS when success and RC_ERROR_NULL when the me pointer is null
+ * \return time_ms an uint32_t variable holding calculated time in ms
 */
-RC_t TA_getElapsedTimeInMs(TA_t *const me); // cycles to ms conversion to RG ???
+uint32_t TA_getElapsedTimeInMs(TA_t *const me);
 
 /**
  * Func which returns elapsed time based on SysTick or DWT reading.

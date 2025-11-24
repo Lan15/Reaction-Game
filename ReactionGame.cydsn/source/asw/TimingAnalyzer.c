@@ -75,11 +75,11 @@ RC_t TA_init(void)
 {
     RC_t res = RC_SUCCESS;
     
-    // Initialize SysTick timer (1 ms)
-    CySysTickInit();									// Activate Systick counter     // (N7)
+    // Initialize SysTick timer (1 ms) // Causing issues with OS's cnt_systick
+    /*CySysTickInit();									// Activate Systick counter     // (N7)
 	CySysTickSetCallback(0, SysTick_Handler);           // Set ISR for Systick
 	CySysTickSetReload(BCLK__BUS_CLK__HZ / 1000 - 1);   // Set 1ms cycle Time
-	CySysTickEnable();									// Enable the Callback of the systick
+	CySysTickEnable();									// Enable the Callback of the systick*/
 
     ta_g_system_ms = 0;      // Reset the global time counter
     
@@ -388,16 +388,16 @@ RC_t TA_calculateElapsedTime(TA_t *const me)
 /**
  * Func which returns elapsed time in ms based on SysTick or DWT reading.
  * \param TA_t const *const me      : [IN] struct of Analyzer related parameters
- * \return RC_SUCCESS when success and RC_ERROR_NULL when the me pointer is null
+ * \return time_ms an uint32_t variable holding calculated time in ms
 */
-RC_t TA_getElapsedTimeInMs(TA_t *const me) // keep time_ms as global to keep the func with RC_t return type ???
+uint32_t TA_getElapsedTimeInMs(TA_t *const me) // keep time_ms as global to keep the func with RC_t return type ???
 {
     RC_t res = RC_SUCCESS;
     
     // Calculate the elapsed time in ms
     uint32_t time_ms = me->elapsed_time / BCLK__BUS_CLK__KHZ; 
 
-    return res;
+    return time_ms;
 }
 
 /**
