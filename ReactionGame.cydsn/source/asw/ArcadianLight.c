@@ -25,6 +25,8 @@
 #include "project.h"
 #include "global.h"
 
+#include "ArcadianLight.h"
+
 /*****************************************************************************/
 /* Local pre-processor symbols/macros ('#define')                            */
 /*****************************************************************************/ 
@@ -53,7 +55,7 @@
  * Task Definitions
  ********************************************************************************/
 
-/*TASK(tsk_arcadian)
+/*TASK(tsk_fader)
 {
     for (int phase = 0; phase < 4*256; phase++) 
     {
@@ -74,5 +76,19 @@
     
     TerminateTask();
 }*/
+    
+TASK(tsk_glower)
+{
+    
+    for (uint8_t i = 0; i < (sizeof(RG_glowtable) / sizeof(RG_Glow_t)); ++i)
+    {
+        PWM_RGB_RED_WriteCompare(RG_glowtable[i].m_red);
+        PWM_RGB_GREEN_WriteCompare(RG_glowtable[i].m_green);
+        PWM_RGB_BLUE_WriteCompare(RG_glowtable[i].m_blue);
+        CyDelay(RG_glowtable[i].m_duration);
+    }
+    
+    TerminateTask();
+}
 
 /* [ArcadianLight.c] END OF FILE */

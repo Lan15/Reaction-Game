@@ -18,7 +18,6 @@
 #include "tft.h"
 #include "UART_LOG.h"
 
-#include "ReactionGame.h"
 #include "TimingAnalyzer.h"
 
 int main()
@@ -53,6 +52,10 @@ TASK(tsk_init)
     PWM_YELLOW_Start();
     PWM_GREEN_Start();
     
+    PWM_RGB_RED_Start();   
+    PWM_RGB_GREEN_Start();  
+    PWM_RGB_BLUE_Start();
+    
     TA_init(); // CySysTick causes issues with OS's cnt_systick
     
     //Reconfigure ISRs with OS parameters.
@@ -67,6 +70,7 @@ TASK(tsk_init)
     SetRelAlarm(alrm_Tick1m,1,1);
     //SetRelAlarm(alrm_tft,2,0);
     //SetRelAlarm(alrm_fader,3,1);
+    SetRelAlarm(alrm_glower,2,1);
 
     //Activate all extended and the background task
     ActivateTask(tsk_game);

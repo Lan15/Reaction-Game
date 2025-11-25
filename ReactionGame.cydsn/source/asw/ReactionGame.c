@@ -99,7 +99,7 @@ TASK(tsk_game)
             case RG_STATE_WAIT: // TODO: handle button comming during wait time ???
                 if (ev & ev_buttonLeft || ev & ev_buttonRight)
                 {
-                //CancelAlarm(alrm_Tick1m);
+                //CancelAlarm(alrm_Tick1m); // if timer has high priority
                 //UART_LOG_PutString("wait\r\n"); 
                 //Generate random wait time
                 ra_g_rndWait_ms = (rand() % 2000) + 1000;  // 1000 – 3000 ms

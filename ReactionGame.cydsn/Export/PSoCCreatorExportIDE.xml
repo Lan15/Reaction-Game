@@ -360,6 +360,26 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_GREEN.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_GREEN.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_GREEN_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\RGB_RED_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\RGB_RED.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\RGB_RED.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\RGB_GREEN_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\RGB_GREEN.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\RGB_GREEN.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\RGB_BLUE_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\RGB_BLUE.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\RGB_BLUE.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_RGB_RED.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_RGB_RED.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_RGB_RED_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_Clock_RGB.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_Clock_RGB.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_RGB_GREEN.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_RGB_GREEN.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_RGB_GREEN_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_RGB_BLUE.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_RGB_BLUE.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_RGB_BLUE_PM.c</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="D:\WS25\AMAEOS\Lab\Workspace01\ReactionGame.cydsn\Export\ARM_GCC_Generic">

@@ -34,7 +34,7 @@
     #endif
     #if ((1 == 2) && (EE_MAX_TASK > 5))
     #define TASK_6_STACK_SIZE 0/4 // size = 0 bytes
-    int EE_cortex_mx_stack_6[TASK_6_STACK_SIZE];	/* Task 6 (tsk_arcadian) */
+    int EE_cortex_mx_stack_6[TASK_6_STACK_SIZE];	/* Task 6 (tsk_glower) */
     #endif
     #if ((1 == 2) && (EE_MAX_TASK > 6))
     #define TASK_7_STACK_SIZE 0/4 // size = 0 bytes
@@ -128,7 +128,7 @@
         ,Tsk5	 /* tsk_tft*/
     #endif
     #if EE_MAX_TASK > 5
-        ,Tsk6	 /* tsk_arcadian*/
+        ,Tsk6	 /* tsk_glower*/
     #endif
     #if EE_MAX_TASK > 6
         ,Tsk7 	 /* Task_7*/
@@ -156,7 +156,7 @@
         ,{(EE_ADDR)(&EE_cortex_mx_stack_5[(TASK_5_STACK_SIZE) - CORTEX_MX_INIT_TOS_OFFSET])}    /* tsk_tft*/
         #endif
         #ifdef TASK_6_STACK_SIZE
-        ,{(EE_ADDR)(&EE_cortex_mx_stack_6[(TASK_6_STACK_SIZE) - CORTEX_MX_INIT_TOS_OFFSET])}    /* tsk_arcadian*/
+        ,{(EE_ADDR)(&EE_cortex_mx_stack_6[(TASK_6_STACK_SIZE) - CORTEX_MX_INIT_TOS_OFFSET])}    /* tsk_glower*/
         #endif
         #ifdef TASK_7_STACK_SIZE
         ,{(EE_ADDR)(&EE_cortex_mx_stack_7[(TASK_7_STACK_SIZE) - CORTEX_MX_INIT_TOS_OFFSET])}    /* Task_7*/
@@ -198,7 +198,7 @@
     DeclareTask(tsk_tft);
     #endif
     #if EE_MAX_TASK > 5
-    DeclareTask(tsk_arcadian);
+    DeclareTask(tsk_glower);
     #endif
     #if EE_MAX_TASK > 6
     DeclareTask(Task_7);
@@ -224,7 +224,7 @@
         ,&EE_oo_thread_stub      /* thread tsk_tft */
     #endif
     #if EE_MAX_TASK > 5
-        ,&EE_oo_thread_stub      /* thread tsk_arcadian */
+        ,&EE_oo_thread_stub      /* thread tsk_glower */
     #endif
     #if EE_MAX_TASK > 6
         ,&EE_oo_thread_stub      /* thread Task_7 */
@@ -254,7 +254,7 @@
         ,&Functsk_tft
     #endif
     #if EE_MAX_TASK > 5
-        ,&Functsk_arcadian
+        ,&Functsk_glower
     #endif
     #if EE_MAX_TASK > 6
         ,&FuncTask_7
@@ -311,7 +311,7 @@
         ,"tsk_tft"
     #endif
     #if EE_MAX_TASK > 5
-        ,"tsk_arcadian"
+        ,"tsk_glower"
     #endif
     #if EE_MAX_TASK > 6
         ,"Task_7"
@@ -1570,7 +1570,7 @@
         {alrm_Tick1m}
     #endif
     #if EE_MAX_ALARM > 1
-        ,{alrm_fader}
+        ,{alrm_glower}
     #endif
     #if EE_MAX_ALARM > 2
         ,{alrm_fader}
@@ -1600,7 +1600,7 @@ const char* EE_ALARM_NAME[EE_MAX_ALARM]=
          "alrm_Tick1m"
     #endif
     #if EE_MAX_ALARM > 1
-        ,"alrm_fader"
+        ,"alrm_glower"
     #endif
     #if EE_MAX_ALARM > 2
         ,"alrm_fader"
@@ -1628,7 +1628,7 @@ const unsigned long EE_ALARM_ID[EE_MAX_ALARM]=
          alrm_Tick1m
     #endif
     #if EE_MAX_ALARM > 1
-        ,alrm_fader
+        ,alrm_glower
     #endif
     #if EE_MAX_ALARM > 2
         ,alrm_fader
@@ -1688,7 +1688,7 @@ const unsigned long EE_ALARM_ID[EE_MAX_ALARM]=
         {0, alrm_Tick1m, EE_ALARM }
         #endif
         #if EE_MAX_ALARM > 1
-        ,{0, alrm_fader, EE_ALARM }
+        ,{0, alrm_glower, EE_ALARM }
         #endif
         #if EE_MAX_ALARM > 2
         ,{0, alrm_fader, EE_ALARM }
@@ -1923,7 +1923,7 @@ const unsigned long EE_ALARM_ID[EE_MAX_ALARM]=
     #if 1 || 0 || 0 || 0 || 0
         ,
     #endif
-        tsk_arcadian
+        tsk_glower
     #endif
     #if (EE_MAX_TASK > 6) && 0
     #if 1 || 0 || 0 || 0 || 0 || 0

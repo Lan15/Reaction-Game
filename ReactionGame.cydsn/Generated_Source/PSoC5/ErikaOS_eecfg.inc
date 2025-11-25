@@ -19,7 +19,7 @@
  **************************************************************************/
 
     /* TASK definition */
-    #define EE_MAX_TASK 5
+    #define EE_MAX_TASK 6
     #if EE_MAX_TASK > 0
     #define tsk_init 0
     #endif
@@ -36,7 +36,7 @@
     #define tsk_tft 4
     #endif
     #if EE_MAX_TASK > 5
-    #define tsk_arcadian 5
+    #define tsk_glower 5
     #endif
     #if EE_MAX_TASK > 6
     #define Task_7 6
@@ -86,12 +86,12 @@
     #endif
     
     /* ALARM definition */
-    #define EE_MAX_ALARM 1U
+    #define EE_MAX_ALARM 2U
     #if EE_MAX_ALARM > 0
     #define alrm_Tick1m 0U
     #endif
     #if EE_MAX_ALARM > 1
-    #define alrm_fader 1U
+    #define alrm_glower 1U
     #endif
     #if EE_MAX_ALARM > 2
     #define alrm_fader 2U
