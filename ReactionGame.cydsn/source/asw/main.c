@@ -65,12 +65,13 @@ TASK(tsk_init)
 	
     //Start the cyclic alarms 
     SetRelAlarm(alrm_Tick1m,1,1);
-    SetRelAlarm(alrm_tft,2,0);
+    //SetRelAlarm(alrm_tft,2,0);
     SetRelAlarm(alrm_fader,3,1);
 
     //Activate all extended and the background task
     ActivateTask(tsk_game);
     //ActivateTask(tsk_arcadian);
+    ActivateTask(tsk_tft);
     ActivateTask(tsk_background);
 
     TerminateTask();

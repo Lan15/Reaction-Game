@@ -282,7 +282,7 @@
         ,4U
     #endif
     #if EE_MAX_TASK > 5
-        ,2U
+        ,4U
     #endif
     #if EE_MAX_TASK > 6
         ,0U
@@ -616,7 +616,7 @@
     #endif
     #if EE_MAX_TASK > 5
         #if 1
-        ,2U
+        ,4U
         #else
         ,MAX_PRIORITY
         #endif
@@ -1570,7 +1570,7 @@
         {alrm_Tick1m}
     #endif
     #if EE_MAX_ALARM > 1
-        ,{alrm_tft}
+        ,{alrm_fader}
     #endif
     #if EE_MAX_ALARM > 2
         ,{alrm_fader}
@@ -1600,7 +1600,7 @@ const char* EE_ALARM_NAME[EE_MAX_ALARM]=
          "alrm_Tick1m"
     #endif
     #if EE_MAX_ALARM > 1
-        ,"alrm_tft"
+        ,"alrm_fader"
     #endif
     #if EE_MAX_ALARM > 2
         ,"alrm_fader"
@@ -1628,7 +1628,7 @@ const unsigned long EE_ALARM_ID[EE_MAX_ALARM]=
          alrm_Tick1m
     #endif
     #if EE_MAX_ALARM > 1
-        ,alrm_tft
+        ,alrm_fader
     #endif
     #if EE_MAX_ALARM > 2
         ,alrm_fader
@@ -1655,7 +1655,7 @@ const unsigned long EE_ALARM_ID[EE_MAX_ALARM]=
     void alarm_callback_1(void);
 #endif
 #if (EE_MAX_ALARM > 1) && (0 == 3)
-    void alarm_callback_2(void);
+    void alarm_callback_3(void);
 #endif
 #if (EE_MAX_ALARM > 2) && (0 == 3)
     void alarm_callback_3(void);
@@ -1688,7 +1688,7 @@ const unsigned long EE_ALARM_ID[EE_MAX_ALARM]=
         {0, alrm_Tick1m, EE_ALARM }
         #endif
         #if EE_MAX_ALARM > 1
-        ,{0, alrm_tft, EE_ALARM }
+        ,{0, alrm_fader, EE_ALARM }
         #endif
         #if EE_MAX_ALARM > 2
         ,{0, alrm_fader, EE_ALARM }
@@ -1742,7 +1742,7 @@ const unsigned long EE_ALARM_ID[EE_MAX_ALARM]=
     #if EE_ACTION_ROM_SIZE > 1
         ,{0    , 
             #if 0 != 3 
-                4,
+                5,
             #else
                 0,
             #endif
@@ -1754,7 +1754,7 @@ const unsigned long EE_ALARM_ID[EE_MAX_ALARM]=
             #if 0 != 3
              (EE_VOID_CALLBACK)NULL,
             #else
-                alarm_callback_2,
+                alarm_callback_3,
             #endif
             (EE_TYPECOUNTER)-1 }
     #endif

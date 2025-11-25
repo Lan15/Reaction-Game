@@ -185,7 +185,8 @@ TASK(tsk_game)
                     UART_LOG_PutString(buffer);
                     UART_LOG_PutString("======================================================\r\n");
                     ra_g_tftScore = game.m_score;
-                    SetRelAlarm(alrm_tft,1,0); // one shot alarm // activate task ???
+                    ActivateTask(tsk_tft);
+                    //SetRelAlarm(alrm_tft,1,0); // one shot alarm // activate task ???
                 }              
             break;
             default:
@@ -198,7 +199,7 @@ TASK(tsk_game)
 	TerminateTask();
 }
 
-TASK(tsk_timer) // Keep this taks execution time below cycle time ???
+TASK(tsk_timer) // Keep this taks execution time below cycle time ??? Go with oneshot alrm instead of cyclic ???
 {
     //Random-Wait Countdown (1–3 seconds random delay)
     if (ra_g_rndWait_ms > 0)

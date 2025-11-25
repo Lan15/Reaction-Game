@@ -86,12 +86,12 @@
     #endif
     
     /* ALARM definition */
-    #define EE_MAX_ALARM 3U
+    #define EE_MAX_ALARM 2U
     #if EE_MAX_ALARM > 0
     #define alrm_Tick1m 0U
     #endif
     #if EE_MAX_ALARM > 1
-    #define alrm_tft 1U
+    #define alrm_fader 1U
     #endif
     #if EE_MAX_ALARM > 2
     #define alrm_fader 2U
