@@ -273,10 +273,10 @@
         ,1U
     #endif
     #if EE_MAX_TASK > 2
-        ,64U
+        ,32U
     #endif
     #if EE_MAX_TASK > 3
-        ,32U
+        ,64U
     #endif
     #if EE_MAX_TASK > 4
         ,4U
@@ -595,14 +595,14 @@
     #endif
     #if EE_MAX_TASK > 2
         #if 1
-        ,64U
+        ,32U
         #else
         ,MAX_PRIORITY
         #endif
     #endif
     #if EE_MAX_TASK > 3
         #if 1
-        ,32U
+        ,64U
         #else
         ,MAX_PRIORITY
         #endif

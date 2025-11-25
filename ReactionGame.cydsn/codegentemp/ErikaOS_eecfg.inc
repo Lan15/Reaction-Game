@@ -19,7 +19,7 @@
  **************************************************************************/
 
     /* TASK definition */
-    #define EE_MAX_TASK 6
+    #define EE_MAX_TASK 5
     #if EE_MAX_TASK > 0
     #define tsk_init 0
     #endif
@@ -86,7 +86,7 @@
     #endif
     
     /* ALARM definition */
-    #define EE_MAX_ALARM 2U
+    #define EE_MAX_ALARM 1U
     #if EE_MAX_ALARM > 0
     #define alrm_Tick1m 0U
     #endif

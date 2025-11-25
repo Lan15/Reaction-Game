@@ -53,7 +53,7 @@
  * Task Definitions
  ********************************************************************************/
 
-TASK(tsk_arcadian)
+/*TASK(tsk_arcadian)
 {
     for (int phase = 0; phase < 4*256; phase++) 
     {
@@ -73,6 +73,6 @@ TASK(tsk_arcadian)
     }
     
     TerminateTask();
-}    
+}*/
 
 /* [ArcadianLight.c] END OF FILE */

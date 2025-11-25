@@ -97,29 +97,33 @@ TASK(tsk_game)
             case RG_STATE_IDLE: // what to do ???
             break;
             case RG_STATE_WAIT: // TODO: handle button comming during wait time ???
-                CancelAlarm(alrm_Tick1m);
+                if (ev & ev_buttonLeft || ev & ev_buttonRight)
+                {
+                //CancelAlarm(alrm_Tick1m);
                 //UART_LOG_PutString("wait\r\n"); 
                 //Generate random wait time
                 ra_g_rndWait_ms = (rand() % 2000) + 1000;  // 1000 – 3000 ms
                 //rndWait_ms = (rand() % 2000) + 1000; // single shot alaram instead of global var, reduction ???
                 //SetRelAlarm(alrm_Tick1m, rndWait_ms, 0);
-                SetRelAlarm(alrm_Tick1m,1,1);
+                //SetRelAlarm(alrm_Tick1m,1,1);
+                }
             break;
             case RG_STATE_DISPLAY: // If one round got over bring back to wait state ???
                 if (ev & ev_randomDone)
                 {
+                    //UART_LOG_PutString("seven\r\n");
                     //Show random number on display
                     SEVEN_writeRandom(); // Ok or a seperate task ???
                     game.m_roundPlayed++;
                     ra_g_reactionTimeout_ms = RG_TIMEOUT_TIME_MS;
                     game.m_curState = RG_STATE_PRESSED;
                     TA_start((TA_t *)&analyzerGame);
-                    SetRelAlarm(alrm_Tick1m,1,1);
+                    //SetRelAlarm(alrm_Tick1m,1,1);
                 }
             break;
             case RG_STATE_PRESSED: 
                 //UART_LOG_PutString("ingame\r\n"); 
-                CancelAlarm(alrm_Tick1m);
+                //CancelAlarm(alrm_Tick1m);
                 if (ev & ev_buttonLeft) // Keep it seperate else wrong button press also will be counted
                 {
                     //UART_LOG_PutString("BUTT\r\n"); 
@@ -201,6 +205,31 @@ TASK(tsk_game)
 
 TASK(tsk_timer) // Keep this taks execution time below cycle time ??? Go with oneshot alrm instead of cyclic ???
 {
+    
+    static uint16_t phase = 0;
+    uint8_t value = phase & 0xFF;
+
+    // ----- Continuous RGB cycle -----
+    if (phase < 256) {
+        PWM_RED_WriteCompare(value);              // Red fades in
+    }
+    else if (phase < 512) {
+        PWM_RED_WriteCompare(255 - value);        // Red fades out
+        PWM_YELLOW_WriteCompare(value);           // Yellow fades in
+    }
+    else if (phase < 768) {
+        PWM_YELLOW_WriteCompare(255 - value);     // Yellow fades out
+        PWM_GREEN_WriteCompare(value);            // Green fades in
+    }
+    else {
+        PWM_GREEN_WriteCompare(255 - value);      // Green fades out
+    }
+
+    phase++;
+    if (phase >= 1024)
+        phase = 0;     // Restart continuous cycle
+
+    
     //Random-Wait Countdown (1–3 seconds random delay)
     if (ra_g_rndWait_ms > 0)
     {
@@ -208,7 +237,7 @@ TASK(tsk_timer) // Keep this taks execution time below cycle time ??? Go with on
         
         if (ra_g_rndWait_ms == 0)
         {
-            CancelAlarm(alrm_Tick1m);
+            //CancelAlarm(alrm_Tick1m);
             //UART_LOG_PutString("rndwait\r\n"); 
             game.m_curState = RG_STATE_DISPLAY;
             //Signal to tsk_Game that random delay has ended
@@ -223,7 +252,7 @@ TASK(tsk_timer) // Keep this taks execution time below cycle time ??? Go with on
         
         if (ra_g_reactionTimeout_ms == 0)
         {
-            CancelAlarm(alrm_Tick1m);
+            //CancelAlarm(alrm_Tick1m);
             //User failed to react in time
             SetEvent(tsk_game, ev_timeout);
         }

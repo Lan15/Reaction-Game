@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
   28:source\asw/TimingAnalyzer.c **** #include "UART_LOG.h"
   29:source\asw/TimingAnalyzer.c **** 
   30:source\asw/TimingAnalyzer.c **** /*****************************************************************************/
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 2
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 2
 
 
   31:source\asw/TimingAnalyzer.c **** /* Local pre-processor symbols/macros ('#define')                            */
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
   76:source\asw/TimingAnalyzer.c ****     RC_t res = RC_SUCCESS;
   77:source\asw/TimingAnalyzer.c ****     
   78:source\asw/TimingAnalyzer.c ****     // Initialize SysTick timer (1 ms) // Causing issues with OS's cnt_systick
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 3
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 3
 
 
   79:source\asw/TimingAnalyzer.c ****     /*CySysTickInit();									// Activate Systick counter     // (N7)
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
   74              	TA_create:
   75              	.LFB112:
   96:source\asw/TimingAnalyzer.c **** 
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 4
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 4
 
 
   97:source\asw/TimingAnalyzer.c **** /**
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  120:source\asw/TimingAnalyzer.c ****     }
  121:source\asw/TimingAnalyzer.c ****     
  122:source\asw/TimingAnalyzer.c ****     if (strlen(name) == 0UL || mode > TA_MAX_MODES)
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 5
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 5
 
 
  106              		.loc 1 122 0 is_stmt 1
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  136 003c 2171     		strb	r1, [r4, #4]
  147:source\asw/TimingAnalyzer.c ****         me->state   = TA_STATE_IDLE;
  137              		.loc 1 147 0
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 6
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 6
 
 
  138 003e 6071     		strb	r0, [r4, #5]
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  177              	.L14:
  124:source\asw/TimingAnalyzer.c ****     }
  178              		.loc 1 124 0
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 7
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 7
 
 
  179 005e 6FF01300 		mvn	r0, #19
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  171:source\asw/TimingAnalyzer.c ****     
  172:source\asw/TimingAnalyzer.c ****     // Validate the input
  173:source\asw/TimingAnalyzer.c ****     if (me == NULL_PTR)
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 8
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 8
 
 
  220              		.loc 1 173 0
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  195:source\asw/TimingAnalyzer.c ****     // Fetching the counter FIRST for precision
  196:source\asw/TimingAnalyzer.c ****     if (TA_MODE_SYSTICK == me->mode || TA_MODE_SYSTICK_PIN  == me->mode) {
  252              		.loc 1 196 0
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 9
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 9
 
 
  253 0022 2279     		ldrb	r2, [r4, #4]	@ zero_extendqisi2
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  292              		.cfi_offset 14, -4
  181:source\asw/TimingAnalyzer.c ****     }
  293              		.loc 1 181 0
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 10
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 10
 
 
  294 004c 6FF00900 		mvn	r0, #9
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  237:source\asw/TimingAnalyzer.c ****         me->stop_time = ta_g_system_ms;  // Stop current cycle interval
  238:source\asw/TimingAnalyzer.c ****         
  239:source\asw/TimingAnalyzer.c ****     } else if (TA_MODE_DWT == me->mode || TA_MODE_DWT_PIN == me->mode) {
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 11
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 11
 
 
  240:source\asw/TimingAnalyzer.c ****         // DWT cycle counter
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  280:source\asw/TimingAnalyzer.c ****     }
  281:source\asw/TimingAnalyzer.c ****     
  282:source\asw/TimingAnalyzer.c ****     // Check state - Can only resume if paused
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 12
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 12
 
 
  283:source\asw/TimingAnalyzer.c ****     if (TA_STATE_PAUSED != me->state)
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  368 0032 04E0     		b	.L38
  369              	.L37:
  303:source\asw/TimingAnalyzer.c ****     } else if (TA_MODE_DWT == me->mode || TA_MODE_DWT_PIN == me->mode) {
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 13
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 13
 
 
  370              		.loc 1 303 0
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  410              	.LVL30:
  411              	.L44:
  412              		.align	2
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 14
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 14
 
 
  413              	.L43:
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  355:source\asw/TimingAnalyzer.c ****         {
  356:source\asw/TimingAnalyzer.c ****             me->pin_control_func(0U); /* Turn OFF pin */
  357:source\asw/TimingAnalyzer.c ****         } else {
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 15
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 15
 
 
  358:source\asw/TimingAnalyzer.c ****             return RC_ERROR_NULL;
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  452 001a 0020     		movs	r0, #0
  453              	.LVL32:
  454 001c 7047     		bx	lr
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 16
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 16
 
 
  455              		.cfi_endproc
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  501 0022 114A     		ldr	r2, .L58+4
  502 0024 5268     		ldr	r2, [r2, #4]
  503 0026 C260     		str	r2, [r0, #12]
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 17
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 17
 
 
  504              	.L51:
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  548              		.loc 1 264 0
  549 0054 7047     		bx	lr
  550              	.LVL40:
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 18
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 18
 
 
  551              	.L55:
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  333:source\asw/TimingAnalyzer.c ****     {
  599              		.loc 1 333 0
  600 0006 4279     		ldrb	r2, [r0, #5]	@ zero_extendqisi2
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 19
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 19
 
 
  601 0008 013A     		subs	r2, r2, #1
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  646 0046 5BB1     		cbz	r3, .L68
  356:source\asw/TimingAnalyzer.c ****         } else {
  647              		.loc 1 356 0
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 20
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 20
 
 
  648 0048 0020     		movs	r0, #0
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  695              		.size	TA_stop, .-TA_stop
  696              		.section	.text.TA_getElapsedTimeInMs,"ax",%progbits
  697              		.align	2
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 21
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 21
 
 
  698              		.global	TA_getElapsedTimeInMs
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  404:source\asw/TimingAnalyzer.c ****  * Func which returns elapsed time based on SysTick or DWT reading.
  405:source\asw/TimingAnalyzer.c ****  * \param TA_t *const me        : [IN] struct of Analyzer related parameters
  406:source\asw/TimingAnalyzer.c ****  * \return RC_SUCCESS when success and RC_ERROR_NULL when the me pointer is null
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 22
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 22
 
 
  407:source\asw/TimingAnalyzer.c **** */
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  768              	.L80:
  769              	.LVL60:
  427:source\asw/TimingAnalyzer.c ****             break;
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 23
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 23
 
 
  428:source\asw/TimingAnalyzer.c ****         case TA_STATE_STOPPED: 
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  804              	.LVL66:
  447:source\asw/TimingAnalyzer.c ****         rem_cycles = me->elapsed_time % BCLK__BUS_CLK__KHZ;
  805              		.loc 1 447 0
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 24
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 24
 
 
  806 003c 45F6C053 		movw	r3, #24000
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  851 007c 0169     		ldr	r1, [r0, #16]
  852 007e 0191     		str	r1, [sp, #4]
  853 0080 0092     		str	r2, [sp]
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 25
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 25
 
 
  854 0082 104A     		ldr	r2, .L90+36
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  899 00b4 F1197605 		.word	91625969
  900 00b8 40420F00 		.word	1000000
  901 00bc 28000000 		.word	.LC5
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 26
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 26
 
 
  902 00c0 68000000 		.word	.LC6
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  940              	.LVL86:
  480:source\asw/TimingAnalyzer.c ****         if ((me != NULL_PTR) && me->state)
  941              		.loc 1 480 0
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 27
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 27
 
 
  942 0010 88B1     		cbz	r0, .L96
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  978              	.L96:
  979              	.LBB8:
  980              	.LBB6:
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 28
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 28
 
 
  485:source\asw/TimingAnalyzer.c ****         }
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  1021 0000 024A     		ldr	r2, .L103
  1022 0002 1368     		ldr	r3, [r2]
  1023 0004 0133     		adds	r3, r3, #1
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 29
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 29
 
 
  1024 0006 1360     		str	r3, [r2]
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  1059 00b0 0D0A496E 		.ascii	"\015\012Info: No analyzer instance available to pri"
  1059      666F3A20 
  1059      4E6F2061 
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 30
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 30
 
 
  1059      6E616C79 
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  1107 0026 08       		.byte	0x8
  1108 0027 07       		.byte	0x7
  1109 0028 93000000 		.4byte	.LASF0
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 31
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 31
 
 
  1110 002c 02       		.uleb128 0x2
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  1164 008f BB050000 		.4byte	.LASF12
  1165 0093 05       		.uleb128 0x5
  1166 0094 04       		.byte	0x4
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 32
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 32
 
 
  1167 0095 02       		.uleb128 0x2
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  1221 0104 4F       		.byte	0x4f
  1222 0105 E8000000 		.4byte	0xe8
  1223 0109 03       		.uleb128 0x3
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 33
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 33
 
 
  1224 010a 0F020000 		.4byte	.LASF24
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  1278 0180 14010000 		.4byte	0x114
  1279 0184 14       		.byte	0x14
  1280 0185 0C       		.uleb128 0xc
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 34
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 34
 
 
  1281 0186 05070000 		.4byte	.LASF31
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  1335 01fb FA030000 		.4byte	.LASF40
  1336 01ff 06       		.byte	0x6
  1337 0200 6003     		.2byte	0x360
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 35
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 35
 
 
  1338 0202 1E010000 		.4byte	0x11e
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  1392 0274 AD020000 		.4byte	0x2ad
  1393 0278 0C       		.uleb128 0xc
  1394 0279 A9010000 		.4byte	.LASF49
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 36
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 36
 
 
  1395 027d 06       		.byte	0x6
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  1449 02ee BA040000 		.4byte	.LASF59
  1450 02f2 7D       		.sleb128 -3
  1451 02f3 10       		.uleb128 0x10
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 37
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 37
 
 
  1452 02f4 47060000 		.4byte	.LASF60
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  1506 0360 A1030000 		.4byte	.LASF78
  1507 0364 6A       		.sleb128 -22
  1508 0365 10       		.uleb128 0x10
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 38
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 38
 
 
  1509 0366 29000000 		.4byte	.LASF79
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  1563 03d5 0F       		.uleb128 0xf
  1564 03d6 12070000 		.4byte	.LASF91
  1565 03da 02       		.byte	0x2
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 39
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 39
 
 
  1566 03db 0F       		.uleb128 0xf
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  1620 0447 7E       		.byte	0x7e
  1621 0448 C4000000 		.4byte	0xc4
  1622 044c 0C       		.byte	0xc
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 40
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 40
 
 
  1623 044d 15       		.uleb128 0x15
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  1677 04bc 22000000 		.4byte	.LVL1
  1678 04c0 68090000 		.4byte	0x968
  1679 04c4 00       		.byte	0
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 41
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 41
 
 
  1680 04c5 16       		.uleb128 0x16
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  1734 0536 A3000000 		.4byte	0xa3
  1735 053a 16       		.uleb128 0x16
  1736 053b FC060000 		.4byte	.LASF110
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 42
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 42
 
 
  1737 053f 01       		.byte	0x1
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  1791 05b5 01       		.uleb128 0x1
  1792 05b6 50       		.byte	0x50
  1793 05b7 01       		.uleb128 0x1
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 43
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 43
 
 
  1794 05b8 31       		.byte	0x31
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  1848 0637 50       		.byte	0x50
  1849 0638 02       		.uleb128 0x2
  1850 0639 74       		.byte	0x74
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 44
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 44
 
 
  1851 063a 00       		.sleb128 0
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  1905 06a2 E2050000 		.4byte	.LASF115
  1906 06a6 01       		.byte	0x1
  1907 06a7 8901     		.2byte	0x189
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 45
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 45
 
 
  1908 06a9 C4000000 		.4byte	0xc4
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  1962 072c D87E     		.sleb128 -168
  1963 072e 23       		.uleb128 0x23
  1964 072f E9000000 		.4byte	.LASF119
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 46
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 46
 
 
  1965 0733 01       		.byte	0x1
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  2019 07a1 1C       		.uleb128 0x1c
  2020 07a2 02       		.uleb128 0x2
  2021 07a3 7D       		.byte	0x7d
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 47
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 47
 
 
  2022 07a4 08       		.sleb128 8
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  2076 07ea 03       		.byte	0x3
  2077 07eb 68000000 		.4byte	.LC6
  2078 07ef 00       		.byte	0
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 48
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 48
 
 
  2079 07f0 21       		.uleb128 0x21
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  2133 0856 D901     		.2byte	0x1d9
  2134 0858 78030000 		.4byte	0x378
  2135 085c 72040000 		.4byte	.LLST15
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 49
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 49
 
 
  2136 0860 23       		.uleb128 0x23
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  2190 08dc 2A       		.uleb128 0x2a
  2191 08dd 40000000 		.4byte	.LASF125
  2192 08e1 01       		.byte	0x1
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 50
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 50
 
 
  2193 08e2 39       		.byte	0x39
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  2247 0958 1A000000 		.4byte	.LASF134
  2248 095c 09       		.byte	0x9
  2249 095d 1D       		.byte	0x1d
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 51
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 51
 
 
  2250 095e 71040000 		.4byte	0x471
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  2304 0020 00       		.byte	0
  2305 0021 03       		.uleb128 0x3
  2306 0022 0E       		.uleb128 0xe
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 52
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 52
 
 
  2307 0023 3A       		.uleb128 0x3a
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  2361 0059 01       		.uleb128 0x1
  2362 005a 13       		.uleb128 0x13
  2363 005b 00       		.byte	0
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 53
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 53
 
 
  2364 005c 00       		.byte	0
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  2418 0092 0B       		.uleb128 0xb
  2419 0093 0B       		.uleb128 0xb
  2420 0094 49       		.uleb128 0x49
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 54
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 54
 
 
  2421 0095 13       		.uleb128 0x13
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  2475 00cb 05       		.uleb128 0x5
  2476 00cc 00       		.byte	0
  2477 00cd 49       		.uleb128 0x49
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 55
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 55
 
 
  2478 00ce 13       		.uleb128 0x13
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  2532 0105 01       		.uleb128 0x1
  2533 0106 13       		.uleb128 0x13
  2534 0107 00       		.byte	0
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 56
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 56
 
 
  2535 0108 00       		.byte	0
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  2589 0140 00       		.byte	0
  2590 0141 1B       		.uleb128 0x1b
  2591 0142 898201   		.uleb128 0x4109
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 57
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 57
 
 
  2592 0145 01       		.byte	0x1
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  2646 017f 00       		.byte	0
  2647 0180 00       		.byte	0
  2648 0181 1F       		.uleb128 0x1f
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 58
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 58
 
 
  2649 0182 34       		.uleb128 0x34
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  2703 01ba 00       		.byte	0
  2704 01bb 23       		.uleb128 0x23
  2705 01bc 34       		.uleb128 0x34
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 59
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 59
 
 
  2706 01bd 00       		.byte	0
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  2760 01f5 13       		.uleb128 0x13
  2761 01f6 00       		.byte	0
  2762 01f7 00       		.byte	0
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 60
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 60
 
 
  2763 01f8 28       		.uleb128 0x28
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  2817 022f 49       		.uleb128 0x49
  2818 0230 13       		.uleb128 0x13
  2819 0231 3F       		.uleb128 0x3f
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 61
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 61
 
 
  2820 0232 19       		.uleb128 0x19
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  2874 0268 00       		.byte	0
  2875 0269 00       		.byte	0
  2876 026a 00       		.byte	0
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 62
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 62
 
 
  2877              		.section	.debug_loc,"",%progbits
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  2931 0084 0100     		.2byte	0x1
  2932 0086 54       		.byte	0x54
  2933 0087 46000000 		.4byte	.LVL14
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 63
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 63
 
 
  2934 008b 4A000000 		.4byte	.LVL15
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  2988 0110 9F       		.byte	0x9f
  2989 0111 4C000000 		.4byte	.LVL26
  2990 0115 50000000 		.4byte	.LVL27
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 64
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 64
 
 
  2991 0119 0100     		.2byte	0x1
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  3045 01a0 54000000 		.4byte	.LVL39
  3046 01a4 56000000 		.4byte	.LVL40
  3047 01a8 0400     		.2byte	0x4
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 65
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 65
 
 
  3048 01aa F3       		.byte	0xf3
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  3102 0230 53       		.byte	0x53
  3103 0231 33000000 		.4byte	.LVL46-1
  3104 0235 54000000 		.4byte	.LVL49
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 66
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 66
 
 
  3105 0239 0100     		.2byte	0x1
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  3159 02be 00000000 		.4byte	0
  3160              	.LLST8:
  3161 02c2 00000000 		.4byte	.LVL55
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 67
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 67
 
 
  3162 02c6 04000000 		.4byte	.LVL56
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  3216 0349 F3       		.byte	0xf3
  3217 034a 01       		.uleb128 0x1
  3218 034b 50       		.byte	0x50
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 68
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 68
 
 
  3219 034c 9F       		.byte	0x9f
@@ -4078,7 +4078,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  3273 03d2 70000000 		.4byte	.LVL74
  3274 03d6 0100     		.2byte	0x1
  3275 03d8 52       		.byte	0x52
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 69
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 69
 
 
  3276 03d9 70000000 		.4byte	.LVL74
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  3330 0451 25       		.byte	0x25
  3331 0452 F7       		.byte	0xf7
  3332 0453 2C       		.uleb128 0x2c
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 70
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 70
 
 
  3333 0454 39       		.byte	0x39
@@ -4198,7 +4198,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  3387 04d8 00000000 		.4byte	0
  3388 04dc 00000000 		.4byte	0
  3389              	.LLST17:
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 71
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 71
 
 
  3390 04e0 02000000 		.4byte	.LVL84
@@ -4258,7 +4258,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  3444 0014 34000000 		.4byte	.LFE111-.LFB111
  3445 0018 00000000 		.4byte	.LFB112
  3446 001c 7C000000 		.4byte	.LFE112-.LFB112
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 72
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 72
 
 
  3447 0020 00000000 		.4byte	.LFB113
@@ -4318,7 +4318,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  3501 0080 00000000 		.4byte	.LFB119
  3502 0084 C8000000 		.4byte	.LFE119
  3503 0088 00000000 		.4byte	.LFB120
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 73
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 73
 
 
  3504 008c 50000000 		.4byte	.LFE120
@@ -4378,7 +4378,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  3531      00
  3532              	.LASF112:
  3533 0075 54415F63 		.ascii	"TA_calculateElapsedTime\000"
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 74
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 74
 
 
  3533      616C6375 
@@ -4438,7 +4438,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  3557 0116 6C6F6E67 		.ascii	"long long int\000"
  3557      206C6F6E 
  3557      6720696E 
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 75
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 75
 
 
  3557      7400
@@ -4498,7 +4498,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  3585      6379636C 
  3585      657300
  3586              	.LASF19:
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 76
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 76
 
 
  3587 01ba 646F7562 		.ascii	"double\000"
@@ -4558,7 +4558,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  3612              	.LASF22:
  3613 0257 45455F55 		.ascii	"EE_UREG\000"
  3613      52454700 
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 77
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 77
 
 
  3614              	.LASF123:
@@ -4618,7 +4618,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  3637      52524F52 
  3637      5F575249 
  3637      54455F46 
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 78
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 78
 
 
  3637      41494C53 
@@ -4678,7 +4678,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  3659      5F43414E 
  3659      43454C45 
  3659      4400
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 79
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 79
 
 
  3660              	.LASF33:
@@ -4738,7 +4738,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  3690              	.LASF38:
  3691 042f 4D41534B 		.ascii	"MASK1\000"
  3691      3100
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 80
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 80
 
 
  3692              	.LASF16:
@@ -4798,7 +4798,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  3716              	.LASF138:
  3717 04c8 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
  3717      43313120 
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 81
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 81
 
 
  3717      352E342E 
@@ -4858,7 +4858,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  3739      00
  3740              	.LASF88:
  3741 05d1 54415F4D 		.ascii	"TA_Mode_t\000"
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 82
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 82
 
 
  3741      6F64655F 
@@ -4918,7 +4918,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  3764              	.LASF136:
  3765 0679 736E7072 		.ascii	"snprintf\000"
  3765      696E7466 
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 83
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 83
 
 
  3765      00
@@ -4978,7 +4978,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 1
  3791 0712 54415F53 		.ascii	"TA_STATE_PAUSED\000"
  3791      54415445 
  3791      5F504155 
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccvwwuqh.s 			page 84
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccKSllOz.s 			page 84
 
 
  3791      53454400 
