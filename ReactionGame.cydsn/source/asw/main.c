@@ -72,7 +72,7 @@ TASK(tsk_init)
     SetRelAlarm(alrm_Tick1m,1,1);
     //SetRelAlarm(alrm_tft,2,0);
     //SetRelAlarm(alrm_fader,3,1);
-    SetRelAlarm(alrm_glower,2,1);
+    SetRelAlarm(alrm_arcadian,10,100);
 
     //Activate all extended and the background task
     ActivateTask(tsk_game);
@@ -80,6 +80,17 @@ TASK(tsk_init)
     ActivateTask(tsk_tft);
     ActivateTask(tsk_background);
 
+    TerminateTask();
+}
+
+TASK(tsk_arcadian)
+{
+    RC_t res = RC_SUCCESS;
+    
+    res = fader();
+    
+    res = glower();
+    
     TerminateTask();
 }
 

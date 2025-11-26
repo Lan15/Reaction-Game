@@ -32,7 +32,6 @@
 #include "UART_LOG.h"
 
 #include "ReactionGame.h"
-#include "ArcadianLight.h"
 #include "TimingAnalyzer.h"
 
 /*****************************************************************************/
@@ -210,8 +209,6 @@ TASK(tsk_game)
 
 TASK(tsk_timer) // Keep this taks execution time below cycle time ??? Go with oneshot alrm instead of cyclic ???
 {
-    fader();
-    
     //Random-Wait Countdown (1–3 seconds random delay)
     if (ra_g_rndWait_ms > 0)
     {
@@ -249,7 +246,7 @@ TASK(tsk_timer) // Keep this taks execution time below cycle time ??? Go with on
 
 TASK(tsk_tft)
 {
-    if(!game.m_score)
+    /*if(!game.m_score)
     {
         TFT_clearScreen();
         
@@ -277,7 +274,7 @@ TASK(tsk_tft)
         TFT_print(buffer);
         
         TFT_drawChar(55, 30, 2, YELLOW, 0, 4);
-    }
+    }*/
     
     TerminateTask();
 }

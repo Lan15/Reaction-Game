@@ -36,7 +36,7 @@
     #define tsk_tft 4
     #endif
     #if EE_MAX_TASK > 5
-    #define tsk_glower 5
+    #define tsk_arcadian 5
     #endif
     #if EE_MAX_TASK > 6
     #define tsk_test 6
@@ -91,7 +91,7 @@
     #define alrm_Tick1m 0U
     #endif
     #if EE_MAX_ALARM > 1
-    #define alrm_glower 1U
+    #define alrm_arcadian 1U
     #endif
     #if EE_MAX_ALARM > 2
     #define alrm_tft 2U

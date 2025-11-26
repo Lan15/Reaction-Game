@@ -64,11 +64,12 @@ const RG_Glow_t RG_glowtable[] = {
 /*****************************************************************************/
 
 /********************************************************************************
- * Task Definitions
+ * API Definitions
  ********************************************************************************/
 
-/*TASK(tsk_fader)
+RC_t fader(void)
 {
+    RC_t res = RC_SUCCESS;
     for (int phase = 0; phase < 4*256; phase++) 
     {
         int value = phase % 256;
@@ -85,39 +86,13 @@ const RG_Glow_t RG_glowtable[] = {
         }
         CyDelay(1);
     }
-    
-    TerminateTask();
-}*/
-
-void fader(void)
-{
-    static uint16_t phase = 0;
-    uint8_t value = phase & 0xFF;
-
-    // ----- Continuous RGB cycle -----
-    if (phase < 256) {
-        PWM_RED_WriteCompare(value);              // Red fades in
-    }
-    else if (phase < 512) {
-        PWM_RED_WriteCompare(255 - value);        // Red fades out
-        PWM_YELLOW_WriteCompare(value);           // Yellow fades in
-    }
-    else if (phase < 768) {
-        PWM_YELLOW_WriteCompare(255 - value);     // Yellow fades out
-        PWM_GREEN_WriteCompare(value);            // Green fades in
-    }
-    else {
-        PWM_GREEN_WriteCompare(255 - value);      // Green fades out
-    }
-
-    phase++;
-    if (phase >= 1024)
-        phase = 0;     // Restart continuous cycle
+    return res;
 }
 
-TASK(tsk_glower)
+RC_t glower(void)
 {
-    
+    RC_t res = RC_SUCCESS;
+
     for (uint8_t i = 0; i < (sizeof(RG_glowtable) / sizeof(RG_Glow_t)); ++i)
     {
         PWM_RGB_RED_WriteCompare(RG_glowtable[i].al_red);
@@ -125,8 +100,7 @@ TASK(tsk_glower)
         PWM_RGB_BLUE_WriteCompare(RG_glowtable[i].al_blue);
         CyDelay(RG_glowtable[i].al_duration);
     }
-    
-    TerminateTask();
+    return res;
 }
 
 /* [ArcadianLight.c] END OF FILE */

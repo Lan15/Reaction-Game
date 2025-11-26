@@ -119,7 +119,9 @@ public:
 /* API functions                                                             */
 /*****************************************************************************/
 
-void fader(void);
+RC_t fader(void);
+
+RC_t glower(void);
 
 /*****************************************************************************/
 /* Private stuff, only visible for Together, declared static in cpp - File   */
