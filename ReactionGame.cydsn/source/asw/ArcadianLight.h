@@ -89,7 +89,6 @@
 * Enum to hold 
 */
 
-
 //####################### Structures
 /**
 * \ Glower struct
@@ -97,24 +96,11 @@
 * Main structure that holds everything about the RGB Glower.
 */
 typedef struct {
-    uint8_t m_red;        // name  m_ or al_ or red ???
-    uint8_t m_green;
-    uint8_t m_blue;
-    uint16_t m_duration;   // duration in milliseconds
+    uint8_t al_red;        // name  m_ or al_ or red ???
+    uint8_t al_green;
+    uint8_t al_blue;
+    uint16_t al_duration;   // duration in milliseconds
 } RG_Glow_t;
-    
-const RG_Glow_t RG_glowtable[] = {
-    //Red Green Blue TimeInMS
-    {255, 0, 0, 500},
-    {0, 255, 0, 500},
-    {0, 0, 255, 500},
-    {0, 0, 0, 100},
-    {255, 255, 255, 100},
-    {0, 0, 0, 100},
-    {255, 255, 255, 100},
-    {0, 0, 0, 100},
-    {255, 255, 255, 100}
-};
 
 // Wrapper to allow representing the file in Together as class
 #ifdef TOGETHER
@@ -132,6 +118,8 @@ public:
 /*****************************************************************************/
 /* API functions                                                             */
 /*****************************************************************************/
+
+void fader(void);
 
 /*****************************************************************************/
 /* Private stuff, only visible for Together, declared static in cpp - File   */

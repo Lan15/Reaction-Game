@@ -18,6 +18,8 @@
 #include "tft.h"
 #include "UART_LOG.h"
 
+#include "ReactionGame.h"
+#include "ArcadianLight.h"
 #include "TimingAnalyzer.h"
 
 int main()

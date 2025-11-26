@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccUoPYoO.s 			page 1
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccOpCLVW.s 			page 1
 
 
    1              		.syntax unified
@@ -19,13 +19,13 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccUoPYoO.s 			page 1
   16              		.text
   17              	.Ltext0:
   18              		.cfi_sections	.debug_frame
-  19              		.section	.text.Functsk_glower,"ax",%progbits
+  19              		.section	.text.fader,"ax",%progbits
   20              		.align	2
-  21              		.global	Functsk_glower
+  21              		.global	fader
   22              		.thumb
   23              		.thumb_func
-  24              		.type	Functsk_glower, %function
-  25              	Functsk_glower:
+  24              		.type	fader, %function
+  25              	fader:
   26              	.LFB111:
   27              		.file 1 "source\\asw\\ArcadianLight.c"
    1:source\asw/ArcadianLight.c **** /**
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccUoPYoO.s 			page 1
   28:source\asw/ArcadianLight.c **** #include "ArcadianLight.h"
   29:source\asw/ArcadianLight.c **** 
   30:source\asw/ArcadianLight.c **** /*****************************************************************************/
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccUoPYoO.s 			page 2
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccOpCLVW.s 			page 2
 
 
   31:source\asw/ArcadianLight.c **** /* Local pre-processor symbols/macros ('#define')                            */
@@ -67,1100 +67,1426 @@ ARM GAS  C:\Users\agila\AppData\Local\Temp\ccUoPYoO.s 			page 1
   34:source\asw/ArcadianLight.c **** /*****************************************************************************/
   35:source\asw/ArcadianLight.c **** /* Global variable definitions (declared in header file with 'extern')       */
   36:source\asw/ArcadianLight.c **** /*****************************************************************************/
-  37:source\asw/ArcadianLight.c **** 
-  38:source\asw/ArcadianLight.c **** /*****************************************************************************/
-  39:source\asw/ArcadianLight.c **** /* Local type definitions ('typedef')                                        */
-  40:source\asw/ArcadianLight.c **** /*****************************************************************************/
-  41:source\asw/ArcadianLight.c **** 
-  42:source\asw/ArcadianLight.c **** /*****************************************************************************/
-  43:source\asw/ArcadianLight.c **** /* Local variable definitions ('static')                                     */
-  44:source\asw/ArcadianLight.c **** /*****************************************************************************/ 
-  45:source\asw/ArcadianLight.c **** 
-  46:source\asw/ArcadianLight.c **** /*****************************************************************************/
-  47:source\asw/ArcadianLight.c **** /* Local function prototypes ('static')                                      */
-  48:source\asw/ArcadianLight.c **** /*****************************************************************************/
+  37:source\asw/ArcadianLight.c **** const RG_Glow_t RG_glowtable[] = {
+  38:source\asw/ArcadianLight.c ****     //Red Green Blue TimeInMS
+  39:source\asw/ArcadianLight.c ****     {255, 0, 0, 500},
+  40:source\asw/ArcadianLight.c ****     {0, 255, 0, 500},
+  41:source\asw/ArcadianLight.c ****     {0, 0, 255, 500},
+  42:source\asw/ArcadianLight.c ****     {0, 0, 0, 100},
+  43:source\asw/ArcadianLight.c ****     {255, 255, 255, 100},
+  44:source\asw/ArcadianLight.c ****     {0, 0, 0, 100},
+  45:source\asw/ArcadianLight.c ****     {255, 255, 255, 100},
+  46:source\asw/ArcadianLight.c ****     {0, 0, 0, 100},
+  47:source\asw/ArcadianLight.c ****     {255, 255, 255, 100}
+  48:source\asw/ArcadianLight.c **** };
   49:source\asw/ArcadianLight.c **** 
   50:source\asw/ArcadianLight.c **** /*****************************************************************************/
-  51:source\asw/ArcadianLight.c **** /* Function implementation - global ('extern') and local ('static')          */
+  51:source\asw/ArcadianLight.c **** /* Local type definitions ('typedef')                                        */
   52:source\asw/ArcadianLight.c **** /*****************************************************************************/
   53:source\asw/ArcadianLight.c **** 
-  54:source\asw/ArcadianLight.c **** /********************************************************************************
-  55:source\asw/ArcadianLight.c ****  * Task Definitions
-  56:source\asw/ArcadianLight.c ****  ********************************************************************************/
+  54:source\asw/ArcadianLight.c **** /*****************************************************************************/
+  55:source\asw/ArcadianLight.c **** /* Local variable definitions ('static')                                     */
+  56:source\asw/ArcadianLight.c **** /*****************************************************************************/ 
   57:source\asw/ArcadianLight.c **** 
-  58:source\asw/ArcadianLight.c **** /*TASK(tsk_fader)
-  59:source\asw/ArcadianLight.c **** {
-  60:source\asw/ArcadianLight.c ****     for (int phase = 0; phase < 4*256; phase++) 
-  61:source\asw/ArcadianLight.c ****     {
-  62:source\asw/ArcadianLight.c ****         int value = phase % 256;
-  63:source\asw/ArcadianLight.c ****         if (phase < 256) {
-  64:source\asw/ArcadianLight.c ****             PWM_RED_WriteCompare(value);            // RED in
-  65:source\asw/ArcadianLight.c ****         } else if (phase < 512) {
-  66:source\asw/ArcadianLight.c ****             PWM_RED_WriteCompare(255 - value);      // RED out
-  67:source\asw/ArcadianLight.c ****             PWM_YELLOW_WriteCompare(value);         // YELLOW in
-  68:source\asw/ArcadianLight.c ****         } else if (phase < 768) {
-  69:source\asw/ArcadianLight.c ****             PWM_YELLOW_WriteCompare(255 - value);   // YELLOW out
-  70:source\asw/ArcadianLight.c ****             PWM_GREEN_WriteCompare(value);          // GREEN in
-  71:source\asw/ArcadianLight.c ****         } else {
-  72:source\asw/ArcadianLight.c ****             PWM_GREEN_WriteCompare(255 - value);    // GREEN out
-  73:source\asw/ArcadianLight.c ****         }
-  74:source\asw/ArcadianLight.c ****         CyDelay(1);
-  75:source\asw/ArcadianLight.c ****     }
-  76:source\asw/ArcadianLight.c ****     
-  77:source\asw/ArcadianLight.c ****     TerminateTask();
-  78:source\asw/ArcadianLight.c **** }*/
-  79:source\asw/ArcadianLight.c ****     
-  80:source\asw/ArcadianLight.c **** TASK(tsk_glower)
-  81:source\asw/ArcadianLight.c **** {
-  28              		.loc 1 81 0
+  58:source\asw/ArcadianLight.c **** /*****************************************************************************/
+  59:source\asw/ArcadianLight.c **** /* Local function prototypes ('static')                                      */
+  60:source\asw/ArcadianLight.c **** /*****************************************************************************/
+  61:source\asw/ArcadianLight.c **** 
+  62:source\asw/ArcadianLight.c **** /*****************************************************************************/
+  63:source\asw/ArcadianLight.c **** /* Function implementation - global ('extern') and local ('static')          */
+  64:source\asw/ArcadianLight.c **** /*****************************************************************************/
+  65:source\asw/ArcadianLight.c **** 
+  66:source\asw/ArcadianLight.c **** /********************************************************************************
+  67:source\asw/ArcadianLight.c ****  * Task Definitions
+  68:source\asw/ArcadianLight.c ****  ********************************************************************************/
+  69:source\asw/ArcadianLight.c **** 
+  70:source\asw/ArcadianLight.c **** /*TASK(tsk_fader)
+  71:source\asw/ArcadianLight.c **** {
+  72:source\asw/ArcadianLight.c ****     for (int phase = 0; phase < 4*256; phase++) 
+  73:source\asw/ArcadianLight.c ****     {
+  74:source\asw/ArcadianLight.c ****         int value = phase % 256;
+  75:source\asw/ArcadianLight.c ****         if (phase < 256) {
+  76:source\asw/ArcadianLight.c ****             PWM_RED_WriteCompare(value);            // RED in
+  77:source\asw/ArcadianLight.c ****         } else if (phase < 512) {
+  78:source\asw/ArcadianLight.c ****             PWM_RED_WriteCompare(255 - value);      // RED out
+  79:source\asw/ArcadianLight.c ****             PWM_YELLOW_WriteCompare(value);         // YELLOW in
+  80:source\asw/ArcadianLight.c ****         } else if (phase < 768) {
+  81:source\asw/ArcadianLight.c ****             PWM_YELLOW_WriteCompare(255 - value);   // YELLOW out
+  82:source\asw/ArcadianLight.c ****             PWM_GREEN_WriteCompare(value);          // GREEN in
+  83:source\asw/ArcadianLight.c ****         } else {
+  84:source\asw/ArcadianLight.c ****             PWM_GREEN_WriteCompare(255 - value);    // GREEN out
+  85:source\asw/ArcadianLight.c ****         }
+  86:source\asw/ArcadianLight.c ****         CyDelay(1);
+  87:source\asw/ArcadianLight.c ****     }
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccOpCLVW.s 			page 3
+
+
+  88:source\asw/ArcadianLight.c ****     
+  89:source\asw/ArcadianLight.c ****     TerminateTask();
+  90:source\asw/ArcadianLight.c **** }*/
+  91:source\asw/ArcadianLight.c **** 
+  92:source\asw/ArcadianLight.c **** void fader(void)
+  93:source\asw/ArcadianLight.c **** {
+  28              		.loc 1 93 0
   29              		.cfi_startproc
   30              		@ args = 0, pretend = 0, frame = 0
   31              		@ frame_needed = 0, uses_anonymous_args = 0
-  32 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
-  33              		.cfi_def_cfa_offset 24
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccUoPYoO.s 			page 3
-
-
-  34              		.cfi_offset 3, -24
-  35              		.cfi_offset 4, -20
-  36              		.cfi_offset 5, -16
-  37              		.cfi_offset 6, -12
-  38              		.cfi_offset 7, -8
-  39              		.cfi_offset 14, -4
+  32 0000 10B5     		push	{r4, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+  94:source\asw/ArcadianLight.c ****     static uint16_t phase = 0;
+  95:source\asw/ArcadianLight.c ****     uint8_t value = phase & 0xFF;
+  36              		.loc 1 95 0
+  37 0002 174B     		ldr	r3, .L8
+  38 0004 1B88     		ldrh	r3, [r3]
+  39 0006 DCB2     		uxtb	r4, r3
   40              	.LVL0:
-  41              	.LBB2:
-  82:source\asw/ArcadianLight.c ****     
-  83:source\asw/ArcadianLight.c ****     for (uint8_t i = 0; i < (sizeof(RG_glowtable) / sizeof(RG_Glow_t)); ++i)
-  42              		.loc 1 83 0
-  43 0002 0024     		movs	r4, #0
-  44 0004 12E0     		b	.L2
-  45              	.LVL1:
-  46              	.L3:
-  84:source\asw/ArcadianLight.c ****     {
-  85:source\asw/ArcadianLight.c ****         PWM_RGB_RED_WriteCompare(RG_glowtable[i].m_red);
-  47              		.loc 1 85 0 discriminator 3
-  48 0006 0C4E     		ldr	r6, .L5
-  49 0008 6500     		lsls	r5, r4, #1
-  50 000a 2A19     		adds	r2, r5, r4
-  51 000c 5300     		lsls	r3, r2, #1
-  52 000e F718     		adds	r7, r6, r3
-  53 0010 F05C     		ldrb	r0, [r6, r3]	@ zero_extendqisi2
-  54 0012 FFF7FEFF 		bl	PWM_RGB_RED_WriteCompare
-  55              	.LVL2:
-  86:source\asw/ArcadianLight.c ****         PWM_RGB_GREEN_WriteCompare(RG_glowtable[i].m_green);
-  56              		.loc 1 86 0 discriminator 3
-  57 0016 7878     		ldrb	r0, [r7, #1]	@ zero_extendqisi2
-  58 0018 FFF7FEFF 		bl	PWM_RGB_GREEN_WriteCompare
-  59              	.LVL3:
-  87:source\asw/ArcadianLight.c ****         PWM_RGB_BLUE_WriteCompare(RG_glowtable[i].m_blue);
-  60              		.loc 1 87 0 discriminator 3
-  61 001c B878     		ldrb	r0, [r7, #2]	@ zero_extendqisi2
-  62 001e FFF7FEFF 		bl	PWM_RGB_BLUE_WriteCompare
-  63              	.LVL4:
-  88:source\asw/ArcadianLight.c ****         CyDelay(RG_glowtable[i].m_duration);
-  64              		.loc 1 88 0 discriminator 3
-  65 0022 B888     		ldrh	r0, [r7, #4]
-  66 0024 FFF7FEFF 		bl	CyDelay
-  67              	.LVL5:
-  83:source\asw/ArcadianLight.c ****     {
-  68              		.loc 1 83 0 discriminator 3
-  69 0028 0134     		adds	r4, r4, #1
-  70              	.LVL6:
-  71 002a E4B2     		uxtb	r4, r4
-  72              	.LVL7:
-  73              	.L2:
-  83:source\asw/ArcadianLight.c ****     {
-  74              		.loc 1 83 0 is_stmt 0 discriminator 1
-  75 002c 082C     		cmp	r4, #8
-  76 002e EAD9     		bls	.L3
-  77              	.LBE2:
-  89:source\asw/ArcadianLight.c ****     }
-  90:source\asw/ArcadianLight.c ****     
-  91:source\asw/ArcadianLight.c ****     TerminateTask();
-  78              		.loc 1 91 0 is_stmt 1
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccUoPYoO.s 			page 4
+  96:source\asw/ArcadianLight.c **** 
+  97:source\asw/ArcadianLight.c ****     // ----- Continuous RGB cycle -----
+  98:source\asw/ArcadianLight.c ****     if (phase < 256) {
+  41              		.loc 1 98 0
+  42 0008 FF2B     		cmp	r3, #255
+  43 000a 03D8     		bhi	.L2
+  99:source\asw/ArcadianLight.c ****         PWM_RED_WriteCompare(value);              // Red fades in
+  44              		.loc 1 99 0
+  45 000c 2046     		mov	r0, r4
+  46 000e FFF7FEFF 		bl	PWM_RED_WriteCompare
+  47              	.LVL1:
+  48 0012 19E0     		b	.L3
+  49              	.L2:
+ 100:source\asw/ArcadianLight.c ****     }
+ 101:source\asw/ArcadianLight.c ****     else if (phase < 512) {
+  50              		.loc 1 101 0
+  51 0014 B3F5007F 		cmp	r3, #512
+  52 0018 07D2     		bcs	.L4
+ 102:source\asw/ArcadianLight.c ****         PWM_RED_WriteCompare(255 - value);        // Red fades out
+  53              		.loc 1 102 0
+  54 001a E043     		mvns	r0, r4
+  55 001c C0B2     		uxtb	r0, r0
+  56 001e FFF7FEFF 		bl	PWM_RED_WriteCompare
+  57              	.LVL2:
+ 103:source\asw/ArcadianLight.c ****         PWM_YELLOW_WriteCompare(value);           // Yellow fades in
+  58              		.loc 1 103 0
+  59 0022 2046     		mov	r0, r4
+  60 0024 FFF7FEFF 		bl	PWM_YELLOW_WriteCompare
+  61              	.LVL3:
+  62 0028 0EE0     		b	.L3
+  63              	.L4:
+ 104:source\asw/ArcadianLight.c ****     }
+ 105:source\asw/ArcadianLight.c ****     else if (phase < 768) {
+  64              		.loc 1 105 0
+  65 002a B3F5407F 		cmp	r3, #768
+  66 002e 07D2     		bcs	.L5
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccOpCLVW.s 			page 4
 
 
-  79 0030 FFF7FEFF 		bl	EE_oo_TerminateTask
-  80              	.LVL8:
-  81 0034 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
-  82              	.LVL9:
-  83              	.L6:
-  84 0036 00BF     		.align	2
-  85              	.L5:
-  86 0038 00000000 		.word	.LANCHOR0
-  87              		.cfi_endproc
-  88              	.LFE111:
-  89              		.size	Functsk_glower, .-Functsk_glower
-  90              		.global	RG_glowtable
-  91              		.section	.rodata
-  92              		.align	2
-  93              		.set	.LANCHOR0,. + 0
-  94              		.type	RG_glowtable, %object
-  95              		.size	RG_glowtable, 54
-  96              	RG_glowtable:
-  97 0000 FF       		.byte	-1
-  98 0001 00       		.byte	0
-  99 0002 00       		.byte	0
- 100 0003 00       		.space	1
- 101 0004 F401     		.short	500
- 102 0006 00       		.byte	0
- 103 0007 FF       		.byte	-1
- 104 0008 00       		.byte	0
- 105 0009 00       		.space	1
- 106 000a F401     		.short	500
- 107 000c 00       		.byte	0
- 108 000d 00       		.byte	0
- 109 000e FF       		.byte	-1
- 110 000f 00       		.space	1
- 111 0010 F401     		.short	500
- 112 0012 00       		.byte	0
- 113 0013 00       		.byte	0
- 114 0014 00       		.byte	0
- 115 0015 00       		.space	1
- 116 0016 6400     		.short	100
- 117 0018 FF       		.byte	-1
- 118 0019 FF       		.byte	-1
- 119 001a FF       		.byte	-1
- 120 001b 00       		.space	1
- 121 001c 6400     		.short	100
- 122 001e 00       		.byte	0
- 123 001f 00       		.byte	0
- 124 0020 00       		.byte	0
- 125 0021 00       		.space	1
- 126 0022 6400     		.short	100
- 127 0024 FF       		.byte	-1
- 128 0025 FF       		.byte	-1
- 129 0026 FF       		.byte	-1
- 130 0027 00       		.space	1
- 131 0028 6400     		.short	100
- 132 002a 00       		.byte	0
- 133 002b 00       		.byte	0
- 134 002c 00       		.byte	0
- 135 002d 00       		.space	1
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccUoPYoO.s 			page 5
+ 106:source\asw/ArcadianLight.c ****         PWM_YELLOW_WriteCompare(255 - value);     // Yellow fades out
+  67              		.loc 1 106 0
+  68 0030 E043     		mvns	r0, r4
+  69 0032 C0B2     		uxtb	r0, r0
+  70 0034 FFF7FEFF 		bl	PWM_YELLOW_WriteCompare
+  71              	.LVL4:
+ 107:source\asw/ArcadianLight.c ****         PWM_GREEN_WriteCompare(value);            // Green fades in
+  72              		.loc 1 107 0
+  73 0038 2046     		mov	r0, r4
+  74 003a FFF7FEFF 		bl	PWM_GREEN_WriteCompare
+  75              	.LVL5:
+  76 003e 03E0     		b	.L3
+  77              	.L5:
+ 108:source\asw/ArcadianLight.c ****     }
+ 109:source\asw/ArcadianLight.c ****     else {
+ 110:source\asw/ArcadianLight.c ****         PWM_GREEN_WriteCompare(255 - value);      // Green fades out
+  78              		.loc 1 110 0
+  79 0040 E043     		mvns	r0, r4
+  80 0042 C0B2     		uxtb	r0, r0
+  81 0044 FFF7FEFF 		bl	PWM_GREEN_WriteCompare
+  82              	.LVL6:
+  83              	.L3:
+ 111:source\asw/ArcadianLight.c ****     }
+ 112:source\asw/ArcadianLight.c **** 
+ 113:source\asw/ArcadianLight.c ****     phase++;
+  84              		.loc 1 113 0
+  85 0048 054A     		ldr	r2, .L8
+  86 004a 1388     		ldrh	r3, [r2]
+  87 004c 0133     		adds	r3, r3, #1
+  88 004e 9BB2     		uxth	r3, r3
+  89 0050 1380     		strh	r3, [r2]	@ movhi
+ 114:source\asw/ArcadianLight.c ****     if (phase >= 1024)
+  90              		.loc 1 114 0
+  91 0052 B3F5806F 		cmp	r3, #1024
+  92 0056 02D3     		bcc	.L1
+ 115:source\asw/ArcadianLight.c ****         phase = 0;     // Restart continuous cycle
+  93              		.loc 1 115 0
+  94 0058 0022     		movs	r2, #0
+  95 005a 014B     		ldr	r3, .L8
+  96 005c 1A80     		strh	r2, [r3]	@ movhi
+  97              	.L1:
+  98 005e 10BD     		pop	{r4, pc}
+  99              	.LVL7:
+ 100              	.L9:
+ 101              		.align	2
+ 102              	.L8:
+ 103 0060 00000000 		.word	.LANCHOR0
+ 104              		.cfi_endproc
+ 105              	.LFE111:
+ 106              		.size	fader, .-fader
+ 107              		.section	.text.Functsk_glower,"ax",%progbits
+ 108              		.align	2
+ 109              		.global	Functsk_glower
+ 110              		.thumb
+ 111              		.thumb_func
+ 112              		.type	Functsk_glower, %function
+ 113              	Functsk_glower:
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccOpCLVW.s 			page 5
 
 
- 136 002e 6400     		.short	100
- 137 0030 FF       		.byte	-1
- 138 0031 FF       		.byte	-1
- 139 0032 FF       		.byte	-1
- 140 0033 00       		.space	1
- 141 0034 6400     		.short	100
- 142              		.text
- 143              	.Letext0:
- 144              		.file 2 "c:\\h_da softwares & projects\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.1\\
- 145              		.file 3 "c:\\h_da softwares & projects\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.1\\
- 146              		.file 4 "Generated_Source\\PSoC5/ErikaOS_common_ee_types.inc"
- 147              		.file 5 "Generated_Source\\PSoC5/ErikaOS_cortex_mx_ee_cpu.inc"
- 148              		.file 6 "source\\asw\\ArcadianLight.h"
- 149              		.file 7 "Generated_Source\\PSoC5/ErikaOS_ee_oo_intfunc.inc"
- 150              		.file 8 "Generated_Source\\PSoC5/ErikaOS_cortex_mx_ee_context.inc"
- 151              		.file 9 "Generated_Source\\PSoC5/ErikaOS_common_ee_primitives.inc"
- 152              		.file 10 "Generated_Source\\PSoC5/core_cm3.h"
- 153              		.file 11 "Generated_Source\\PSoC5/PWM_RGB_RED.h"
- 154              		.file 12 "Generated_Source\\PSoC5/PWM_RGB_GREEN.h"
- 155              		.file 13 "Generated_Source\\PSoC5/PWM_RGB_BLUE.h"
- 156              		.file 14 "Generated_Source\\PSoC5/CyLib.h"
- 157              		.file 15 "Generated_Source\\PSoC5/ErikaOS_ee_oo_kernel.inc"
- 158              		.section	.debug_info,"",%progbits
- 159              	.Ldebug_info0:
- 160 0000 84020000 		.4byte	0x284
- 161 0004 0400     		.2byte	0x4
- 162 0006 00000000 		.4byte	.Ldebug_abbrev0
- 163 000a 04       		.byte	0x4
- 164 000b 01       		.uleb128 0x1
- 165 000c 60000000 		.4byte	.LASF42
- 166 0010 0C       		.byte	0xc
- 167 0011 13010000 		.4byte	.LASF43
- 168 0015 40020000 		.4byte	.LASF44
- 169 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 170 001d 00000000 		.4byte	0
- 171 0021 00000000 		.4byte	.Ldebug_line0
- 172 0025 02       		.uleb128 0x2
- 173 0026 01       		.byte	0x1
- 174 0027 06       		.byte	0x6
- 175 0028 E2020000 		.4byte	.LASF0
- 176 002c 03       		.uleb128 0x3
- 177 002d 00000000 		.4byte	.LASF3
- 178 0031 02       		.byte	0x2
- 179 0032 1D       		.byte	0x1d
- 180 0033 37000000 		.4byte	0x37
- 181 0037 02       		.uleb128 0x2
- 182 0038 01       		.byte	0x1
- 183 0039 08       		.byte	0x8
- 184 003a 52000000 		.4byte	.LASF1
- 185 003e 02       		.uleb128 0x2
- 186 003f 02       		.byte	0x2
- 187 0040 05       		.byte	0x5
- 188 0041 A2020000 		.4byte	.LASF2
- 189 0045 03       		.uleb128 0x3
- 190 0046 50010000 		.4byte	.LASF4
- 191 004a 02       		.byte	0x2
- 192 004b 2B       		.byte	0x2b
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccUoPYoO.s 			page 6
+ 114              	.LFB112:
+ 116:source\asw/ArcadianLight.c **** }
+ 117:source\asw/ArcadianLight.c **** 
+ 118:source\asw/ArcadianLight.c **** TASK(tsk_glower)
+ 119:source\asw/ArcadianLight.c **** {
+ 115              		.loc 1 119 0
+ 116              		.cfi_startproc
+ 117              		@ args = 0, pretend = 0, frame = 0
+ 118              		@ frame_needed = 0, uses_anonymous_args = 0
+ 119 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 120              		.cfi_def_cfa_offset 24
+ 121              		.cfi_offset 3, -24
+ 122              		.cfi_offset 4, -20
+ 123              		.cfi_offset 5, -16
+ 124              		.cfi_offset 6, -12
+ 125              		.cfi_offset 7, -8
+ 126              		.cfi_offset 14, -4
+ 127              	.LVL8:
+ 128              	.LBB2:
+ 120:source\asw/ArcadianLight.c ****     
+ 121:source\asw/ArcadianLight.c ****     for (uint8_t i = 0; i < (sizeof(RG_glowtable) / sizeof(RG_Glow_t)); ++i)
+ 129              		.loc 1 121 0
+ 130 0002 0024     		movs	r4, #0
+ 131 0004 12E0     		b	.L11
+ 132              	.LVL9:
+ 133              	.L12:
+ 122:source\asw/ArcadianLight.c ****     {
+ 123:source\asw/ArcadianLight.c ****         PWM_RGB_RED_WriteCompare(RG_glowtable[i].al_red);
+ 134              		.loc 1 123 0 discriminator 3
+ 135 0006 0C4E     		ldr	r6, .L14
+ 136 0008 6500     		lsls	r5, r4, #1
+ 137 000a 2A19     		adds	r2, r5, r4
+ 138 000c 5300     		lsls	r3, r2, #1
+ 139 000e F718     		adds	r7, r6, r3
+ 140 0010 F05C     		ldrb	r0, [r6, r3]	@ zero_extendqisi2
+ 141 0012 FFF7FEFF 		bl	PWM_RGB_RED_WriteCompare
+ 142              	.LVL10:
+ 124:source\asw/ArcadianLight.c ****         PWM_RGB_GREEN_WriteCompare(RG_glowtable[i].al_green);
+ 143              		.loc 1 124 0 discriminator 3
+ 144 0016 7878     		ldrb	r0, [r7, #1]	@ zero_extendqisi2
+ 145 0018 FFF7FEFF 		bl	PWM_RGB_GREEN_WriteCompare
+ 146              	.LVL11:
+ 125:source\asw/ArcadianLight.c ****         PWM_RGB_BLUE_WriteCompare(RG_glowtable[i].al_blue);
+ 147              		.loc 1 125 0 discriminator 3
+ 148 001c B878     		ldrb	r0, [r7, #2]	@ zero_extendqisi2
+ 149 001e FFF7FEFF 		bl	PWM_RGB_BLUE_WriteCompare
+ 150              	.LVL12:
+ 126:source\asw/ArcadianLight.c ****         CyDelay(RG_glowtable[i].al_duration);
+ 151              		.loc 1 126 0 discriminator 3
+ 152 0022 B888     		ldrh	r0, [r7, #4]
+ 153 0024 FFF7FEFF 		bl	CyDelay
+ 154              	.LVL13:
+ 121:source\asw/ArcadianLight.c ****     {
+ 155              		.loc 1 121 0 discriminator 3
+ 156 0028 0134     		adds	r4, r4, #1
+ 157              	.LVL14:
+ 158 002a E4B2     		uxtb	r4, r4
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccOpCLVW.s 			page 6
 
 
- 193 004c 50000000 		.4byte	0x50
- 194 0050 02       		.uleb128 0x2
- 195 0051 02       		.byte	0x2
- 196 0052 07       		.byte	0x7
- 197 0053 00010000 		.4byte	.LASF5
- 198 0057 03       		.uleb128 0x3
- 199 0058 0A000000 		.4byte	.LASF6
- 200 005c 02       		.byte	0x2
- 201 005d 3F       		.byte	0x3f
- 202 005e 62000000 		.4byte	0x62
- 203 0062 02       		.uleb128 0x2
- 204 0063 04       		.byte	0x4
- 205 0064 05       		.byte	0x5
- 206 0065 CD020000 		.4byte	.LASF7
- 207 0069 02       		.uleb128 0x2
- 208 006a 04       		.byte	0x4
- 209 006b 07       		.byte	0x7
- 210 006c EE000000 		.4byte	.LASF8
- 211 0070 02       		.uleb128 0x2
- 212 0071 08       		.byte	0x8
- 213 0072 05       		.byte	0x5
- 214 0073 72020000 		.4byte	.LASF9
- 215 0077 02       		.uleb128 0x2
- 216 0078 08       		.byte	0x8
- 217 0079 07       		.byte	0x7
- 218 007a CA010000 		.4byte	.LASF10
- 219 007e 04       		.uleb128 0x4
- 220 007f 04       		.byte	0x4
- 221 0080 05       		.byte	0x5
- 222 0081 696E7400 		.ascii	"int\000"
- 223 0085 02       		.uleb128 0x2
- 224 0086 04       		.byte	0x4
- 225 0087 07       		.byte	0x7
- 226 0088 AB010000 		.4byte	.LASF11
- 227 008c 02       		.uleb128 0x2
- 228 008d 08       		.byte	0x8
- 229 008e 04       		.byte	0x4
- 230 008f D6020000 		.4byte	.LASF12
- 231 0093 02       		.uleb128 0x2
- 232 0094 04       		.byte	0x4
- 233 0095 07       		.byte	0x7
- 234 0096 37020000 		.4byte	.LASF13
- 235 009a 02       		.uleb128 0x2
- 236 009b 01       		.byte	0x1
- 237 009c 08       		.byte	0x8
- 238 009d 80020000 		.4byte	.LASF14
- 239 00a1 03       		.uleb128 0x3
- 240 00a2 E1010000 		.4byte	.LASF15
- 241 00a6 03       		.byte	0x3
- 242 00a7 18       		.byte	0x18
- 243 00a8 2C000000 		.4byte	0x2c
- 244 00ac 03       		.uleb128 0x3
- 245 00ad C4020000 		.4byte	.LASF16
- 246 00b1 03       		.byte	0x3
- 247 00b2 24       		.byte	0x24
- 248 00b3 45000000 		.4byte	0x45
- 249 00b7 03       		.uleb128 0x3
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccUoPYoO.s 			page 7
+ 159              	.LVL15:
+ 160              	.L11:
+ 121:source\asw/ArcadianLight.c ****     {
+ 161              		.loc 1 121 0 is_stmt 0 discriminator 1
+ 162 002c 082C     		cmp	r4, #8
+ 163 002e EAD9     		bls	.L12
+ 164              	.LBE2:
+ 127:source\asw/ArcadianLight.c ****     }
+ 128:source\asw/ArcadianLight.c ****     
+ 129:source\asw/ArcadianLight.c ****     TerminateTask();
+ 165              		.loc 1 129 0 is_stmt 1
+ 166 0030 FFF7FEFF 		bl	EE_oo_TerminateTask
+ 167              	.LVL16:
+ 168 0034 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 169              	.LVL17:
+ 170              	.L15:
+ 171 0036 00BF     		.align	2
+ 172              	.L14:
+ 173 0038 00000000 		.word	.LANCHOR1
+ 174              		.cfi_endproc
+ 175              	.LFE112:
+ 176              		.size	Functsk_glower, .-Functsk_glower
+ 177              		.global	RG_glowtable
+ 178              		.section	.rodata
+ 179              		.align	2
+ 180              		.set	.LANCHOR1,. + 0
+ 181              		.type	RG_glowtable, %object
+ 182              		.size	RG_glowtable, 54
+ 183              	RG_glowtable:
+ 184 0000 FF       		.byte	-1
+ 185 0001 00       		.byte	0
+ 186 0002 00       		.byte	0
+ 187 0003 00       		.space	1
+ 188 0004 F401     		.short	500
+ 189 0006 00       		.byte	0
+ 190 0007 FF       		.byte	-1
+ 191 0008 00       		.byte	0
+ 192 0009 00       		.space	1
+ 193 000a F401     		.short	500
+ 194 000c 00       		.byte	0
+ 195 000d 00       		.byte	0
+ 196 000e FF       		.byte	-1
+ 197 000f 00       		.space	1
+ 198 0010 F401     		.short	500
+ 199 0012 00       		.byte	0
+ 200 0013 00       		.byte	0
+ 201 0014 00       		.byte	0
+ 202 0015 00       		.space	1
+ 203 0016 6400     		.short	100
+ 204 0018 FF       		.byte	-1
+ 205 0019 FF       		.byte	-1
+ 206 001a FF       		.byte	-1
+ 207 001b 00       		.space	1
+ 208 001c 6400     		.short	100
+ 209 001e 00       		.byte	0
+ 210 001f 00       		.byte	0
+ 211 0020 00       		.byte	0
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccOpCLVW.s 			page 7
 
 
- 250 00b8 2F020000 		.4byte	.LASF17
- 251 00bc 03       		.byte	0x3
- 252 00bd 2C       		.byte	0x2c
- 253 00be 57000000 		.4byte	0x57
- 254 00c2 02       		.uleb128 0x2
- 255 00c3 04       		.byte	0x4
- 256 00c4 04       		.byte	0x4
- 257 00c5 4C000000 		.4byte	.LASF18
- 258 00c9 02       		.uleb128 0x2
- 259 00ca 08       		.byte	0x8
- 260 00cb 04       		.byte	0x4
- 261 00cc 5B010000 		.4byte	.LASF19
- 262 00d0 03       		.uleb128 0x3
- 263 00d1 2E010000 		.4byte	.LASF20
- 264 00d5 04       		.byte	0x4
- 265 00d6 53       		.byte	0x53
- 266 00d7 7E000000 		.4byte	0x7e
- 267 00db 03       		.uleb128 0x3
- 268 00dc C0010000 		.4byte	.LASF21
- 269 00e0 04       		.byte	0x4
- 270 00e1 54       		.byte	0x54
- 271 00e2 85000000 		.4byte	0x85
- 272 00e6 03       		.uleb128 0x3
- 273 00e7 85020000 		.4byte	.LASF22
- 274 00eb 05       		.byte	0x5
- 275 00ec 4D       		.byte	0x4d
- 276 00ed DB000000 		.4byte	0xdb
- 277 00f1 03       		.uleb128 0x3
- 278 00f2 B8010000 		.4byte	.LASF23
- 279 00f6 05       		.byte	0x5
- 280 00f7 4F       		.byte	0x4f
- 281 00f8 DB000000 		.4byte	0xdb
- 282 00fc 03       		.uleb128 0x3
- 283 00fd 37000000 		.4byte	.LASF24
- 284 0101 05       		.byte	0x5
- 285 0102 78       		.byte	0x78
- 286 0103 D0000000 		.4byte	0xd0
- 287 0107 05       		.uleb128 0x5
- 288 0108 06       		.byte	0x6
- 289 0109 06       		.byte	0x6
- 290 010a 63       		.byte	0x63
- 291 010b 40010000 		.4byte	0x140
- 292 010f 06       		.uleb128 0x6
- 293 0110 3E000000 		.4byte	.LASF25
- 294 0114 06       		.byte	0x6
- 295 0115 64       		.byte	0x64
- 296 0116 A1000000 		.4byte	0xa1
- 297 011a 00       		.byte	0
- 298 011b 06       		.uleb128 0x6
- 299 011c 44000000 		.4byte	.LASF26
- 300 0120 06       		.byte	0x6
- 301 0121 65       		.byte	0x65
- 302 0122 A1000000 		.4byte	0xa1
- 303 0126 01       		.byte	0x1
- 304 0127 06       		.uleb128 0x6
- 305 0128 8B010000 		.4byte	.LASF27
- 306 012c 06       		.byte	0x6
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccUoPYoO.s 			page 8
+ 212 0021 00       		.space	1
+ 213 0022 6400     		.short	100
+ 214 0024 FF       		.byte	-1
+ 215 0025 FF       		.byte	-1
+ 216 0026 FF       		.byte	-1
+ 217 0027 00       		.space	1
+ 218 0028 6400     		.short	100
+ 219 002a 00       		.byte	0
+ 220 002b 00       		.byte	0
+ 221 002c 00       		.byte	0
+ 222 002d 00       		.space	1
+ 223 002e 6400     		.short	100
+ 224 0030 FF       		.byte	-1
+ 225 0031 FF       		.byte	-1
+ 226 0032 FF       		.byte	-1
+ 227 0033 00       		.space	1
+ 228 0034 6400     		.short	100
+ 229              		.bss
+ 230              		.align	1
+ 231              		.set	.LANCHOR0,. + 0
+ 232              		.type	phase.7727, %object
+ 233              		.size	phase.7727, 2
+ 234              	phase.7727:
+ 235 0000 0000     		.space	2
+ 236              		.text
+ 237              	.Letext0:
+ 238              		.file 2 "c:\\h_da softwares & projects\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.1\\
+ 239              		.file 3 "c:\\h_da softwares & projects\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.1\\
+ 240              		.file 4 "Generated_Source\\PSoC5/ErikaOS_common_ee_types.inc"
+ 241              		.file 5 "Generated_Source\\PSoC5/ErikaOS_cortex_mx_ee_cpu.inc"
+ 242              		.file 6 "source\\asw\\ArcadianLight.h"
+ 243              		.file 7 "Generated_Source\\PSoC5/ErikaOS_ee_oo_intfunc.inc"
+ 244              		.file 8 "Generated_Source\\PSoC5/ErikaOS_cortex_mx_ee_context.inc"
+ 245              		.file 9 "Generated_Source\\PSoC5/ErikaOS_common_ee_primitives.inc"
+ 246              		.file 10 "Generated_Source\\PSoC5/core_cm3.h"
+ 247              		.file 11 "Generated_Source\\PSoC5/PWM_RED.h"
+ 248              		.file 12 "Generated_Source\\PSoC5/PWM_YELLOW.h"
+ 249              		.file 13 "Generated_Source\\PSoC5/PWM_GREEN.h"
+ 250              		.file 14 "Generated_Source\\PSoC5/PWM_RGB_RED.h"
+ 251              		.file 15 "Generated_Source\\PSoC5/PWM_RGB_GREEN.h"
+ 252              		.file 16 "Generated_Source\\PSoC5/PWM_RGB_BLUE.h"
+ 253              		.file 17 "Generated_Source\\PSoC5/CyLib.h"
+ 254              		.file 18 "Generated_Source\\PSoC5/ErikaOS_ee_oo_kernel.inc"
+ 255              		.section	.debug_info,"",%progbits
+ 256              	.Ldebug_info0:
+ 257 0000 52030000 		.4byte	0x352
+ 258 0004 0400     		.2byte	0x4
+ 259 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 260 000a 04       		.byte	0x4
+ 261 000b 01       		.uleb128 0x1
+ 262 000c 96000000 		.4byte	.LASF49
+ 263 0010 0C       		.byte	0xc
+ 264 0011 CF010000 		.4byte	.LASF50
+ 265 0015 8D020000 		.4byte	.LASF51
+ 266 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 267 001d 00000000 		.4byte	0
+ 268 0021 00000000 		.4byte	.Ldebug_line0
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccOpCLVW.s 			page 8
 
 
- 307 012d 66       		.byte	0x66
- 308 012e A1000000 		.4byte	0xa1
- 309 0132 02       		.byte	0x2
- 310 0133 06       		.uleb128 0x6
- 311 0134 17020000 		.4byte	.LASF28
- 312 0138 06       		.byte	0x6
- 313 0139 67       		.byte	0x67
- 314 013a AC000000 		.4byte	0xac
- 315 013e 04       		.byte	0x4
- 316 013f 00       		.byte	0
- 317 0140 03       		.uleb128 0x3
- 318 0141 2D000000 		.4byte	.LASF29
- 319 0145 06       		.byte	0x6
- 320 0146 68       		.byte	0x68
- 321 0147 07010000 		.4byte	0x107
- 322 014b 07       		.uleb128 0x7
- 323 014c 7C010000 		.4byte	.LASF45
- 324 0150 01       		.byte	0x1
- 325 0151 50       		.byte	0x50
- 326 0152 00000000 		.4byte	.LFB111
- 327 0156 3C000000 		.4byte	.LFE111-.LFB111
- 328 015a 01       		.uleb128 0x1
- 329 015b 9C       		.byte	0x9c
- 330 015c DD010000 		.4byte	0x1dd
- 331 0160 08       		.uleb128 0x8
- 332 0161 02000000 		.4byte	.LBB2
- 333 0165 2E000000 		.4byte	.LBE2-.LBB2
- 334 0169 D3010000 		.4byte	0x1d3
- 335 016d 09       		.uleb128 0x9
- 336 016e 6900     		.ascii	"i\000"
- 337 0170 01       		.byte	0x1
- 338 0171 53       		.byte	0x53
- 339 0172 A1000000 		.4byte	0xa1
- 340 0176 00000000 		.4byte	.LLST0
- 341 017a 0A       		.uleb128 0xa
- 342 017b 16000000 		.4byte	.LVL2
- 343 017f 50020000 		.4byte	0x250
- 344 0183 90010000 		.4byte	0x190
- 345 0187 0B       		.uleb128 0xb
- 346 0188 01       		.uleb128 0x1
- 347 0189 50       		.byte	0x50
- 348 018a 04       		.uleb128 0x4
- 349 018b 77       		.byte	0x77
- 350 018c 00       		.sleb128 0
- 351 018d 94       		.byte	0x94
- 352 018e 01       		.byte	0x1
- 353 018f 00       		.byte	0
- 354 0190 0A       		.uleb128 0xa
- 355 0191 1C000000 		.4byte	.LVL3
- 356 0195 5B020000 		.4byte	0x25b
- 357 0199 A6010000 		.4byte	0x1a6
- 358 019d 0B       		.uleb128 0xb
- 359 019e 01       		.uleb128 0x1
- 360 019f 50       		.byte	0x50
- 361 01a0 04       		.uleb128 0x4
- 362 01a1 77       		.byte	0x77
- 363 01a2 01       		.sleb128 1
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccUoPYoO.s 			page 9
+ 269 0025 02       		.uleb128 0x2
+ 270 0026 01       		.byte	0x1
+ 271 0027 06       		.byte	0x6
+ 272 0028 2F030000 		.4byte	.LASF0
+ 273 002c 03       		.uleb128 0x3
+ 274 002d 18000000 		.4byte	.LASF3
+ 275 0031 02       		.byte	0x2
+ 276 0032 1D       		.byte	0x1d
+ 277 0033 37000000 		.4byte	0x37
+ 278 0037 02       		.uleb128 0x2
+ 279 0038 01       		.byte	0x1
+ 280 0039 08       		.byte	0x8
+ 281 003a 88000000 		.4byte	.LASF1
+ 282 003e 02       		.uleb128 0x2
+ 283 003f 02       		.byte	0x2
+ 284 0040 05       		.byte	0x5
+ 285 0041 EF020000 		.4byte	.LASF2
+ 286 0045 03       		.uleb128 0x3
+ 287 0046 71010000 		.4byte	.LASF4
+ 288 004a 02       		.byte	0x2
+ 289 004b 2B       		.byte	0x2b
+ 290 004c 50000000 		.4byte	0x50
+ 291 0050 02       		.uleb128 0x2
+ 292 0051 02       		.byte	0x2
+ 293 0052 07       		.byte	0x7
+ 294 0053 36010000 		.4byte	.LASF5
+ 295 0057 03       		.uleb128 0x3
+ 296 0058 28000000 		.4byte	.LASF6
+ 297 005c 02       		.byte	0x2
+ 298 005d 3F       		.byte	0x3f
+ 299 005e 62000000 		.4byte	0x62
+ 300 0062 02       		.uleb128 0x2
+ 301 0063 04       		.byte	0x4
+ 302 0064 05       		.byte	0x5
+ 303 0065 1A030000 		.4byte	.LASF7
+ 304 0069 02       		.uleb128 0x2
+ 305 006a 04       		.byte	0x4
+ 306 006b 07       		.byte	0x7
+ 307 006c 24010000 		.4byte	.LASF8
+ 308 0070 02       		.uleb128 0x2
+ 309 0071 08       		.byte	0x8
+ 310 0072 05       		.byte	0x5
+ 311 0073 BF020000 		.4byte	.LASF9
+ 312 0077 02       		.uleb128 0x2
+ 313 0078 08       		.byte	0x8
+ 314 0079 07       		.byte	0x7
+ 315 007a 2F020000 		.4byte	.LASF10
+ 316 007e 04       		.uleb128 0x4
+ 317 007f 04       		.byte	0x4
+ 318 0080 05       		.byte	0x5
+ 319 0081 696E7400 		.ascii	"int\000"
+ 320 0085 02       		.uleb128 0x2
+ 321 0086 04       		.byte	0x4
+ 322 0087 07       		.byte	0x7
+ 323 0088 10020000 		.4byte	.LASF11
+ 324 008c 02       		.uleb128 0x2
+ 325 008d 08       		.byte	0x8
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccOpCLVW.s 			page 9
 
 
- 364 01a3 94       		.byte	0x94
- 365 01a4 01       		.byte	0x1
- 366 01a5 00       		.byte	0
- 367 01a6 0A       		.uleb128 0xa
- 368 01a7 22000000 		.4byte	.LVL4
- 369 01ab 66020000 		.4byte	0x266
- 370 01af BC010000 		.4byte	0x1bc
- 371 01b3 0B       		.uleb128 0xb
- 372 01b4 01       		.uleb128 0x1
- 373 01b5 50       		.byte	0x50
- 374 01b6 04       		.uleb128 0x4
- 375 01b7 77       		.byte	0x77
- 376 01b8 02       		.sleb128 2
- 377 01b9 94       		.byte	0x94
- 378 01ba 01       		.byte	0x1
- 379 01bb 00       		.byte	0
- 380 01bc 0C       		.uleb128 0xc
- 381 01bd 28000000 		.4byte	.LVL5
- 382 01c1 71020000 		.4byte	0x271
- 383 01c5 0B       		.uleb128 0xb
- 384 01c6 01       		.uleb128 0x1
- 385 01c7 50       		.byte	0x50
- 386 01c8 08       		.uleb128 0x8
- 387 01c9 77       		.byte	0x77
- 388 01ca 04       		.sleb128 4
- 389 01cb 94       		.byte	0x94
- 390 01cc 02       		.byte	0x2
- 391 01cd 0A       		.byte	0xa
- 392 01ce FFFF     		.2byte	0xffff
- 393 01d0 1A       		.byte	0x1a
- 394 01d1 00       		.byte	0
- 395 01d2 00       		.byte	0
- 396 01d3 0D       		.uleb128 0xd
- 397 01d4 34000000 		.4byte	.LVL8
- 398 01d8 7C020000 		.4byte	0x27c
- 399 01dc 00       		.byte	0
- 400 01dd 0E       		.uleb128 0xe
- 401 01de AC020000 		.4byte	.LASF30
- 402 01e2 07       		.byte	0x7
- 403 01e3 40       		.byte	0x40
- 404 01e4 E6000000 		.4byte	0xe6
- 405 01e8 0E       		.uleb128 0xe
- 406 01e9 14000000 		.4byte	.LASF31
- 407 01ed 07       		.byte	0x7
- 408 01ee 47       		.byte	0x47
- 409 01ef F1000000 		.4byte	0xf1
- 410 01f3 0E       		.uleb128 0xe
- 411 01f4 04020000 		.4byte	.LASF32
- 412 01f8 07       		.byte	0x7
- 413 01f9 4A       		.byte	0x4a
- 414 01fa E6000000 		.4byte	0xe6
- 415 01fe 0E       		.uleb128 0xe
- 416 01ff 92010000 		.4byte	.LASF33
- 417 0203 08       		.byte	0x8
- 418 0204 48       		.byte	0x48
- 419 0205 FC000000 		.4byte	0xfc
- 420 0209 0E       		.uleb128 0xe
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccUoPYoO.s 			page 10
+ 326 008e 04       		.byte	0x4
+ 327 008f 23030000 		.4byte	.LASF12
+ 328 0093 02       		.uleb128 0x2
+ 329 0094 04       		.byte	0x4
+ 330 0095 07       		.byte	0x7
+ 331 0096 84020000 		.4byte	.LASF13
+ 332 009a 02       		.uleb128 0x2
+ 333 009b 01       		.byte	0x1
+ 334 009c 08       		.byte	0x8
+ 335 009d CD020000 		.4byte	.LASF14
+ 336 00a1 03       		.uleb128 0x3
+ 337 00a2 46020000 		.4byte	.LASF15
+ 338 00a6 03       		.byte	0x3
+ 339 00a7 18       		.byte	0x18
+ 340 00a8 2C000000 		.4byte	0x2c
+ 341 00ac 03       		.uleb128 0x3
+ 342 00ad 11030000 		.4byte	.LASF16
+ 343 00b1 03       		.byte	0x3
+ 344 00b2 24       		.byte	0x24
+ 345 00b3 45000000 		.4byte	0x45
+ 346 00b7 03       		.uleb128 0x3
+ 347 00b8 7C020000 		.4byte	.LASF17
+ 348 00bc 03       		.byte	0x3
+ 349 00bd 2C       		.byte	0x2c
+ 350 00be 57000000 		.4byte	0x57
+ 351 00c2 02       		.uleb128 0x2
+ 352 00c3 04       		.byte	0x4
+ 353 00c4 04       		.byte	0x4
+ 354 00c5 82000000 		.4byte	.LASF18
+ 355 00c9 02       		.uleb128 0x2
+ 356 00ca 08       		.byte	0x8
+ 357 00cb 04       		.byte	0x4
+ 358 00cc 7C010000 		.4byte	.LASF19
+ 359 00d0 03       		.uleb128 0x3
+ 360 00d1 4F010000 		.4byte	.LASF20
+ 361 00d5 04       		.byte	0x4
+ 362 00d6 53       		.byte	0x53
+ 363 00d7 7E000000 		.4byte	0x7e
+ 364 00db 03       		.uleb128 0x3
+ 365 00dc 25020000 		.4byte	.LASF21
+ 366 00e0 04       		.byte	0x4
+ 367 00e1 54       		.byte	0x54
+ 368 00e2 85000000 		.4byte	0x85
+ 369 00e6 03       		.uleb128 0x3
+ 370 00e7 D2020000 		.4byte	.LASF22
+ 371 00eb 05       		.byte	0x5
+ 372 00ec 4D       		.byte	0x4d
+ 373 00ed DB000000 		.4byte	0xdb
+ 374 00f1 03       		.uleb128 0x3
+ 375 00f2 1D020000 		.4byte	.LASF23
+ 376 00f6 05       		.byte	0x5
+ 377 00f7 4F       		.byte	0x4f
+ 378 00f8 DB000000 		.4byte	0xdb
+ 379 00fc 03       		.uleb128 0x3
+ 380 00fd 7B000000 		.4byte	.LASF24
+ 381 0101 05       		.byte	0x5
+ 382 0102 78       		.byte	0x78
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccOpCLVW.s 			page 10
 
 
- 421 020a 8D020000 		.4byte	.LASF34
- 422 020e 09       		.byte	0x9
- 423 020f 44       		.byte	0x44
- 424 0210 E6000000 		.4byte	0xe6
- 425 0214 0F       		.uleb128 0xf
- 426 0215 22020000 		.4byte	.LASF35
- 427 0219 0A       		.byte	0xa
- 428 021a 1207     		.2byte	0x712
- 429 021c 20020000 		.4byte	0x220
- 430 0220 10       		.uleb128 0x10
- 431 0221 B7000000 		.4byte	0xb7
- 432 0225 11       		.uleb128 0x11
- 433 0226 35020000 		.4byte	0x235
- 434 022a 35020000 		.4byte	0x235
- 435 022e 12       		.uleb128 0x12
- 436 022f 93000000 		.4byte	0x93
- 437 0233 08       		.byte	0x8
- 438 0234 00       		.byte	0
- 439 0235 13       		.uleb128 0x13
- 440 0236 40010000 		.4byte	0x140
- 441 023a 14       		.uleb128 0x14
- 442 023b 0A030000 		.4byte	.LASF36
- 443 023f 06       		.byte	0x6
- 444 0240 6A       		.byte	0x6a
- 445 0241 4B020000 		.4byte	0x24b
- 446 0245 05       		.uleb128 0x5
- 447 0246 03       		.byte	0x3
- 448 0247 00000000 		.4byte	RG_glowtable
- 449 024b 13       		.uleb128 0x13
- 450 024c 25020000 		.4byte	0x225
- 451 0250 15       		.uleb128 0x15
- 452 0251 37010000 		.4byte	.LASF37
- 453 0255 37010000 		.4byte	.LASF37
- 454 0259 0B       		.byte	0xb
- 455 025a C3       		.byte	0xc3
- 456 025b 15       		.uleb128 0x15
- 457 025c E9010000 		.4byte	.LASF38
- 458 0260 E9010000 		.4byte	.LASF38
- 459 0264 0C       		.byte	0xc
- 460 0265 C3       		.byte	0xc3
- 461 0266 15       		.uleb128 0x15
- 462 0267 62010000 		.4byte	.LASF39
- 463 026b 62010000 		.4byte	.LASF39
- 464 026f 0D       		.byte	0xd
- 465 0270 C3       		.byte	0xc3
- 466 0271 15       		.uleb128 0x15
- 467 0272 02030000 		.4byte	.LASF40
- 468 0276 02030000 		.4byte	.LASF40
- 469 027a 0E       		.byte	0xe
- 470 027b 76       		.byte	0x76
- 471 027c 15       		.uleb128 0x15
- 472 027d EE020000 		.4byte	.LASF41
- 473 0281 EE020000 		.4byte	.LASF41
- 474 0285 0F       		.byte	0xf
- 475 0286 9F       		.byte	0x9f
- 476 0287 00       		.byte	0
- 477              		.section	.debug_abbrev,"",%progbits
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccUoPYoO.s 			page 11
+ 383 0103 D0000000 		.4byte	0xd0
+ 384 0107 05       		.uleb128 0x5
+ 385 0108 06       		.byte	0x6
+ 386 0109 06       		.byte	0x6
+ 387 010a 62       		.byte	0x62
+ 388 010b 40010000 		.4byte	0x140
+ 389 010f 06       		.uleb128 0x6
+ 390 0110 4F030000 		.4byte	.LASF25
+ 391 0114 06       		.byte	0x6
+ 392 0115 63       		.byte	0x63
+ 393 0116 A1000000 		.4byte	0xa1
+ 394 011a 00       		.byte	0
+ 395 011b 06       		.uleb128 0x6
+ 396 011c 4F000000 		.4byte	.LASF26
+ 397 0120 06       		.byte	0x6
+ 398 0121 64       		.byte	0x64
+ 399 0122 A1000000 		.4byte	0xa1
+ 400 0126 01       		.byte	0x1
+ 401 0127 06       		.uleb128 0x6
+ 402 0128 32000000 		.4byte	.LASF27
+ 403 012c 06       		.byte	0x6
+ 404 012d 65       		.byte	0x65
+ 405 012e A1000000 		.4byte	0xa1
+ 406 0132 02       		.byte	0x2
+ 407 0133 06       		.uleb128 0x6
+ 408 0134 83010000 		.4byte	.LASF28
+ 409 0138 06       		.byte	0x6
+ 410 0139 66       		.byte	0x66
+ 411 013a AC000000 		.4byte	0xac
+ 412 013e 04       		.byte	0x4
+ 413 013f 00       		.byte	0
+ 414 0140 03       		.uleb128 0x3
+ 415 0141 71000000 		.4byte	.LASF29
+ 416 0145 06       		.byte	0x6
+ 417 0146 67       		.byte	0x67
+ 418 0147 07010000 		.4byte	0x107
+ 419 014b 07       		.uleb128 0x7
+ 420 014c 6B030000 		.4byte	.LASF32
+ 421 0150 01       		.byte	0x1
+ 422 0151 5C       		.byte	0x5c
+ 423 0152 00000000 		.4byte	.LFB111
+ 424 0156 64000000 		.4byte	.LFE111-.LFB111
+ 425 015a 01       		.uleb128 0x1
+ 426 015b 9C       		.byte	0x9c
+ 427 015c F8010000 		.4byte	0x1f8
+ 428 0160 08       		.uleb128 0x8
+ 429 0161 49010000 		.4byte	.LASF30
+ 430 0165 01       		.byte	0x1
+ 431 0166 5E       		.byte	0x5e
+ 432 0167 AC000000 		.4byte	0xac
+ 433 016b 05       		.uleb128 0x5
+ 434 016c 03       		.byte	0x3
+ 435 016d 00000000 		.4byte	phase.7727
+ 436 0171 09       		.uleb128 0x9
+ 437 0172 22000000 		.4byte	.LASF31
+ 438 0176 01       		.byte	0x1
+ 439 0177 5F       		.byte	0x5f
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccOpCLVW.s 			page 11
 
 
- 478              	.Ldebug_abbrev0:
- 479 0000 01       		.uleb128 0x1
- 480 0001 11       		.uleb128 0x11
- 481 0002 01       		.byte	0x1
- 482 0003 25       		.uleb128 0x25
- 483 0004 0E       		.uleb128 0xe
- 484 0005 13       		.uleb128 0x13
- 485 0006 0B       		.uleb128 0xb
- 486 0007 03       		.uleb128 0x3
- 487 0008 0E       		.uleb128 0xe
- 488 0009 1B       		.uleb128 0x1b
- 489 000a 0E       		.uleb128 0xe
- 490 000b 55       		.uleb128 0x55
- 491 000c 17       		.uleb128 0x17
- 492 000d 11       		.uleb128 0x11
- 493 000e 01       		.uleb128 0x1
- 494 000f 10       		.uleb128 0x10
- 495 0010 17       		.uleb128 0x17
- 496 0011 00       		.byte	0
- 497 0012 00       		.byte	0
- 498 0013 02       		.uleb128 0x2
- 499 0014 24       		.uleb128 0x24
- 500 0015 00       		.byte	0
- 501 0016 0B       		.uleb128 0xb
- 502 0017 0B       		.uleb128 0xb
- 503 0018 3E       		.uleb128 0x3e
- 504 0019 0B       		.uleb128 0xb
- 505 001a 03       		.uleb128 0x3
- 506 001b 0E       		.uleb128 0xe
- 507 001c 00       		.byte	0
- 508 001d 00       		.byte	0
- 509 001e 03       		.uleb128 0x3
- 510 001f 16       		.uleb128 0x16
- 511 0020 00       		.byte	0
- 512 0021 03       		.uleb128 0x3
- 513 0022 0E       		.uleb128 0xe
- 514 0023 3A       		.uleb128 0x3a
- 515 0024 0B       		.uleb128 0xb
- 516 0025 3B       		.uleb128 0x3b
- 517 0026 0B       		.uleb128 0xb
- 518 0027 49       		.uleb128 0x49
- 519 0028 13       		.uleb128 0x13
- 520 0029 00       		.byte	0
- 521 002a 00       		.byte	0
- 522 002b 04       		.uleb128 0x4
- 523 002c 24       		.uleb128 0x24
- 524 002d 00       		.byte	0
- 525 002e 0B       		.uleb128 0xb
- 526 002f 0B       		.uleb128 0xb
- 527 0030 3E       		.uleb128 0x3e
- 528 0031 0B       		.uleb128 0xb
- 529 0032 03       		.uleb128 0x3
- 530 0033 08       		.uleb128 0x8
- 531 0034 00       		.byte	0
- 532 0035 00       		.byte	0
- 533 0036 05       		.uleb128 0x5
- 534 0037 13       		.uleb128 0x13
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccUoPYoO.s 			page 12
+ 440 0178 A1000000 		.4byte	0xa1
+ 441 017c 00000000 		.4byte	.LLST0
+ 442 0180 0A       		.uleb128 0xa
+ 443 0181 12000000 		.4byte	.LVL1
+ 444 0185 FD020000 		.4byte	0x2fd
+ 445 0189 94010000 		.4byte	0x194
+ 446 018d 0B       		.uleb128 0xb
+ 447 018e 01       		.uleb128 0x1
+ 448 018f 50       		.byte	0x50
+ 449 0190 02       		.uleb128 0x2
+ 450 0191 74       		.byte	0x74
+ 451 0192 00       		.sleb128 0
+ 452 0193 00       		.byte	0
+ 453 0194 0A       		.uleb128 0xa
+ 454 0195 22000000 		.4byte	.LVL2
+ 455 0199 FD020000 		.4byte	0x2fd
+ 456 019d A9010000 		.4byte	0x1a9
+ 457 01a1 0B       		.uleb128 0xb
+ 458 01a2 01       		.uleb128 0x1
+ 459 01a3 50       		.byte	0x50
+ 460 01a4 03       		.uleb128 0x3
+ 461 01a5 74       		.byte	0x74
+ 462 01a6 00       		.sleb128 0
+ 463 01a7 20       		.byte	0x20
+ 464 01a8 00       		.byte	0
+ 465 01a9 0A       		.uleb128 0xa
+ 466 01aa 28000000 		.4byte	.LVL3
+ 467 01ae 08030000 		.4byte	0x308
+ 468 01b2 BD010000 		.4byte	0x1bd
+ 469 01b6 0B       		.uleb128 0xb
+ 470 01b7 01       		.uleb128 0x1
+ 471 01b8 50       		.byte	0x50
+ 472 01b9 02       		.uleb128 0x2
+ 473 01ba 74       		.byte	0x74
+ 474 01bb 00       		.sleb128 0
+ 475 01bc 00       		.byte	0
+ 476 01bd 0A       		.uleb128 0xa
+ 477 01be 38000000 		.4byte	.LVL4
+ 478 01c2 08030000 		.4byte	0x308
+ 479 01c6 D2010000 		.4byte	0x1d2
+ 480 01ca 0B       		.uleb128 0xb
+ 481 01cb 01       		.uleb128 0x1
+ 482 01cc 50       		.byte	0x50
+ 483 01cd 03       		.uleb128 0x3
+ 484 01ce 74       		.byte	0x74
+ 485 01cf 00       		.sleb128 0
+ 486 01d0 20       		.byte	0x20
+ 487 01d1 00       		.byte	0
+ 488 01d2 0A       		.uleb128 0xa
+ 489 01d3 3E000000 		.4byte	.LVL5
+ 490 01d7 13030000 		.4byte	0x313
+ 491 01db E6010000 		.4byte	0x1e6
+ 492 01df 0B       		.uleb128 0xb
+ 493 01e0 01       		.uleb128 0x1
+ 494 01e1 50       		.byte	0x50
+ 495 01e2 02       		.uleb128 0x2
+ 496 01e3 74       		.byte	0x74
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccOpCLVW.s 			page 12
 
 
- 535 0038 01       		.byte	0x1
- 536 0039 0B       		.uleb128 0xb
- 537 003a 0B       		.uleb128 0xb
- 538 003b 3A       		.uleb128 0x3a
- 539 003c 0B       		.uleb128 0xb
- 540 003d 3B       		.uleb128 0x3b
- 541 003e 0B       		.uleb128 0xb
- 542 003f 01       		.uleb128 0x1
- 543 0040 13       		.uleb128 0x13
- 544 0041 00       		.byte	0
- 545 0042 00       		.byte	0
- 546 0043 06       		.uleb128 0x6
- 547 0044 0D       		.uleb128 0xd
- 548 0045 00       		.byte	0
- 549 0046 03       		.uleb128 0x3
- 550 0047 0E       		.uleb128 0xe
- 551 0048 3A       		.uleb128 0x3a
- 552 0049 0B       		.uleb128 0xb
- 553 004a 3B       		.uleb128 0x3b
- 554 004b 0B       		.uleb128 0xb
- 555 004c 49       		.uleb128 0x49
- 556 004d 13       		.uleb128 0x13
- 557 004e 38       		.uleb128 0x38
- 558 004f 0B       		.uleb128 0xb
- 559 0050 00       		.byte	0
- 560 0051 00       		.byte	0
- 561 0052 07       		.uleb128 0x7
- 562 0053 2E       		.uleb128 0x2e
- 563 0054 01       		.byte	0x1
- 564 0055 3F       		.uleb128 0x3f
- 565 0056 19       		.uleb128 0x19
- 566 0057 03       		.uleb128 0x3
- 567 0058 0E       		.uleb128 0xe
- 568 0059 3A       		.uleb128 0x3a
- 569 005a 0B       		.uleb128 0xb
- 570 005b 3B       		.uleb128 0x3b
- 571 005c 0B       		.uleb128 0xb
- 572 005d 27       		.uleb128 0x27
- 573 005e 19       		.uleb128 0x19
- 574 005f 11       		.uleb128 0x11
- 575 0060 01       		.uleb128 0x1
- 576 0061 12       		.uleb128 0x12
- 577 0062 06       		.uleb128 0x6
- 578 0063 40       		.uleb128 0x40
- 579 0064 18       		.uleb128 0x18
- 580 0065 9742     		.uleb128 0x2117
- 581 0067 19       		.uleb128 0x19
- 582 0068 01       		.uleb128 0x1
- 583 0069 13       		.uleb128 0x13
- 584 006a 00       		.byte	0
- 585 006b 00       		.byte	0
- 586 006c 08       		.uleb128 0x8
- 587 006d 0B       		.uleb128 0xb
- 588 006e 01       		.byte	0x1
- 589 006f 11       		.uleb128 0x11
- 590 0070 01       		.uleb128 0x1
- 591 0071 12       		.uleb128 0x12
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccUoPYoO.s 			page 13
+ 497 01e4 00       		.sleb128 0
+ 498 01e5 00       		.byte	0
+ 499 01e6 0C       		.uleb128 0xc
+ 500 01e7 48000000 		.4byte	.LVL6
+ 501 01eb 13030000 		.4byte	0x313
+ 502 01ef 0B       		.uleb128 0xb
+ 503 01f0 01       		.uleb128 0x1
+ 504 01f1 50       		.byte	0x50
+ 505 01f2 03       		.uleb128 0x3
+ 506 01f3 74       		.byte	0x74
+ 507 01f4 00       		.sleb128 0
+ 508 01f5 20       		.byte	0x20
+ 509 01f6 00       		.byte	0
+ 510 01f7 00       		.byte	0
+ 511 01f8 07       		.uleb128 0x7
+ 512 01f9 A9010000 		.4byte	.LASF33
+ 513 01fd 01       		.byte	0x1
+ 514 01fe 76       		.byte	0x76
+ 515 01ff 00000000 		.4byte	.LFB112
+ 516 0203 3C000000 		.4byte	.LFE112-.LFB112
+ 517 0207 01       		.uleb128 0x1
+ 518 0208 9C       		.byte	0x9c
+ 519 0209 8A020000 		.4byte	0x28a
+ 520 020d 0D       		.uleb128 0xd
+ 521 020e 02000000 		.4byte	.LBB2
+ 522 0212 2E000000 		.4byte	.LBE2-.LBB2
+ 523 0216 80020000 		.4byte	0x280
+ 524 021a 0E       		.uleb128 0xe
+ 525 021b 6900     		.ascii	"i\000"
+ 526 021d 01       		.byte	0x1
+ 527 021e 79       		.byte	0x79
+ 528 021f A1000000 		.4byte	0xa1
+ 529 0223 13000000 		.4byte	.LLST1
+ 530 0227 0A       		.uleb128 0xa
+ 531 0228 16000000 		.4byte	.LVL10
+ 532 022c 1E030000 		.4byte	0x31e
+ 533 0230 3D020000 		.4byte	0x23d
+ 534 0234 0B       		.uleb128 0xb
+ 535 0235 01       		.uleb128 0x1
+ 536 0236 50       		.byte	0x50
+ 537 0237 04       		.uleb128 0x4
+ 538 0238 77       		.byte	0x77
+ 539 0239 00       		.sleb128 0
+ 540 023a 94       		.byte	0x94
+ 541 023b 01       		.byte	0x1
+ 542 023c 00       		.byte	0
+ 543 023d 0A       		.uleb128 0xa
+ 544 023e 1C000000 		.4byte	.LVL11
+ 545 0242 29030000 		.4byte	0x329
+ 546 0246 53020000 		.4byte	0x253
+ 547 024a 0B       		.uleb128 0xb
+ 548 024b 01       		.uleb128 0x1
+ 549 024c 50       		.byte	0x50
+ 550 024d 04       		.uleb128 0x4
+ 551 024e 77       		.byte	0x77
+ 552 024f 01       		.sleb128 1
+ 553 0250 94       		.byte	0x94
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccOpCLVW.s 			page 13
 
 
- 592 0072 06       		.uleb128 0x6
- 593 0073 01       		.uleb128 0x1
- 594 0074 13       		.uleb128 0x13
- 595 0075 00       		.byte	0
- 596 0076 00       		.byte	0
- 597 0077 09       		.uleb128 0x9
- 598 0078 34       		.uleb128 0x34
- 599 0079 00       		.byte	0
- 600 007a 03       		.uleb128 0x3
- 601 007b 08       		.uleb128 0x8
- 602 007c 3A       		.uleb128 0x3a
- 603 007d 0B       		.uleb128 0xb
- 604 007e 3B       		.uleb128 0x3b
- 605 007f 0B       		.uleb128 0xb
- 606 0080 49       		.uleb128 0x49
- 607 0081 13       		.uleb128 0x13
- 608 0082 02       		.uleb128 0x2
- 609 0083 17       		.uleb128 0x17
- 610 0084 00       		.byte	0
- 611 0085 00       		.byte	0
- 612 0086 0A       		.uleb128 0xa
- 613 0087 898201   		.uleb128 0x4109
- 614 008a 01       		.byte	0x1
- 615 008b 11       		.uleb128 0x11
- 616 008c 01       		.uleb128 0x1
- 617 008d 31       		.uleb128 0x31
- 618 008e 13       		.uleb128 0x13
- 619 008f 01       		.uleb128 0x1
- 620 0090 13       		.uleb128 0x13
- 621 0091 00       		.byte	0
- 622 0092 00       		.byte	0
- 623 0093 0B       		.uleb128 0xb
- 624 0094 8A8201   		.uleb128 0x410a
- 625 0097 00       		.byte	0
- 626 0098 02       		.uleb128 0x2
- 627 0099 18       		.uleb128 0x18
- 628 009a 9142     		.uleb128 0x2111
- 629 009c 18       		.uleb128 0x18
- 630 009d 00       		.byte	0
- 631 009e 00       		.byte	0
- 632 009f 0C       		.uleb128 0xc
- 633 00a0 898201   		.uleb128 0x4109
- 634 00a3 01       		.byte	0x1
- 635 00a4 11       		.uleb128 0x11
- 636 00a5 01       		.uleb128 0x1
- 637 00a6 31       		.uleb128 0x31
- 638 00a7 13       		.uleb128 0x13
- 639 00a8 00       		.byte	0
- 640 00a9 00       		.byte	0
- 641 00aa 0D       		.uleb128 0xd
- 642 00ab 898201   		.uleb128 0x4109
- 643 00ae 00       		.byte	0
- 644 00af 11       		.uleb128 0x11
- 645 00b0 01       		.uleb128 0x1
- 646 00b1 31       		.uleb128 0x31
- 647 00b2 13       		.uleb128 0x13
- 648 00b3 00       		.byte	0
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccUoPYoO.s 			page 14
+ 554 0251 01       		.byte	0x1
+ 555 0252 00       		.byte	0
+ 556 0253 0A       		.uleb128 0xa
+ 557 0254 22000000 		.4byte	.LVL12
+ 558 0258 34030000 		.4byte	0x334
+ 559 025c 69020000 		.4byte	0x269
+ 560 0260 0B       		.uleb128 0xb
+ 561 0261 01       		.uleb128 0x1
+ 562 0262 50       		.byte	0x50
+ 563 0263 04       		.uleb128 0x4
+ 564 0264 77       		.byte	0x77
+ 565 0265 02       		.sleb128 2
+ 566 0266 94       		.byte	0x94
+ 567 0267 01       		.byte	0x1
+ 568 0268 00       		.byte	0
+ 569 0269 0C       		.uleb128 0xc
+ 570 026a 28000000 		.4byte	.LVL13
+ 571 026e 3F030000 		.4byte	0x33f
+ 572 0272 0B       		.uleb128 0xb
+ 573 0273 01       		.uleb128 0x1
+ 574 0274 50       		.byte	0x50
+ 575 0275 08       		.uleb128 0x8
+ 576 0276 77       		.byte	0x77
+ 577 0277 04       		.sleb128 4
+ 578 0278 94       		.byte	0x94
+ 579 0279 02       		.byte	0x2
+ 580 027a 0A       		.byte	0xa
+ 581 027b FFFF     		.2byte	0xffff
+ 582 027d 1A       		.byte	0x1a
+ 583 027e 00       		.byte	0
+ 584 027f 00       		.byte	0
+ 585 0280 0F       		.uleb128 0xf
+ 586 0281 34000000 		.4byte	.LVL16
+ 587 0285 4A030000 		.4byte	0x34a
+ 588 0289 00       		.byte	0
+ 589 028a 10       		.uleb128 0x10
+ 590 028b F9020000 		.4byte	.LASF34
+ 591 028f 07       		.byte	0x7
+ 592 0290 40       		.byte	0x40
+ 593 0291 E6000000 		.4byte	0xe6
+ 594 0295 10       		.uleb128 0x10
+ 595 0296 58000000 		.4byte	.LASF35
+ 596 029a 07       		.byte	0x7
+ 597 029b 47       		.byte	0x47
+ 598 029c F1000000 		.4byte	0xf1
+ 599 02a0 10       		.uleb128 0x10
+ 600 02a1 69020000 		.4byte	.LASF36
+ 601 02a5 07       		.byte	0x7
+ 602 02a6 4A       		.byte	0x4a
+ 603 02a7 E6000000 		.4byte	0xe6
+ 604 02ab 10       		.uleb128 0x10
+ 605 02ac F7010000 		.4byte	.LASF37
+ 606 02b0 08       		.byte	0x8
+ 607 02b1 48       		.byte	0x48
+ 608 02b2 FC000000 		.4byte	0xfc
+ 609 02b6 10       		.uleb128 0x10
+ 610 02b7 DA020000 		.4byte	.LASF38
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccOpCLVW.s 			page 14
 
 
- 649 00b4 00       		.byte	0
- 650 00b5 0E       		.uleb128 0xe
- 651 00b6 34       		.uleb128 0x34
- 652 00b7 00       		.byte	0
- 653 00b8 03       		.uleb128 0x3
- 654 00b9 0E       		.uleb128 0xe
- 655 00ba 3A       		.uleb128 0x3a
- 656 00bb 0B       		.uleb128 0xb
- 657 00bc 3B       		.uleb128 0x3b
- 658 00bd 0B       		.uleb128 0xb
- 659 00be 49       		.uleb128 0x49
- 660 00bf 13       		.uleb128 0x13
- 661 00c0 3F       		.uleb128 0x3f
- 662 00c1 19       		.uleb128 0x19
- 663 00c2 3C       		.uleb128 0x3c
- 664 00c3 19       		.uleb128 0x19
- 665 00c4 00       		.byte	0
- 666 00c5 00       		.byte	0
- 667 00c6 0F       		.uleb128 0xf
- 668 00c7 34       		.uleb128 0x34
- 669 00c8 00       		.byte	0
- 670 00c9 03       		.uleb128 0x3
- 671 00ca 0E       		.uleb128 0xe
- 672 00cb 3A       		.uleb128 0x3a
- 673 00cc 0B       		.uleb128 0xb
- 674 00cd 3B       		.uleb128 0x3b
- 675 00ce 05       		.uleb128 0x5
- 676 00cf 49       		.uleb128 0x49
- 677 00d0 13       		.uleb128 0x13
- 678 00d1 3F       		.uleb128 0x3f
- 679 00d2 19       		.uleb128 0x19
- 680 00d3 3C       		.uleb128 0x3c
- 681 00d4 19       		.uleb128 0x19
- 682 00d5 00       		.byte	0
- 683 00d6 00       		.byte	0
- 684 00d7 10       		.uleb128 0x10
- 685 00d8 35       		.uleb128 0x35
- 686 00d9 00       		.byte	0
- 687 00da 49       		.uleb128 0x49
- 688 00db 13       		.uleb128 0x13
- 689 00dc 00       		.byte	0
- 690 00dd 00       		.byte	0
- 691 00de 11       		.uleb128 0x11
- 692 00df 01       		.uleb128 0x1
- 693 00e0 01       		.byte	0x1
- 694 00e1 49       		.uleb128 0x49
- 695 00e2 13       		.uleb128 0x13
- 696 00e3 01       		.uleb128 0x1
- 697 00e4 13       		.uleb128 0x13
- 698 00e5 00       		.byte	0
- 699 00e6 00       		.byte	0
- 700 00e7 12       		.uleb128 0x12
- 701 00e8 21       		.uleb128 0x21
- 702 00e9 00       		.byte	0
- 703 00ea 49       		.uleb128 0x49
- 704 00eb 13       		.uleb128 0x13
- 705 00ec 2F       		.uleb128 0x2f
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccUoPYoO.s 			page 15
+ 611 02bb 09       		.byte	0x9
+ 612 02bc 44       		.byte	0x44
+ 613 02bd E6000000 		.4byte	0xe6
+ 614 02c1 11       		.uleb128 0x11
+ 615 02c2 EA010000 		.4byte	.LASF39
+ 616 02c6 0A       		.byte	0xa
+ 617 02c7 1207     		.2byte	0x712
+ 618 02c9 CD020000 		.4byte	0x2cd
+ 619 02cd 12       		.uleb128 0x12
+ 620 02ce B7000000 		.4byte	0xb7
+ 621 02d2 13       		.uleb128 0x13
+ 622 02d3 E2020000 		.4byte	0x2e2
+ 623 02d7 E2020000 		.4byte	0x2e2
+ 624 02db 14       		.uleb128 0x14
+ 625 02dc 93000000 		.4byte	0x93
+ 626 02e0 08       		.byte	0x8
+ 627 02e1 00       		.byte	0
+ 628 02e2 15       		.uleb128 0x15
+ 629 02e3 40010000 		.4byte	0x140
+ 630 02e7 16       		.uleb128 0x16
+ 631 02e8 5E030000 		.4byte	.LASF40
+ 632 02ec 01       		.byte	0x1
+ 633 02ed 25       		.byte	0x25
+ 634 02ee F8020000 		.4byte	0x2f8
+ 635 02f2 05       		.uleb128 0x5
+ 636 02f3 03       		.byte	0x3
+ 637 02f4 00000000 		.4byte	RG_glowtable
+ 638 02f8 15       		.uleb128 0x15
+ 639 02f9 D2020000 		.4byte	0x2d2
+ 640 02fd 17       		.uleb128 0x17
+ 641 02fe 3A000000 		.4byte	.LASF41
+ 642 0302 3A000000 		.4byte	.LASF41
+ 643 0306 0B       		.byte	0xb
+ 644 0307 C3       		.byte	0xc3
+ 645 0308 17       		.uleb128 0x17
+ 646 0309 00000000 		.4byte	.LASF42
+ 647 030d 00000000 		.4byte	.LASF42
+ 648 0311 0C       		.byte	0xc
+ 649 0312 C3       		.byte	0xc3
+ 650 0313 17       		.uleb128 0x17
+ 651 0314 B8010000 		.4byte	.LASF43
+ 652 0318 B8010000 		.4byte	.LASF43
+ 653 031c 0D       		.byte	0xd
+ 654 031d C3       		.byte	0xc3
+ 655 031e 17       		.uleb128 0x17
+ 656 031f 58010000 		.4byte	.LASF44
+ 657 0323 58010000 		.4byte	.LASF44
+ 658 0327 0E       		.byte	0xe
+ 659 0328 C3       		.byte	0xc3
+ 660 0329 17       		.uleb128 0x17
+ 661 032a 4E020000 		.4byte	.LASF45
+ 662 032e 4E020000 		.4byte	.LASF45
+ 663 0332 0F       		.byte	0xf
+ 664 0333 C3       		.byte	0xc3
+ 665 0334 17       		.uleb128 0x17
+ 666 0335 8F010000 		.4byte	.LASF46
+ 667 0339 8F010000 		.4byte	.LASF46
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccOpCLVW.s 			page 15
 
 
- 706 00ed 0B       		.uleb128 0xb
- 707 00ee 00       		.byte	0
- 708 00ef 00       		.byte	0
- 709 00f0 13       		.uleb128 0x13
- 710 00f1 26       		.uleb128 0x26
- 711 00f2 00       		.byte	0
- 712 00f3 49       		.uleb128 0x49
- 713 00f4 13       		.uleb128 0x13
- 714 00f5 00       		.byte	0
- 715 00f6 00       		.byte	0
- 716 00f7 14       		.uleb128 0x14
- 717 00f8 34       		.uleb128 0x34
- 718 00f9 00       		.byte	0
- 719 00fa 03       		.uleb128 0x3
- 720 00fb 0E       		.uleb128 0xe
- 721 00fc 3A       		.uleb128 0x3a
- 722 00fd 0B       		.uleb128 0xb
- 723 00fe 3B       		.uleb128 0x3b
- 724 00ff 0B       		.uleb128 0xb
- 725 0100 49       		.uleb128 0x49
- 726 0101 13       		.uleb128 0x13
- 727 0102 3F       		.uleb128 0x3f
- 728 0103 19       		.uleb128 0x19
- 729 0104 02       		.uleb128 0x2
- 730 0105 18       		.uleb128 0x18
- 731 0106 00       		.byte	0
- 732 0107 00       		.byte	0
- 733 0108 15       		.uleb128 0x15
- 734 0109 2E       		.uleb128 0x2e
- 735 010a 00       		.byte	0
- 736 010b 3F       		.uleb128 0x3f
- 737 010c 19       		.uleb128 0x19
- 738 010d 3C       		.uleb128 0x3c
- 739 010e 19       		.uleb128 0x19
- 740 010f 6E       		.uleb128 0x6e
- 741 0110 0E       		.uleb128 0xe
- 742 0111 03       		.uleb128 0x3
- 743 0112 0E       		.uleb128 0xe
- 744 0113 3A       		.uleb128 0x3a
- 745 0114 0B       		.uleb128 0xb
- 746 0115 3B       		.uleb128 0x3b
- 747 0116 0B       		.uleb128 0xb
- 748 0117 00       		.byte	0
- 749 0118 00       		.byte	0
- 750 0119 00       		.byte	0
- 751              		.section	.debug_loc,"",%progbits
- 752              	.Ldebug_loc0:
- 753              	.LLST0:
- 754 0000 02000000 		.4byte	.LVL0
- 755 0004 06000000 		.4byte	.LVL1
- 756 0008 0200     		.2byte	0x2
- 757 000a 30       		.byte	0x30
- 758 000b 9F       		.byte	0x9f
- 759 000c 06000000 		.4byte	.LVL1
- 760 0010 2A000000 		.4byte	.LVL6
- 761 0014 0100     		.2byte	0x1
- 762 0016 54       		.byte	0x54
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccUoPYoO.s 			page 16
+ 668 033d 10       		.byte	0x10
+ 669 033e C3       		.byte	0xc3
+ 670 033f 17       		.uleb128 0x17
+ 671 0340 56030000 		.4byte	.LASF47
+ 672 0344 56030000 		.4byte	.LASF47
+ 673 0348 11       		.byte	0x11
+ 674 0349 76       		.byte	0x76
+ 675 034a 17       		.uleb128 0x17
+ 676 034b 3B030000 		.4byte	.LASF48
+ 677 034f 3B030000 		.4byte	.LASF48
+ 678 0353 12       		.byte	0x12
+ 679 0354 9F       		.byte	0x9f
+ 680 0355 00       		.byte	0
+ 681              		.section	.debug_abbrev,"",%progbits
+ 682              	.Ldebug_abbrev0:
+ 683 0000 01       		.uleb128 0x1
+ 684 0001 11       		.uleb128 0x11
+ 685 0002 01       		.byte	0x1
+ 686 0003 25       		.uleb128 0x25
+ 687 0004 0E       		.uleb128 0xe
+ 688 0005 13       		.uleb128 0x13
+ 689 0006 0B       		.uleb128 0xb
+ 690 0007 03       		.uleb128 0x3
+ 691 0008 0E       		.uleb128 0xe
+ 692 0009 1B       		.uleb128 0x1b
+ 693 000a 0E       		.uleb128 0xe
+ 694 000b 55       		.uleb128 0x55
+ 695 000c 17       		.uleb128 0x17
+ 696 000d 11       		.uleb128 0x11
+ 697 000e 01       		.uleb128 0x1
+ 698 000f 10       		.uleb128 0x10
+ 699 0010 17       		.uleb128 0x17
+ 700 0011 00       		.byte	0
+ 701 0012 00       		.byte	0
+ 702 0013 02       		.uleb128 0x2
+ 703 0014 24       		.uleb128 0x24
+ 704 0015 00       		.byte	0
+ 705 0016 0B       		.uleb128 0xb
+ 706 0017 0B       		.uleb128 0xb
+ 707 0018 3E       		.uleb128 0x3e
+ 708 0019 0B       		.uleb128 0xb
+ 709 001a 03       		.uleb128 0x3
+ 710 001b 0E       		.uleb128 0xe
+ 711 001c 00       		.byte	0
+ 712 001d 00       		.byte	0
+ 713 001e 03       		.uleb128 0x3
+ 714 001f 16       		.uleb128 0x16
+ 715 0020 00       		.byte	0
+ 716 0021 03       		.uleb128 0x3
+ 717 0022 0E       		.uleb128 0xe
+ 718 0023 3A       		.uleb128 0x3a
+ 719 0024 0B       		.uleb128 0xb
+ 720 0025 3B       		.uleb128 0x3b
+ 721 0026 0B       		.uleb128 0xb
+ 722 0027 49       		.uleb128 0x49
+ 723 0028 13       		.uleb128 0x13
+ 724 0029 00       		.byte	0
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccOpCLVW.s 			page 16
 
 
- 763 0017 2C000000 		.4byte	.LVL7
- 764 001b 36000000 		.4byte	.LVL9
- 765 001f 0100     		.2byte	0x1
- 766 0021 54       		.byte	0x54
- 767 0022 00000000 		.4byte	0
- 768 0026 00000000 		.4byte	0
- 769              		.section	.debug_aranges,"",%progbits
- 770 0000 1C000000 		.4byte	0x1c
- 771 0004 0200     		.2byte	0x2
- 772 0006 00000000 		.4byte	.Ldebug_info0
- 773 000a 04       		.byte	0x4
- 774 000b 00       		.byte	0
- 775 000c 0000     		.2byte	0
- 776 000e 0000     		.2byte	0
- 777 0010 00000000 		.4byte	.LFB111
- 778 0014 3C000000 		.4byte	.LFE111-.LFB111
- 779 0018 00000000 		.4byte	0
- 780 001c 00000000 		.4byte	0
- 781              		.section	.debug_ranges,"",%progbits
- 782              	.Ldebug_ranges0:
- 783 0000 00000000 		.4byte	.LFB111
- 784 0004 3C000000 		.4byte	.LFE111
- 785 0008 00000000 		.4byte	0
- 786 000c 00000000 		.4byte	0
- 787              		.section	.debug_line,"",%progbits
- 788              	.Ldebug_line0:
- 789 0000 9B020000 		.section	.debug_str,"MS",%progbits,1
- 789      02006302 
- 789      00000201 
- 789      FB0E0D00 
- 789      01010101 
- 790              	.LASF3:
- 791 0000 5F5F7569 		.ascii	"__uint8_t\000"
- 791      6E74385F 
- 791      7400
- 792              	.LASF6:
- 793 000a 5F5F696E 		.ascii	"__int32_t\000"
- 793      7433325F 
- 793      7400
- 794              	.LASF31:
- 795 0014 45455F6F 		.ascii	"EE_oo_IRQ_suspend_status\000"
- 795      6F5F4952 
- 795      515F7375 
- 795      7370656E 
- 795      645F7374 
- 796              	.LASF29:
- 797 002d 52475F47 		.ascii	"RG_Glow_t\000"
- 797      6C6F775F 
- 797      7400
- 798              	.LASF24:
- 799 0037 45455F54 		.ascii	"EE_TID\000"
- 799      494400
- 800              	.LASF25:
- 801 003e 6D5F7265 		.ascii	"m_red\000"
- 801      6400
- 802              	.LASF26:
- 803 0044 6D5F6772 		.ascii	"m_green\000"
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccUoPYoO.s 			page 17
+ 725 002a 00       		.byte	0
+ 726 002b 04       		.uleb128 0x4
+ 727 002c 24       		.uleb128 0x24
+ 728 002d 00       		.byte	0
+ 729 002e 0B       		.uleb128 0xb
+ 730 002f 0B       		.uleb128 0xb
+ 731 0030 3E       		.uleb128 0x3e
+ 732 0031 0B       		.uleb128 0xb
+ 733 0032 03       		.uleb128 0x3
+ 734 0033 08       		.uleb128 0x8
+ 735 0034 00       		.byte	0
+ 736 0035 00       		.byte	0
+ 737 0036 05       		.uleb128 0x5
+ 738 0037 13       		.uleb128 0x13
+ 739 0038 01       		.byte	0x1
+ 740 0039 0B       		.uleb128 0xb
+ 741 003a 0B       		.uleb128 0xb
+ 742 003b 3A       		.uleb128 0x3a
+ 743 003c 0B       		.uleb128 0xb
+ 744 003d 3B       		.uleb128 0x3b
+ 745 003e 0B       		.uleb128 0xb
+ 746 003f 01       		.uleb128 0x1
+ 747 0040 13       		.uleb128 0x13
+ 748 0041 00       		.byte	0
+ 749 0042 00       		.byte	0
+ 750 0043 06       		.uleb128 0x6
+ 751 0044 0D       		.uleb128 0xd
+ 752 0045 00       		.byte	0
+ 753 0046 03       		.uleb128 0x3
+ 754 0047 0E       		.uleb128 0xe
+ 755 0048 3A       		.uleb128 0x3a
+ 756 0049 0B       		.uleb128 0xb
+ 757 004a 3B       		.uleb128 0x3b
+ 758 004b 0B       		.uleb128 0xb
+ 759 004c 49       		.uleb128 0x49
+ 760 004d 13       		.uleb128 0x13
+ 761 004e 38       		.uleb128 0x38
+ 762 004f 0B       		.uleb128 0xb
+ 763 0050 00       		.byte	0
+ 764 0051 00       		.byte	0
+ 765 0052 07       		.uleb128 0x7
+ 766 0053 2E       		.uleb128 0x2e
+ 767 0054 01       		.byte	0x1
+ 768 0055 3F       		.uleb128 0x3f
+ 769 0056 19       		.uleb128 0x19
+ 770 0057 03       		.uleb128 0x3
+ 771 0058 0E       		.uleb128 0xe
+ 772 0059 3A       		.uleb128 0x3a
+ 773 005a 0B       		.uleb128 0xb
+ 774 005b 3B       		.uleb128 0x3b
+ 775 005c 0B       		.uleb128 0xb
+ 776 005d 27       		.uleb128 0x27
+ 777 005e 19       		.uleb128 0x19
+ 778 005f 11       		.uleb128 0x11
+ 779 0060 01       		.uleb128 0x1
+ 780 0061 12       		.uleb128 0x12
+ 781 0062 06       		.uleb128 0x6
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccOpCLVW.s 			page 17
 
 
- 803      65656E00 
- 804              	.LASF18:
- 805 004c 666C6F61 		.ascii	"float\000"
- 805      7400
- 806              	.LASF1:
- 807 0052 756E7369 		.ascii	"unsigned char\000"
- 807      676E6564 
- 807      20636861 
- 807      7200
- 808              	.LASF42:
- 809 0060 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 809      43313120 
- 809      352E342E 
- 809      31203230 
- 809      31363036 
- 810 0093 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 810      20726576 
- 810      6973696F 
- 810      6E203233 
- 810      37373135 
- 811 00c6 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 811      66756E63 
- 811      74696F6E 
- 811      2D736563 
- 811      74696F6E 
- 812              	.LASF8:
- 813 00ee 6C6F6E67 		.ascii	"long unsigned int\000"
- 813      20756E73 
- 813      69676E65 
- 813      6420696E 
- 813      7400
- 814              	.LASF5:
- 815 0100 73686F72 		.ascii	"short unsigned int\000"
- 815      7420756E 
- 815      7369676E 
- 815      65642069 
- 815      6E7400
- 816              	.LASF43:
- 817 0113 736F7572 		.ascii	"source\\asw\\ArcadianLight.c\000"
- 817      63655C61 
- 817      73775C41 
- 817      72636164 
- 817      69616E4C 
- 818              	.LASF20:
- 819 012e 45455F49 		.ascii	"EE_INT32\000"
- 819      4E543332 
- 819      00
- 820              	.LASF37:
- 821 0137 50574D5F 		.ascii	"PWM_RGB_RED_WriteCompare\000"
- 821      5247425F 
- 821      5245445F 
- 821      57726974 
- 821      65436F6D 
- 822              	.LASF4:
- 823 0150 5F5F7569 		.ascii	"__uint16_t\000"
- 823      6E743136 
- 823      5F7400
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccUoPYoO.s 			page 18
+ 782 0063 40       		.uleb128 0x40
+ 783 0064 18       		.uleb128 0x18
+ 784 0065 9742     		.uleb128 0x2117
+ 785 0067 19       		.uleb128 0x19
+ 786 0068 01       		.uleb128 0x1
+ 787 0069 13       		.uleb128 0x13
+ 788 006a 00       		.byte	0
+ 789 006b 00       		.byte	0
+ 790 006c 08       		.uleb128 0x8
+ 791 006d 34       		.uleb128 0x34
+ 792 006e 00       		.byte	0
+ 793 006f 03       		.uleb128 0x3
+ 794 0070 0E       		.uleb128 0xe
+ 795 0071 3A       		.uleb128 0x3a
+ 796 0072 0B       		.uleb128 0xb
+ 797 0073 3B       		.uleb128 0x3b
+ 798 0074 0B       		.uleb128 0xb
+ 799 0075 49       		.uleb128 0x49
+ 800 0076 13       		.uleb128 0x13
+ 801 0077 02       		.uleb128 0x2
+ 802 0078 18       		.uleb128 0x18
+ 803 0079 00       		.byte	0
+ 804 007a 00       		.byte	0
+ 805 007b 09       		.uleb128 0x9
+ 806 007c 34       		.uleb128 0x34
+ 807 007d 00       		.byte	0
+ 808 007e 03       		.uleb128 0x3
+ 809 007f 0E       		.uleb128 0xe
+ 810 0080 3A       		.uleb128 0x3a
+ 811 0081 0B       		.uleb128 0xb
+ 812 0082 3B       		.uleb128 0x3b
+ 813 0083 0B       		.uleb128 0xb
+ 814 0084 49       		.uleb128 0x49
+ 815 0085 13       		.uleb128 0x13
+ 816 0086 02       		.uleb128 0x2
+ 817 0087 17       		.uleb128 0x17
+ 818 0088 00       		.byte	0
+ 819 0089 00       		.byte	0
+ 820 008a 0A       		.uleb128 0xa
+ 821 008b 898201   		.uleb128 0x4109
+ 822 008e 01       		.byte	0x1
+ 823 008f 11       		.uleb128 0x11
+ 824 0090 01       		.uleb128 0x1
+ 825 0091 31       		.uleb128 0x31
+ 826 0092 13       		.uleb128 0x13
+ 827 0093 01       		.uleb128 0x1
+ 828 0094 13       		.uleb128 0x13
+ 829 0095 00       		.byte	0
+ 830 0096 00       		.byte	0
+ 831 0097 0B       		.uleb128 0xb
+ 832 0098 8A8201   		.uleb128 0x410a
+ 833 009b 00       		.byte	0
+ 834 009c 02       		.uleb128 0x2
+ 835 009d 18       		.uleb128 0x18
+ 836 009e 9142     		.uleb128 0x2111
+ 837 00a0 18       		.uleb128 0x18
+ 838 00a1 00       		.byte	0
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccOpCLVW.s 			page 18
 
 
- 824              	.LASF19:
- 825 015b 646F7562 		.ascii	"double\000"
- 825      6C6500
- 826              	.LASF39:
- 827 0162 50574D5F 		.ascii	"PWM_RGB_BLUE_WriteCompare\000"
- 827      5247425F 
- 827      424C5545 
- 827      5F577269 
- 827      7465436F 
- 828              	.LASF45:
- 829 017c 46756E63 		.ascii	"Functsk_glower\000"
- 829      74736B5F 
- 829      676C6F77 
- 829      657200
- 830              	.LASF27:
- 831 018b 6D5F626C 		.ascii	"m_blue\000"
- 831      756500
- 832              	.LASF33:
- 833 0192 45455F73 		.ascii	"EE_std_endcycle_next_tid\000"
- 833      74645F65 
- 833      6E646379 
- 833      636C655F 
- 833      6E657874 
- 834              	.LASF11:
- 835 01ab 756E7369 		.ascii	"unsigned int\000"
- 835      676E6564 
- 835      20696E74 
- 835      00
- 836              	.LASF23:
- 837 01b8 45455F46 		.ascii	"EE_FREG\000"
- 837      52454700 
- 838              	.LASF21:
- 839 01c0 45455F55 		.ascii	"EE_UINT32\000"
- 839      494E5433 
- 839      3200
- 840              	.LASF10:
- 841 01ca 6C6F6E67 		.ascii	"long long unsigned int\000"
- 841      206C6F6E 
- 841      6720756E 
- 841      7369676E 
- 841      65642069 
- 842              	.LASF15:
- 843 01e1 75696E74 		.ascii	"uint8_t\000"
- 843      385F7400 
- 844              	.LASF38:
- 845 01e9 50574D5F 		.ascii	"PWM_RGB_GREEN_WriteCompare\000"
- 845      5247425F 
- 845      47524545 
- 845      4E5F5772 
- 845      69746543 
- 846              	.LASF32:
- 847 0204 45455F41 		.ascii	"EE_ApplicationMode\000"
- 847      70706C69 
- 847      63617469 
- 847      6F6E4D6F 
- 847      646500
- 848              	.LASF28:
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccUoPYoO.s 			page 19
+ 839 00a2 00       		.byte	0
+ 840 00a3 0C       		.uleb128 0xc
+ 841 00a4 898201   		.uleb128 0x4109
+ 842 00a7 01       		.byte	0x1
+ 843 00a8 11       		.uleb128 0x11
+ 844 00a9 01       		.uleb128 0x1
+ 845 00aa 31       		.uleb128 0x31
+ 846 00ab 13       		.uleb128 0x13
+ 847 00ac 00       		.byte	0
+ 848 00ad 00       		.byte	0
+ 849 00ae 0D       		.uleb128 0xd
+ 850 00af 0B       		.uleb128 0xb
+ 851 00b0 01       		.byte	0x1
+ 852 00b1 11       		.uleb128 0x11
+ 853 00b2 01       		.uleb128 0x1
+ 854 00b3 12       		.uleb128 0x12
+ 855 00b4 06       		.uleb128 0x6
+ 856 00b5 01       		.uleb128 0x1
+ 857 00b6 13       		.uleb128 0x13
+ 858 00b7 00       		.byte	0
+ 859 00b8 00       		.byte	0
+ 860 00b9 0E       		.uleb128 0xe
+ 861 00ba 34       		.uleb128 0x34
+ 862 00bb 00       		.byte	0
+ 863 00bc 03       		.uleb128 0x3
+ 864 00bd 08       		.uleb128 0x8
+ 865 00be 3A       		.uleb128 0x3a
+ 866 00bf 0B       		.uleb128 0xb
+ 867 00c0 3B       		.uleb128 0x3b
+ 868 00c1 0B       		.uleb128 0xb
+ 869 00c2 49       		.uleb128 0x49
+ 870 00c3 13       		.uleb128 0x13
+ 871 00c4 02       		.uleb128 0x2
+ 872 00c5 17       		.uleb128 0x17
+ 873 00c6 00       		.byte	0
+ 874 00c7 00       		.byte	0
+ 875 00c8 0F       		.uleb128 0xf
+ 876 00c9 898201   		.uleb128 0x4109
+ 877 00cc 00       		.byte	0
+ 878 00cd 11       		.uleb128 0x11
+ 879 00ce 01       		.uleb128 0x1
+ 880 00cf 31       		.uleb128 0x31
+ 881 00d0 13       		.uleb128 0x13
+ 882 00d1 00       		.byte	0
+ 883 00d2 00       		.byte	0
+ 884 00d3 10       		.uleb128 0x10
+ 885 00d4 34       		.uleb128 0x34
+ 886 00d5 00       		.byte	0
+ 887 00d6 03       		.uleb128 0x3
+ 888 00d7 0E       		.uleb128 0xe
+ 889 00d8 3A       		.uleb128 0x3a
+ 890 00d9 0B       		.uleb128 0xb
+ 891 00da 3B       		.uleb128 0x3b
+ 892 00db 0B       		.uleb128 0xb
+ 893 00dc 49       		.uleb128 0x49
+ 894 00dd 13       		.uleb128 0x13
+ 895 00de 3F       		.uleb128 0x3f
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccOpCLVW.s 			page 19
 
 
- 849 0217 6D5F6475 		.ascii	"m_duration\000"
- 849      72617469 
- 849      6F6E00
- 850              	.LASF35:
- 851 0222 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 851      52784275 
- 851      66666572 
- 851      00
- 852              	.LASF17:
- 853 022f 696E7433 		.ascii	"int32_t\000"
- 853      325F7400 
- 854              	.LASF13:
- 855 0237 73697A65 		.ascii	"sizetype\000"
- 855      74797065 
- 855      00
- 856              	.LASF44:
- 857 0240 443A5C57 		.ascii	"D:\\WS25\\AMAEOS\\Lab\\Workspace01\\ReactionGame.cy"
- 857      5332355C 
- 857      414D4145 
- 857      4F535C4C 
- 857      61625C57 
- 858 026e 64736E00 		.ascii	"dsn\000"
- 859              	.LASF9:
- 860 0272 6C6F6E67 		.ascii	"long long int\000"
- 860      206C6F6E 
- 860      6720696E 
- 860      7400
- 861              	.LASF14:
- 862 0280 63686172 		.ascii	"char\000"
- 862      00
- 863              	.LASF22:
- 864 0285 45455F55 		.ascii	"EE_UREG\000"
- 864      52454700 
- 865              	.LASF34:
- 866 028d 45455F49 		.ascii	"EE_IRQ_nesting_level\000"
- 866      52515F6E 
- 866      65737469 
- 866      6E675F6C 
- 866      6576656C 
- 867              	.LASF2:
- 868 02a2 73686F72 		.ascii	"short int\000"
- 868      7420696E 
- 868      7400
- 869              	.LASF30:
- 870 02ac 45455F6F 		.ascii	"EE_oo_IRQ_disable_count\000"
- 870      6F5F4952 
- 870      515F6469 
- 870      7361626C 
- 870      655F636F 
- 871              	.LASF16:
- 872 02c4 75696E74 		.ascii	"uint16_t\000"
- 872      31365F74 
- 872      00
- 873              	.LASF7:
- 874 02cd 6C6F6E67 		.ascii	"long int\000"
- 874      20696E74 
- 874      00
-ARM GAS  C:\Users\agila\AppData\Local\Temp\ccUoPYoO.s 			page 20
+ 896 00df 19       		.uleb128 0x19
+ 897 00e0 3C       		.uleb128 0x3c
+ 898 00e1 19       		.uleb128 0x19
+ 899 00e2 00       		.byte	0
+ 900 00e3 00       		.byte	0
+ 901 00e4 11       		.uleb128 0x11
+ 902 00e5 34       		.uleb128 0x34
+ 903 00e6 00       		.byte	0
+ 904 00e7 03       		.uleb128 0x3
+ 905 00e8 0E       		.uleb128 0xe
+ 906 00e9 3A       		.uleb128 0x3a
+ 907 00ea 0B       		.uleb128 0xb
+ 908 00eb 3B       		.uleb128 0x3b
+ 909 00ec 05       		.uleb128 0x5
+ 910 00ed 49       		.uleb128 0x49
+ 911 00ee 13       		.uleb128 0x13
+ 912 00ef 3F       		.uleb128 0x3f
+ 913 00f0 19       		.uleb128 0x19
+ 914 00f1 3C       		.uleb128 0x3c
+ 915 00f2 19       		.uleb128 0x19
+ 916 00f3 00       		.byte	0
+ 917 00f4 00       		.byte	0
+ 918 00f5 12       		.uleb128 0x12
+ 919 00f6 35       		.uleb128 0x35
+ 920 00f7 00       		.byte	0
+ 921 00f8 49       		.uleb128 0x49
+ 922 00f9 13       		.uleb128 0x13
+ 923 00fa 00       		.byte	0
+ 924 00fb 00       		.byte	0
+ 925 00fc 13       		.uleb128 0x13
+ 926 00fd 01       		.uleb128 0x1
+ 927 00fe 01       		.byte	0x1
+ 928 00ff 49       		.uleb128 0x49
+ 929 0100 13       		.uleb128 0x13
+ 930 0101 01       		.uleb128 0x1
+ 931 0102 13       		.uleb128 0x13
+ 932 0103 00       		.byte	0
+ 933 0104 00       		.byte	0
+ 934 0105 14       		.uleb128 0x14
+ 935 0106 21       		.uleb128 0x21
+ 936 0107 00       		.byte	0
+ 937 0108 49       		.uleb128 0x49
+ 938 0109 13       		.uleb128 0x13
+ 939 010a 2F       		.uleb128 0x2f
+ 940 010b 0B       		.uleb128 0xb
+ 941 010c 00       		.byte	0
+ 942 010d 00       		.byte	0
+ 943 010e 15       		.uleb128 0x15
+ 944 010f 26       		.uleb128 0x26
+ 945 0110 00       		.byte	0
+ 946 0111 49       		.uleb128 0x49
+ 947 0112 13       		.uleb128 0x13
+ 948 0113 00       		.byte	0
+ 949 0114 00       		.byte	0
+ 950 0115 16       		.uleb128 0x16
+ 951 0116 34       		.uleb128 0x34
+ 952 0117 00       		.byte	0
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccOpCLVW.s 			page 20
 
 
- 875              	.LASF12:
- 876 02d6 6C6F6E67 		.ascii	"long double\000"
- 876      20646F75 
- 876      626C6500 
- 877              	.LASF0:
- 878 02e2 7369676E 		.ascii	"signed char\000"
- 878      65642063 
- 878      68617200 
- 879              	.LASF41:
- 880 02ee 45455F6F 		.ascii	"EE_oo_TerminateTask\000"
- 880      6F5F5465 
- 880      726D696E 
- 880      61746554 
- 880      61736B00 
- 881              	.LASF40:
- 882 0302 43794465 		.ascii	"CyDelay\000"
- 882      6C617900 
- 883              	.LASF36:
- 884 030a 52475F67 		.ascii	"RG_glowtable\000"
- 884      6C6F7774 
- 884      61626C65 
- 884      00
- 885              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 953 0118 03       		.uleb128 0x3
+ 954 0119 0E       		.uleb128 0xe
+ 955 011a 3A       		.uleb128 0x3a
+ 956 011b 0B       		.uleb128 0xb
+ 957 011c 3B       		.uleb128 0x3b
+ 958 011d 0B       		.uleb128 0xb
+ 959 011e 49       		.uleb128 0x49
+ 960 011f 13       		.uleb128 0x13
+ 961 0120 3F       		.uleb128 0x3f
+ 962 0121 19       		.uleb128 0x19
+ 963 0122 02       		.uleb128 0x2
+ 964 0123 18       		.uleb128 0x18
+ 965 0124 00       		.byte	0
+ 966 0125 00       		.byte	0
+ 967 0126 17       		.uleb128 0x17
+ 968 0127 2E       		.uleb128 0x2e
+ 969 0128 00       		.byte	0
+ 970 0129 3F       		.uleb128 0x3f
+ 971 012a 19       		.uleb128 0x19
+ 972 012b 3C       		.uleb128 0x3c
+ 973 012c 19       		.uleb128 0x19
+ 974 012d 6E       		.uleb128 0x6e
+ 975 012e 0E       		.uleb128 0xe
+ 976 012f 03       		.uleb128 0x3
+ 977 0130 0E       		.uleb128 0xe
+ 978 0131 3A       		.uleb128 0x3a
+ 979 0132 0B       		.uleb128 0xb
+ 980 0133 3B       		.uleb128 0x3b
+ 981 0134 0B       		.uleb128 0xb
+ 982 0135 00       		.byte	0
+ 983 0136 00       		.byte	0
+ 984 0137 00       		.byte	0
+ 985              		.section	.debug_loc,"",%progbits
+ 986              	.Ldebug_loc0:
+ 987              	.LLST0:
+ 988 0000 08000000 		.4byte	.LVL0
+ 989 0004 60000000 		.4byte	.LVL7
+ 990 0008 0100     		.2byte	0x1
+ 991 000a 54       		.byte	0x54
+ 992 000b 00000000 		.4byte	0
+ 993 000f 00000000 		.4byte	0
+ 994              	.LLST1:
+ 995 0013 02000000 		.4byte	.LVL8
+ 996 0017 06000000 		.4byte	.LVL9
+ 997 001b 0200     		.2byte	0x2
+ 998 001d 30       		.byte	0x30
+ 999 001e 9F       		.byte	0x9f
+ 1000 001f 06000000 		.4byte	.LVL9
+ 1001 0023 2A000000 		.4byte	.LVL14
+ 1002 0027 0100     		.2byte	0x1
+ 1003 0029 54       		.byte	0x54
+ 1004 002a 2C000000 		.4byte	.LVL15
+ 1005 002e 36000000 		.4byte	.LVL17
+ 1006 0032 0100     		.2byte	0x1
+ 1007 0034 54       		.byte	0x54
+ 1008 0035 00000000 		.4byte	0
+ 1009 0039 00000000 		.4byte	0
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccOpCLVW.s 			page 21
+
+
+ 1010              		.section	.debug_aranges,"",%progbits
+ 1011 0000 24000000 		.4byte	0x24
+ 1012 0004 0200     		.2byte	0x2
+ 1013 0006 00000000 		.4byte	.Ldebug_info0
+ 1014 000a 04       		.byte	0x4
+ 1015 000b 00       		.byte	0
+ 1016 000c 0000     		.2byte	0
+ 1017 000e 0000     		.2byte	0
+ 1018 0010 00000000 		.4byte	.LFB111
+ 1019 0014 64000000 		.4byte	.LFE111-.LFB111
+ 1020 0018 00000000 		.4byte	.LFB112
+ 1021 001c 3C000000 		.4byte	.LFE112-.LFB112
+ 1022 0020 00000000 		.4byte	0
+ 1023 0024 00000000 		.4byte	0
+ 1024              		.section	.debug_ranges,"",%progbits
+ 1025              	.Ldebug_ranges0:
+ 1026 0000 00000000 		.4byte	.LFB111
+ 1027 0004 64000000 		.4byte	.LFE111
+ 1028 0008 00000000 		.4byte	.LFB112
+ 1029 000c 3C000000 		.4byte	.LFE112
+ 1030 0010 00000000 		.4byte	0
+ 1031 0014 00000000 		.4byte	0
+ 1032              		.section	.debug_line,"",%progbits
+ 1033              	.Ldebug_line0:
+ 1034 0000 E4020000 		.section	.debug_str,"MS",%progbits,1
+ 1034      02008F02 
+ 1034      00000201 
+ 1034      FB0E0D00 
+ 1034      01010101 
+ 1035              	.LASF42:
+ 1036 0000 50574D5F 		.ascii	"PWM_YELLOW_WriteCompare\000"
+ 1036      59454C4C 
+ 1036      4F575F57 
+ 1036      72697465 
+ 1036      436F6D70 
+ 1037              	.LASF3:
+ 1038 0018 5F5F7569 		.ascii	"__uint8_t\000"
+ 1038      6E74385F 
+ 1038      7400
+ 1039              	.LASF31:
+ 1040 0022 76616C75 		.ascii	"value\000"
+ 1040      6500
+ 1041              	.LASF6:
+ 1042 0028 5F5F696E 		.ascii	"__int32_t\000"
+ 1042      7433325F 
+ 1042      7400
+ 1043              	.LASF27:
+ 1044 0032 616C5F62 		.ascii	"al_blue\000"
+ 1044      6C756500 
+ 1045              	.LASF41:
+ 1046 003a 50574D5F 		.ascii	"PWM_RED_WriteCompare\000"
+ 1046      5245445F 
+ 1046      57726974 
+ 1046      65436F6D 
+ 1046      70617265 
+ 1047              	.LASF26:
+ 1048 004f 616C5F67 		.ascii	"al_green\000"
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccOpCLVW.s 			page 22
+
+
+ 1048      7265656E 
+ 1048      00
+ 1049              	.LASF35:
+ 1050 0058 45455F6F 		.ascii	"EE_oo_IRQ_suspend_status\000"
+ 1050      6F5F4952 
+ 1050      515F7375 
+ 1050      7370656E 
+ 1050      645F7374 
+ 1051              	.LASF29:
+ 1052 0071 52475F47 		.ascii	"RG_Glow_t\000"
+ 1052      6C6F775F 
+ 1052      7400
+ 1053              	.LASF24:
+ 1054 007b 45455F54 		.ascii	"EE_TID\000"
+ 1054      494400
+ 1055              	.LASF18:
+ 1056 0082 666C6F61 		.ascii	"float\000"
+ 1056      7400
+ 1057              	.LASF1:
+ 1058 0088 756E7369 		.ascii	"unsigned char\000"
+ 1058      676E6564 
+ 1058      20636861 
+ 1058      7200
+ 1059              	.LASF49:
+ 1060 0096 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1060      43313120 
+ 1060      352E342E 
+ 1060      31203230 
+ 1060      31363036 
+ 1061 00c9 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1061      20726576 
+ 1061      6973696F 
+ 1061      6E203233 
+ 1061      37373135 
+ 1062 00fc 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1062      66756E63 
+ 1062      74696F6E 
+ 1062      2D736563 
+ 1062      74696F6E 
+ 1063              	.LASF8:
+ 1064 0124 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1064      20756E73 
+ 1064      69676E65 
+ 1064      6420696E 
+ 1064      7400
+ 1065              	.LASF5:
+ 1066 0136 73686F72 		.ascii	"short unsigned int\000"
+ 1066      7420756E 
+ 1066      7369676E 
+ 1066      65642069 
+ 1066      6E7400
+ 1067              	.LASF30:
+ 1068 0149 70686173 		.ascii	"phase\000"
+ 1068      6500
+ 1069              	.LASF20:
+ 1070 014f 45455F49 		.ascii	"EE_INT32\000"
+ 1070      4E543332 
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccOpCLVW.s 			page 23
+
+
+ 1070      00
+ 1071              	.LASF44:
+ 1072 0158 50574D5F 		.ascii	"PWM_RGB_RED_WriteCompare\000"
+ 1072      5247425F 
+ 1072      5245445F 
+ 1072      57726974 
+ 1072      65436F6D 
+ 1073              	.LASF4:
+ 1074 0171 5F5F7569 		.ascii	"__uint16_t\000"
+ 1074      6E743136 
+ 1074      5F7400
+ 1075              	.LASF19:
+ 1076 017c 646F7562 		.ascii	"double\000"
+ 1076      6C6500
+ 1077              	.LASF28:
+ 1078 0183 616C5F64 		.ascii	"al_duration\000"
+ 1078      75726174 
+ 1078      696F6E00 
+ 1079              	.LASF46:
+ 1080 018f 50574D5F 		.ascii	"PWM_RGB_BLUE_WriteCompare\000"
+ 1080      5247425F 
+ 1080      424C5545 
+ 1080      5F577269 
+ 1080      7465436F 
+ 1081              	.LASF33:
+ 1082 01a9 46756E63 		.ascii	"Functsk_glower\000"
+ 1082      74736B5F 
+ 1082      676C6F77 
+ 1082      657200
+ 1083              	.LASF43:
+ 1084 01b8 50574D5F 		.ascii	"PWM_GREEN_WriteCompare\000"
+ 1084      47524545 
+ 1084      4E5F5772 
+ 1084      69746543 
+ 1084      6F6D7061 
+ 1085              	.LASF50:
+ 1086 01cf 736F7572 		.ascii	"source\\asw\\ArcadianLight.c\000"
+ 1086      63655C61 
+ 1086      73775C41 
+ 1086      72636164 
+ 1086      69616E4C 
+ 1087              	.LASF39:
+ 1088 01ea 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1088      52784275 
+ 1088      66666572 
+ 1088      00
+ 1089              	.LASF37:
+ 1090 01f7 45455F73 		.ascii	"EE_std_endcycle_next_tid\000"
+ 1090      74645F65 
+ 1090      6E646379 
+ 1090      636C655F 
+ 1090      6E657874 
+ 1091              	.LASF11:
+ 1092 0210 756E7369 		.ascii	"unsigned int\000"
+ 1092      676E6564 
+ 1092      20696E74 
+ 1092      00
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccOpCLVW.s 			page 24
+
+
+ 1093              	.LASF23:
+ 1094 021d 45455F46 		.ascii	"EE_FREG\000"
+ 1094      52454700 
+ 1095              	.LASF21:
+ 1096 0225 45455F55 		.ascii	"EE_UINT32\000"
+ 1096      494E5433 
+ 1096      3200
+ 1097              	.LASF10:
+ 1098 022f 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1098      206C6F6E 
+ 1098      6720756E 
+ 1098      7369676E 
+ 1098      65642069 
+ 1099              	.LASF15:
+ 1100 0246 75696E74 		.ascii	"uint8_t\000"
+ 1100      385F7400 
+ 1101              	.LASF45:
+ 1102 024e 50574D5F 		.ascii	"PWM_RGB_GREEN_WriteCompare\000"
+ 1102      5247425F 
+ 1102      47524545 
+ 1102      4E5F5772 
+ 1102      69746543 
+ 1103              	.LASF36:
+ 1104 0269 45455F41 		.ascii	"EE_ApplicationMode\000"
+ 1104      70706C69 
+ 1104      63617469 
+ 1104      6F6E4D6F 
+ 1104      646500
+ 1105              	.LASF17:
+ 1106 027c 696E7433 		.ascii	"int32_t\000"
+ 1106      325F7400 
+ 1107              	.LASF13:
+ 1108 0284 73697A65 		.ascii	"sizetype\000"
+ 1108      74797065 
+ 1108      00
+ 1109              	.LASF51:
+ 1110 028d 443A5C57 		.ascii	"D:\\WS25\\AMAEOS\\Lab\\Workspace01\\ReactionGame.cy"
+ 1110      5332355C 
+ 1110      414D4145 
+ 1110      4F535C4C 
+ 1110      61625C57 
+ 1111 02bb 64736E00 		.ascii	"dsn\000"
+ 1112              	.LASF9:
+ 1113 02bf 6C6F6E67 		.ascii	"long long int\000"
+ 1113      206C6F6E 
+ 1113      6720696E 
+ 1113      7400
+ 1114              	.LASF14:
+ 1115 02cd 63686172 		.ascii	"char\000"
+ 1115      00
+ 1116              	.LASF22:
+ 1117 02d2 45455F55 		.ascii	"EE_UREG\000"
+ 1117      52454700 
+ 1118              	.LASF38:
+ 1119 02da 45455F49 		.ascii	"EE_IRQ_nesting_level\000"
+ 1119      52515F6E 
+ 1119      65737469 
+ARM GAS  C:\Users\agila\AppData\Local\Temp\ccOpCLVW.s 			page 25
+
+
+ 1119      6E675F6C 
+ 1119      6576656C 
+ 1120              	.LASF2:
+ 1121 02ef 73686F72 		.ascii	"short int\000"
+ 1121      7420696E 
+ 1121      7400
+ 1122              	.LASF34:
+ 1123 02f9 45455F6F 		.ascii	"EE_oo_IRQ_disable_count\000"
+ 1123      6F5F4952 
+ 1123      515F6469 
+ 1123      7361626C 
+ 1123      655F636F 
+ 1124              	.LASF16:
+ 1125 0311 75696E74 		.ascii	"uint16_t\000"
+ 1125      31365F74 
+ 1125      00
+ 1126              	.LASF7:
+ 1127 031a 6C6F6E67 		.ascii	"long int\000"
+ 1127      20696E74 
+ 1127      00
+ 1128              	.LASF12:
+ 1129 0323 6C6F6E67 		.ascii	"long double\000"
+ 1129      20646F75 
+ 1129      626C6500 
+ 1130              	.LASF0:
+ 1131 032f 7369676E 		.ascii	"signed char\000"
+ 1131      65642063 
+ 1131      68617200 
+ 1132              	.LASF48:
+ 1133 033b 45455F6F 		.ascii	"EE_oo_TerminateTask\000"
+ 1133      6F5F5465 
+ 1133      726D696E 
+ 1133      61746554 
+ 1133      61736B00 
+ 1134              	.LASF25:
+ 1135 034f 616C5F72 		.ascii	"al_red\000"
+ 1135      656400
+ 1136              	.LASF47:
+ 1137 0356 43794465 		.ascii	"CyDelay\000"
+ 1137      6C617900 
+ 1138              	.LASF40:
+ 1139 035e 52475F67 		.ascii	"RG_glowtable\000"
+ 1139      6C6F7774 
+ 1139      61626C65 
+ 1139      00
+ 1140              	.LASF32:
+ 1141 036b 66616465 		.ascii	"fader\000"
+ 1141      7200
+ 1142              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

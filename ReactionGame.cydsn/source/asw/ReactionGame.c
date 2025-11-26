@@ -32,6 +32,7 @@
 #include "UART_LOG.h"
 
 #include "ReactionGame.h"
+#include "ArcadianLight.h"
 #include "TimingAnalyzer.h"
 
 /*****************************************************************************/
@@ -209,30 +210,7 @@ TASK(tsk_game)
 
 TASK(tsk_timer) // Keep this taks execution time below cycle time ??? Go with oneshot alrm instead of cyclic ???
 {
-    
-    static uint16_t phase = 0;
-    uint8_t value = phase & 0xFF;
-
-    // ----- Continuous RGB cycle -----
-    if (phase < 256) {
-        PWM_RED_WriteCompare(value);              // Red fades in
-    }
-    else if (phase < 512) {
-        PWM_RED_WriteCompare(255 - value);        // Red fades out
-        PWM_YELLOW_WriteCompare(value);           // Yellow fades in
-    }
-    else if (phase < 768) {
-        PWM_YELLOW_WriteCompare(255 - value);     // Yellow fades out
-        PWM_GREEN_WriteCompare(value);            // Green fades in
-    }
-    else {
-        PWM_GREEN_WriteCompare(255 - value);      // Green fades out
-    }
-
-    phase++;
-    if (phase >= 1024)
-        phase = 0;     // Restart continuous cycle
-
+    fader();
     
     //Random-Wait Countdown (1–3 seconds random delay)
     if (ra_g_rndWait_ms > 0)

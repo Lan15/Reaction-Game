@@ -34,6 +34,18 @@
 /*****************************************************************************/
 /* Global variable definitions (declared in header file with 'extern')       */
 /*****************************************************************************/
+const RG_Glow_t RG_glowtable[] = {
+    //Red Green Blue TimeInMS
+    {255, 0, 0, 500},
+    {0, 255, 0, 500},
+    {0, 0, 255, 500},
+    {0, 0, 0, 100},
+    {255, 255, 255, 100},
+    {0, 0, 0, 100},
+    {255, 255, 255, 100},
+    {0, 0, 0, 100},
+    {255, 255, 255, 100}
+};
 
 /*****************************************************************************/
 /* Local type definitions ('typedef')                                        */
@@ -76,16 +88,42 @@
     
     TerminateTask();
 }*/
-    
+
+void fader(void)
+{
+    static uint16_t phase = 0;
+    uint8_t value = phase & 0xFF;
+
+    // ----- Continuous RGB cycle -----
+    if (phase < 256) {
+        PWM_RED_WriteCompare(value);              // Red fades in
+    }
+    else if (phase < 512) {
+        PWM_RED_WriteCompare(255 - value);        // Red fades out
+        PWM_YELLOW_WriteCompare(value);           // Yellow fades in
+    }
+    else if (phase < 768) {
+        PWM_YELLOW_WriteCompare(255 - value);     // Yellow fades out
+        PWM_GREEN_WriteCompare(value);            // Green fades in
+    }
+    else {
+        PWM_GREEN_WriteCompare(255 - value);      // Green fades out
+    }
+
+    phase++;
+    if (phase >= 1024)
+        phase = 0;     // Restart continuous cycle
+}
+
 TASK(tsk_glower)
 {
     
     for (uint8_t i = 0; i < (sizeof(RG_glowtable) / sizeof(RG_Glow_t)); ++i)
     {
-        PWM_RGB_RED_WriteCompare(RG_glowtable[i].m_red);
-        PWM_RGB_GREEN_WriteCompare(RG_glowtable[i].m_green);
-        PWM_RGB_BLUE_WriteCompare(RG_glowtable[i].m_blue);
-        CyDelay(RG_glowtable[i].m_duration);
+        PWM_RGB_RED_WriteCompare(RG_glowtable[i].al_red);
+        PWM_RGB_GREEN_WriteCompare(RG_glowtable[i].al_green);
+        PWM_RGB_BLUE_WriteCompare(RG_glowtable[i].al_blue);
+        CyDelay(RG_glowtable[i].al_duration);
     }
     
     TerminateTask();

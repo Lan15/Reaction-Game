@@ -39,7 +39,7 @@
     #define tsk_glower 5
     #endif
     #if EE_MAX_TASK > 6
-    #define Task_7 6
+    #define tsk_test 6
     #endif
     #if EE_MAX_TASK > 7
     #define Task_8 7
@@ -97,7 +97,7 @@
     #define alrm_tft 2U
     #endif
     #if EE_MAX_ALARM > 3
-    #define Alarm_4 3U
+    #define alrm_test 3U
     #endif
     #if EE_MAX_ALARM > 4
     #define Alarm_5 4U

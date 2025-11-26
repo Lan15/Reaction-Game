@@ -120,21 +120,21 @@
 #define TSK6_PRI 7U
 #endif
 
-#if (0 == 0x1)
+#if (32 == 0x1)
 #define TSK7_PRI 0U
-#elif (0 == 0x2)
+#elif (32 == 0x2)
 #define TSK7_PRI 1U
-#elif (0 == 0x4)
+#elif (32 == 0x4)
 #define TSK7_PRI 2U
-#elif (0 == 0x8)
+#elif (32 == 0x8)
 #define TSK7_PRI 3U
-#elif (0 == 0x10)
+#elif (32 == 0x10)
 #define TSK7_PRI 4U
-#elif (0 == 0x20)
+#elif (32 == 0x20)
 #define TSK7_PRI 5U
-#elif (0 == 0x40)
+#elif (32 == 0x40)
 #define TSK7_PRI 6U
-#elif (0 == 0x80)
+#elif (32 == 0x80)
 #define TSK7_PRI 7U
 #endif
 
