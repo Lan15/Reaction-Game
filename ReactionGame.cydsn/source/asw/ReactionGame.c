@@ -102,7 +102,9 @@ TASK(tsk_game)
                 //CancelAlarm(alrm_Tick1m); // if timer has high priority
                 //UART_LOG_PutString("wait\r\n"); 
                 //Generate random wait time
+                GetResource(res_rnd);
                 ra_g_rndWait_ms = (rand() % 2000) + 1000;  // 1000 – 3000 ms
+                ReleaseResource(res_rnd);
                 //rndWait_ms = (rand() % 2000) + 1000; // single shot alaram instead of global var, reduction ???
                 //SetRelAlarm(alrm_Tick1m, rndWait_ms, 0);
                 //SetRelAlarm(alrm_Tick1m,1,1);
@@ -115,7 +117,9 @@ TASK(tsk_game)
                     //Show random number on display
                     SEVEN_writeRandom(); // Ok or a seperate task ???
                     game.m_roundPlayed++;
+                    GetResource(res_out);
                     ra_g_reactionTimeout_ms = RG_TIMEOUT_TIME_MS;
+                    ReleaseResource(res_out);
                     game.m_curState = RG_STATE_PRESSED;
                     TA_start((TA_t *)&analyzerGame);
                     //SetRelAlarm(alrm_Tick1m,1,1);
@@ -233,7 +237,9 @@ TASK(tsk_timer) // Keep this taks execution time below cycle time ??? Go with on
     //Random-Wait Countdown (1–3 seconds random delay)
     if (ra_g_rndWait_ms > 0)
     {
+        GetResource(res_rnd);
         ra_g_rndWait_ms--;
+        ReleaseResource(res_rnd);
         
         if (ra_g_rndWait_ms == 0)
         {
@@ -248,7 +254,9 @@ TASK(tsk_timer) // Keep this taks execution time below cycle time ??? Go with on
     //Reaction Timeout Countdown
     if (ra_g_reactionTimeout_ms > 0)
     {
+        GetResource(res_out);
         ra_g_reactionTimeout_ms--;
+        ReleaseResource(res_out);
         
         if (ra_g_reactionTimeout_ms == 0)
         {

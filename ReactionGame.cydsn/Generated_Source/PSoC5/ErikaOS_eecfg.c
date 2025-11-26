@@ -25,7 +25,7 @@
     int EE_cortex_mx_stack_3[TASK_3_STACK_SIZE];	/* Task 3 (tsk_timer) */
     #endif
     #if ((2 == 2) && (EE_MAX_TASK > 3))
-    #define TASK_4_STACK_SIZE 5000/4 // size = 5000 bytes
+    #define TASK_4_STACK_SIZE 2000/4 // size = 2000 bytes
     int EE_cortex_mx_stack_4[TASK_4_STACK_SIZE];	/* Task 4 (tsk_game) */
     #endif
     #if ((1 == 2) && (EE_MAX_TASK > 4))
@@ -326,10 +326,10 @@
     const char* EE_RESOURCE_NAME[EE_MAX_RESOURCE]=  //Erika Tracing Changes
     {
     #if EE_MAX_RESOURCE > 0
-         "Resource_1"
+         "res_rnd"
     #endif
     #if EE_MAX_RESOURCE > 1
-        ,"Resource_2"
+        ,"res_out"
     #endif
     #if EE_MAX_RESOURCE > 2
         ,"Resource_3"
@@ -354,10 +354,10 @@
     const unsigned long EE_RESOURCE_ID[EE_MAX_RESOURCE]=
     {
     #if EE_MAX_RESOURCE > 0
-         Resource_1
+         res_rnd
     #endif
     #if EE_MAX_RESOURCE > 1
-        ,Resource_2
+        ,res_out
     #endif
     #if EE_MAX_RESOURCE > 2
         ,Resource_3
@@ -391,10 +391,10 @@
         ,"ev_buttonRight"
     #endif
     #if EE_MAX_EVENT > 2
-        ,"ev_randomDone"
+        ,"ev_timeout"
     #endif
     #if EE_MAX_EVENT > 3
-         ,"ev_timeout"
+         ,"ev_randomDone"
     #endif
     #if EE_MAX_EVENT > 4
          ,"ev_button2"
@@ -488,10 +488,10 @@
         ,ev_buttonRight
     #endif
     #if EE_MAX_EVENT > 2
-        ,ev_randomDone
+        ,ev_timeout
     #endif
     #if EE_MAX_EVENT > 3
-        ,ev_timeout
+        ,ev_randomDone
     #endif
     #if EE_MAX_EVENT > 4
         ,ev_button2
@@ -1573,7 +1573,7 @@
         ,{alrm_glower}
     #endif
     #if EE_MAX_ALARM > 2
-        ,{alrm_fader}
+        ,{alrm_tft}
     #endif
     #if EE_MAX_ALARM > 3
         ,{Alarm_4}
@@ -1603,7 +1603,7 @@ const char* EE_ALARM_NAME[EE_MAX_ALARM]=
         ,"alrm_glower"
     #endif
     #if EE_MAX_ALARM > 2
-        ,"alrm_fader"
+        ,"alrm_tft"
     #endif
     #if EE_MAX_ALARM > 3
         ,"Alarm_4"
@@ -1631,7 +1631,7 @@ const unsigned long EE_ALARM_ID[EE_MAX_ALARM]=
         ,alrm_glower
     #endif
     #if EE_MAX_ALARM > 2
-        ,alrm_fader
+        ,alrm_tft
     #endif
     #if EE_MAX_ALARM > 3
         ,Alarm_4
@@ -1652,7 +1652,7 @@ const unsigned long EE_ALARM_ID[EE_MAX_ALARM]=
 
 //Functions
 #if (EE_MAX_ALARM > 0) && (0 == 3)
-    void alarm_callback_1(void);
+    void alarm_callback_3(void);
 #endif
 #if (EE_MAX_ALARM > 1) && (0 == 3)
     void alarm_callback_3(void);
@@ -1691,7 +1691,7 @@ const unsigned long EE_ALARM_ID[EE_MAX_ALARM]=
         ,{0, alrm_glower, EE_ALARM }
         #endif
         #if EE_MAX_ALARM > 2
-        ,{0, alrm_fader, EE_ALARM }
+        ,{0, alrm_tft, EE_ALARM }
         #endif
         #if EE_MAX_ALARM > 3
         ,{0, Alarm_4, EE_ALARM }
@@ -1735,7 +1735,7 @@ const unsigned long EE_ALARM_ID[EE_MAX_ALARM]=
             #if 0 != 3
              (EE_VOID_CALLBACK)NULL,
             #else
-                alarm_callback_1,
+                alarm_callback_3,
             #endif
             (EE_TYPECOUNTER)-1 }
     #endif
@@ -1761,7 +1761,7 @@ const unsigned long EE_ALARM_ID[EE_MAX_ALARM]=
     #if EE_ACTION_ROM_SIZE > 2
         ,{0    , 
             #if 0 != 3 
-                5,
+                4,
             #else
                 0,
             #endif

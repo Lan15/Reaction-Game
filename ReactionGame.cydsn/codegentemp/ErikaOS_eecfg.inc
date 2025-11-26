@@ -52,14 +52,14 @@
     #else
     #define RES1 0
     #endif
-    #if (0 || RES1)
-    #define EE_MAX_RESOURCE (0+RES1)
+    #if (2 || RES1)
+    #define EE_MAX_RESOURCE (2+RES1)
     #endif
     #if EE_MAX_RESOURCE > 0
-    #define Resource_1 (0+RES1)
+    #define res_rnd (0+RES1)
     #endif    
     #if EE_MAX_RESOURCE > 1
-    #define Resource_2 (1+RES1)
+    #define res_out (1+RES1)
     #endif    
     #if EE_MAX_RESOURCE > 2
     #define Resource_3 (2+RES1)
@@ -86,7 +86,7 @@
     #endif
     
     /* ALARM definition */
-    #define EE_MAX_ALARM 2U
+    #define EE_MAX_ALARM 3U
     #if EE_MAX_ALARM > 0
     #define alrm_Tick1m 0U
     #endif
@@ -94,7 +94,7 @@
     #define alrm_glower 1U
     #endif
     #if EE_MAX_ALARM > 2
-    #define alrm_fader 2U
+    #define alrm_tft 2U
     #endif
     #if EE_MAX_ALARM > 3
     #define Alarm_4 3U

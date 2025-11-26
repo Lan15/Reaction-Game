@@ -17,10 +17,10 @@
     #define ev_buttonRight 0x2U
     #endif
     #if 4 > 2
-    #define ev_randomDone 0x4U
+    #define ev_timeout 0x4U
     #endif
     #if 4 > 3
-    #define ev_timeout 0x8U
+    #define ev_randomDone 0x8U
     #endif
     #if 4 > 4
     #define ev_button2 0x10U
