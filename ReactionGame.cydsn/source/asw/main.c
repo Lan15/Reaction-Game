@@ -83,6 +83,17 @@ TASK(tsk_init)
     TerminateTask();
 }
 
+TASK(tsk_timer) 
+{
+    //Random-Wait Countdown (1–3 seconds random delay)
+    randomTimeCheck();
+
+    //Reaction Timeout Countdown
+    timeoutCheck();
+    
+    TerminateTask();
+}
+
 TASK(tsk_arcadian)
 {
     RC_t res = RC_SUCCESS;
@@ -111,6 +122,15 @@ TASK(tsk_background)
 ISR(systick_handler)
 {
     CounterTick(cnt_systick);
+}
+
+ISR2(isr_button)
+{   
+    if (ButtonLeft_Read() == 1) { //Button left is button 1 and in case of 2
+        SetEvent(tsk_game, ev_buttonLeft);
+    } else if (ButtonRight_Read() == 1) { //Button right is button 2 and in case of 1
+        SetEvent(tsk_game, ev_buttonRight);
+    }
 }
 
 /* [main.c] END OF FILE */

@@ -207,9 +207,10 @@ TASK(tsk_game)
 	TerminateTask();
 }
 
-TASK(tsk_timer) // Keep this taks execution time below cycle time ??? Go with oneshot alrm instead of cyclic ???
+RC_t randomTimeCheck(void)
 {
-    //Random-Wait Countdown (1–3 seconds random delay)
+    RC_t res = RC_SUCCESS;
+    
     if (ra_g_rndWait_ms > 0)
     {
         GetResource(res_rnd);
@@ -225,8 +226,14 @@ TASK(tsk_timer) // Keep this taks execution time below cycle time ??? Go with on
             SetEvent(tsk_game, ev_randomDone);        
         }
     }
+    
+    return res;
+}
 
-    //Reaction Timeout Countdown
+RC_t timeoutCheck(void)
+{
+    RC_t res = RC_SUCCESS;
+
     if (ra_g_reactionTimeout_ms > 0)
     {
         GetResource(res_out);
@@ -241,7 +248,7 @@ TASK(tsk_timer) // Keep this taks execution time below cycle time ??? Go with on
         }
     }
     
-    TerminateTask();
+    return res;
 }
 
 TASK(tsk_tft)
@@ -277,19 +284,6 @@ TASK(tsk_tft)
     }*/
     
     TerminateTask();
-}
-
-/********************************************************************************
- * ISR Definitions
- ********************************************************************************/
-
-ISR2(isr_button)
-{   
-    if (ButtonLeft_Read() == 1) { //Button left is button 1 and in case of 2
-        SetEvent(tsk_game, ev_buttonLeft);
-    } else if (ButtonRight_Read() == 1) { //Button right is button 2 and in case of 1
-        SetEvent(tsk_game, ev_buttonRight);
-    }
 }
 
 /* NOTE
