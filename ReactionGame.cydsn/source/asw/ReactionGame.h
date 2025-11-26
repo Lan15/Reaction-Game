@@ -73,6 +73,7 @@
 #ifndef REACTIONGAME_H
 #define REACTIONGAME_H
 
+#include "project.h" // to use EventMaskType
 #include "global.h"
 
 /*****************************************************************************/
@@ -126,6 +127,8 @@ public:
 /*****************************************************************************/
 /* API functions                                                             */
 /*****************************************************************************/
+
+RC_t gameStateMachine(EventMaskType ev);
 
 RC_t randomTimeCheck(void);
 

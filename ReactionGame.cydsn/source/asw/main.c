@@ -83,6 +83,29 @@ TASK(tsk_init)
     TerminateTask();
 }
 
+TASK(tsk_game)
+{
+    RC_t res = RC_SUCCESS;
+    
+    EventMaskType ev = 0;
+    
+    // Upon start up
+    UART_LOG_PutString("\r\n\r\n============ Welcome to the Reaction Game ============\r\npress one of the two buttons to start...\r\n\r\n");
+    
+    while (1)
+    {
+        //Wait, read and clear the event
+        WaitEvent(ev_buttonLeft | ev_buttonRight | ev_timeout | ev_randomDone);  // evaluate based on eventys or state ???
+        GetEvent(tsk_game, &ev);
+        ClearEvent(ev);       
+        
+        res = gameStateMachine(ev);
+    }
+    
+    //Just in Case
+	TerminateTask();
+}
+
 TASK(tsk_timer) 
 {
     //Random-Wait Countdown (1–3 seconds random delay)
@@ -101,6 +124,41 @@ TASK(tsk_arcadian)
     res = fader();
     
     res = glower();
+    
+    TerminateTask();
+}
+
+TASK(tsk_tft)
+{
+    /*if(!game.m_score)
+    {
+        TFT_clearScreen();
+        
+        TFT_setCursor(17, 60);
+        TFT_setTextSize(2);
+        TFT_setTextColor(RED);
+        TFT_print("REACTION\n");
+        TFT_setCursor(40, 80);
+        TFT_setTextColor(BLUE);
+        TFT_print("GAME\n");
+    }
+    
+    if(game.m_score) // If score is atleaset 1 
+    { 
+        TFT_clearScreen();
+        
+        TFT_setCursor(18, 70);
+        TFT_setTextSize(2);
+        TFT_setTextColor(YELLOW);
+        
+        TFT_drawRect(12, 65, 105, 24, WHITE);
+        
+        char buffer[16];
+        sprintf(buffer, "SCORE:%d", ra_g_tftScore);
+        TFT_print(buffer);
+        
+        TFT_drawChar(55, 30, 2, YELLOW, 0, 4);
+    }*/
     
     TerminateTask();
 }
