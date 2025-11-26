@@ -56,7 +56,7 @@ volatile static RG_t game = {RG_STATE_WAIT, 0, 0, 0};
 
 volatile static uint16_t ra_g_rndWait_ms = 0;          // random delay until number appears
 volatile static uint16_t ra_g_reactionTimeout_ms = 0;  // max allowed reaction time
-volatile static uint8_t ra_g_buttonNumber = 0;         // correct button number
+volatile static uint8_t ra_g_correctPress = 0;         // correct button pressed count
 volatile static uint8_t ra_g_tftScore = 0;             // score in tft
 
 /*****************************************************************************/
@@ -77,59 +77,61 @@ RC_t gameStateMachine(EventMaskType ev)
     
     TA_create((TA_t *)&analyzerGame, TA_MODE_DWT, NULL_PTR, "Game Analyzer"); // do it here or where ???
     
-    uint32_t correctPress; // count of total correct presses
-    
-    switch(game.m_curState) // extra while for SM ???
+    switch(game.rg_curState)
     {
         case RG_STATE_IDLE: // what to do ???
         break;
-        case RG_STATE_WAIT: // TODO: handle button comming during wait time ???
+        case RG_STATE_WAIT:
             if (ev & ev_buttonLeft || ev & ev_buttonRight)
-            {
-            //CancelAlarm(alrm_Tick1m); // if timer has high priority
-            //UART_LOG_PutString("wait\r\n"); 
-            //Generate random wait time
-            GetResource(res_rnd);
-            ra_g_rndWait_ms = (rand() % 2000) + 1000;  // 1000 – 3000 ms
-            ReleaseResource(res_rnd);
-            //rndWait_ms = (rand() % 2000) + 1000; // single shot alaram instead of global var, reduction ???
-            //SetRelAlarm(alrm_Tick1m, rndWait_ms, 0);
-            //SetRelAlarm(alrm_Tick1m,1,1);
-            }
+            { //C //(N1)
+                // Generate random wait time. 1000 – 3000 ms
+                GetResource(res_rnd);
+                ra_g_rndWait_ms = (rand() % 2000) + 1000;
+                ReleaseResource(res_rnd);
+                
+                #ifdef OneShotAlarmNoCyclicTask
+                //rndWait_ms = (rand() % 2000) + 1000;
+                //SetRelAlarm(alrm_Tick1m, rndWait_ms, 0); // (N6)
+                #endif
+            } //S
         break;
-        case RG_STATE_DISPLAY: // If one round got over bring back to wait state ???
+        case RG_STATE_DISPLAY:
             if (ev & ev_randomDone)
             {
-                //UART_LOG_PutString("seven\r\n");
-                //Show random number on display
-                SEVEN_writeRandom(); // Ok or a seperate task ???
-                game.m_roundPlayed++;
+                // Show generatated random number on display
+                SEVEN_writeRandom(); // audio ???
+                
+                game.rg_roundPlayed++;
+                
                 GetResource(res_out);
                 ra_g_reactionTimeout_ms = RG_TIMEOUT_TIME_MS;
                 ReleaseResource(res_out);
-                game.m_curState = RG_STATE_PRESSED;
-                TA_start((TA_t *)&analyzerGame);
-                //SetRelAlarm(alrm_Tick1m,1,1);
-            }
+                #ifdef OneShotAlarmNoCyclicTask
+                //SetRelAlarm(alrm_Tick1m, ra_g_reactionTimeout_ms, 0); // (N7)
+                #endif
+                
+                game.rg_curState = RG_STATE_PRESSED;
+                
+                TA_start((TA_t *)&analyzerGame);  
+            }//S
         break;
         case RG_STATE_PRESSED: 
-            //UART_LOG_PutString("ingame\r\n"); 
-            //CancelAlarm(alrm_Tick1m);
-            if (ev & ev_buttonLeft) // Keep it seperate else wrong button press also will be counted
+            //C
+            if (ev & ev_buttonLeft) // (N5)
             {
-                //UART_LOG_PutString("BUTT\r\n"); 
                 TA_stop((TA_t *)&analyzerGame);
                 
                 // Handle button 1 press
-                if (SEVEN_reg_Read() == 91) //deci 91 = hex 5B = bin 0101 1011 = seven segment 2
+                if (SEVEN_reg_Read() == 91) //(N2)
                 { 
-                    //Send string to UART
                     UART_LOG_PutString("Great - correct button pressed!\r\n");
+                    
                     char buffer[60]; 
                     snprintf(buffer, sizeof(buffer), "Reaction time in ms: %u\r\n", TA_getElapsedTimeInMs(&analyzerGame));
                     UART_LOG_PutString(buffer);
-                    correctPress++;
-                    game.m_score++;
+                    
+                    ra_g_correctPress++;
+                    game.rg_score++;
                 } else
                 {
                     UART_LOG_PutString("Oops - wrong button pressed!\r\n");
@@ -138,16 +140,18 @@ RC_t gameStateMachine(EventMaskType ev)
             if (ev & ev_buttonRight) 
             {
                 TA_stop((TA_t *)&analyzerGame);
-                //Handle button 2 press
-                if (SEVEN_reg_Read() == 6) //deci 6 = hex 6 = bin 0110 0000 = seven segment 1
+                
+                // Handle button 2 press
+                if (SEVEN_reg_Read() == 6) // (N3)
                 {   
-                    //Send string to UART
                     UART_LOG_PutString("Great - correct button pressed!\r\n");
+                    
                     char buffer[60]; 
                     snprintf(buffer, sizeof(buffer), "Reaction time in ms: %u\r\n", TA_getElapsedTimeInMs(&analyzerGame));
                     UART_LOG_PutString(buffer);
-                    correctPress++;
-                    game.m_score++;
+                    
+                    ra_g_correctPress++;
+                    game.rg_score++;
                 } else
                 {
                     UART_LOG_PutString("Oops - wrong button pressed!\r\n");
@@ -156,33 +160,36 @@ RC_t gameStateMachine(EventMaskType ev)
             if (ev & ev_timeout)
             {
                 TA_stop((TA_t *)&analyzerGame);
-                //Handle timeout
-                UART_LOG_PutString("\nToo slow!\r\n");    // log or func ???
+                
+                // Handle timeout
+                UART_LOG_PutString("\nToo slow!\r\n");
             }
             
-            game.m_totalTime += TA_getElapsedTimeInMs(&analyzerGame);
+            game.rg_totalTime += TA_getElapsedTimeInMs(&analyzerGame);
             analyzerGame.elapsed_time = 0;
             
             SEVEN_ClearAll();
             
-            game.m_curState = RG_STATE_WAIT;
-            
             UART_LOG_PutString("======================================================\r\n");
-            // One game consists out of 10 rounds - END - consider as a seperate state ???
             
-            if (RG_MAX_ROUNDS == game.m_roundPlayed)
+            // Print the scoure after 1 game (10 rounds)
+            if (RG_MAX_ROUNDS == game.rg_roundPlayed)
             {
-                game.m_roundPlayed = 0;
-                uint32_t avg_time = game.m_totalTime / correctPress++;
-                /* Print for the rounds played */
+                game.rg_roundPlayed = 0;
+                
+                uint32_t avg_time = game.rg_totalTime / ra_g_correctPress;
+
                 char buffer[70];
-                snprintf(buffer, sizeof(buffer), "Score: %u | Total Time: %ums | Avg Time: %ums\r\n", game.m_score, game.m_totalTime, avg_time);
+                snprintf(buffer, sizeof(buffer), "Score: %u | Total Time: %ums | Avg Time: %ums\r\n", game.rg_score, game.rg_totalTime, avg_time);
                 UART_LOG_PutString(buffer);
+                
                 UART_LOG_PutString("======================================================\r\n");
-                ra_g_tftScore = game.m_score;
-                ActivateTask(tsk_tft);
-                //SetRelAlarm(alrm_tft,1,0); // one shot alarm // activate task ???
-            }              
+                
+                ra_g_tftScore = game.rg_score;
+                //SetRelAlarm(alrm_tft,1,0); //(N4)
+            } 
+            
+            game.rg_curState = RG_STATE_WAIT;
         break;
         default:
             // do nothing
@@ -202,11 +209,11 @@ RC_t randomTimeCheck(void)
         ReleaseResource(res_rnd);
         
         if (ra_g_rndWait_ms == 0)
-        {
-            //CancelAlarm(alrm_Tick1m);
-            game.m_curState = RG_STATE_DISPLAY;
+        {//C
+            game.rg_curState = RG_STATE_DISPLAY;
+            
             //Signal to tsk_Game that random delay has ended
-            SetEvent(tsk_game, ev_randomDone);        
+            SetEvent(tsk_game, ev_randomDone);  // set event inside function is ok ???  
         }
     }
     return res;
@@ -223,9 +230,8 @@ RC_t timeoutCheck(void)
         ReleaseResource(res_out);
         
         if (ra_g_reactionTimeout_ms == 0)
-        {
-            //CancelAlarm(alrm_Tick1m);
-            //User failed to react in time
+        {//C
+            //Signal to tsk_Game that the user failed to react in time
             SetEvent(tsk_game, ev_timeout);
         }
     }
@@ -234,9 +240,19 @@ RC_t timeoutCheck(void)
 
 /* NOTE
  * 
- * 1. 
+ * 1. //C cancel and //S set 1ms timer alaram incase of the timer has highest priority
  *
- * 2. 
+ * 2. deci 91 = hex 5B = bin 0101 1011 = seven segment 2
+ * 
+ * 3. deci 6 = hex 6 = bin 0110 0000 = seven segment 1
+ * 
+ * 4. According to OSEK we should not use activatetask() insaide another task but alarm introduces overhat.
+ * 
+ * 5. Keep it seperate else wrong button press also will be counted.
+ * 
+ * 6. In OS config, the alarm will trigger the tsk_game with ev_randomDone.
+ * 
+ * 7. In OS config, the alarm will trigger the tsk_game with ev_timeout.
  *
  */
 

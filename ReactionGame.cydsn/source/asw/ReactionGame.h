@@ -104,11 +104,11 @@
 */
 typedef struct {
     /* Statr Data */
-    RG_State_t m_curState;  // Current analyzer state
+    RG_State_t rg_curState;  // Current analyzer state
     /* Measurement & Record Data */
-    uint32_t m_totalTime;   // total time taken for 10 rounds
-    uint32_t m_score;       // score of the game
-    uint32_t m_roundPlayed; // count of the rounds // Keep it here or local?
+    uint32_t rg_totalTime;   // total time taken for 10 rounds
+    uint32_t rg_score;       // score of the game
+    uint32_t rg_roundPlayed; // count of the rounds // Keep it here or local?
 } RG_t;
 
 // Wrapper to allow representing the file in Together as class
