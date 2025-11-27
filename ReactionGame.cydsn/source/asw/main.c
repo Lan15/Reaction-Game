@@ -13,14 +13,16 @@
 #include "project.h"
 #include "global.h"
 
+#include "button.h"
 #include "seven.h"
-//#include "pins.h"
 #include "tft.h"
 #include "UART_LOG.h"
 
 #include "ReactionGame.h"
 #include "ArcadianLight.h"
 #include "TimingAnalyzer.h"
+
+#define CyclicTask
 
 int main()
 {
@@ -48,7 +50,6 @@ TASK(tsk_init)
     UART_LOG_Start(); 
     
     TFT_init();
-    TFT_setBacklight(255);
     
     PWM_RED_Start();
     PWM_YELLOW_Start();
@@ -69,15 +70,15 @@ TASK(tsk_init)
     EE_systick_start();  
 	
     //Start the cyclic alarms 
+    #ifdef CyclicTask
     SetRelAlarm(alrm_Tick1m,1,1);
+    #endif
     //SetRelAlarm(alrm_tft,2,0);
-    //SetRelAlarm(alrm_fader,3,1);
     SetRelAlarm(alrm_arcadian,10,100);
 
     //Activate all extended and the background task
     ActivateTask(tsk_game);
-    //ActivateTask(tsk_arcadian);
-    ActivateTask(tsk_tft);
+    //ActivateTask(tsk_tft);
     ActivateTask(tsk_background);
 
     TerminateTask();
@@ -95,7 +96,7 @@ TASK(tsk_game)
     while (1)
     {
         //Wait, read and clear the event
-        WaitEvent(ev_buttonLeft | ev_buttonRight | ev_timeout | ev_randomDone);  // evaluate based on eventys or state ???
+        WaitEvent(ev_buttonLeft | ev_buttonRight | ev_timeout | ev_randomDone);
         GetEvent(tsk_game, &ev);
         ClearEvent(ev);       
         
@@ -105,6 +106,8 @@ TASK(tsk_game)
     //Just in Case
 	TerminateTask();
 }
+
+#ifdef CyclicTask
 
 TASK(tsk_timer) 
 {
@@ -116,6 +119,7 @@ TASK(tsk_timer)
     
     TerminateTask();
 }
+#endif
 
 TASK(tsk_arcadian)
 {
@@ -130,7 +134,10 @@ TASK(tsk_arcadian)
 
 TASK(tsk_tft)
 {
-    /*if(!game.m_score)
+    /*
+    TFT_setBacklight(255);
+    
+    if(!game.m_score)
     {
         TFT_clearScreen();
         
@@ -184,9 +191,9 @@ ISR(systick_handler)
 
 ISR2(isr_button)
 {   
-    if (ButtonLeft_Read() == 1) { //Button left is button 1 and in case of 2
+    if (BUTTON_IsPressed(BUTTON_LEFT)) { //Button left is button 1 and in case of 2 in 7 segment disaplay
         SetEvent(tsk_game, ev_buttonLeft);
-    } else if (ButtonRight_Read() == 1) { //Button right is button 2 and in case of 1
+    } else if (BUTTON_IsPressed(BUTTON_RIGHT)) { //Button right is button 2 and in case of 1 in 7 segment disaplay
         SetEvent(tsk_game, ev_buttonRight);
     }
 }

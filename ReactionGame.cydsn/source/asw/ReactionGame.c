@@ -34,6 +34,9 @@
 #include "ReactionGame.h"
 #include "TimingAnalyzer.h"
 
+//#define OneShotAlarm
+#define CyclicTask
+
 /*****************************************************************************/
 /* Local pre-processor symbols/macros ('#define')                            */
 /*****************************************************************************/ 
@@ -56,7 +59,6 @@ volatile static RG_t game = {RG_STATE_WAIT, 0, 0, 0};
 
 volatile static uint16_t ra_g_rndWait_ms = 0;          // random delay until number appears
 volatile static uint16_t ra_g_reactionTimeout_ms = 0;  // max allowed reaction time
-volatile static uint8_t ra_g_correctPress = 0;         // correct button pressed count
 volatile static uint8_t ra_g_tftScore = 0;             // score in tft
 
 /*****************************************************************************/
@@ -77,6 +79,8 @@ RC_t gameStateMachine(EventMaskType ev)
     
     TA_create((TA_t *)&analyzerGame, TA_MODE_DWT, NULL_PTR, "Game Analyzer"); // do it here or where ???
     
+    static uint8_t l_correctPress = 0;
+    
     switch(game.rg_curState)
     {
         case RG_STATE_IDLE: // what to do ???
@@ -85,13 +89,15 @@ RC_t gameStateMachine(EventMaskType ev)
             if (ev & ev_buttonLeft || ev & ev_buttonRight)
             { //C //(N1)
                 // Generate random wait time. 1000 – 3000 ms
+                #ifdef CyclicTask
                 GetResource(res_rnd);
                 ra_g_rndWait_ms = (rand() % 2000) + 1000;
                 ReleaseResource(res_rnd);
+                #endif
                 
-                #ifdef OneShotAlarmNoCyclicTask
-                //rndWait_ms = (rand() % 2000) + 1000;
-                //SetRelAlarm(alrm_Tick1m, rndWait_ms, 0); // (N6)
+                #ifdef OneShotAlarm
+                ra_g_rndWait_ms = (rand() % 2000) + 1000;
+                SetRelAlarm(alrm_Tick1m, ra_g_rndWait_ms, 0); // (N6)
                 #endif
             } //S
         break;
@@ -103,11 +109,14 @@ RC_t gameStateMachine(EventMaskType ev)
                 
                 game.rg_roundPlayed++;
                 
+                #ifdef CyclicTask
                 GetResource(res_out);
                 ra_g_reactionTimeout_ms = RG_TIMEOUT_TIME_MS;
                 ReleaseResource(res_out);
-                #ifdef OneShotAlarmNoCyclicTask
-                //SetRelAlarm(alrm_Tick1m, ra_g_reactionTimeout_ms, 0); // (N7)
+                #endif
+                
+                #ifdef OneShotAlarm
+                SetRelAlarm(alrm_Tick1m, ra_g_reactionTimeout_ms, 0); // (N7)
                 #endif
                 
                 game.rg_curState = RG_STATE_PRESSED;
@@ -130,7 +139,7 @@ RC_t gameStateMachine(EventMaskType ev)
                     snprintf(buffer, sizeof(buffer), "Reaction time in ms: %u\r\n", TA_getElapsedTimeInMs(&analyzerGame));
                     UART_LOG_PutString(buffer);
                     
-                    ra_g_correctPress++;
+                    l_correctPress++;
                     game.rg_score++;
                 } else
                 {
@@ -150,7 +159,7 @@ RC_t gameStateMachine(EventMaskType ev)
                     snprintf(buffer, sizeof(buffer), "Reaction time in ms: %u\r\n", TA_getElapsedTimeInMs(&analyzerGame));
                     UART_LOG_PutString(buffer);
                     
-                    ra_g_correctPress++;
+                    l_correctPress++;
                     game.rg_score++;
                 } else
                 {
@@ -177,7 +186,7 @@ RC_t gameStateMachine(EventMaskType ev)
             {
                 game.rg_roundPlayed = 0;
                 
-                uint32_t avg_time = game.rg_totalTime / ra_g_correctPress;
+                uint32_t avg_time = game.rg_totalTime / l_correctPress;
 
                 char buffer[70];
                 snprintf(buffer, sizeof(buffer), "Score: %u | Total Time: %ums | Avg Time: %ums\r\n", game.rg_score, game.rg_totalTime, avg_time);
@@ -197,6 +206,8 @@ RC_t gameStateMachine(EventMaskType ev)
     }
     return res;
 }
+
+#ifdef CyclicTask
 
 RC_t randomTimeCheck(void)
 {
@@ -237,7 +248,7 @@ RC_t timeoutCheck(void)
     }
     return res;
 }
-
+#endif
 /* NOTE
  * 
  * 1. //C cancel and //S set 1ms timer alaram incase of the timer has highest priority

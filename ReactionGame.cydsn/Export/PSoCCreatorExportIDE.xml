@@ -67,6 +67,10 @@
           <File BuildType="BUILD" Toolchain="">source\bsw\LabBoard\seven.c</File>
           <File BuildType="BUILD" Toolchain="">source\bsw\LabBoard\seven.h</File>
           <File BuildType="BUILD" Toolchain="">source\bsw\LabBoard\pins.c</File>
+          <File BuildType="BUILD" Toolchain="">source\bsw\LabBoard\button.c</File>
+          <File BuildType="BUILD" Toolchain="">source\bsw\LabBoard\button.h</File>
+          <File BuildType="BUILD" Toolchain="">source\bsw\LabBoard\led.c</File>
+          <File BuildType="BUILD" Toolchain="">source\bsw\LabBoard\led.h</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="D:\WS25\AMAEOS\Lab\Workspace01\ReactionGame.cydsn">
