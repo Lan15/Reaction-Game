@@ -128,7 +128,7 @@ TASK(tsk_arcadian)
     
     res = AL_fader(1, 1);
     
-    res = AL_glower();
+    res = AL_glower(1, 1);
     
     TerminateTask();
 }

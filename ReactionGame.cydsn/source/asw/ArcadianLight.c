@@ -68,88 +68,83 @@ const RG_Glow_t RG_glowtable[] = {
  * API Definitions
  ********************************************************************************/
 
-/*RC_t AL_fader(void)
-{
-    RC_t res = RC_SUCCESS;
-    for (int phase = 0; phase < 4*256; phase++) 
-    {
-        uint16_t value = phase % 256;
-        if (phase < 256) {
-            LED_PWM_Set(value, 0, 0);               // RED in
-        } else if (phase < 512) {
-            LED_PWM_Set((255 - value), value, 0);   // RED out YELLOW in
-        } else if (phase < 768) {
-            LED_PWM_Set(0, (255 - value), value);   // YELLOW out GREEN in
-        } else {
-            LED_PWM_Set(0, 0, value);               // GREEN out
-        }
-        CyDelay(1);
-    }
-    return res;
-}*/
-
 RC_t AL_fader(uint16_t tickTime_ms, uint16_t reactionTime_ms)
 {
-    RC_t res = RC_SUCCESS;
-
     static uint32_t tickCounter = 0;
     static uint32_t phase = 0;
     static uint32_t modulo = 1;
-    
-    /* Compute update rate once */
+
+    /* Initialize update rate once */
     static uint8_t init = 0;
     if (!init)
     {
         modulo = reactionTime_ms / tickTime_ms;
-        if (modulo == 0)
-        {
-            modulo = 1;
-        }
+        if (modulo == 0) modulo = 1;
         init = 1;
     }
-    
-    /* Count ticks */
-    tickCounter++;
 
-    /* Update output only every <modulo> calls */
-    if ((tickCounter % modulo) != 0)
+    /* Tick counting + update control */
+    if (++tickCounter % modulo != 0)
+        return RC_SUCCESS;
+
+    /* Compute local fade value */
+    uint8_t value = phase & 0xFF;        // same as % 256 but faster
+
+    uint8_t r = 0, g = 0, b = 0;
+
+    /* Phase region (0–1023): fade logic */
+    switch (phase >> 8)       // divide by 256 using bit-shift
     {
-        return res;
+        case 0: r = value;                break;                  // 0–255
+        case 1: r = 255 - value; g = value; break;                // 256–511
+        case 2: g = 255 - value; b = value; break;                // 512–767
+        default:b = 255 - value;            break;                // 768–1023
     }
 
-    uint8_t value = phase % 256;
+    LED_PWM_Set(r, g, b);
 
-    if (phase < 256) {
-        LED_PWM_Set(value, 0, 0);
-    }
-    else if (phase < 512) {
-        LED_PWM_Set(255 - value, value, 0);
-    }
-    else if (phase < 768) {
-        LED_PWM_Set(0, 255 - value, value);
-    }
-    else {
-        LED_PWM_Set(0, 0, 255 - value);
-    }
-    /* Move to next fade step (reactionTime now actually controls this!) */
-    phase++;
-
-    if (phase >= 1024)
+    /* Advance fade position */
+    if (++phase >= 1024)
         phase = 0;
 
-    return res;
+    return RC_SUCCESS;
 }
 
-RC_t AL_glower(void)
+RC_t AL_glower(uint16_t tickTime_ms, uint16_t reactionTime_ms)
 {
-    RC_t res = RC_SUCCESS;
+    static uint32_t tickCounter = 0;
+    static uint32_t step = 0;
+    static uint32_t modulo = 1;
 
-    for (uint8_t i = 0; i < (sizeof(RG_glowtable) / sizeof(RG_Glow_t)); ++i)
+    /* Initialize update rate once */
+    static uint8_t init = 0;
+    if (!init)
     {
-        LED_RGB_Set(RG_glowtable[i].al_red, RG_glowtable[i].al_green, RG_glowtable[i].al_blue);
-        CyDelay(RG_glowtable[i].al_duration);
+        modulo = (RG_glowtable[step].al_duration + tickTime_ms - 1) / tickTime_ms; // ceil
+        if (modulo == 0) modulo = 1;
+        init = 1;
     }
-    return res;
+
+    /* Tick counting + update control */
+    if (++tickCounter % modulo != 0)
+        return RC_SUCCESS;
+
+    /* Set RGB values for current step */
+    LED_RGB_Set(RG_glowtable[step].al_red,
+                RG_glowtable[step].al_green,
+                RG_glowtable[step].al_blue);
+
+    /* Advance to next step */
+    step++;
+    if (step >= (sizeof(RG_glowtable) / sizeof(RG_Glow_t)))
+        step = 0;  // Loop back to start
+
+    /* Update modulo for the new step */
+    modulo = (RG_glowtable[step].al_duration + tickTime_ms - 1) / tickTime_ms; // ceil
+    if (modulo == 0) modulo = 1;
+
+    return RC_SUCCESS;
 }
+
 
 /* [ArcadianLight.c] END OF FILE */
