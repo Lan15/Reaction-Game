@@ -34,7 +34,7 @@
 #include "ReactionGame.h"
 #include "TimingAnalyzer.h"
 
-extern TA_t analyzerGame;
+TA_t analyzerGame;
 
 #define OneShotAlarm
 //#define CyclicTask
@@ -81,6 +81,11 @@ RC_t RG_gameStateMachine(EventMaskType ev)
 {
     RC_t res = RC_SUCCESS;
     
+    if(!game.rg_roundPlayed)
+    {
+         TA_create((TA_t *)&analyzerGame, TA_MODE_DWT, NULL_PTR, "Game Analyzer");
+    }
+    
     switch(game.rg_curState)
     {
         case RG_STATE_IDLE: // what to do ???
@@ -123,13 +128,10 @@ RC_t RG_gameStateMachine(EventMaskType ev)
                 TA_stop((TA_t *)&analyzerGame);
                 
                 // Handle timeout
-                UART_LOG_PutString("\nToo slow!\r\n");
+                UART_LOG_PutString("Too slow!\r\n");
             }
 
             analyzerGame.elapsed_time = 0;
-            char buffer[60]; 
-            snprintf(buffer, sizeof(buffer), "total time: %u\r\n", game.rg_totalTime);
-            UART_LOG_PutString(buffer);
             
             SEVEN_ClearAll();
             
@@ -156,7 +158,7 @@ RC_t RG_gameWait(void)
     RC_t res = RC_SUCCESS;
 
     // Generate random wait time. 1000 – 3000 ms
-    srand(DWT->CYCCNT); // read out systick time from OS or define based on button press //getCounter(with counter obj)
+    srand(DWT->CYCCNT); // read out systick time from OS or define based on button press
     
     #ifdef CyclicTask
     GetResource(res_rnd);
@@ -192,6 +194,10 @@ RC_t RG_gameDisplay(void)
     uint16_t ra_reactionTimeout_ms = RG_TIMEOUT_TIME_MS;
     SetRelAlarm(alrm_timeout, ra_reactionTimeout_ms, 0); // (N7) //read out systick time from OS, one func call away. (current time + delata time is reached)
     #endif
+    
+    char buffer[20]; 
+    snprintf(buffer, sizeof(buffer), "Round: %u\r\n", game.rg_roundPlayed);
+    UART_LOG_PutString(buffer);
     
     game.rg_curState = RG_STATE_PRESSED;
     

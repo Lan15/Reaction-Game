@@ -23,8 +23,6 @@
 #include "ArcadianLight.h"
 #include "TimingAnalyzer.h"
 
-TA_t analyzerGame;
-
 //#define CyclicTask
 
 int main()
@@ -89,8 +87,6 @@ TASK(tsk_game)
     
     // Upon start up
     UART_LOG_PutString("\r\n\r\n============ Welcome to the Reaction Game ============\r\npress one of the two buttons to start...\r\n\r\n");
-    
-    TA_create((TA_t *)&analyzerGame, TA_MODE_DWT, NULL_PTR, "Game Analyzer"); // do it here or where ???
     
     while (1)
     {
