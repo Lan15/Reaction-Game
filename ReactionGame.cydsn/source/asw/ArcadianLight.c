@@ -24,6 +24,7 @@
 #include <string.h>
 #include "project.h"
 #include "global.h"
+#include "led.h"
 
 #include "ArcadianLight.h"
 
@@ -67,37 +68,33 @@ const RG_Glow_t RG_glowtable[] = {
  * API Definitions
  ********************************************************************************/
 
-RC_t fader(void)
+RC_t AL_fader(void)
 {
     RC_t res = RC_SUCCESS;
     for (int phase = 0; phase < 4*256; phase++) 
     {
-        int value = phase % 256;
+        uint16_t value = phase % 256;
         if (phase < 256) {
-            PWM_RED_WriteCompare(value);            // RED in
+            LED_PWM_Set(value, 0, 0);               // RED in
         } else if (phase < 512) {
-            PWM_RED_WriteCompare(255 - value);      // RED out
-            PWM_YELLOW_WriteCompare(value);         // YELLOW in
+            LED_PWM_Set((255 - value), value, 0);   // RED out YELLOW in
         } else if (phase < 768) {
-            PWM_YELLOW_WriteCompare(255 - value);   // YELLOW out
-            PWM_GREEN_WriteCompare(value);          // GREEN in
+            LED_PWM_Set(0, (255 - value), value);   // YELLOW out GREEN in
         } else {
-            PWM_GREEN_WriteCompare(255 - value);    // GREEN out
+            LED_PWM_Set(0, 0, value);               // GREEN out
         }
         CyDelay(1);
     }
     return res;
 }
 
-RC_t glower(void)
+RC_t AL_glower(void)
 {
     RC_t res = RC_SUCCESS;
 
     for (uint8_t i = 0; i < (sizeof(RG_glowtable) / sizeof(RG_Glow_t)); ++i)
     {
-        PWM_RGB_RED_WriteCompare(RG_glowtable[i].al_red);
-        PWM_RGB_GREEN_WriteCompare(RG_glowtable[i].al_green);
-        PWM_RGB_BLUE_WriteCompare(RG_glowtable[i].al_blue);
+        LED_RGB_Set(RG_glowtable[i].al_red, RG_glowtable[i].al_green, RG_glowtable[i].al_blue);
         CyDelay(RG_glowtable[i].al_duration);
     }
     return res;

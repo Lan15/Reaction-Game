@@ -14,6 +14,7 @@
 #include "global.h"
 
 #include "button.h"
+#include "led.h"
 #include "seven.h"
 #include "tft.h"
 #include "UART_LOG.h"
@@ -22,7 +23,9 @@
 #include "ArcadianLight.h"
 #include "TimingAnalyzer.h"
 
-#define CyclicTask
+TA_t analyzerGame;
+
+//#define CyclicTask
 
 int main()
 {
@@ -51,13 +54,7 @@ TASK(tsk_init)
     
     TFT_init();
     
-    PWM_RED_Start();
-    PWM_YELLOW_Start();
-    PWM_GREEN_Start();
-    
-    PWM_RGB_RED_Start();   
-    PWM_RGB_GREEN_Start();  
-    PWM_RGB_BLUE_Start();
+    LED_Init();
     
     TA_init(); // CySysTick causes issues with OS's cnt_systick
     
@@ -93,14 +90,20 @@ TASK(tsk_game)
     // Upon start up
     UART_LOG_PutString("\r\n\r\n============ Welcome to the Reaction Game ============\r\npress one of the two buttons to start...\r\n\r\n");
     
+    TA_create((TA_t *)&analyzerGame, TA_MODE_DWT, NULL_PTR, "Game Analyzer"); // do it here or where ???
+    
     while (1)
     {
         //Wait, read and clear the event
         WaitEvent(ev_buttonLeft | ev_buttonRight | ev_timeout | ev_randomDone);
         GetEvent(tsk_game, &ev);
         ClearEvent(ev);       
-        
-        res = gameStateMachine(ev);
+        // Optional: Translate RTOS events into enum events queue - Change of data type
+        /*GAME_event myEvent;
+        if(ev & ev_Button_1){
+            myEvent = GAME_EV_BUTTON_1;
+        }*/
+        res = RG_gameStateMachine(ev);
     }
     
     //Just in Case
@@ -125,14 +128,14 @@ TASK(tsk_arcadian)
 {
     RC_t res = RC_SUCCESS;
     
-    res = fader();
+    res = AL_fader();
     
-    res = glower();
+    res = AL_glower();
     
     TerminateTask();
 }
 
-TASK(tsk_tft)
+TASK(tsk_tft) //use set event
 {
     /*
     TFT_setBacklight(255);

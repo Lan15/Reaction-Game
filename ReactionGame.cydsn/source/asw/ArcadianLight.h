@@ -119,9 +119,9 @@ public:
 /* API functions                                                             */
 /*****************************************************************************/
 
-RC_t fader(void);
+RC_t AL_fader(void); //uint8_t tickTime_ms, uint32_t reactionTime_ms
 
-RC_t glower(void);
+RC_t AL_glower(void);
 
 /*****************************************************************************/
 /* Private stuff, only visible for Together, declared static in cpp - File   */

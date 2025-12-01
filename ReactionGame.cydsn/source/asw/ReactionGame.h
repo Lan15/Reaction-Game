@@ -76,6 +76,8 @@
 #include "project.h" // to use EventMaskType
 #include "global.h"
 
+//#define CyclicTask
+    
 /*****************************************************************************/
 /* Global pre-processor symbols/macros and type declarations                 */
 /*****************************************************************************/
@@ -128,11 +130,23 @@ public:
 /* API functions                                                             */
 /*****************************************************************************/
 
-RC_t gameStateMachine(EventMaskType ev);
+RC_t RG_gameStateMachine(EventMaskType ev);
 
-RC_t randomTimeCheck(void);
+RC_t RG_gameWait(void);
 
-RC_t timeoutCheck(void);
+RC_t RG_gameDisplay(void);
+
+RC_t RG_buttonLeftPressed(void);
+
+RC_t RG_buttonRightPressed(void);
+
+RC_t RG_gameEnd(void);
+
+#ifdef CyclicTask
+RC_t RG_randomTimeCheck(void);
+
+RC_t RG_timeoutCheck(void);
+#endif
 
 /*****************************************************************************/
 /* Private stuff, only visible for Together, declared static in cpp - File   */

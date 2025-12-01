@@ -34,8 +34,10 @@
 #include "ReactionGame.h"
 #include "TimingAnalyzer.h"
 
-//#define OneShotAlarm
-#define CyclicTask
+extern TA_t analyzerGame;
+
+#define OneShotAlarm
+//#define CyclicTask
 
 /*****************************************************************************/
 /* Local pre-processor symbols/macros ('#define')                            */
@@ -54,12 +56,14 @@
 /*****************************************************************************/
 /* Local variable definitions ('static')                                     */
 /*****************************************************************************/
-static TA_t analyzerGame;
-volatile static RG_t game = {RG_STATE_WAIT, 0, 0, 0};
+volatile static RG_t game = {RG_STATE_WAIT, 0, 0, 0}; // keep inside function and pass it as reference
 
+#ifdef CyclicTask
 volatile static uint16_t ra_g_rndWait_ms = 0;          // random delay until number appears
 volatile static uint16_t ra_g_reactionTimeout_ms = 0;  // max allowed reaction time
-volatile static uint8_t ra_g_tftScore = 0;             // score in tft
+#endif
+static uint8_t rg_g_correctPress = 0;         // count of the correct press
+volatile static uint8_t ra_g_tftScore = 0;    // score in tft
 
 /*****************************************************************************/
 /* Local function prototypes ('static')                                      */
@@ -73,13 +77,9 @@ volatile static uint8_t ra_g_tftScore = 0;             // score in tft
  * API Definitions
  ********************************************************************************/
 
-RC_t gameStateMachine(EventMaskType ev)
+RC_t RG_gameStateMachine(EventMaskType ev)
 {
     RC_t res = RC_SUCCESS;
-    
-    TA_create((TA_t *)&analyzerGame, TA_MODE_DWT, NULL_PTR, "Game Analyzer"); // do it here or where ???
-    
-    static uint8_t l_correctPress = 0;
     
     switch(game.rg_curState)
     {
@@ -89,37 +89,14 @@ RC_t gameStateMachine(EventMaskType ev)
             if (ev & ev_buttonLeft || ev & ev_buttonRight)
             { //C //(N1)
                 // Generate random wait time. 1000 – 3000 ms
-                #ifdef CyclicTask
-                GetResource(res_rnd);
-                ra_g_rndWait_ms = (rand() % 2000) + 1000;
-                ReleaseResource(res_rnd);
-                #endif
-                
-                #ifdef OneShotAlarm
-                ra_g_rndWait_ms = (rand() % 2000) + 1000;
-                SetRelAlarm(alrm_Tick1m, ra_g_rndWait_ms, 0); // (N6)
-                #endif
+                RG_gameWait();
             } //S
         break;
         case RG_STATE_DISPLAY:
             if (ev & ev_randomDone)
             {
                 // Show generatated random number on display
-                SEVEN_writeRandom(); // audio ???
-                
-                game.rg_roundPlayed++;
-                
-                #ifdef CyclicTask
-                GetResource(res_out);
-                ra_g_reactionTimeout_ms = RG_TIMEOUT_TIME_MS;
-                ReleaseResource(res_out);
-                #endif
-                
-                #ifdef OneShotAlarm
-                SetRelAlarm(alrm_Tick1m, ra_g_reactionTimeout_ms, 0); // (N7)
-                #endif
-                
-                game.rg_curState = RG_STATE_PRESSED;
+                RG_gameDisplay();
                 
                 TA_start((TA_t *)&analyzerGame);  
             }//S
@@ -131,40 +108,15 @@ RC_t gameStateMachine(EventMaskType ev)
                 TA_stop((TA_t *)&analyzerGame);
                 
                 // Handle button 1 press
-                if (SEVEN_reg_Read() == 91) //(N2)
-                { 
-                    UART_LOG_PutString("Great - correct button pressed!\r\n");
-                    
-                    char buffer[60]; 
-                    snprintf(buffer, sizeof(buffer), "Reaction time in ms: %u\r\n", TA_getElapsedTimeInMs(&analyzerGame));
-                    UART_LOG_PutString(buffer);
-                    
-                    l_correctPress++;
-                    game.rg_score++;
-                } else
-                {
-                    UART_LOG_PutString("Oops - wrong button pressed!\r\n");
-                }
+                RG_buttonLeftPressed();
+                
             } 
             if (ev & ev_buttonRight) 
             {
                 TA_stop((TA_t *)&analyzerGame);
                 
                 // Handle button 2 press
-                if (SEVEN_reg_Read() == 6) // (N3)
-                {   
-                    UART_LOG_PutString("Great - correct button pressed!\r\n");
-                    
-                    char buffer[60]; 
-                    snprintf(buffer, sizeof(buffer), "Reaction time in ms: %u\r\n", TA_getElapsedTimeInMs(&analyzerGame));
-                    UART_LOG_PutString(buffer);
-                    
-                    l_correctPress++;
-                    game.rg_score++;
-                } else
-                {
-                    UART_LOG_PutString("Oops - wrong button pressed!\r\n");
-                }
+                RG_buttonRightPressed();
             }
             if (ev & ev_timeout)
             {
@@ -173,9 +125,11 @@ RC_t gameStateMachine(EventMaskType ev)
                 // Handle timeout
                 UART_LOG_PutString("\nToo slow!\r\n");
             }
-            
-            game.rg_totalTime += TA_getElapsedTimeInMs(&analyzerGame);
+
             analyzerGame.elapsed_time = 0;
+            char buffer[60]; 
+            snprintf(buffer, sizeof(buffer), "total time: %u\r\n", game.rg_totalTime);
+            UART_LOG_PutString(buffer);
             
             SEVEN_ClearAll();
             
@@ -184,17 +138,7 @@ RC_t gameStateMachine(EventMaskType ev)
             // Print the scoure after 1 game (10 rounds)
             if (RG_MAX_ROUNDS == game.rg_roundPlayed)
             {
-                game.rg_roundPlayed = 0;
-                
-                uint32_t avg_time = game.rg_totalTime / l_correctPress;
-
-                char buffer[70];
-                snprintf(buffer, sizeof(buffer), "Score: %u | Total Time: %ums | Avg Time: %ums\r\n", game.rg_score, game.rg_totalTime, avg_time);
-                UART_LOG_PutString(buffer);
-                
-                UART_LOG_PutString("======================================================\r\n");
-                
-                ra_g_tftScore = game.rg_score;
+                RG_gameEnd();
                 //SetRelAlarm(alrm_tft,1,0); //(N4)
             } 
             
@@ -207,9 +151,124 @@ RC_t gameStateMachine(EventMaskType ev)
     return res;
 }
 
+RC_t RG_gameWait(void)
+{
+    RC_t res = RC_SUCCESS;
+
+    // Generate random wait time. 1000 – 3000 ms
+    srand(DWT->CYCCNT); // read out systick time from OS or define based on button press //getCounter(with counter obj)
+    
+    #ifdef CyclicTask
+    GetResource(res_rnd);
+    ra_g_rndWait_ms = (rand() % 2000) + 1000;
+    ReleaseResource(res_rnd);
+    #endif
+    
+    #ifdef OneShotAlarm
+    uint16_t ra_rndWait_ms = (rand() % 2000) + 1000;
+    SetRelAlarm(alrm_random, ra_rndWait_ms, 0); // (N6)
+    game.rg_curState = RG_STATE_DISPLAY;
+    #endif
+    
+    return res;
+}
+
+RC_t RG_gameDisplay(void)
+{
+    RC_t res = RC_SUCCESS;
+    
+    // Show generatated random number on display
+    SEVEN_writeRandom();
+    
+    game.rg_roundPlayed++;
+    
+    #ifdef CyclicTask
+    GetResource(res_out);
+    ra_g_reactionTimeout_ms = RG_TIMEOUT_TIME_MS;
+    ReleaseResource(res_out);
+    #endif
+    
+    #ifdef OneShotAlarm
+    uint16_t ra_reactionTimeout_ms = RG_TIMEOUT_TIME_MS;
+    SetRelAlarm(alrm_timeout, ra_reactionTimeout_ms, 0); // (N7) //read out systick time from OS, one func call away. (current time + delata time is reached)
+    #endif
+    
+    game.rg_curState = RG_STATE_PRESSED;
+    
+    return res;
+}
+
+
+RC_t RG_buttonLeftPressed(void)
+{
+    RC_t res = RC_SUCCESS;
+    
+    // Handle button 1 press
+    if (SEVEN_reg_Read() == 91) //(N2)
+    { 
+        UART_LOG_PutString("Great - correct button pressed!\r\n");
+        
+        char buffer[60]; 
+        snprintf(buffer, sizeof(buffer), "Reaction time in ms: %u\r\n", TA_getElapsedTimeInMs(&analyzerGame));
+        UART_LOG_PutString(buffer);
+        
+        rg_g_correctPress++;
+        game.rg_score++;
+        game.rg_totalTime += TA_getElapsedTimeInMs(&analyzerGame);
+    } else
+    {
+        UART_LOG_PutString("Oops - wrong button pressed!\r\n");
+    }
+    
+    return res;
+}
+
+RC_t RG_buttonRightPressed(void)
+{
+    RC_t res = RC_SUCCESS;
+    
+    // Handle button 2 press
+    if (SEVEN_reg_Read() == 6) // (N3)
+    {   
+        UART_LOG_PutString("Great - correct button pressed!\r\n");
+        
+        char buffer[60]; 
+        snprintf(buffer, sizeof(buffer), "Reaction time in ms: %u\r\n", TA_getElapsedTimeInMs(&analyzerGame));
+        UART_LOG_PutString(buffer);
+        
+        rg_g_correctPress++;
+        game.rg_score++;
+        game.rg_totalTime += TA_getElapsedTimeInMs(&analyzerGame);
+    } else
+    {
+        UART_LOG_PutString("Oops - wrong button pressed!\r\n");
+    }
+    
+    return res;
+}
+
+RC_t RG_gameEnd(void)
+{
+    RC_t res = RC_SUCCESS;
+    
+    game.rg_roundPlayed = 0;
+                
+    uint32_t avg_time = game.rg_totalTime / rg_g_correctPress;
+
+    char buffer[70];
+    snprintf(buffer, sizeof(buffer), "Score: %u | Total Time: %ums | Avg Time: %ums\r\n", game.rg_score, game.rg_totalTime, avg_time);
+    UART_LOG_PutString(buffer);
+    
+    UART_LOG_PutString("======================================================\r\n");
+    
+    ra_g_tftScore = game.rg_score;
+    
+    return res;
+}
+
 #ifdef CyclicTask
 
-RC_t randomTimeCheck(void)
+RC_t RG_randomTimeCheck(void)
 {
     RC_t res = RC_SUCCESS;
     
@@ -230,7 +289,7 @@ RC_t randomTimeCheck(void)
     return res;
 }
 
-RC_t timeoutCheck(void)
+RC_t RG_timeoutCheck(void)
 {
     RC_t res = RC_SUCCESS;
 

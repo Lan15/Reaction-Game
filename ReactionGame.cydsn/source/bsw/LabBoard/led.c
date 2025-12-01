@@ -107,10 +107,15 @@ RC_t LED_Init()
         }
     }
     
+    //Init PWM LEDs
+    PWM_RED_Start();
+    PWM_YELLOW_Start();
+    PWM_GREEN_Start();
+    
     //Init RGB
-    RGB_PWM_blue_Start();
-    RGB_PWM_green_Start();
-    RGB_PWM_red_Start();
+    PWM_RGB_BLUE_Start();
+    PWM_RGB_GREEN_Start();
+    PWM_RGB_RED_Start();
     
     return result;
 }
@@ -127,17 +132,17 @@ RC_t LED_Set(LED_id_t ledId, LED_ONOFF_t ledOnOff)
     switch (ledId)
     {
         case LED_RED : 
-            LED_red_Write(ledOnOff); 
+            RED_LED_Write(ledOnOff); 
             LED__state[ledId] = ledOnOff; 
             break;
         
         case LED_YELLOW : 
-            LED_yellow_Write(ledOnOff); 
+            YELLOW_LED_Write(ledOnOff); 
             LED__state[ledId] = ledOnOff;
             break;
             
         case LED_GREEN : 
-            LED_green_Write(ledOnOff); 
+            GREEN_LED_Write(ledOnOff); 
             LED__state[ledId] = ledOnOff;
             break;
            
@@ -167,17 +172,17 @@ RC_t LED_Toggle(LED_id_t ledId)
     {
         case LED_RED : 
             LED__state[ledId] = LED__toggleValue(LED__state[ledId]); 
-            LED_red_Write(LED__state[ledId]);
+            RED_LED_Write(LED__state[ledId]);
             break;
         
         case LED_YELLOW : 
             LED__state[ledId] = LED__toggleValue(LED__state[ledId]); 
-            LED_yellow_Write(LED__state[ledId]);
+            YELLOW_LED_Write(LED__state[ledId]);
             break;
             
         case LED_GREEN : 
             LED__state[ledId] = LED__toggleValue(LED__state[ledId]); 
-            LED_green_Write(LED__state[ledId]);
+            GREEN_LED_Write(LED__state[ledId]);
             break;
            
         case LED_ALL : 
@@ -219,11 +224,18 @@ static inline LED_ONOFF_t LED__toggleValue(LED_ONOFF_t ledOnOff)
  */
 RC_t LED_RGB_Set(uint8_t red, uint8_t green, uint8_t blue)
 {
-    RGB_PWM_red_WriteCompare(LED__Pulse_Width[red]);
-    RGB_PWM_green_WriteCompare(LED__Pulse_Width[green]);
-    RGB_PWM_blue_WriteCompare(LED__Pulse_Width[blue]);
+    PWM_RGB_RED_WriteCompare(LED__Pulse_Width[red]);
+    PWM_RGB_GREEN_WriteCompare(LED__Pulse_Width[green]);
+    PWM_RGB_BLUE_WriteCompare(LED__Pulse_Width[blue]);
  
     return RC_SUCCESS;
 }
 
-
+RC_t LED_PWM_Set(uint16_t redValue, uint16_t yellowValue, uint16_t greenValue)
+{
+    PWM_RED_WriteCompare(redValue);
+    PWM_YELLOW_WriteCompare(yellowValue); 
+    PWM_GREEN_WriteCompare(greenValue); 
+ 
+    return RC_SUCCESS;
+}
