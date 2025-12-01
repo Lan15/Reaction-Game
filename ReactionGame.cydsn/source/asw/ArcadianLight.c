@@ -68,7 +68,7 @@ const RG_Glow_t RG_glowtable[] = {
  * API Definitions
  ********************************************************************************/
 
-RC_t AL_fader(void)
+/*RC_t AL_fader(void)
 {
     RC_t res = RC_SUCCESS;
     for (int phase = 0; phase < 4*256; phase++) 
@@ -85,6 +85,58 @@ RC_t AL_fader(void)
         }
         CyDelay(1);
     }
+    return res;
+}*/
+
+RC_t AL_fader(uint16_t tickTime_ms, uint16_t reactionTime_ms)
+{
+    RC_t res = RC_SUCCESS;
+
+    static uint32_t tickCounter = 0;
+    static uint32_t phase = 0;
+    static uint32_t modulo = 1;
+    
+    /* Compute update rate once */
+    static uint8_t init = 0;
+    if (!init)
+    {
+        modulo = reactionTime_ms / tickTime_ms;
+        if (modulo == 0)
+        {
+            modulo = 1;
+        }
+        init = 1;
+    }
+    
+    /* Count ticks */
+    tickCounter++;
+
+    /* Update output only every <modulo> calls */
+    if ((tickCounter % modulo) != 0)
+    {
+        return res;
+    }
+
+    uint8_t value = phase % 256;
+
+    if (phase < 256) {
+        LED_PWM_Set(value, 0, 0);
+    }
+    else if (phase < 512) {
+        LED_PWM_Set(255 - value, value, 0);
+    }
+    else if (phase < 768) {
+        LED_PWM_Set(0, 255 - value, value);
+    }
+    else {
+        LED_PWM_Set(0, 0, 255 - value);
+    }
+    /* Move to next fade step (reactionTime now actually controls this!) */
+    phase++;
+
+    if (phase >= 1024)
+        phase = 0;
+
     return res;
 }
 

@@ -25,6 +25,8 @@
 
 //#define CyclicTask
 
+volatile TickType entropySeed = 0;
+
 int main()
 {
     CyGlobalIntEnable; /* Enable global interrupts. */
@@ -69,7 +71,7 @@ TASK(tsk_init)
     SetRelAlarm(alrm_Tick1m,1,1);
     #endif
     //SetRelAlarm(alrm_tft,2,0);
-    SetRelAlarm(alrm_arcadian,10,100);
+    SetRelAlarm(alrm_arcadian,2,1);
 
     //Activate all extended and the background task
     ActivateTask(tsk_game);
@@ -124,7 +126,7 @@ TASK(tsk_arcadian)
 {
     RC_t res = RC_SUCCESS;
     
-    res = AL_fader();
+    res = AL_fader(1, 1);
     
     res = AL_glower();
     
@@ -190,6 +192,10 @@ ISR(systick_handler)
 
 ISR2(isr_button)
 {   
+    TickType now;
+    GetCounterValue(cnt_systick, &now);
+    entropySeed ^= now;                   // XOR - mix with previous seed
+    
     if (BUTTON_IsPressed(BUTTON_LEFT)) { //Button left is button 1 and in case of 2 in 7 segment disaplay
         SetEvent(tsk_game, ev_buttonLeft);
     } else if (BUTTON_IsPressed(BUTTON_RIGHT)) { //Button right is button 2 and in case of 1 in 7 segment disaplay

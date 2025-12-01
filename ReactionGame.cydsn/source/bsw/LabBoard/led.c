@@ -233,6 +233,7 @@ RC_t LED_RGB_Set(uint8_t red, uint8_t green, uint8_t blue)
 
 RC_t LED_PWM_Set(uint16_t redValue, uint16_t yellowValue, uint16_t greenValue)
 {
+    UART_LOG_PutString("C4");
     PWM_RED_WriteCompare(redValue);
     PWM_YELLOW_WriteCompare(yellowValue); 
     PWM_GREEN_WriteCompare(greenValue); 

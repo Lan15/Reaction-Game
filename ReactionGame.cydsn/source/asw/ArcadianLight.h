@@ -119,7 +119,8 @@ public:
 /* API functions                                                             */
 /*****************************************************************************/
 
-RC_t AL_fader(void); //uint8_t tickTime_ms, uint32_t reactionTime_ms
+//RC_t AL_fader(void); 
+RC_t AL_fader(uint16_t tickTime_ms, uint16_t reactionTime_ms);
 
 RC_t AL_glower(void);
 

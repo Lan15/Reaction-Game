@@ -48,6 +48,7 @@ TA_t analyzerGame;
 /*****************************************************************************/
 /* Global variable definitions (declared in header file with 'extern')       */
 /*****************************************************************************/
+extern TickType entropySeed;
 
 /*****************************************************************************/
 /* Local type definitions ('typedef')                                        */
@@ -158,7 +159,10 @@ RC_t RG_gameWait(void)
     RC_t res = RC_SUCCESS;
 
     // Generate random wait time. 1000 – 3000 ms
-    srand(DWT->CYCCNT); // read out systick time from OS or define based on button press
+    if (entropySeed != 0)
+    {
+        srand(entropySeed); // or read out systick time from OS ??? need srand in both places
+    }
     
     #ifdef CyclicTask
     GetResource(res_rnd);
