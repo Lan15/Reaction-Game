@@ -31,9 +31,14 @@
 /*****************************************************************************/
 /* Local pre-processor symbols/macros ('#define')                            */
 /*****************************************************************************/ 
+#define AL_TOTAL_DURATION     (1800UL)
 
 /*****************************************************************************/
 /* Global variable definitions (declared in header file with 'extern')       */
+/*****************************************************************************/
+
+/*****************************************************************************/
+/* Local type definitions ('typedef')                                        */
 /*****************************************************************************/
 const RG_Glow_t RG_glowtable[] = {
     //Red Green Blue TimeInMS
@@ -49,12 +54,10 @@ const RG_Glow_t RG_glowtable[] = {
 };
 
 /*****************************************************************************/
-/* Local type definitions ('typedef')                                        */
-/*****************************************************************************/
-
-/*****************************************************************************/
 /* Local variable definitions ('static')                                     */
 /*****************************************************************************/ 
+
+static uint32_t g_currentStep = 0;
 
 /*****************************************************************************/
 /* Local function prototypes ('static')                                      */
@@ -70,56 +73,79 @@ const RG_Glow_t RG_glowtable[] = {
 
 RC_t AL_fader(uint16_t tickTime_ms, uint16_t reactionTime_ms)
 {
-    static uint32_t tickCounter = 0;
-    static uint32_t phase = 0;
-
     if (0 == tickTime_ms && 0 == reactionTime_ms)
     {
         return RC_ERROR_BAD_PARAM;
     }
+    
+    if (!AL_isFaderTickDue(tickTime_ms, reactionTime_ms)) // TimeToAdvance, IsStepDue
+    {
+        return RC_SUCCESS;
+    }
+    
+    uint8_t red = 0, yellow = 0, green = 0;
+    
+    AL_calculateIntensity(&red, &yellow, &green);
 
-    /* Compute update rate every call (safe and simple) */
+    LED_PWM_Set(red, yellow, green);
+
+    return RC_SUCCESS;
+}
+
+boolean_t AL_isFaderTickDue(uint16_t tickTime_ms, uint16_t reactionTime_ms)
+{
+    // static - saved individually for this function
+    static uint32_t tickCounter = 0;
+
+    if (0 == (tickTime_ms == 0 || reactionTime_ms))
+    {
+        return TRUE;  // fail-safe: always update
+    }
+        
+    // Compute modulo
     uint32_t modulo = reactionTime_ms / tickTime_ms;
     
     if (modulo == 0)
     {
         modulo = 1;
     }
-    
-    /* Tick counting + update control */
-    if (++tickCounter % modulo != 0)
-    {
-        return RC_SUCCESS;
-    }
-    
-    /* Compute local fade value */
-    uint8_t value = phase & 0xFF;        // same as % 256 but faster
+        
+    // Increase tick and check if update is allowed now
+    return ((++tickCounter % modulo) == 0);
+}
 
-    uint8_t r = 0, g = 0, b = 0;
+RC_t AL_calculateIntensity(uint8_t* red, uint8_t* yellow, uint8_t* green)
+{
+    static uint32_t phase = 0;
+    
+    //Compute local fade value
+    uint8_t value = phase & 0xFF;   // same as % 256 but faster
 
-    /* Phase region (0–1023): fade logic */
+    // Phase region (0–1023): fade logic
     switch (phase >> 8)       // divide by 256 using bit-shift
     {
         case 0: 
-            r = value;                
-        break;                  // 0–255
+            *red = value;            // 0–255          
+        break;                  
         case 1: 
-            r = 255 - value; g = value; 
-        break;                // 256–511
+            *red = 255 - value;      // 256–511
+            *yellow = value; 
+        break;                
         case 2: 
-            g = 255 - value; b = value; 
-        break;                // 512–767
+            *yellow = 255 - value;   // 512–767
+            *green = value; 
+        break;                
         default:
-            b = 255 - value;            
-        break;                // 768–1023
+            *green = 255 - value;    // 768–1023        
+        break;                
     }
 
-    LED_PWM_Set(r, g, b);
-
-    /* Advance fade position */
+    //Advance fade position
     if (++phase >= 1024)
+    {
         phase = 0;
-
+    }
+    
     return RC_SUCCESS;
 }
 
@@ -163,6 +189,5 @@ RC_t AL_glower(uint16_t tickTime_ms, uint16_t reactionTime_ms) //TODO: work on t
 
     return RC_SUCCESS;
 }
-
 
 /* [ArcadianLight.c] END OF FILE */

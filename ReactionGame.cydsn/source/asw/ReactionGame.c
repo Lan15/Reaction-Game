@@ -148,7 +148,7 @@ RC_t RG_gameStateMachine(EventMaskType ev)
             
             UART_LOG_PutString("======================================================\r\n");
             
-            // Warning: Below set of code will happen in any transition and to avoid reduntancy it's kept here. // do transition ???
+            // Warning: Code segment below will happen in any transition and to avoid reduntancy it's kept here. // do transition ???
             // Violation: Strickt Translation of State Machine into code
             // Print the scoure after 1 game (10 rounds)
             if (RG_MAX_ROUNDS == game.rg_roundPlayed)

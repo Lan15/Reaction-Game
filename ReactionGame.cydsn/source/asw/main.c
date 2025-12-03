@@ -50,9 +50,7 @@ TASK(tsk_init)
     //Init MCAL Drivers   
     SEVEN_Init();
     UART_LOG_Start(); 
-    
-    TFT_init();
-    
+    //TFT_init();
     LED_Init();
     
     TA_init(); // CySysTick causes issues with OS's cnt_systick
