@@ -92,10 +92,9 @@
 * Enum to hold different states that the game could take
 */
  typedef enum {
-  RG_STATE_IDLE = 0,       /**< \Game in Idle state. */
-  RG_STATE_WAIT,
+  RG_STATE_RANDOM_WAIT,     // Game in Idle state.
   RG_STATE_DISPLAY,
-  RG_STATE_PRESSED,         /**< \Game in Running state. */
+  RG_STATE_IS_PRESSED,      // Game in Running state.
 } RG_State_t;
 
 //####################### Structures
@@ -105,12 +104,19 @@
 * Main structure that holds everything about one game instance.
 */
 typedef struct {
-    /* Statr Data */
-    RG_State_t rg_curState;  // Current analyzer state
+    /* Start Data */
+    RG_State_t rg_curState;                 // Current analyzer state
+    /* Logic Assistant Data */
+    #ifdef CyclicTask
+    uint16_t ra_rndWait_ms = 0;             // random delay until number appears
+    uint16_t ra_reactionTimeout_ms = 0;     // max allowed reaction time
+    #endif
     /* Measurement & Record Data */
-    uint32_t rg_totalTime;   // total time taken for 10 rounds
-    uint16_t rg_score;       // score of the game
-    uint16_t rg_roundPlayed; // count of the rounds
+    uint32_t rg_totalTime;                  // total time taken for 10 rounds
+    uint16_t rg_score;                      // score of the game
+    uint16_t rg_roundPlayed;                // count of the rounds
+    uint8_t rg_correctPress;                // count of the correct press
+    uint8_t rg_tftScore;                    // score in tft   
 } RG_t;
 
 // Wrapper to allow representing the file in Together as class
@@ -132,15 +138,15 @@ public:
 
 RC_t RG_gameStateMachine(EventMaskType ev);
 
-RC_t RG_gameWait(void);
+RC_t RG_CreateRandom(void);
 
-RC_t RG_gameDisplay(void);
+RC_t RG_Display(void);
 
 RC_t RG_buttonLeftPressed(void);
 
 RC_t RG_buttonRightPressed(void);
 
-RC_t RG_gameEnd(void);
+RC_t RG_endGame(void);
 
 #ifdef CyclicTask
 RC_t RG_randomTimeCheck(void);

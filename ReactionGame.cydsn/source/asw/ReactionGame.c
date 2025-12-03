@@ -48,7 +48,6 @@ TA_t analyzerGame;
 /*****************************************************************************/
 /* Global variable definitions (declared in header file with 'extern')       */
 /*****************************************************************************/
-extern TickType entropySeed;
 
 /*****************************************************************************/
 /* Local type definitions ('typedef')                                        */
@@ -57,15 +56,13 @@ extern TickType entropySeed;
 /*****************************************************************************/
 /* Local variable definitions ('static')                                     */
 /*****************************************************************************/
-volatile static RG_t game = {RG_STATE_WAIT, 0, 0, 0}; // keep inside function and pass it as reference
-
 #ifdef CyclicTask
-volatile static uint16_t ra_g_rndWait_ms = 0;          // random delay until number appears
-volatile static uint16_t ra_g_reactionTimeout_ms = 0;  // max allowed reaction time
+volatile static RG_t game = {RG_STATE_RANDOM_WAIT, 0, 0, 0, 0, 0, 0, 0}; // keep inside function and pass it as reference
 #endif
-static uint8_t rg_g_correctPress = 0;         // count of the correct press
-volatile static uint8_t ra_g_tftScore = 0;    // score in tft
 
+#ifdef OneShotAlarm
+volatile static RG_t game = {RG_STATE_RANDOM_WAIT, 0, 0, 0, 0, 0};
+#endif
 /*****************************************************************************/
 /* Local function prototypes ('static')                                      */
 /*****************************************************************************/
@@ -89,46 +86,59 @@ RC_t RG_gameStateMachine(EventMaskType ev)
     
     switch(game.rg_curState)
     {
-        case RG_STATE_IDLE: // what to do ???
-        break;
-        case RG_STATE_WAIT:
+        case RG_STATE_RANDOM_WAIT:
             if (ev & ev_buttonLeft || ev & ev_buttonRight)
             { //C //(N1)
-                // Generate random wait time. 1000 – 3000 ms
-                RG_gameWait();
+                // Exit action of state RG_STATE_RANDOM_WAIT
+                
+                // Transition Action
+                RG_CreateRandom();
+                
+                // State Change
+                game.rg_curState = RG_STATE_DISPLAY;
+                // Entry action for state RG_STATE_DISPLAY
+                
             } //S
         break;
         case RG_STATE_DISPLAY:
             if (ev & ev_randomDone)
             {
-                // Show generatated random number on display
-                RG_gameDisplay();
+                // Exit action of state RG_STATE_DISPLAY
+                
+                // Transition Action
+                RG_Display();
+                
+                // State Change
+                game.rg_curState = RG_STATE_IS_PRESSED;
+                
+                // Entry action for state RG_STATE_PRESSED  
                 
                 TA_start((TA_t *)&analyzerGame);  
             }//S
         break;
-        case RG_STATE_PRESSED: 
+        case RG_STATE_IS_PRESSED: // Waiting for something in state and not something happened
             //C
+            // Exit action of state RG_STATE_DISPLAY
+            
             if (ev & ev_buttonLeft) // (N5)
             {
                 TA_stop((TA_t *)&analyzerGame);
                 
-                // Handle button 1 press
-                RG_buttonLeftPressed();
-                
+                // Action
+                RG_buttonLeftPressed();        
             } 
             if (ev & ev_buttonRight) 
             {
                 TA_stop((TA_t *)&analyzerGame);
                 
-                // Handle button 2 press
-                RG_buttonRightPressed();
+                // Action
+                RG_buttonRightPressed();    
             }
             if (ev & ev_timeout)
             {
                 TA_stop((TA_t *)&analyzerGame);
                 
-                // Handle timeout
+                // Action - Handle timeout
                 UART_LOG_PutString("Too slow!\r\n");
             }
 
@@ -138,14 +148,20 @@ RC_t RG_gameStateMachine(EventMaskType ev)
             
             UART_LOG_PutString("======================================================\r\n");
             
+            // Warning: Below set of code will happen in any transition and to avoid reduntancy it's kept here. // do transition ???
+            // Violation: Strickt Translation of State Machine into code
             // Print the scoure after 1 game (10 rounds)
             if (RG_MAX_ROUNDS == game.rg_roundPlayed)
             {
-                RG_gameEnd();
+                //Action
+                RG_endGame();
                 //SetRelAlarm(alrm_tft,1,0); //(N4)
             } 
             
-            game.rg_curState = RG_STATE_WAIT;
+            // State Change
+            game.rg_curState = RG_STATE_RANDOM_WAIT;
+            
+            // Entry action for state RG_STATE_IS_PRESSED
         break;
         default:
             // do nothing
@@ -154,15 +170,14 @@ RC_t RG_gameStateMachine(EventMaskType ev)
     return res;
 }
 
-RC_t RG_gameWait(void)
+RC_t RG_CreateRandom(void)
 {
     RC_t res = RC_SUCCESS;
 
     // Generate random wait time. 1000 – 3000 ms
-    if (entropySeed != 0)
-    {
-        srand(entropySeed); // or read out systick time from OS ??? need srand in both places
-    }
+    TickType entropySeed; // (N8)
+    GetCounterValue(cnt_systick, &entropySeed);
+    srand(entropySeed); // or read out systick time from OS ??? need srand in both places
     
     #ifdef CyclicTask
     GetResource(res_rnd);
@@ -173,13 +188,12 @@ RC_t RG_gameWait(void)
     #ifdef OneShotAlarm
     uint16_t ra_rndWait_ms = (rand() % 2000) + 1000;
     SetRelAlarm(alrm_random, ra_rndWait_ms, 0); // (N6)
-    game.rg_curState = RG_STATE_DISPLAY;
     #endif
     
     return res;
 }
 
-RC_t RG_gameDisplay(void)
+RC_t RG_Display(void)
 {
     RC_t res = RC_SUCCESS;
     
@@ -203,8 +217,6 @@ RC_t RG_gameDisplay(void)
     snprintf(buffer, sizeof(buffer), "Round: %u\r\n", game.rg_roundPlayed);
     UART_LOG_PutString(buffer);
     
-    game.rg_curState = RG_STATE_PRESSED;
-    
     return res;
 }
 
@@ -222,7 +234,7 @@ RC_t RG_buttonLeftPressed(void)
         snprintf(buffer, sizeof(buffer), "Reaction time in ms: %u\r\n", TA_getElapsedTimeInMs(&analyzerGame));
         UART_LOG_PutString(buffer);
         
-        rg_g_correctPress++;
+        game.rg_correctPress++;
         game.rg_score++;
         game.rg_totalTime += TA_getElapsedTimeInMs(&analyzerGame);
     } else
@@ -246,7 +258,7 @@ RC_t RG_buttonRightPressed(void)
         snprintf(buffer, sizeof(buffer), "Reaction time in ms: %u\r\n", TA_getElapsedTimeInMs(&analyzerGame));
         UART_LOG_PutString(buffer);
         
-        rg_g_correctPress++;
+        game.rg_correctPress++;
         game.rg_score++;
         game.rg_totalTime += TA_getElapsedTimeInMs(&analyzerGame);
     } else
@@ -257,13 +269,13 @@ RC_t RG_buttonRightPressed(void)
     return res;
 }
 
-RC_t RG_gameEnd(void)
+RC_t RG_endGame(void)
 {
     RC_t res = RC_SUCCESS;
     
     game.rg_roundPlayed = 0;
                 
-    uint32_t avg_time = game.rg_totalTime / rg_g_correctPress;
+    uint32_t avg_time = game.rg_totalTime / game.rg_correctPress;
 
     char buffer[70];
     snprintf(buffer, sizeof(buffer), "Score: %u | Total Time: %ums | Avg Time: %ums\r\n", game.rg_score, game.rg_totalTime, avg_time);
@@ -271,7 +283,7 @@ RC_t RG_gameEnd(void)
     
     UART_LOG_PutString("======================================================\r\n");
     
-    ra_g_tftScore = game.rg_score;
+    game.rg_tftScore = game.rg_score;
     
     return res;
 }
@@ -282,13 +294,13 @@ RC_t RG_randomTimeCheck(void)
 {
     RC_t res = RC_SUCCESS;
     
-    if (ra_g_rndWait_ms > 0)
+    if (game.rg_rndWait_ms > 0)
     {
         GetResource(res_rnd);
-        ra_g_rndWait_ms--;
+        game.rg_rndWait_ms--;
         ReleaseResource(res_rnd);
         
-        if (ra_g_rndWait_ms == 0)
+        if (game.rg_rndWait_ms == 0)
         {//C
             game.rg_curState = RG_STATE_DISPLAY;
             
@@ -303,13 +315,13 @@ RC_t RG_timeoutCheck(void)
 {
     RC_t res = RC_SUCCESS;
 
-    if (ra_g_reactionTimeout_ms > 0)
+    if (game.rg_reactionTimeout_ms > 0)
     {
         GetResource(res_out);
         ra_g_reactionTimeout_ms--;
         ReleaseResource(res_out);
         
-        if (ra_g_reactionTimeout_ms == 0)
+        if (game.rg_reactionTimeout_ms == 0)
         {//C
             //Signal to tsk_Game that the user failed to react in time
             SetEvent(tsk_game, ev_timeout);
@@ -333,7 +345,13 @@ RC_t RG_timeoutCheck(void)
  * 6. In OS config, the alarm will trigger the tsk_game with ev_randomDone.
  * 
  * 7. In OS config, the alarm will trigger the tsk_game with ev_timeout.
- *
+ * 
+ * 8. GetCounterValue() returns a StatusType, not the tick value. entropySeed contains the counter tick value.
+ * 
+ * 9. 
+ * 
+ * 10.
+ * 
  */
 
 /* [ReactionGame.c] END OF FILE */

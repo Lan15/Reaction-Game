@@ -72,21 +72,26 @@ RC_t AL_fader(uint16_t tickTime_ms, uint16_t reactionTime_ms)
 {
     static uint32_t tickCounter = 0;
     static uint32_t phase = 0;
-    static uint32_t modulo = 1;
 
-    /* Initialize update rate once */
-    static uint8_t init = 0;
-    if (!init)
+    if (0 == tickTime_ms && 0 == reactionTime_ms)
     {
-        modulo = reactionTime_ms / tickTime_ms;
-        if (modulo == 0) modulo = 1;
-        init = 1;
+        return RC_ERROR_BAD_PARAM;
     }
 
+    /* Compute update rate every call (safe and simple) */
+    uint32_t modulo = reactionTime_ms / tickTime_ms;
+    
+    if (modulo == 0)
+    {
+        modulo = 1;
+    }
+    
     /* Tick counting + update control */
     if (++tickCounter % modulo != 0)
+    {
         return RC_SUCCESS;
-
+    }
+    
     /* Compute local fade value */
     uint8_t value = phase & 0xFF;        // same as % 256 but faster
 
@@ -95,10 +100,18 @@ RC_t AL_fader(uint16_t tickTime_ms, uint16_t reactionTime_ms)
     /* Phase region (0–1023): fade logic */
     switch (phase >> 8)       // divide by 256 using bit-shift
     {
-        case 0: r = value;                break;                  // 0–255
-        case 1: r = 255 - value; g = value; break;                // 256–511
-        case 2: g = 255 - value; b = value; break;                // 512–767
-        default:b = 255 - value;            break;                // 768–1023
+        case 0: 
+            r = value;                
+        break;                  // 0–255
+        case 1: 
+            r = 255 - value; g = value; 
+        break;                // 256–511
+        case 2: 
+            g = 255 - value; b = value; 
+        break;                // 512–767
+        default:
+            b = 255 - value;            
+        break;                // 768–1023
     }
 
     LED_PWM_Set(r, g, b);
@@ -110,12 +123,17 @@ RC_t AL_fader(uint16_t tickTime_ms, uint16_t reactionTime_ms)
     return RC_SUCCESS;
 }
 
-RC_t AL_glower(uint16_t tickTime_ms, uint16_t reactionTime_ms)
+RC_t AL_glower(uint16_t tickTime_ms, uint16_t reactionTime_ms) //TODO: work on tuning
 {
     static uint32_t tickCounter = 0;
     static uint32_t step = 0;
     static uint32_t modulo = 1;
 
+    if (0 == tickTime_ms && 0 == reactionTime_ms)
+    {
+        return RC_ERROR_BAD_PARAM;
+    }
+    
     /* Initialize update rate once */
     static uint8_t init = 0;
     if (!init)
