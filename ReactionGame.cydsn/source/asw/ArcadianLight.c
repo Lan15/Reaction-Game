@@ -152,49 +152,51 @@ RC_t AL_calculateIntensity(uint8_t* red, uint8_t* yellow, uint8_t* green)
 
 RC_t AL_glower(uint16_t tickTime_ms, uint16_t reactionTime_ms) // (N2)
 {
-    RC_t res = RC_SUCCESS;
+    if (tickTime_ms == 0 || reactionTime_ms == 0)
+    {
+        return RC_ERROR_BAD_PARAM;
+    }
 
+    // Compute effective reaction time with internal scaling
+    uint32_t effectiveReaction = (uint32_t)reactionTime_ms * AL_GLOW_REACTION_SCALE;
+
+    // Get total number of glow steps
+    uint32_t totalSteps = sizeof(RG_glowtable) / sizeof(RG_Glow_t);
+
+    // Advance step (tick counting + step advancement) and get current step
+    uint32_t currentStep = AL_updateGlowStep(effectiveReaction, tickTime_ms, totalSteps);
+
+    // Apply RGB values
+    LED_RGB_Set(RG_glowtable[currentStep].al_red,
+                RG_glowtable[currentStep].al_green,
+                RG_glowtable[currentStep].al_blue);
+
+    return RC_SUCCESS;
+}
+
+uint32_t AL_updateGlowStep(uint32_t effectiveReaction, uint16_t tickTime_ms, uint32_t totalSteps)
+{
     static uint32_t tick = 0;
     static uint32_t step = 0;
-    static uint32_t stepTicks = 1; // number of ticks needed for current step
 
-    // Apply scaling factor internally
-    uint32_t effectiveReaction = (uint32_t)reactionTime_ms * AL_GLOW_REACTION_SCALE;
+    // Compute ticks for this step
+    uint32_t stepTicks = (RG_glowtable[step].al_duration * effectiveReaction) / AL_TOTAL_GLOW_DURATION / tickTime_ms;
     
-    // Compute number of ticks for current step using integer math
-    // step duration scaled by reactionTime_ms, converted to tick counts
-    stepTicks = (((uint32_t)RG_glowtable[step].al_duration * effectiveReaction) 
-                 / AL_TOTAL_GLOW_DURATION) / tickTime_ms;
-
-    // Ensure at least 1 tick per step
     if (stepTicks == 0)
     {
         stepTicks = 1;
     }
 
-    // Increment tick counter
+    // Tick counting
     tick++;
     if (tick >= stepTicks)
     {
         tick = 0;
-
-        // Move to next glow step
-        step++;
-        if (step >= (sizeof(RG_glowtable) / sizeof(RG_Glow_t)))
-        {
-            step = 0;
-        }
+        step = (step + 1) % totalSteps;
     }
 
-    // Apply current RGB values
-    LED_RGB_Set(RG_glowtable[step].al_red,
-                RG_glowtable[step].al_green,
-                RG_glowtable[step].al_blue);
-
-    return res;
+    return step;
 }
-
-
 
 
 /* NOTE
