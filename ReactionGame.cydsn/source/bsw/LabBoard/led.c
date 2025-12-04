@@ -45,6 +45,7 @@
 
 
 static LED_ONOFF_t LED__state[LED_ALL] = {LED_OFF, LED_OFF, LED_OFF}; /**< On/Off State of the LED, TRUE is on */
+static LED_ONOFF_t RGB__state[LED_ALL] = {LED_OFF, LED_OFF, LED_OFF}; /**< On/Off State of the LED, TRUE is on */
 
 const static uint16 LED__Pulse_Width[256] = {
     0, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3,
@@ -112,10 +113,19 @@ RC_t LED_Init()
     PWM_YELLOW_Start();
     PWM_GREEN_Start();
     
-    //Init RGB
-    PWM_RGB_BLUE_Start();
-    PWM_RGB_GREEN_Start();
-    PWM_RGB_RED_Start();
+    for (RGB_id_t i = RGB_RED; i < LED_ALL; i++)
+    {
+        RGB__state[i] = OFF;
+        
+        RC_t clearResult;
+        clearResult = RGB_Set(i, LED_OFF);
+        
+        if (clearResult != RC_SUCCESS)
+        {
+            //memorize error
+            result = clearResult;
+        }
+    }
     
     return result;
 }
@@ -158,7 +168,43 @@ RC_t LED_Set(LED_id_t ledId, LED_ONOFF_t ledOnOff)
     return RC_SUCCESS;
 }
 
-
+/**
+ * Sets the required colour of RGB LED
+ * @param RGB_id_t ledColour - Identifier for the led color, ALL will change all led colours
+ * @param LED_ONOFF_t ledOnOff - Trun the led colour on or off
+ * @return RC_SUCCESS if function was executed as exepected, other error code in case of error
+ */
+RC_t RGB_Set(RGB_id_t ledColour, LED_ONOFF_t ledOnOff)
+{
+    //set individual LED
+    switch (ledColour)
+    {
+        case LED_RED : 
+            RED_LED_Write(ledOnOff); 
+            LED__state[ledColour] = ledOnOff; 
+            break;
+        
+        case LED_YELLOW : 
+            YELLOW_LED_Write(ledOnOff); 
+            LED__state[ledColour] = ledOnOff;
+            break;
+            
+        case LED_GREEN : 
+            GREEN_LED_Write(ledOnOff); 
+            LED__state[ledColour] = ledOnOff;
+            break;
+           
+        case LED_ALL : 
+            for (LED_id_t i = LED_RED; i < LED_ALL; i++)
+            {
+                LED_Set(i, ledOnOff);
+            }
+            break;
+        default: return RC_ERROR_BAD_PARAM;
+    }
+    
+    return RC_SUCCESS;
+}
 
 /**
  * Toggle the required LED
@@ -224,18 +270,18 @@ static inline LED_ONOFF_t LED__toggleValue(LED_ONOFF_t ledOnOff)
  */
 RC_t LED_RGB_Set(uint8_t red, uint8_t green, uint8_t blue)
 {
-    PWM_RGB_RED_WriteCompare(LED__Pulse_Width[red]);
-    PWM_RGB_GREEN_WriteCompare(LED__Pulse_Width[green]);
-    PWM_RGB_BLUE_WriteCompare(LED__Pulse_Width[blue]);
+    RGB_RED_Write(red);
+    RGB_GREEN_Write(green);
+    RGB_BLUE_Write(blue);
  
     return RC_SUCCESS;
 }
 
 RC_t LED_PWM_Set(uint16_t redValue, uint16_t yellowValue, uint16_t greenValue)
 {
-    PWM_RED_WriteCompare(redValue);
-    PWM_YELLOW_WriteCompare(yellowValue); 
-    PWM_GREEN_WriteCompare(greenValue); 
+    PWM_RED_WriteCompare(LED__Pulse_Width[redValue]);
+    PWM_YELLOW_WriteCompare(LED__Pulse_Width[yellowValue]); 
+    PWM_GREEN_WriteCompare(LED__Pulse_Width[greenValue]); 
  
     return RC_SUCCESS;
 }

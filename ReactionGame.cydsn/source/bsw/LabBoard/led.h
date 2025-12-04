@@ -95,6 +95,14 @@ enum eLED_id{
 } ;         
 typedef enum eLED_id LED_id_t;
 
+enum eRGB_id{
+  RGB_RED,          /**< Selection of red RGB LED */
+  RGB_GREEN,        /**< Selection of green RGB LED */
+  RGB_BLUE,         /**< Selection of blue RGB LED */
+  RGB_ALL           /**< Selection of all RGB LED's */
+} ;         
+typedef enum eRGB_id RGB_id_t;
+
 enum eLED_ONOFF{
     LED_OFF = 0,    /**< Turn the LED OFF */
     LED_ON  = 1     /**< Turn the LED ON */
@@ -147,6 +155,14 @@ RC_t LED_Init();
  * @return RC_SUCCESS if function was executed as exepected, other error code in case of error
  */
 RC_t LED_Set(LED_id_t ledId, LED_ONOFF_t ledOnOff);
+
+/**
+ * Sets the required colour of RGB LED
+ * @param RGB_id_t ledColour - Identifier for the led color, ALL will change all led colours
+ * @param LED_ONOFF_t ledOnOff - Trun the led colour on or off
+ * @return RC_SUCCESS if function was executed as exepected, other error code in case of error
+ */
+RC_t RGB_Set(RGB_id_t ledColour, LED_ONOFF_t ledOnOff);
 
 /**
  * Toggle the required LED

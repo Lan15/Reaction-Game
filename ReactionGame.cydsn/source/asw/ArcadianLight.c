@@ -58,8 +58,6 @@ const RG_Glow_t RG_glowtable[] = {
 /* Local variable definitions ('static')                                     */
 /*****************************************************************************/ 
 
-static uint32_t g_currentStep = 0;
-
 /*****************************************************************************/
 /* Local function prototypes ('static')                                      */
 /*****************************************************************************/
@@ -208,5 +206,5 @@ uint32_t AL_updateGlowStep(uint32_t effectiveReaction, uint16_t tickTime_ms, uin
  * 3. 
  * 
  * 4. 
-
+*/
 /* [ArcadianLight.c] END OF FILE */

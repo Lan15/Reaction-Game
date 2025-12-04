@@ -199,17 +199,6 @@
   <file name="D:\WS25\AMAEOS\Lab\Workspace01\ReactionGame.cydsn\codegentemp\RGB_BLUE_aliases.h" value="HEADER;;;;;RGB_BLUE" />
   <file name="D:\WS25\AMAEOS\Lab\Workspace01\ReactionGame.cydsn\codegentemp\RGB_BLUE.c" value="SOURCE_C;CortexM3;;;;RGB_BLUE" />
   <file name="D:\WS25\AMAEOS\Lab\Workspace01\ReactionGame.cydsn\codegentemp\RGB_BLUE.h" value="HEADER;;;;;RGB_BLUE" />
-  <file name="D:\WS25\AMAEOS\Lab\Workspace01\ReactionGame.cydsn\codegentemp\PWM_RGB_RED.c" value="SOURCE_C;CortexM3;;;;PWM_RGB_RED" />
-  <file name="D:\WS25\AMAEOS\Lab\Workspace01\ReactionGame.cydsn\codegentemp\PWM_RGB_RED.h" value="HEADER;;;;;PWM_RGB_RED" />
-  <file name="D:\WS25\AMAEOS\Lab\Workspace01\ReactionGame.cydsn\codegentemp\PWM_RGB_RED_PM.c" value="SOURCE_C;CortexM3;;;;PWM_RGB_RED" />
-  <file name="D:\WS25\AMAEOS\Lab\Workspace01\ReactionGame.cydsn\codegentemp\PWM_Clock_RGB.c" value="SOURCE_C;CortexM3;;;;PWM_Clock_RGB" />
-  <file name="D:\WS25\AMAEOS\Lab\Workspace01\ReactionGame.cydsn\codegentemp\PWM_Clock_RGB.h" value="HEADER;;;;;PWM_Clock_RGB" />
-  <file name="D:\WS25\AMAEOS\Lab\Workspace01\ReactionGame.cydsn\codegentemp\PWM_RGB_GREEN.c" value="SOURCE_C;CortexM3;;;;PWM_RGB_GREEN" />
-  <file name="D:\WS25\AMAEOS\Lab\Workspace01\ReactionGame.cydsn\codegentemp\PWM_RGB_GREEN.h" value="HEADER;;;;;PWM_RGB_GREEN" />
-  <file name="D:\WS25\AMAEOS\Lab\Workspace01\ReactionGame.cydsn\codegentemp\PWM_RGB_GREEN_PM.c" value="SOURCE_C;CortexM3;;;;PWM_RGB_GREEN" />
-  <file name="D:\WS25\AMAEOS\Lab\Workspace01\ReactionGame.cydsn\codegentemp\PWM_RGB_BLUE.c" value="SOURCE_C;CortexM3;;;;PWM_RGB_BLUE" />
-  <file name="D:\WS25\AMAEOS\Lab\Workspace01\ReactionGame.cydsn\codegentemp\PWM_RGB_BLUE.h" value="HEADER;;;;;PWM_RGB_BLUE" />
-  <file name="D:\WS25\AMAEOS\Lab\Workspace01\ReactionGame.cydsn\codegentemp\PWM_RGB_BLUE_PM.c" value="SOURCE_C;CortexM3;;;;PWM_RGB_BLUE" />
   <file name="D:\WS25\AMAEOS\Lab\Workspace01\ReactionGame.cydsn\codegentemp\UART_LOG_IntClock.c" value="SOURCE_C;CortexM3;;;;UART_LOG_IntClock" />
   <file name="D:\WS25\AMAEOS\Lab\Workspace01\ReactionGame.cydsn\codegentemp\UART_LOG_IntClock.h" value="HEADER;;;;;UART_LOG_IntClock" />
   <file name="D:\WS25\AMAEOS\Lab\Workspace01\ReactionGame.cydsn\codegentemp\TFT_SPI_IntClock.c" value="SOURCE_C;CortexM3;;;;TFT_SPI_IntClock" />
