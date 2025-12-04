@@ -31,7 +31,8 @@
 /*****************************************************************************/
 /* Local pre-processor symbols/macros ('#define')                            */
 /*****************************************************************************/ 
-#define AL_TOTAL_DURATION     (1800UL)
+#define AL_TOTAL_GLOW_DURATION      (2100UL)
+#define AL_GLOW_REACTION_SCALE      (1000UL)
 
 /*****************************************************************************/
 /* Global variable definitions (declared in header file with 'extern')       */
@@ -71,7 +72,7 @@ static uint32_t g_currentStep = 0;
  * API Definitions
  ********************************************************************************/
 
-RC_t AL_fader(uint16_t tickTime_ms, uint16_t reactionTime_ms)
+RC_t AL_fader(uint16_t tickTime_ms, uint16_t reactionTime_ms) //(N1)
 {
     if (0 == tickTime_ms && 0 == reactionTime_ms)
     {
@@ -149,45 +150,61 @@ RC_t AL_calculateIntensity(uint8_t* red, uint8_t* yellow, uint8_t* green)
     return RC_SUCCESS;
 }
 
-RC_t AL_glower(uint16_t tickTime_ms, uint16_t reactionTime_ms) //TODO: work on tuning
+RC_t AL_glower(uint16_t tickTime_ms, uint16_t reactionTime_ms) // (N2)
 {
-    static uint32_t tickCounter = 0;
+    RC_t res = RC_SUCCESS;
+
+    static uint32_t tick = 0;
     static uint32_t step = 0;
-    static uint32_t modulo = 1;
+    static uint32_t stepTicks = 1; // number of ticks needed for current step
 
-    if (0 == tickTime_ms && 0 == reactionTime_ms)
-    {
-        return RC_ERROR_BAD_PARAM;
-    }
+    // Apply scaling factor internally
+    uint32_t effectiveReaction = (uint32_t)reactionTime_ms * AL_GLOW_REACTION_SCALE;
     
-    /* Initialize update rate once */
-    static uint8_t init = 0;
-    if (!init)
+    // Compute number of ticks for current step using integer math
+    // step duration scaled by reactionTime_ms, converted to tick counts
+    stepTicks = (((uint32_t)RG_glowtable[step].al_duration * effectiveReaction) 
+                 / AL_TOTAL_GLOW_DURATION) / tickTime_ms;
+
+    // Ensure at least 1 tick per step
+    if (stepTicks == 0)
     {
-        modulo = (RG_glowtable[step].al_duration + tickTime_ms - 1) / tickTime_ms; // ceil
-        if (modulo == 0) modulo = 1;
-        init = 1;
+        stepTicks = 1;
     }
 
-    /* Tick counting + update control */
-    if (++tickCounter % modulo != 0)
-        return RC_SUCCESS;
+    // Increment tick counter
+    tick++;
+    if (tick >= stepTicks)
+    {
+        tick = 0;
 
-    /* Set RGB values for current step */
+        // Move to next glow step
+        step++;
+        if (step >= (sizeof(RG_glowtable) / sizeof(RG_Glow_t)))
+        {
+            step = 0;
+        }
+    }
+
+    // Apply current RGB values
     LED_RGB_Set(RG_glowtable[step].al_red,
                 RG_glowtable[step].al_green,
                 RG_glowtable[step].al_blue);
 
-    /* Advance to next step */
-    step++;
-    if (step >= (sizeof(RG_glowtable) / sizeof(RG_Glow_t)))
-        step = 0;  // Loop back to start
-
-    /* Update modulo for the new step */
-    modulo = (RG_glowtable[step].al_duration + tickTime_ms - 1) / tickTime_ms; // ceil
-    if (modulo == 0) modulo = 1;
-
-    return RC_SUCCESS;
+    return res;
 }
+
+
+
+
+/* NOTE
+ * 
+ * 1. reactionTime controls how fast phase increments. Smaller reactionTime - phase increments faster and viceversa.
+ *
+ * 2. reactionTime determines the total runtime of the whole/entire glow sequence.
+ * 
+ * 3. 
+ * 
+ * 4. 
 
 /* [ArcadianLight.c] END OF FILE */

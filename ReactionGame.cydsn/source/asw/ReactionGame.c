@@ -56,13 +56,8 @@ TA_t analyzerGame;
 /*****************************************************************************/
 /* Local variable definitions ('static')                                     */
 /*****************************************************************************/
-#ifdef CyclicTask
 volatile static RG_t game = {RG_STATE_RANDOM_WAIT, 0, 0, 0, 0, 0, 0, 0}; // keep inside function and pass it as reference
-#endif
 
-#ifdef OneShotAlarm
-volatile static RG_t game = {RG_STATE_RANDOM_WAIT, 0, 0, 0, 0, 0};
-#endif
 /*****************************************************************************/
 /* Local function prototypes ('static')                                      */
 /*****************************************************************************/
@@ -177,17 +172,17 @@ RC_t RG_CreateRandom(void)
     // Generate random wait time. 1000 – 3000 ms
     TickType entropySeed; // (N8)
     GetCounterValue(cnt_systick, &entropySeed);
-    srand(entropySeed); // or read out systick time from OS ??? need srand in both places
+    srand(entropySeed); // entropySeed ^= now; - XOR - mix with previous seed
     
     #ifdef CyclicTask
     GetResource(res_rnd);
-    ra_g_rndWait_ms = (rand() % 2000) + 1000;
+    game.ra_rndWait_ms = (rand() % 2000) + 1000;
     ReleaseResource(res_rnd);
     #endif
     
     #ifdef OneShotAlarm
-    uint16_t ra_rndWait_ms = (rand() % 2000) + 1000;
-    SetRelAlarm(alrm_random, ra_rndWait_ms, 0); // (N6)
+    game.ra_rndWait_ms = (rand() % 2000) + 1000;
+    SetRelAlarm(alrm_random, game.ra_rndWait_ms, 0); // (N6)
     #endif
     
     return res;
@@ -209,8 +204,8 @@ RC_t RG_Display(void)
     #endif
     
     #ifdef OneShotAlarm
-    uint16_t ra_reactionTimeout_ms = RG_TIMEOUT_TIME_MS;
-    SetRelAlarm(alrm_timeout, ra_reactionTimeout_ms, 0); // (N7) //read out systick time from OS, one func call away. (current time + delata time is reached)
+    game.ra_reactionTimeout_ms = RG_TIMEOUT_TIME_MS;
+    SetRelAlarm(alrm_timeout, game.ra_reactionTimeout_ms, 0); // (N7) //read out systick time from OS, one func call away. (current time + delata time is reached)
     #endif
     
     char buffer[20]; 

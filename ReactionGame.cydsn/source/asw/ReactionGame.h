@@ -107,10 +107,8 @@ typedef struct {
     /* Start Data */
     RG_State_t rg_curState;                 // Current analyzer state
     /* Logic Assistant Data */
-    #ifdef CyclicTask
-    uint16_t ra_rndWait_ms = 0;             // random delay until number appears
-    uint16_t ra_reactionTimeout_ms = 0;     // max allowed reaction time
-    #endif
+    uint16_t ra_rndWait_ms;                 // random delay until number appears
+    uint16_t ra_reactionTimeout_ms;         // max allowed reaction time
     /* Measurement & Record Data */
     uint32_t rg_totalTime;                  // total time taken for 10 rounds
     uint16_t rg_score;                      // score of the game
