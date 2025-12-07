@@ -84,61 +84,53 @@ RC_t RG_gameStateMachine(EventMaskType ev)
         case RG_STATE_RANDOM_WAIT:
             if (ev & ev_buttonLeft || ev & ev_buttonRight)
             { //C //(N1)
-                // Exit action of state RG_STATE_RANDOM_WAIT
-                
                 // Transition Action
                 RG_CreateRandom();
                 
                 // State Change
-                game.rg_curState = RG_STATE_DISPLAY;
-                // Entry action for state RG_STATE_DISPLAY
-                
+                game.rg_curState = RG_STATE_DISPLAY;                
             } //S
         break;
         case RG_STATE_DISPLAY:
             if (ev & ev_randomDone)
             {
-                // Exit action of state RG_STATE_DISPLAY
-                
                 // Transition Action
                 RG_Display();
                 
                 // State Change
                 game.rg_curState = RG_STATE_IS_PRESSED;
                 
-                // Entry action for state RG_STATE_PRESSED  
-                
+                // Exit action of state RG_STATE_DISPLAY
                 TA_start((TA_t *)&analyzerGame);  
             }//S
         break;
         case RG_STATE_IS_PRESSED: // Waiting for something in state and not something happened
             //C
-            // Exit action of state RG_STATE_DISPLAY
+            // Entry action for state RG_STATE_IS_PRESSED
+            TA_stop((TA_t *)&analyzerGame);
             
             if (ev & ev_buttonLeft) // (N5)
-            {
-                TA_stop((TA_t *)&analyzerGame);
-                
-                // Action
+            {                
+                // Transition Action
                 RG_buttonLeftPressed();        
             } 
             if (ev & ev_buttonRight) 
-            {
-                TA_stop((TA_t *)&analyzerGame);
-                
-                // Action
+            {                
+                // Transition Action
                 RG_buttonRightPressed();    
             }
             if (ev & ev_timeout)
-            {
-                TA_stop((TA_t *)&analyzerGame);
-                
-                // Action - Handle timeout
+            {               
+                // Transition Action - Handle timeout
                 UART_LOG_PutString("Too slow!\r\n");
             }
 
-            analyzerGame.elapsed_time = 0;
+            analyzerGame.elapsed_time = 0; 
             
+            // State Change
+            game.rg_curState = RG_STATE_RANDOM_WAIT;
+            
+            // Exit action for state RG_STATE_IS_PRESSED
             SEVEN_ClearAll();
             
             UART_LOG_PutString("======================================================\r\n");
@@ -146,17 +138,12 @@ RC_t RG_gameStateMachine(EventMaskType ev)
             // Warning: Code segment below will happen in any transition and to avoid reduntancy it's kept here. // do transition ???
             // Violation: Strickt Translation of State Machine into code
             // Print the scoure after 1 game (10 rounds)
-            if (RG_MAX_ROUNDS == game.rg_roundPlayed)
+            if (RG_MAX_ROUNDS == game.rg_roundPlayed) // Guard
             {
-                //Action
-                RG_endGame();
+                // Transition Action
+                RG_printGameResult();
                 //SetRelAlarm(alrm_tft,1,0); //(N4)
-            } 
-            
-            // State Change
-            game.rg_curState = RG_STATE_RANDOM_WAIT;
-            
-            // Entry action for state RG_STATE_IS_PRESSED
+            }   
         break;
         default:
             // do nothing
@@ -169,7 +156,7 @@ RC_t RG_CreateRandom(void)
 {
     RC_t res = RC_SUCCESS;
 
-    // Generate random wait time. 1000 – 3000 ms
+    // Generate random wait time. 1000 – (2999) 3000 ms
     TickType entropySeed; // (N8)
     GetCounterValue(cnt_systick, &entropySeed);
     srand(entropySeed); // entropySeed ^= now; - XOR - mix with previous seed
@@ -181,7 +168,7 @@ RC_t RG_CreateRandom(void)
     #endif
     
     #ifdef OneShotAlarm
-    game.ra_rndWait_ms = (rand() % 2000) + 1000;
+    game.ra_rndWait_ms = (rand() % 2000) + 1000; // (N9)
     SetRelAlarm(alrm_random, game.ra_rndWait_ms, 0); // (N6)
     #endif
     
@@ -264,7 +251,7 @@ RC_t RG_buttonRightPressed(void)
     return res;
 }
 
-RC_t RG_endGame(void)
+RC_t RG_printGameResult(void)
 {
     RC_t res = RC_SUCCESS;
     
@@ -343,7 +330,7 @@ RC_t RG_timeoutCheck(void)
  * 
  * 8. GetCounterValue() returns a StatusType, not the tick value. entropySeed contains the counter tick value.
  * 
- * 9. 
+ * 9. (From 0 to N-1) + 1. N = 2. (0) + 1 = 0, (1) + 1 = 2.
  * 
  * 10.
  * 

@@ -123,9 +123,9 @@ TASK(tsk_arcadian)
 {
     RC_t res = RC_SUCCESS;
     
-    res = AL_fader(1, 1);
+    res = AL_fader(1, 2);
     
-    res = AL_glower(1, 2);
+    res = AL_glower(1, 3);
     
     TerminateTask();
 }

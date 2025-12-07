@@ -113,7 +113,7 @@ RC_t LED_Init()
     PWM_YELLOW_Start();
     PWM_GREEN_Start();
     
-    for (RGB_id_t i = RGB_RED; i < LED_ALL; i++)
+    for (RGB_id_t i = RGB_RED; i < RGB_ALL; i++)
     {
         RGB__state[i] = OFF;
         
@@ -277,11 +277,12 @@ RC_t LED_RGB_Set(uint8_t red, uint8_t green, uint8_t blue)
     return RC_SUCCESS;
 }
 
+// Directly writing intensity values and not using the LUT
 RC_t LED_PWM_Set(uint16_t redValue, uint16_t yellowValue, uint16_t greenValue)
 {
-    PWM_RED_WriteCompare(LED__Pulse_Width[redValue]);
-    PWM_YELLOW_WriteCompare(LED__Pulse_Width[yellowValue]); 
-    PWM_GREEN_WriteCompare(LED__Pulse_Width[greenValue]); 
+    PWM_RED_WriteCompare(redValue); // If LUT - (LED__Pulse_Width[redValue])
+    PWM_YELLOW_WriteCompare(yellowValue); 
+    PWM_GREEN_WriteCompare(greenValue); 
  
     return RC_SUCCESS;
 }

@@ -107,8 +107,8 @@ RC_t SEVEN_Init()
  * Writes a random value (1 or 2) on both displays
  * @return RC_SUCCESS if function was executed correctly, other value in case of error
  */
-RC_t SEVEN_writeRandom() {  // keep here or in RG ???
-    uint8_t randomValue = (rand() % 2) + 1;  // Generate a random number 1 or 2  
+RC_t SEVEN_writeRandom() {
+    uint8_t randomValue = (rand() % 2) + 1;  // Generate a random number 1 or 2.
     uint8_t data = 0b10000000;
     if(randomValue == 1)
      data = 0b00000110;

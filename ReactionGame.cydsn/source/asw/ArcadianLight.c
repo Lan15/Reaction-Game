@@ -113,6 +113,8 @@ boolean_t AL_isFaderTickDue(uint16_t tickTime_ms, uint16_t reactionTime_ms)
     return ((++tickCounter % modulo) == 0);
 }
 
+/* Can use a lookup table containing 64 intensity values space by 4 
+in the range 0 - 255 and use an overall phase value 256 */
 RC_t AL_calculateIntensity(uint8_t* red, uint8_t* yellow, uint8_t* green)
 {
     static uint32_t phase = 0;

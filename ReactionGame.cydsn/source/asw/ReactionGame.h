@@ -144,7 +144,7 @@ RC_t RG_buttonLeftPressed(void);
 
 RC_t RG_buttonRightPressed(void);
 
-RC_t RG_endGame(void);
+RC_t RG_printGameResult(void);
 
 #ifdef CyclicTask
 RC_t RG_randomTimeCheck(void);
