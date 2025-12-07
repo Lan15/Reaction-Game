@@ -199,6 +199,15 @@ RC_t TA_resume(TA_t *const me);
 RC_t TA_stop(TA_t *const me);
 
 /**
+ * Func to delete a previously created analyzer. Removes it from the global list and resets its content.
+ * \param TA_t *const me            : [IN] Analyzer instance to be deleted
+ * \return RC_SUCCESS when success,
+ *         RC_ERROR_NULL when pointer is NULL,
+ *         RC_ERROR_BAD_PARAM when analyzer not found
+ */
+RC_t TA_delete(TA_t *const me);
+
+/**
  * Func to calculate the elapsed ticks/cycles between start and stop time.
  * \param TA_t *const me            : [IN/OUT] struct of Analyzer related parameters
  * \return RC_SUCCESS when success

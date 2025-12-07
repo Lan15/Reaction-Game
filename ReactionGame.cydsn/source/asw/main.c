@@ -50,7 +50,8 @@ TASK(tsk_init)
     //Init MCAL Drivers   
     SEVEN_Init();
     UART_LOG_Start(); 
-    //TFT_init();
+    TFT_init();
+    TFT_setBacklight(255);
     LED_Init();
     
     TA_init(); // CySysTick causes issues with OS's cnt_systick
@@ -67,12 +68,11 @@ TASK(tsk_init)
     #ifdef CyclicTask
     SetRelAlarm(alrm_Tick1m,1,1);
     #endif
-    //SetRelAlarm(alrm_tft,2,0);
     SetRelAlarm(alrm_arcadian,2,1); //10
 
     //Activate all extended and the background task
     ActivateTask(tsk_game);
-    //ActivateTask(tsk_tft);
+    ActivateTask(tsk_tft);
     ActivateTask(tsk_background);
 
     TerminateTask();
@@ -131,39 +131,8 @@ TASK(tsk_arcadian)
 }
 
 TASK(tsk_tft) //use set event
-{
-    /*
-    TFT_setBacklight(255);
-    
-    if(!game.m_score)
-    {
-        TFT_clearScreen();
-        
-        TFT_setCursor(17, 60);
-        TFT_setTextSize(2);
-        TFT_setTextColor(RED);
-        TFT_print("REACTION\n");
-        TFT_setCursor(40, 80);
-        TFT_setTextColor(BLUE);
-        TFT_print("GAME\n");
-    }
-    
-    if(game.m_score) // If score is atleaset 1 
-    { 
-        TFT_clearScreen();
-        
-        TFT_setCursor(18, 70);
-        TFT_setTextSize(2);
-        TFT_setTextColor(YELLOW);
-        
-        TFT_drawRect(12, 65, 105, 24, WHITE);
-        
-        char buffer[16];
-        sprintf(buffer, "SCORE:%d", ra_g_tftScore);
-        TFT_print(buffer);
-        
-        TFT_drawChar(55, 30, 2, YELLOW, 0, 4);
-    }*/
+{    
+    RG_displayTft();
     
     TerminateTask();
 }

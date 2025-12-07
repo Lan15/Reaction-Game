@@ -366,6 +366,55 @@ RC_t TA_stop(TA_t *const me)
 }
 
 /**
+ * Func to delete a previously created analyzer. Removes it from the global list and resets its content.
+ * \param TA_t *const me            : [IN] Analyzer instance to be deleted
+ * \return RC_SUCCESS when success,
+ *         RC_ERROR_NULL when pointer is NULL,
+ *         RC_ERROR_BAD_PARAM when analyzer not found
+ */
+RC_t TA_delete(TA_t *const me)
+{
+    RC_t res = RC_SUCCESS;
+    
+    uint8_t index = 0U;
+    boolean_t found = FALSE;
+
+    if (me == NULL_PTR)
+    {
+        return RC_ERROR_NULL;
+    }
+
+    // Search for analyzer in global list
+    for (index = 0U; index < ta_g_analyzer_count; index++)
+    {
+        if (ta_g_analyzers[index] == me)
+        {
+            found = TRUE;
+            break;
+        }
+    }
+
+    if (found == FALSE)
+    {
+        return RC_ERROR_BAD_PARAM;   // Analyzer not found
+    }
+
+    // Shift remaining analyzers left to keep array compact
+    for (uint8_t i = index; i < (ta_g_analyzer_count - 1U); i++)
+    {
+        ta_g_analyzers[i] = ta_g_analyzers[i + 1U];
+    }
+
+    ta_g_analyzers[ta_g_analyzer_count - 1U] = NULL_PTR;
+    ta_g_analyzer_count--;
+
+    // Reset the analyzer object itself
+    memset(me, 0, sizeof(TA_t));
+
+    return res;
+}
+
+/**
  * Func to calculate the elapsed ticks/cycles between start and stop time.
  * \param TA_t *const me            : [IN/OUT] struct of Analyzer related parameters
  * \return RC_SUCCESS when success

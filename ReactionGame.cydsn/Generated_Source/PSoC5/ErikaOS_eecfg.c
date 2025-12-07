@@ -1761,7 +1761,7 @@ const unsigned long EE_ALARM_ID[EE_MAX_ALARM]=
     #if EE_ACTION_ROM_SIZE > 2
         ,{0    , 
             #if 0 != 3 
-                4,
+                3,
             #else
                 0,
             #endif

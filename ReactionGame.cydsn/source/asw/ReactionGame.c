@@ -56,7 +56,7 @@ TA_t analyzerGame;
 /*****************************************************************************/
 /* Local variable definitions ('static')                                     */
 /*****************************************************************************/
-volatile static RG_t game = {RG_STATE_RANDOM_WAIT, 0, 0, 0, 0, 0, 0, 0}; // keep inside function and pass it as reference
+volatile static RG_t game = {RG_STATE_RANDOM_WAIT, 0, 0, 0, 0, 0, 0, 0};// keep inside function and pass it as reference
 
 /*****************************************************************************/
 /* Local function prototypes ('static')                                      */
@@ -76,7 +76,9 @@ RC_t RG_gameStateMachine(EventMaskType ev)
     
     if(!game.rg_roundPlayed)
     {
-         TA_create((TA_t *)&analyzerGame, TA_MODE_DWT, NULL_PTR, "Game Analyzer");
+        TA_create((TA_t *)&analyzerGame, TA_MODE_DWT, NULL_PTR, "Game Analyzer");
+        
+        //SetRelAlarm(alrm_tft,1,0); 
     }
     
     switch(game.rg_curState)
@@ -85,7 +87,7 @@ RC_t RG_gameStateMachine(EventMaskType ev)
             if (ev & ev_buttonLeft || ev & ev_buttonRight)
             { //C //(N1)
                 // Transition Action
-                RG_CreateRandom();
+                RG_createRandom();
                 
                 // State Change
                 game.rg_curState = RG_STATE_DISPLAY;                
@@ -95,7 +97,7 @@ RC_t RG_gameStateMachine(EventMaskType ev)
             if (ev & ev_randomDone)
             {
                 // Transition Action
-                RG_Display();
+                RG_display();
                 
                 // State Change
                 game.rg_curState = RG_STATE_IS_PRESSED;
@@ -142,7 +144,21 @@ RC_t RG_gameStateMachine(EventMaskType ev)
             {
                 // Transition Action
                 RG_printGameResult();
+                
                 //SetRelAlarm(alrm_tft,1,0); //(N4)
+                
+                // Reset to default values
+                game.rg_curState            = RG_STATE_RANDOM_WAIT;
+                game.ra_rndWait_ms          = 0;
+                game.ra_reactionTimeout_ms  = 0;
+                game.rg_totalTime           = 0;
+                game.rg_score               = 0;
+                game.rg_roundPlayed         = 0;
+                game.rg_correctPress        = 0;
+                game.rg_tftScore            = 0;
+                
+                // Deleting timing analyzer instance to free up memory
+                TA_delete(&analyzerGame);
             }   
         break;
         default:
@@ -152,7 +168,7 @@ RC_t RG_gameStateMachine(EventMaskType ev)
     return res;
 }
 
-RC_t RG_CreateRandom(void)
+RC_t RG_createRandom(void)
 {
     RC_t res = RC_SUCCESS;
 
@@ -175,7 +191,7 @@ RC_t RG_CreateRandom(void)
     return res;
 }
 
-RC_t RG_Display(void)
+RC_t RG_display(void)
 {
     RC_t res = RC_SUCCESS;
     
@@ -266,6 +282,43 @@ RC_t RG_printGameResult(void)
     UART_LOG_PutString("======================================================\r\n");
     
     game.rg_tftScore = game.rg_score;
+    
+    return res;
+}
+
+RC_t RG_displayTft(void)
+{
+    RC_t res = RC_SUCCESS;
+    
+    //if(!game.rg_score)
+    //{
+        TFT_clearScreen();
+        
+        TFT_setCursor(17, 60);
+        TFT_setTextSize(2);
+        TFT_setTextColor(RED);
+        TFT_print("REACTION\n");
+        TFT_setCursor(40, 80);
+        TFT_setTextColor(BLUE);
+        TFT_print("GAME\n");
+    //}
+    
+    /*if(game.rg_score) // If score is atleaset 1 
+    { 
+        TFT_clearScreen();
+        
+        TFT_setCursor(18, 70);
+        TFT_setTextSize(2);
+        TFT_setTextColor(YELLOW);
+        
+        TFT_drawRect(12, 65, 105, 24, WHITE);
+        
+        char buffer[16];
+        sprintf(buffer, "SCORE:%d", game.rg_tftScore);
+        TFT_print(buffer);
+        
+        TFT_drawChar(55, 30, 2, YELLOW, 0, 4);
+    }*/
     
     return res;
 }
