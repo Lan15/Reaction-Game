@@ -134,17 +134,9 @@ public:
 /* API functions                                                             */
 /*****************************************************************************/
 
+void RG_init(void);
+
 RC_t RG_gameStateMachine(EventMaskType ev);
-
-RC_t RG_createRandom(void);
-
-RC_t RG_display(void);
-
-RC_t RG_buttonLeftPressed(void);
-
-RC_t RG_buttonRightPressed(void);
-
-RC_t RG_printGameResult(void);
 
 RC_t RG_displayTft(void);
 

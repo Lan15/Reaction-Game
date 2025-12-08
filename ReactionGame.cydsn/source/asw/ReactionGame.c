@@ -56,11 +56,22 @@ TA_t analyzerGame;
 /*****************************************************************************/
 /* Local variable definitions ('static')                                     */
 /*****************************************************************************/
-volatile static RG_t game = {RG_STATE_RANDOM_WAIT, 0, 0, 0, 0, 0, 0, 0};// keep inside function and pass it as reference
+volatile static RG_t game;
 
 /*****************************************************************************/
 /* Local function prototypes ('static')                                      */
 /*****************************************************************************/
+static RC_t RG_createRandom(void);
+
+static RC_t RG_display(void);
+
+static RC_t RG_buttonLeftPressed(void);
+
+static RC_t RG_buttonRightPressed(void);
+
+static RC_t RG_printGameResult(void);
+
+static inline void RG_resetGame(void);
 
 /*****************************************************************************/
 /* Function implementation - global ('extern') and local ('static')          */
@@ -69,6 +80,12 @@ volatile static RG_t game = {RG_STATE_RANDOM_WAIT, 0, 0, 0, 0, 0, 0, 0};// keep 
 /********************************************************************************
  * API Definitions
  ********************************************************************************/
+
+void RG_init(void)
+{
+    RG_resetGame(); // (N10)
+}
+
 
 RC_t RG_gameStateMachine(EventMaskType ev)
 {
@@ -147,15 +164,8 @@ RC_t RG_gameStateMachine(EventMaskType ev)
                 
                 //SetRelAlarm(alrm_tft,1,0); //(N4)
                 
-                // Reset to default values
-                game.rg_curState            = RG_STATE_RANDOM_WAIT;
-                game.ra_rndWait_ms          = 0;
-                game.ra_reactionTimeout_ms  = 0;
-                game.rg_totalTime           = 0;
-                game.rg_score               = 0;
-                game.rg_roundPlayed         = 0;
-                game.rg_correctPress        = 0;
-                game.rg_tftScore            = 0;
+                // Reset game
+                RG_resetGame();
                 
                 // Deleting timing analyzer instance to free up memory
                 TA_delete(&analyzerGame);
@@ -323,6 +333,18 @@ RC_t RG_displayTft(void)
     return res;
 }
 
+static inline void RG_resetGame(void)
+{
+    game.rg_curState            = RG_STATE_RANDOM_WAIT;
+    game.ra_rndWait_ms          = 0;
+    game.ra_reactionTimeout_ms  = 0;
+    game.rg_totalTime           = 0;
+    game.rg_score               = 0;
+    game.rg_roundPlayed         = 0;
+    game.rg_correctPress        = 0;
+    game.rg_tftScore            = 0;
+}
+
 #ifdef CyclicTask
 
 RC_t RG_randomTimeCheck(void)
@@ -385,7 +407,7 @@ RC_t RG_timeoutCheck(void)
  * 
  * 9. (From 0 to N-1) + 1. N = 2. (0) + 1 = 0, (1) + 1 = 2.
  * 
- * 10.
+ * 10. USE RG_resetGame(&game) - Only if: Game needs to be globally visible, have multiple game instances, building a generic library.
  * 
  */
 

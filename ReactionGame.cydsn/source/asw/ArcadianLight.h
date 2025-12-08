@@ -121,13 +121,7 @@ public:
 
 RC_t AL_fader(uint16_t tickTime_ms, uint16_t reactionTime_ms);
 
-boolean_t AL_isFaderTickDue(uint16_t tickTime_ms, uint16_t reactionTime_ms);
-
-RC_t AL_calculateIntensity(uint8_t* red, uint8_t* yellow, uint8_t* green);
-
 RC_t AL_glower(uint16_t tickTime_ms, uint16_t reactionTime_ms);
-
-uint32_t AL_updateGlowStep(uint32_t effectiveReaction, uint16_t tickTime_ms, uint32_t totalSteps);
 
 /*****************************************************************************/
 /* Private stuff, only visible for Together, declared static in cpp - File   */

@@ -1097,7 +1097,7 @@ END GROUP
                 0x00000800                ee_size = (CY_APPL_LOADABLE && ! (CY_EE_IN_BTLDR))?(CY_EE_SIZE / CY_APPL_MAX):CY_EE_SIZE
                 [!provide]                PROVIDE (CY_ECC_OFFSET, ecc_offset)
 
-.text           0x00000000     0x355e
+.text           0x00000000     0x357e
  CREATE_OBJECT_SYMBOLS
                 0x00000000                PROVIDE (__cy_interrupt_vector, RomVectors)
  *(.romvectors)
@@ -1117,653 +1117,647 @@ END GROUP
  .text.main     0x00000084       0x28 .\CortexM3\ARM_GCC_541\Debug\main.o
                 0x00000084                main
  .text.Functsk_init
-                0x000000ac       0x50 .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x000000ac       0x54 .\CortexM3\ARM_GCC_541\Debug\main.o
                 0x000000ac                Functsk_init
  .text.Functsk_game
-                0x000000fc       0x30 .\CortexM3\ARM_GCC_541\Debug\main.o
-                0x000000fc                Functsk_game
+                0x00000100       0x30 .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x00000100                Functsk_game
  .text.Functsk_arcadian
-                0x0000012c       0x18 .\CortexM3\ARM_GCC_541\Debug\main.o
-                0x0000012c                Functsk_arcadian
+                0x00000130       0x18 .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x00000130                Functsk_arcadian
  .text.Functsk_tft
-                0x00000144        0xc .\CortexM3\ARM_GCC_541\Debug\main.o
-                0x00000144                Functsk_tft
+                0x00000148        0xc .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x00000148                Functsk_tft
  .text.Functsk_background
-                0x00000150        0x4 .\CortexM3\ARM_GCC_541\Debug\main.o
-                0x00000150                Functsk_background
+                0x00000154        0x4 .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x00000154                Functsk_background
  .text.ISR2_systick_handler
-                0x00000154        0xc .\CortexM3\ARM_GCC_541\Debug\main.o
-                0x00000154                ISR2_systick_handler
+                0x00000158        0xc .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x00000158                ISR2_systick_handler
  .text.systick_handler
-                0x00000160       0x98 .\CortexM3\ARM_GCC_541\Debug\main.o
-                0x00000160                systick_handler
+                0x00000164       0x98 .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x00000164                systick_handler
  .text.ISR2_isr_button
-                0x000001f8       0x28 .\CortexM3\ARM_GCC_541\Debug\main.o
-                0x000001f8                ISR2_isr_button
+                0x000001fc       0x28 .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x000001fc                ISR2_isr_button
  .text.isr_button
-                0x00000220       0x98 .\CortexM3\ARM_GCC_541\Debug\main.o
-                0x00000220                isr_button
- .text.TA_init  0x000002b8       0x34 .\CortexM3\ARM_GCC_541\Debug\TimingAnalyzer.o
-                0x000002b8                TA_init
+                0x00000224       0x98 .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x00000224                isr_button
+ .text.TA_init  0x000002bc       0x34 .\CortexM3\ARM_GCC_541\Debug\TimingAnalyzer.o
+                0x000002bc                TA_init
  .text.TA_create
-                0x000002ec       0x7c .\CortexM3\ARM_GCC_541\Debug\TimingAnalyzer.o
-                0x000002ec                TA_create
+                0x000002f0       0x7c .\CortexM3\ARM_GCC_541\Debug\TimingAnalyzer.o
+                0x000002f0                TA_create
  .text.TA_start
-                0x00000368       0x60 .\CortexM3\ARM_GCC_541\Debug\TimingAnalyzer.o
-                0x00000368                TA_start
+                0x0000036c       0x60 .\CortexM3\ARM_GCC_541\Debug\TimingAnalyzer.o
+                0x0000036c                TA_start
  .text.TA_delete
-                0x000003c8       0x74 .\CortexM3\ARM_GCC_541\Debug\TimingAnalyzer.o
-                0x000003c8                TA_delete
+                0x000003cc       0x74 .\CortexM3\ARM_GCC_541\Debug\TimingAnalyzer.o
+                0x000003cc                TA_delete
  .text.TA_calculateElapsedTime
-                0x0000043c       0x20 .\CortexM3\ARM_GCC_541\Debug\TimingAnalyzer.o
-                0x0000043c                TA_calculateElapsedTime
- .text.TA_stop  0x0000045c       0x70 .\CortexM3\ARM_GCC_541\Debug\TimingAnalyzer.o
-                0x0000045c                TA_stop
+                0x00000440       0x20 .\CortexM3\ARM_GCC_541\Debug\TimingAnalyzer.o
+                0x00000440                TA_calculateElapsedTime
+ .text.TA_stop  0x00000460       0x70 .\CortexM3\ARM_GCC_541\Debug\TimingAnalyzer.o
+                0x00000460                TA_stop
  .text.TA_getElapsedTimeInMs
-                0x000004cc       0x10 .\CortexM3\ARM_GCC_541\Debug\TimingAnalyzer.o
-                0x000004cc                TA_getElapsedTimeInMs
+                0x000004d0       0x10 .\CortexM3\ARM_GCC_541\Debug\TimingAnalyzer.o
+                0x000004d0                TA_getElapsedTimeInMs
  .text.RG_createRandom
-                0x000004dc       0x50 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.o
-                0x000004dc                RG_createRandom
+                0x000004e0       0x50 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.o
  .text.RG_display
-                0x0000052c       0x48 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.o
-                0x0000052c                RG_display
- .text.RG_buttonLeftPressed
-                0x00000574       0x70 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.o
-                0x00000574                RG_buttonLeftPressed
- .text.RG_buttonRightPressed
-                0x000005e4       0x70 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.o
-                0x000005e4                RG_buttonRightPressed
+                0x00000530       0x48 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.o
  .text.RG_printGameResult
-                0x00000654       0x4c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.o
-                0x00000654                RG_printGameResult
+                0x00000578       0x4c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.o
+ .text.RG_buttonLeftPressed
+                0x000005c4       0x70 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.o
+ .text.RG_buttonRightPressed
+                0x00000634       0x70 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.o
+ .text.RG_init  0x000006a4       0x1c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.o
+                0x000006a4                RG_init
  .text.RG_gameStateMachine
-                0x000006a0       0xcc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.o
-                0x000006a0                RG_gameStateMachine
+                0x000006c0       0xcc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.o
+                0x000006c0                RG_gameStateMachine
  .text.RG_displayTft
-                0x0000076c       0x44 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.o
-                0x0000076c                RG_displayTft
+                0x0000078c       0x44 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.o
+                0x0000078c                RG_displayTft
  .text.AL_isFaderTickDue
-                0x000007b0       0x3c .\CortexM3\ARM_GCC_541\Debug\ArcadianLight.o
-                0x000007b0                AL_isFaderTickDue
+                0x000007d0       0x3c .\CortexM3\ARM_GCC_541\Debug\ArcadianLight.o
  .text.AL_calculateIntensity
-                0x000007ec       0x4c .\CortexM3\ARM_GCC_541\Debug\ArcadianLight.o
-                0x000007ec                AL_calculateIntensity
- .text.AL_fader
-                0x00000838       0x50 .\CortexM3\ARM_GCC_541\Debug\ArcadianLight.o
-                0x00000838                AL_fader
+                0x0000080c       0x4c .\CortexM3\ARM_GCC_541\Debug\ArcadianLight.o
  .text.AL_updateGlowStep
-                0x00000888       0x58 .\CortexM3\ARM_GCC_541\Debug\ArcadianLight.o
-                0x00000888                AL_updateGlowStep
+                0x00000858       0x58 .\CortexM3\ARM_GCC_541\Debug\ArcadianLight.o
+ .text.AL_fader
+                0x000008b0       0x50 .\CortexM3\ARM_GCC_541\Debug\ArcadianLight.o
+                0x000008b0                AL_fader
  .text.AL_glower
-                0x000008e0       0x44 .\CortexM3\ARM_GCC_541\Debug\ArcadianLight.o
-                0x000008e0                AL_glower
+                0x00000900       0x44 .\CortexM3\ARM_GCC_541\Debug\ArcadianLight.o
+                0x00000900                AL_glower
  .text.LOG_send
-                0x00000924       0x2c .\CortexM3\ARM_GCC_541\Debug\logging.o
-                0x00000924                LOG_send
+                0x00000944       0x2c .\CortexM3\ARM_GCC_541\Debug\logging.o
+                0x00000944                LOG_send
  .text.SEVEN_writeRandom
-                0x00000950       0x4c .\CortexM3\ARM_GCC_541\Debug\seven.o
-                0x00000950                SEVEN_writeRandom
+                0x00000970       0x4c .\CortexM3\ARM_GCC_541\Debug\seven.o
+                0x00000970                SEVEN_writeRandom
  .text.SEVEN_Clear
-                0x0000099c       0x1c .\CortexM3\ARM_GCC_541\Debug\seven.o
-                0x0000099c                SEVEN_Clear
+                0x000009bc       0x1c .\CortexM3\ARM_GCC_541\Debug\seven.o
+                0x000009bc                SEVEN_Clear
  .text.SEVEN_Init
-                0x000009b8       0x14 .\CortexM3\ARM_GCC_541\Debug\seven.o
-                0x000009b8                SEVEN_Init
+                0x000009d8       0x14 .\CortexM3\ARM_GCC_541\Debug\seven.o
+                0x000009d8                SEVEN_Init
  .text.SEVEN_ClearAll
-                0x000009cc       0x2c .\CortexM3\ARM_GCC_541\Debug\seven.o
-                0x000009cc                SEVEN_ClearAll
+                0x000009ec       0x2c .\CortexM3\ARM_GCC_541\Debug\seven.o
+                0x000009ec                SEVEN_ClearAll
  .text.Pins_Init
-                0x000009f8       0x18 .\CortexM3\ARM_GCC_541\Debug\pins.o
-                0x000009f8                Pins_Init
+                0x00000a18       0x18 .\CortexM3\ARM_GCC_541\Debug\pins.o
+                0x00000a18                Pins_Init
  .text.BUTTON_IsPressed
-                0x00000a10       0x30 .\CortexM3\ARM_GCC_541\Debug\button.o
-                0x00000a10                BUTTON_IsPressed
- .text.LED_Set  0x00000a40       0x60 .\CortexM3\ARM_GCC_541\Debug\led.o
-                0x00000a40                LED_Set
- .text.RGB_Set  0x00000aa0       0x60 .\CortexM3\ARM_GCC_541\Debug\led.o
-                0x00000aa0                RGB_Set
+                0x00000a30       0x30 .\CortexM3\ARM_GCC_541\Debug\button.o
+                0x00000a30                BUTTON_IsPressed
+ .text.LED_Set  0x00000a60       0x60 .\CortexM3\ARM_GCC_541\Debug\led.o
+                0x00000a60                LED_Set
+ .text.RGB_Set  0x00000ac0       0x60 .\CortexM3\ARM_GCC_541\Debug\led.o
+                0x00000ac0                RGB_Set
  .text.LED_Init
-                0x00000b00       0x4c .\CortexM3\ARM_GCC_541\Debug\led.o
-                0x00000b00                LED_Init
+                0x00000b20       0x4c .\CortexM3\ARM_GCC_541\Debug\led.o
+                0x00000b20                LED_Init
  .text.LED_RGB_Set
-                0x00000b4c       0x1c .\CortexM3\ARM_GCC_541\Debug\led.o
-                0x00000b4c                LED_RGB_Set
+                0x00000b6c       0x1c .\CortexM3\ARM_GCC_541\Debug\led.o
+                0x00000b6c                LED_RGB_Set
  .text.LED_PWM_Set
-                0x00000b68       0x1c .\CortexM3\ARM_GCC_541\Debug\led.o
-                0x00000b68                LED_PWM_Set
+                0x00000b88       0x1c .\CortexM3\ARM_GCC_541\Debug\led.o
+                0x00000b88                LED_PWM_Set
  .text.__TFT_SPI_TX_ISR
-                0x00000b84       0x58 .\CortexM3\ARM_GCC_541\Debug\tft.o
-                0x00000b84                __TFT_SPI_TX_ISR
+                0x00000ba4       0x58 .\CortexM3\ARM_GCC_541\Debug\tft.o
+                0x00000ba4                __TFT_SPI_TX_ISR
  .text.TFT_send
-                0x00000bdc       0x84 .\CortexM3\ARM_GCC_541\Debug\tft.o
+                0x00000bfc       0x84 .\CortexM3\ARM_GCC_541\Debug\tft.o
  .text.setAddrWindow
-                0x00000c60       0x88 .\CortexM3\ARM_GCC_541\Debug\tft.o
+                0x00000c80       0x88 .\CortexM3\ARM_GCC_541\Debug\tft.o
  .text.TFT_setBacklight
-                0x00000ce8       0x10 .\CortexM3\ARM_GCC_541\Debug\tft.o
-                0x00000ce8                TFT_setBacklight
+                0x00000d08       0x10 .\CortexM3\ARM_GCC_541\Debug\tft.o
+                0x00000d08                TFT_setBacklight
  .text.TFT_setRotation
-                0x00000cf8       0xc0 .\CortexM3\ARM_GCC_541\Debug\tft.o
-                0x00000cf8                TFT_setRotation
+                0x00000d18       0xc0 .\CortexM3\ARM_GCC_541\Debug\tft.o
+                0x00000d18                TFT_setRotation
  .text.TFT_setCursor
-                0x00000db8       0x10 .\CortexM3\ARM_GCC_541\Debug\tft.o
-                0x00000db8                TFT_setCursor
+                0x00000dd8       0x10 .\CortexM3\ARM_GCC_541\Debug\tft.o
+                0x00000dd8                TFT_setCursor
  .text.TFT_setTextColor
-                0x00000dc8        0xc .\CortexM3\ARM_GCC_541\Debug\tft.o
-                0x00000dc8                TFT_setTextColor
+                0x00000de8        0xc .\CortexM3\ARM_GCC_541\Debug\tft.o
+                0x00000de8                TFT_setTextColor
  .text.TFT_getBGcolor
-                0x00000dd4        0xc .\CortexM3\ARM_GCC_541\Debug\tft.o
-                0x00000dd4                TFT_getBGcolor
+                0x00000df4        0xc .\CortexM3\ARM_GCC_541\Debug\tft.o
+                0x00000df4                TFT_getBGcolor
  .text.TFT_setTextSize
-                0x00000de0       0x10 .\CortexM3\ARM_GCC_541\Debug\tft.o
-                0x00000de0                TFT_setTextSize
+                0x00000e00       0x10 .\CortexM3\ARM_GCC_541\Debug\tft.o
+                0x00000e00                TFT_setTextSize
  .text.TFT_fillRect
-                0x00000df0       0x8c .\CortexM3\ARM_GCC_541\Debug\tft.o
-                0x00000df0                TFT_fillRect
+                0x00000e10       0x8c .\CortexM3\ARM_GCC_541\Debug\tft.o
+                0x00000e10                TFT_fillRect
  .text.TFT_fillScreen
-                0x00000e7c       0x24 .\CortexM3\ARM_GCC_541\Debug\tft.o
-                0x00000e7c                TFT_fillScreen
+                0x00000e9c       0x24 .\CortexM3\ARM_GCC_541\Debug\tft.o
+                0x00000e9c                TFT_fillScreen
  .text.TFT_init
-                0x00000ea0       0xe4 .\CortexM3\ARM_GCC_541\Debug\tft.o
-                0x00000ea0                TFT_init
+                0x00000ec0       0xe4 .\CortexM3\ARM_GCC_541\Debug\tft.o
+                0x00000ec0                TFT_init
  .text.TFT_clearScreen
-                0x00000f84        0xc .\CortexM3\ARM_GCC_541\Debug\tft.o
-                0x00000f84                TFT_clearScreen
+                0x00000fa4        0xc .\CortexM3\ARM_GCC_541\Debug\tft.o
+                0x00000fa4                TFT_clearScreen
  .text.TFT_drawPixel
-                0x00000f90       0x50 .\CortexM3\ARM_GCC_541\Debug\tft.o
-                0x00000f90                TFT_drawPixel
+                0x00000fb0       0x50 .\CortexM3\ARM_GCC_541\Debug\tft.o
+                0x00000fb0                TFT_drawPixel
  .text.TFT_fastVLine
-                0x00000fe0       0x64 .\CortexM3\ARM_GCC_541\Debug\tft.o
-                0x00000fe0                TFT_fastVLine
+                0x00001000       0x64 .\CortexM3\ARM_GCC_541\Debug\tft.o
+                0x00001000                TFT_fastVLine
  .text.TFT_drawChar
-                0x00001044      0x21c .\CortexM3\ARM_GCC_541\Debug\tft.o
-                0x00001044                TFT_drawChar
+                0x00001064      0x21c .\CortexM3\ARM_GCC_541\Debug\tft.o
+                0x00001064                TFT_drawChar
  .text.TFT_write
-                0x00001260      0x144 .\CortexM3\ARM_GCC_541\Debug\tft.o
-                0x00001260                TFT_write
+                0x00001280      0x144 .\CortexM3\ARM_GCC_541\Debug\tft.o
+                0x00001280                TFT_write
  .text.TFT_print
-                0x000013a4       0x14 .\CortexM3\ARM_GCC_541\Debug\tft.o
-                0x000013a4                TFT_print
+                0x000013c4       0x14 .\CortexM3\ARM_GCC_541\Debug\tft.o
+                0x000013c4                TFT_print
  .text.CyClockStartupError
-                0x000013b8        0x4 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x000013d8        0x4 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.cfg_write_bytes32
-                0x000013bc       0x34 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x000013dc       0x34 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.AnalogSetDefault
-                0x000013f0       0x28 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00001410       0x28 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.CYMEMZERO
-                0x00001418        0xc .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00001438        0xc .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.ClockSetup
-                0x00001424       0xd8 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00001444       0xd8 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.CYCONFIGCPY
-                0x000014fc        0x8 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x0000151c        0x8 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.cyfitter_cfg
-                0x00001504      0x138 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
-                0x00001504                cyfitter_cfg
+                0x00001524      0x138 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00001524                cyfitter_cfg
  .text.IntDefaultHandler
-                0x0000163c       0x10 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
-                0x0000163c                IntDefaultHandler
- .text._sbrk    0x0000164c       0x30 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
-                0x0000164c                _sbrk
- .text.Start_c  0x0000167c       0x4c .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
-                0x0000167c                Start_c
+                0x0000165c       0x10 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x0000165c                IntDefaultHandler
+ .text._sbrk    0x0000166c       0x30 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x0000166c                _sbrk
+ .text.Start_c  0x0000169c       0x4c .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x0000169c                Start_c
  .text.initialize_psoc
-                0x000016c8       0x68 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
-                0x000016c8                initialize_psoc
+                0x000016e8       0x68 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x000016e8                initialize_psoc
  .text.RED_LED_Write
-                0x00001730       0x18 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RED_LED.o)
-                0x00001730                RED_LED_Write
+                0x00001750       0x18 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RED_LED.o)
+                0x00001750                RED_LED_Write
  .text.YELLOW_LED_Write
-                0x00001748       0x18 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(YELLOW_LED.o)
-                0x00001748                YELLOW_LED_Write
+                0x00001768       0x18 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(YELLOW_LED.o)
+                0x00001768                YELLOW_LED_Write
  .text.GREEN_LED_Write
-                0x00001760       0x18 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(GREEN_LED.o)
-                0x00001760                GREEN_LED_Write
+                0x00001780       0x18 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(GREEN_LED.o)
+                0x00001780                GREEN_LED_Write
  .text.UART_LOG_Init
-                0x00001778       0x24 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG.o)
-                0x00001778                UART_LOG_Init
+                0x00001798       0x24 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG.o)
+                0x00001798                UART_LOG_Init
  .text.UART_LOG_Enable
-                0x0000179c       0x38 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG.o)
-                0x0000179c                UART_LOG_Enable
+                0x000017bc       0x38 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG.o)
+                0x000017bc                UART_LOG_Enable
  .text.UART_LOG_Start
-                0x000017d4       0x1c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG.o)
-                0x000017d4                UART_LOG_Start
+                0x000017f4       0x1c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG.o)
+                0x000017f4                UART_LOG_Start
  .text.UART_LOG_PutChar
-                0x000017f0       0x18 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG.o)
-                0x000017f0                UART_LOG_PutChar
+                0x00001810       0x18 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG.o)
+                0x00001810                UART_LOG_PutChar
  .text.UART_LOG_PutString
-                0x00001808       0x24 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG.o)
-                0x00001808                UART_LOG_PutString
+                0x00001828       0x24 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG.o)
+                0x00001828                UART_LOG_PutString
  .text.UART_LOG_IntClock_Start
-                0x0000182c       0x1c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG_IntClock.o)
-                0x0000182c                UART_LOG_IntClock_Start
- .text.CyHalt   0x00001848        0x4 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyLib.o)
-                0x00001848                CyHalt
- .text.CyDelay  0x0000184c       0x2c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyLib.o)
-                0x0000184c                CyDelay
+                0x0000184c       0x1c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG_IntClock.o)
+                0x0000184c                UART_LOG_IntClock_Start
+ .text.CyHalt   0x00001868        0x4 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyLib.o)
+                0x00001868                CyHalt
+ .text.CyDelay  0x0000186c       0x2c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyLib.o)
+                0x0000186c                CyDelay
  .text.CyIntSetPriority
-                0x00001878       0x30 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyLib.o)
-                0x00001878                CyIntSetPriority
+                0x00001898       0x30 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyLib.o)
+                0x00001898                CyIntSetPriority
  .text.EE_oo_ActivateTask
-                0x000018a8       0xe8 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_activate.o)
-                0x000018a8                EE_oo_ActivateTask
+                0x000018c8       0xe8 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_activate.o)
+                0x000018c8                EE_oo_ActivateTask
  .text.EE_oo_SetRelAlarm
-                0x00001990       0x80 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_alsetrel.o)
-                0x00001990                EE_oo_SetRelAlarm
+                0x000019b0       0x80 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_alsetrel.o)
+                0x000019b0                EE_oo_SetRelAlarm
  .text.EE_oo_handle_action_callback
-                0x00001a10        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_altick.o)
+                0x00001a30        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_altick.o)
  .text.EE_oo_handle_action_task
-                0x00001a1c       0x4c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_altick.o)
+                0x00001a3c       0x4c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_altick.o)
  .text.EE_oo_handle_action_event
-                0x00001a68       0x60 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_altick.o)
+                0x00001a88       0x60 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_altick.o)
  .text.EE_oo_handle_action
-                0x00001ac8       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_altick.o)
+                0x00001ae8       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_altick.o)
  .text.EE_oo_counter_object_insert
-                0x00001af0       0x9c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_altick.o)
-                0x00001af0                EE_oo_counter_object_insert
+                0x00001b10       0x9c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_altick.o)
+                0x00001b10                EE_oo_counter_object_insert
  .text.EE_oo_IncrementCounterImplementation
-                0x00001b8c      0x100 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_altick.o)
-                0x00001b8c                EE_oo_IncrementCounterImplementation
+                0x00001bac      0x100 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_altick.o)
+                0x00001bac                EE_oo_IncrementCounterImplementation
  .text.EE_oo_IncrementCounter
-                0x00001c8c       0xb0 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_altick.o)
-                0x00001c8c                EE_oo_IncrementCounter
+                0x00001cac       0xb0 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_altick.o)
+                0x00001cac                EE_oo_IncrementCounter
  .text.EE_oo_ClearEvent
-                0x00001d3c       0x5c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evclear.o)
-                0x00001d3c                EE_oo_ClearEvent
+                0x00001d5c       0x5c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evclear.o)
+                0x00001d5c                EE_oo_ClearEvent
  .text.EE_oo_GetEvent
-                0x00001d98       0x40 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evget.o)
-                0x00001d98                EE_oo_GetEvent
+                0x00001db8       0x40 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evget.o)
+                0x00001db8                EE_oo_GetEvent
  .text.EE_oo_SetEvent
-                0x00001dd8      0x100 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evset.o)
-                0x00001dd8                EE_oo_SetEvent
+                0x00001df8      0x100 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evset.o)
+                0x00001df8                EE_oo_SetEvent
  .text.EE_oo_WaitEvent
-                0x00001ed8      0x124 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evwait.o)
-                0x00001ed8                EE_oo_WaitEvent
+                0x00001ef8      0x124 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evwait.o)
+                0x00001ef8                EE_oo_WaitEvent
  .text.EE_oo_GetCounterValue
-                0x00001ffc       0x24 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_getcountervalue.o)
-                0x00001ffc                EE_oo_GetCounterValue
+                0x0000201c       0x24 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_getcountervalue.o)
+                0x0000201c                EE_oo_GetCounterValue
  .text.EE_IRQ_run_next_task
-                0x00002020       0x30 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_irqendin.o)
+                0x00002040       0x30 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_irqendin.o)
  .text.EE_IRQ_end_instance
-                0x00002050       0x68 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_irqendin.o)
-                0x00002050                EE_IRQ_end_instance
+                0x00002070       0x68 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_irqendin.o)
+                0x00002070                EE_IRQ_end_instance
  .text.EE_IRQ_end_post_stub
-                0x000020b8       0x14 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_irqendin.o)
-                0x000020b8                EE_IRQ_end_post_stub
+                0x000020d8       0x14 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_irqendin.o)
+                0x000020d8                EE_IRQ_end_post_stub
  .text.EE_rq2stk_exchange
-                0x000020cc       0x88 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_exchg.o)
-                0x000020cc                EE_rq2stk_exchange
+                0x000020ec       0x88 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_exchg.o)
+                0x000020ec                EE_rq2stk_exchange
  .text.EE_rq_queryfirst
-                0x00002154       0x44 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_first.o)
-                0x00002154                EE_rq_queryfirst
+                0x00002174       0x44 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_first.o)
+                0x00002174                EE_rq_queryfirst
  .text.EE_rq_insert
-                0x00002198       0x74 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_inser.o)
-                0x00002198                EE_rq_insert
+                0x000021b8       0x74 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_inser.o)
+                0x000021b8                EE_rq_insert
  .text.compute_task_tid
-                0x0000220c       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_startos.o)
+                0x0000222c       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_startos.o)
  .text.EE_oo_start_os
-                0x0000221c        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_startos.o)
+                0x0000223c        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_startos.o)
  .text.EE_oo_autostart_tasks
-                0x00002228       0x60 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_startos.o)
+                0x00002248       0x60 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_startos.o)
  .text.EE_oo_autostart_os
-                0x00002288        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_startos.o)
+                0x000022a8        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_startos.o)
  .text.EE_oo_StartOS
-                0x00002294       0x8c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_startos.o)
-                0x00002294                EE_oo_StartOS
+                0x000022b4       0x8c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_startos.o)
+                0x000022b4                EE_oo_StartOS
  .text.EE_oo_TerminateTask
-                0x00002320       0x50 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_terminat.o)
-                0x00002320                EE_oo_TerminateTask
+                0x00002340       0x50 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_terminat.o)
+                0x00002340                EE_oo_TerminateTask
  .text.EE_system_init
-                0x00002370       0x48 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_cortex_mx_ee_utils.o)
-                0x00002370                EE_system_init
+                0x00002390       0x48 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_cortex_mx_ee_utils.o)
+                0x00002390                EE_system_init
  .text.ButtonRight_Read
-                0x000023b8       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ButtonRight.o)
-                0x000023b8                ButtonRight_Read
+                0x000023d8       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ButtonRight.o)
+                0x000023d8                ButtonRight_Read
  .text.ButtonLeft_Read
-                0x000023c8       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ButtonLeft.o)
-                0x000023c8                ButtonLeft_Read
+                0x000023e8       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ButtonLeft.o)
+                0x000023e8                ButtonLeft_Read
  .text.SEVEN_SELECT_Write
-                0x000023d8       0x18 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_SELECT.o)
-                0x000023d8                SEVEN_SELECT_Write
+                0x000023f8       0x18 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_SELECT.o)
+                0x000023f8                SEVEN_SELECT_Write
  .text.SEVEN_reg_Write
-                0x000023f0        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_reg.o)
-                0x000023f0                SEVEN_reg_Write
+                0x00002410        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_reg.o)
+                0x00002410                SEVEN_reg_Write
  .text.SEVEN_reg_Read
-                0x000023fc        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_reg.o)
-                0x000023fc                SEVEN_reg_Read
+                0x0000241c        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_reg.o)
+                0x0000241c                SEVEN_reg_Read
  .text.TFT_SPI_Enable
-                0x00002408       0x34 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI.o)
-                0x00002408                TFT_SPI_Enable
+                0x00002428       0x34 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI.o)
+                0x00002428                TFT_SPI_Enable
  .text.TFT_SPI_ReadTxStatus
-                0x0000243c        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI.o)
-                0x0000243c                TFT_SPI_ReadTxStatus
+                0x0000245c        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI.o)
+                0x0000245c                TFT_SPI_ReadTxStatus
  .text.TFT_SPI_ReadRxStatus
-                0x00002448        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI.o)
-                0x00002448                TFT_SPI_ReadRxStatus
+                0x00002468        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI.o)
+                0x00002468                TFT_SPI_ReadRxStatus
  .text.TFT_SPI_WriteTxData
-                0x00002454       0x18 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI.o)
-                0x00002454                TFT_SPI_WriteTxData
+                0x00002474       0x18 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI.o)
+                0x00002474                TFT_SPI_WriteTxData
  .text.TFT_SPI_ClearFIFO
-                0x0000246c       0x3c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI.o)
-                0x0000246c                TFT_SPI_ClearFIFO
+                0x0000248c       0x3c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI.o)
+                0x0000248c                TFT_SPI_ClearFIFO
  .text.TFT_SPI_Init
-                0x000024a8       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI.o)
-                0x000024a8                TFT_SPI_Init
+                0x000024c8       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI.o)
+                0x000024c8                TFT_SPI_Init
  .text.TFT_SPI_Start
-                0x000024d0       0x1c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI.o)
-                0x000024d0                TFT_SPI_Start
+                0x000024f0       0x1c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI.o)
+                0x000024f0                TFT_SPI_Start
  .text.TFT_DC_Write
-                0x000024ec       0x18 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_DC.o)
-                0x000024ec                TFT_DC_Write
+                0x0000250c       0x18 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_DC.o)
+                0x0000250c                TFT_DC_Write
  .text.TFT_RES_Write
-                0x00002504       0x18 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_RES.o)
-                0x00002504                TFT_RES_Write
+                0x00002524       0x18 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_RES.o)
+                0x00002524                TFT_RES_Write
  .text.TFT_BackLight_Enable
-                0x0000251c       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_BackLight.o)
-                0x0000251c                TFT_BackLight_Enable
+                0x0000253c       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_BackLight.o)
+                0x0000253c                TFT_BackLight_Enable
  .text.TFT_BackLight_WritePeriod
-                0x00002544        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_BackLight.o)
-                0x00002544                TFT_BackLight_WritePeriod
+                0x00002564        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_BackLight.o)
+                0x00002564                TFT_BackLight_WritePeriod
  .text.TFT_BackLight_WriteCompare
-                0x00002550        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_BackLight.o)
-                0x00002550                TFT_BackLight_WriteCompare
+                0x00002570        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_BackLight.o)
+                0x00002570                TFT_BackLight_WriteCompare
  .text.TFT_BackLight_SetInterruptMode
-                0x0000255c        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_BackLight.o)
-                0x0000255c                TFT_BackLight_SetInterruptMode
+                0x0000257c        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_BackLight.o)
+                0x0000257c                TFT_BackLight_SetInterruptMode
  .text.TFT_BackLight_Init
-                0x00002568       0x74 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_BackLight.o)
-                0x00002568                TFT_BackLight_Init
+                0x00002588       0x74 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_BackLight.o)
+                0x00002588                TFT_BackLight_Init
  .text.TFT_BackLight_Start
-                0x000025dc       0x1c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_BackLight.o)
-                0x000025dc                TFT_BackLight_Start
+                0x000025fc       0x1c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_BackLight.o)
+                0x000025fc                TFT_BackLight_Start
  .text.TFT_SPI_IntClock_Start
-                0x000025f8       0x1c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI_IntClock.o)
-                0x000025f8                TFT_SPI_IntClock_Start
+                0x00002618       0x1c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI_IntClock.o)
+                0x00002618                TFT_SPI_IntClock_Start
  .text.PWM_RED_Enable
-                0x00002614       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_RED.o)
-                0x00002614                PWM_RED_Enable
+                0x00002634       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_RED.o)
+                0x00002634                PWM_RED_Enable
  .text.PWM_RED_WriteCounter
-                0x00002624        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_RED.o)
-                0x00002624                PWM_RED_WriteCounter
+                0x00002644        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_RED.o)
+                0x00002644                PWM_RED_WriteCounter
  .text.PWM_RED_WritePeriod
-                0x00002630        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_RED.o)
-                0x00002630                PWM_RED_WritePeriod
+                0x00002650        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_RED.o)
+                0x00002650                PWM_RED_WritePeriod
  .text.PWM_RED_WriteCompare
-                0x0000263c        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_RED.o)
-                0x0000263c                PWM_RED_WriteCompare
+                0x0000265c        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_RED.o)
+                0x0000265c                PWM_RED_WriteCompare
  .text.PWM_RED_Init
-                0x00002648       0x34 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_RED.o)
-                0x00002648                PWM_RED_Init
+                0x00002668       0x34 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_RED.o)
+                0x00002668                PWM_RED_Init
  .text.PWM_RED_Start
-                0x0000267c       0x1c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_RED.o)
-                0x0000267c                PWM_RED_Start
+                0x0000269c       0x1c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_RED.o)
+                0x0000269c                PWM_RED_Start
  .text.PWM_YELLOW_Enable
-                0x00002698       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_YELLOW.o)
-                0x00002698                PWM_YELLOW_Enable
+                0x000026b8       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_YELLOW.o)
+                0x000026b8                PWM_YELLOW_Enable
  .text.PWM_YELLOW_WriteCounter
-                0x000026a8        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_YELLOW.o)
-                0x000026a8                PWM_YELLOW_WriteCounter
+                0x000026c8        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_YELLOW.o)
+                0x000026c8                PWM_YELLOW_WriteCounter
  .text.PWM_YELLOW_WritePeriod
-                0x000026b4        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_YELLOW.o)
-                0x000026b4                PWM_YELLOW_WritePeriod
+                0x000026d4        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_YELLOW.o)
+                0x000026d4                PWM_YELLOW_WritePeriod
  .text.PWM_YELLOW_WriteCompare
-                0x000026c0        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_YELLOW.o)
-                0x000026c0                PWM_YELLOW_WriteCompare
+                0x000026e0        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_YELLOW.o)
+                0x000026e0                PWM_YELLOW_WriteCompare
  .text.PWM_YELLOW_Init
-                0x000026cc       0x34 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_YELLOW.o)
-                0x000026cc                PWM_YELLOW_Init
+                0x000026ec       0x34 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_YELLOW.o)
+                0x000026ec                PWM_YELLOW_Init
  .text.PWM_YELLOW_Start
-                0x00002700       0x1c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_YELLOW.o)
-                0x00002700                PWM_YELLOW_Start
+                0x00002720       0x1c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_YELLOW.o)
+                0x00002720                PWM_YELLOW_Start
  .text.PWM_GREEN_Enable
-                0x0000271c       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_GREEN.o)
-                0x0000271c                PWM_GREEN_Enable
+                0x0000273c       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_GREEN.o)
+                0x0000273c                PWM_GREEN_Enable
  .text.PWM_GREEN_WriteCounter
-                0x0000272c        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_GREEN.o)
-                0x0000272c                PWM_GREEN_WriteCounter
+                0x0000274c        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_GREEN.o)
+                0x0000274c                PWM_GREEN_WriteCounter
  .text.PWM_GREEN_WritePeriod
-                0x00002738        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_GREEN.o)
-                0x00002738                PWM_GREEN_WritePeriod
+                0x00002758        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_GREEN.o)
+                0x00002758                PWM_GREEN_WritePeriod
  .text.PWM_GREEN_WriteCompare
-                0x00002744        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_GREEN.o)
-                0x00002744                PWM_GREEN_WriteCompare
+                0x00002764        0xc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_GREEN.o)
+                0x00002764                PWM_GREEN_WriteCompare
  .text.PWM_GREEN_Init
-                0x00002750       0x34 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_GREEN.o)
-                0x00002750                PWM_GREEN_Init
+                0x00002770       0x34 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_GREEN.o)
+                0x00002770                PWM_GREEN_Init
  .text.PWM_GREEN_Start
-                0x00002784       0x1c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_GREEN.o)
-                0x00002784                PWM_GREEN_Start
+                0x000027a4       0x1c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_GREEN.o)
+                0x000027a4                PWM_GREEN_Start
  .text.RGB_RED_Write
-                0x000027a0       0x18 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_RED.o)
-                0x000027a0                RGB_RED_Write
+                0x000027c0       0x18 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_RED.o)
+                0x000027c0                RGB_RED_Write
  .text.RGB_GREEN_Write
-                0x000027b8       0x18 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_GREEN.o)
-                0x000027b8                RGB_GREEN_Write
+                0x000027d8       0x18 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_GREEN.o)
+                0x000027d8                RGB_GREEN_Write
  .text.RGB_BLUE_Write
-                0x000027d0       0x18 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_BLUE.o)
-                0x000027d0                RGB_BLUE_Write
- .text          0x000027e8       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyBootAsmGnu.o)
-                0x000027e8                CyDelayCycles
-                0x000027f8                CyEnterCriticalSection
-                0x00002800                CyExitCriticalSection
- .text          0x00002808       0x7c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_change_context_isr.o)
-                0x00002808                EE_set_switch_context_pri
-                0x00002822                EE_switch_context
-                0x0000282c                EE_cortex_mx_pendsv_ISR
-                0x00002868                EE_cortex_mx_svc_ISR
- .text          0x00002884       0x24 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_irq_stack.o)
-                0x00002884                EE_cortex_mx_change_IRQ_stack
-                0x00002896                EE_cortex_mx_change_IRQ_stack_back
- .text          0x000028a8       0x68 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_multi_context.o)
-                0x000028a8                EE_cortex_mx_change_context
- .text          0x00002910       0x80 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_oo.o)
-                0x00002910                EE_hal_terminate_savestk
-                0x0000295a                EE_hal_terminate_task
+                0x000027f0       0x18 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_BLUE.o)
+                0x000027f0                RGB_BLUE_Write
+ .text          0x00002808       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyBootAsmGnu.o)
+                0x00002808                CyDelayCycles
+                0x00002818                CyEnterCriticalSection
+                0x00002820                CyExitCriticalSection
+ .text          0x00002828       0x7c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_change_context_isr.o)
+                0x00002828                EE_set_switch_context_pri
+                0x00002842                EE_switch_context
+                0x0000284c                EE_cortex_mx_pendsv_ISR
+                0x00002888                EE_cortex_mx_svc_ISR
+ .text          0x000028a4       0x24 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_irq_stack.o)
+                0x000028a4                EE_cortex_mx_change_IRQ_stack
+                0x000028b6                EE_cortex_mx_change_IRQ_stack_back
+ .text          0x000028c8       0x68 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_multi_context.o)
+                0x000028c8                EE_cortex_mx_change_context
+ .text          0x00002930       0x80 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_oo.o)
+                0x00002930                EE_hal_terminate_savestk
+                0x0000297a                EE_hal_terminate_task
  .text.EE_thread_not_terminated
-                0x00002990       0x18 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_tnterm.o)
-                0x00002990                EE_thread_not_terminated
+                0x000029b0       0x18 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_tnterm.o)
+                0x000029b0                EE_thread_not_terminated
  .text.EE_oo_thread_stub
-                0x000029a8       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_tstub.o)
-                0x000029a8                EE_oo_thread_stub
+                0x000029c8       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_tstub.o)
+                0x000029c8                EE_oo_thread_stub
  .text.EE_oo_release_all_resources
-                0x000029b8       0x58 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_ulockallres.o)
-                0x000029b8                EE_oo_release_all_resources
+                0x000029d8       0x58 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_ulockallres.o)
+                0x000029d8                EE_oo_release_all_resources
  .text.EE_std_run_task_code
-                0x00002a10       0x18 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_cortex_mx_ee_context.o)
-                0x00002a10                EE_std_run_task_code
+                0x00002a30       0x18 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_cortex_mx_ee_context.o)
+                0x00002a30                EE_std_run_task_code
  .text.EE_std_need_context_change
-                0x00002a28       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_cortex_mx_ee_context.o)
-                0x00002a28                EE_std_need_context_change
+                0x00002a48       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_cortex_mx_ee_context.o)
+                0x00002a48                EE_std_need_context_change
  .text.EE_thread_rnact_max
-                0x00002a50       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_thendin.o)
+                0x00002a70       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_thendin.o)
  .text.EE_thread_endcycle_next
-                0x00002a70       0x30 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_thendin.o)
+                0x00002a90       0x30 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_thendin.o)
  .text.EE_thread_end_instance
-                0x00002aa0      0x108 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_thendin.o)
-                0x00002aa0                EE_thread_end_instance
- .text.__errno  0x00002ba8        0xc c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
-                0x00002ba8                __errno
+                0x00002ac0      0x108 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_thendin.o)
+                0x00002ac0                EE_thread_end_instance
+ .text.__errno  0x00002bc8        0xc c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+                0x00002bc8                __errno
  .text.__libc_init_array
-                0x00002bb4       0x4c c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
-                0x00002bb4                __libc_init_array
- .text.memcpy   0x00002c00       0x16 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
-                0x00002c00                memcpy
- .text.memset   0x00002c16       0x10 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
-                0x00002c16                memset
- *fill*         0x00002c26        0x2 
- .text.srand    0x00002c28       0x50 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-rand.o)
-                0x00002c28                srand
- .text.rand     0x00002c78       0x74 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-rand.o)
-                0x00002c78                rand
+                0x00002bd4       0x4c c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+                0x00002bd4                __libc_init_array
+ .text.memcpy   0x00002c20       0x16 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
+                0x00002c20                memcpy
+ .text.memset   0x00002c36       0x10 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+                0x00002c36                memset
+ *fill*         0x00002c46        0x2 
+ .text.srand    0x00002c48       0x50 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-rand.o)
+                0x00002c48                srand
+ .text.rand     0x00002c98       0x74 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-rand.o)
+                0x00002c98                rand
  .text.snprintf
-                0x00002cec       0x64 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-snprintf.o)
-                0x00002cec                sniprintf
-                0x00002cec                snprintf
- .text.malloc   0x00002d50       0x10 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-malloc.o)
-                0x00002d50                malloc
- .text._free_r  0x00002d60       0x98 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-freer.o)
-                0x00002d60                _free_r
+                0x00002d0c       0x64 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-snprintf.o)
+                0x00002d0c                sniprintf
+                0x00002d0c                snprintf
+ .text.malloc   0x00002d70       0x10 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-malloc.o)
+                0x00002d70                malloc
+ .text._free_r  0x00002d80       0x98 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-freer.o)
+                0x00002d80                _free_r
  .text._malloc_r
-                0x00002df8       0xbc c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o)
-                0x00002df8                _malloc_r
+                0x00002e18       0xbc c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o)
+                0x00002e18                _malloc_r
  .text.__ssputs_r
-                0x00002eb4       0xb2 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
-                0x00002eb4                __ssputs_r
- *fill*         0x00002f66        0x2 
+                0x00002ed4       0xb2 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x00002ed4                __ssputs_r
+ *fill*         0x00002f86        0x2 
  .text._svfprintf_r
-                0x00002f68      0x1e8 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
-                0x00002f68                _svfiprintf_r
-                0x00002f68                _svfprintf_r
+                0x00002f88      0x1e8 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x00002f88                _svfiprintf_r
+                0x00002f88                _svfprintf_r
  .text._printf_common
-                0x00003150       0xec c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
-                0x00003150                _printf_common
+                0x00003170       0xec c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x00003170                _printf_common
  .text._printf_i
-                0x0000323c      0x24c c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
-                0x0000323c                _printf_i
- .text._sbrk_r  0x00003488       0x20 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sbrkr.o)
-                0x00003488                _sbrk_r
- .text.memchr   0x000034a8       0x1c c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memchr-stub.o)
-                0x000034a8                memchr
- .text.memmove  0x000034c4       0x36 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memmove.o)
-                0x000034c4                memmove
+                0x0000325c      0x24c c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x0000325c                _printf_i
+ .text._sbrk_r  0x000034a8       0x20 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sbrkr.o)
+                0x000034a8                _sbrk_r
+ .text.memchr   0x000034c8       0x1c c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memchr-stub.o)
+                0x000034c8                memchr
+ .text.memmove  0x000034e4       0x36 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memmove.o)
+                0x000034e4                memmove
  .text.__malloc_lock
-                0x000034fa        0x2 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mlock.o)
-                0x000034fa                __malloc_lock
+                0x0000351a        0x2 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mlock.o)
+                0x0000351a                __malloc_lock
  .text.__malloc_unlock
-                0x000034fc        0x2 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mlock.o)
-                0x000034fc                __malloc_unlock
+                0x0000351c        0x2 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mlock.o)
+                0x0000351c                __malloc_unlock
  .text._realloc_r
-                0x000034fe       0x4c c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-reallocr.o)
-                0x000034fe                _realloc_r
+                0x0000351e       0x4c c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-reallocr.o)
+                0x0000351e                _realloc_r
  .text._malloc_usable_size_r
-                0x0000354a       0x14 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-msizer.o)
-                0x0000354a                _malloc_usable_size_r
+                0x0000356a       0x14 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-msizer.o)
+                0x0000356a                _malloc_usable_size_r
  *(.plt)
  *(.gnu.warning)
  *(.glue_7t)
- .glue_7t       0x0000355e        0x0 linker stubs
+ .glue_7t       0x0000357e        0x0 linker stubs
  *(.glue_7)
- .glue_7        0x0000355e        0x0 linker stubs
+ .glue_7        0x0000357e        0x0 linker stubs
  *(.vfp11_veneer)
- .vfp11_veneer  0x0000355e        0x0 linker stubs
+ .vfp11_veneer  0x0000357e        0x0 linker stubs
  *(.bootloader)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
  *(.gcc_except_table)
 
-.v4_bx          0x00003560        0x0
- .v4_bx         0x00003560        0x0 linker stubs
+.v4_bx          0x00003580        0x0
+ .v4_bx         0x00003580        0x0 linker stubs
 
-.iplt           0x00003560        0x0
- .iplt          0x00003560        0x0 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+.iplt           0x00003580        0x0
+ .iplt          0x00003580        0x0 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
 
 .eh_frame_hdr
  *(.eh_frame_hdr)
 
-.eh_frame       0x00003560        0x4
+.eh_frame       0x00003580        0x4
  *(.eh_frame)
- .eh_frame      0x00003560        0x0 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
- .eh_frame      0x00003560        0x4 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
+ .eh_frame      0x00003580        0x0 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .eh_frame      0x00003580        0x4 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
                 [!provide]                PROVIDE (__exidx_start, .)
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x00003564                __exidx_end = .
+                0x00003584                __exidx_end = .
 
-.rodata         0x00003564      0xb3c
+.rodata         0x00003584      0xb3c
  *(.rodata .rodata.* .gnu.linkonce.r.*)
  .rodata.str1.4
-                0x00003564       0x69 .\CortexM3\ARM_GCC_541\Debug\main.o
- *fill*         0x000035cd        0x3 
+                0x00003584       0x69 .\CortexM3\ARM_GCC_541\Debug\main.o
+ *fill*         0x000035ed        0x3 
  .rodata.str1.4
-                0x000035d0      0x106 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.o
- *fill*         0x000036d6        0x2 
- .rodata        0x000036d8       0x36 .\CortexM3\ARM_GCC_541\Debug\ArcadianLight.o
-                0x000036d8                RG_glowtable
- *fill*         0x0000370e        0x2 
+                0x000035f0      0x106 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.o
+ *fill*         0x000036f6        0x2 
+ .rodata        0x000036f8       0x38 .\CortexM3\ARM_GCC_541\Debug\ArcadianLight.o
+                0x000036f8                RG_glowtable
+                0x0000372e                RG_GlowTsbleSize
  .rodata.str1.4
-                0x00003710       0x14 .\CortexM3\ARM_GCC_541\Debug\logging.o
+                0x00003730       0x14 .\CortexM3\ARM_GCC_541\Debug\logging.o
                                  0x18 (size before relaxing)
- .rodata        0x00003724      0x558 .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .rodata        0x00003744      0x558 .\CortexM3\ARM_GCC_541\Debug\tft.o
  .rodata.str1.4
-                0x00003c7c       0x14 .\CortexM3\ARM_GCC_541\Debug\tft.o
- .rodata        0x00003c90       0x44 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
- .rodata        0x00003cd4      0x100 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_lookup.o)
-                0x00003cd4                EE_rq_lookup
- .rodata        0x00003dd4      0x190 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_eecfg.o)
-                0x00003dd4                EE_oo_autostart_task_data
-                0x00003de0                EE_oo_action_ROM
-                0x00003e44                EE_oo_counter_object_ROM
-                0x00003e80                EE_ALARM_ID
-                0x00003e94                EE_alarm_ROM
-                0x00003ea8                EE_counter_ROM
-                0x00003eb4                EE_resource_ceiling
-                0x00003ebc                EE_th_is_extended
-                0x00003ed0                EE_th_rnact_max
-                0x00003ee4                EE_th_dispatch_prio
-                0x00003ef8                EE_EVENT_ID
-                0x00003f08                EE_RESOURCE_ID
-                0x00003f10                EE_th_ready_prio
-                0x00003f24                EE_terminate_real_th_body
-                0x00003f38                EE_hal_thread_body
-                0x00003f4c                EE_std_thread_tos
+                0x00003c9c       0x14 .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .rodata        0x00003cb0       0x44 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .rodata        0x00003cf4      0x100 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_lookup.o)
+                0x00003cf4                EE_rq_lookup
+ .rodata        0x00003df4      0x190 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_eecfg.o)
+                0x00003df4                EE_oo_autostart_task_data
+                0x00003e00                EE_oo_action_ROM
+                0x00003e64                EE_oo_counter_object_ROM
+                0x00003ea0                EE_ALARM_ID
+                0x00003eb4                EE_alarm_ROM
+                0x00003ec8                EE_counter_ROM
+                0x00003ed4                EE_resource_ceiling
+                0x00003edc                EE_th_is_extended
+                0x00003ef0                EE_th_rnact_max
+                0x00003f04                EE_th_dispatch_prio
+                0x00003f18                EE_EVENT_ID
+                0x00003f28                EE_RESOURCE_ID
+                0x00003f30                EE_th_ready_prio
+                0x00003f44                EE_terminate_real_th_body
+                0x00003f58                EE_hal_thread_body
+                0x00003f6c                EE_std_thread_tos
  .rodata.str1.4
-                0x00003f64       0xd0 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_eecfg.o)
+                0x00003f84       0xd0 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_eecfg.o)
                                  0xcd (size before relaxing)
  .rodata.str1.1
-                0x00004034        0x2 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+                0x00004054        0x2 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
  .rodata.str1.1
-                0x00004036       0x11 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x00004056       0x11 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
  .rodata.str1.1
-                0x00004047       0x22 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
-                0x0000406c                . = ALIGN (0x4)
- *fill*         0x00004069        0x3 
+                0x00004067       0x22 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x0000408c                . = ALIGN (0x4)
+ *fill*         0x00004089        0x3 
  *(.init)
- .init          0x0000406c        0x4 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
-                0x0000406c                _init
- .init          0x00004070        0x8 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
-                0x00004078                . = ALIGN (0x4)
-                0x00004078                __preinit_array_start = .
+ .init          0x0000408c        0x4 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
+                0x0000408c                _init
+ .init          0x00004090        0x8 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+                0x00004098                . = ALIGN (0x4)
+                0x00004098                __preinit_array_start = .
  *(.preinit_array)
-                0x00004078                __preinit_array_end = .
-                0x00004078                . = ALIGN (0x4)
-                0x00004078                __init_array_start = .
+                0x00004098                __preinit_array_end = .
+                0x00004098                . = ALIGN (0x4)
+                0x00004098                __init_array_start = .
  *(SORT(.init_array.*))
  *(.init_array)
- .init_array    0x00004078        0x4 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
- .init_array    0x0000407c        0x4 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
-                0x00004080                __init_array_end = .
-                0x00004080                . = ALIGN (0x4)
+ .init_array    0x00004098        0x4 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .init_array    0x0000409c        0x4 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x000040a0                __init_array_end = .
+                0x000040a0                . = ALIGN (0x4)
  *(.fini)
- .fini          0x00004080        0x4 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
-                0x00004080                _fini
- .fini          0x00004084        0x8 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
-                0x0000408c                . = ALIGN (0x4)
-                0x0000408c                __fini_array_start = .
+ .fini          0x000040a0        0x4 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
+                0x000040a0                _fini
+ .fini          0x000040a4        0x8 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+                0x000040ac                . = ALIGN (0x4)
+                0x000040ac                __fini_array_start = .
  *(.fini_array)
- .fini_array    0x0000408c        0x4 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .fini_array    0x000040ac        0x4 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
  *(SORT(.fini_array.*))
-                0x00004090                __fini_array_end = .
-                0x00004090                . = ALIGN (0x4)
+                0x000040b0                __fini_array_end = .
+                0x000040b0                . = ALIGN (0x4)
  *crtbegin.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o) .ctors)
  *(SORT(.ctors.*))
  *crtend.o(.ctors)
-                0x00004090                . = ALIGN (0x4)
+                0x000040b0                . = ALIGN (0x4)
  *crtbegin.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o) .dtors)
  *(SORT(.dtors.*))
  *crtend.o(.dtors)
-                0x00004090                . = ALIGN (0x4)
-                0x00004090                __cy_regions = .
-                0x00004090        0x4 LONG 0x40a0 __cy_region_init_ram
-                0x00004094        0x4 LONG 0x1fff80c8 __cy_region_start_data
-                0x00004098        0x4 LONG 0x1f0 __cy_region_init_size_ram
-                0x0000409c        0x4 LONG 0xc48 __cy_region_zero_size_ram
-                0x000040a0                __cy_regions_end = .
-                0x000040a0                . = ALIGN (0x8)
-                0x000040a0                _etext = .
+                0x000040b0                . = ALIGN (0x4)
+                0x000040b0                __cy_regions = .
+                0x000040b0        0x4 LONG 0x40c0 __cy_region_init_ram
+                0x000040b4        0x4 LONG 0x1fff80c8 __cy_region_start_data
+                0x000040b8        0x4 LONG 0x1f0 __cy_region_init_size_ram
+                0x000040bc        0x4 LONG 0xc48 __cy_region_zero_size_ram
+                0x000040c0                __cy_regions_end = .
+                0x000040c0                . = ALIGN (0x8)
+                0x000040c0                _etext = .
 
 .cy_checksum_exclude
-                0x000040a0        0x0
+                0x000040c0        0x0
  *(.cy_checksum_exclude)
 
 .ramvectors     0x1fff8000       0xc0
@@ -1777,7 +1771,7 @@ END GROUP
  .noinit        0x1fff80c0        0x1 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyLib.o)
                 0x1fff80c0                CyResetStatus
 
-.data           0x1fff80c8      0x1f0 load address 0x000040a0
+.data           0x1fff80c8      0x1f0 load address 0x000040c0
                 0x1fff80c8                __cy_region_start_data = .
  *(.jcr)
  .jcr           0x1fff80c8        0x0 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
@@ -1823,10 +1817,10 @@ END GROUP
  *(.ram)
                 0x1fff82b8                _edata = .
 
-.igot.plt       0x1fff82b8        0x0 load address 0x00004290
+.igot.plt       0x1fff82b8        0x0 load address 0x000042b0
  .igot.plt      0x1fff82b8        0x0 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
 
-.bss            0x1fff82b8      0xc48 load address 0x00004290
+.bss            0x1fff82b8      0xc48 load address 0x000042b0
                 0x1fff82b8                PROVIDE (__bss_start__, .)
  *(.shbss)
  *(.bss .bss.* .gnu.linkonce.b.*)
@@ -1893,11 +1887,11 @@ END GROUP
                 0x1fff8f00                __end = .
                 0x1fff8f00                PROVIDE (end, .)
                 0x1fff8f00                PROVIDE (__bss_end__, .)
-                0x000040a0                __cy_region_init_ram = LOADADDR (.data)
+                0x000040c0                __cy_region_init_ram = LOADADDR (.data)
                 0x000001f0                __cy_region_init_size_ram = (_edata - ADDR (.data))
                 0x00000c48                __cy_region_zero_size_ram = (_end - _edata)
 
-.heap           0x1fff8f00       0x80 load address 0x00004290
+.heap           0x1fff8f00       0x80 load address 0x000042b0
                 0x1fff8f00                . = _end
                 0x1fff8f80                . = (. + 0x80)
  *fill*         0x1fff8f00       0x80 
@@ -1948,8 +1942,8 @@ END GROUP
  .cymeta        0x90500000        0xc .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
                 0x90500000                cy_metadata
 
-.rel.dyn        0x00004290        0x0 load address 0x9050000c
- .rel.iplt      0x00004290        0x0 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+.rel.dyn        0x000042b0        0x0 load address 0x9050000c
+ .rel.iplt      0x000042b0        0x0 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
 
 .stab
  *(.stab)
@@ -1969,357 +1963,357 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000     0x1458
+.debug_aranges  0x00000000     0x1460
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x68 .\CortexM3\ARM_GCC_541\Debug\main.o
  .debug_aranges
                 0x00000068       0x78 .\CortexM3\ARM_GCC_541\Debug\TimingAnalyzer.o
  .debug_aranges
-                0x000000e0       0x50 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.o
+                0x000000e0       0x58 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.o
  .debug_aranges
-                0x00000130       0x40 .\CortexM3\ARM_GCC_541\Debug\ArcadianLight.o
+                0x00000138       0x40 .\CortexM3\ARM_GCC_541\Debug\ArcadianLight.o
  .debug_aranges
-                0x00000170       0x28 .\CortexM3\ARM_GCC_541\Debug\logging.o
+                0x00000178       0x28 .\CortexM3\ARM_GCC_541\Debug\logging.o
  .debug_aranges
-                0x00000198       0x58 .\CortexM3\ARM_GCC_541\Debug\seven.o
+                0x000001a0       0x58 .\CortexM3\ARM_GCC_541\Debug\seven.o
  .debug_aranges
-                0x000001f0       0x38 .\CortexM3\ARM_GCC_541\Debug\pins.o
+                0x000001f8       0x38 .\CortexM3\ARM_GCC_541\Debug\pins.o
  .debug_aranges
-                0x00000228       0x28 .\CortexM3\ARM_GCC_541\Debug\button.o
+                0x00000230       0x28 .\CortexM3\ARM_GCC_541\Debug\button.o
  .debug_aranges
-                0x00000250       0x48 .\CortexM3\ARM_GCC_541\Debug\led.o
+                0x00000258       0x48 .\CortexM3\ARM_GCC_541\Debug\led.o
  .debug_aranges
-                0x00000298      0x178 .\CortexM3\ARM_GCC_541\Debug\tft.o
+                0x000002a0      0x178 .\CortexM3\ARM_GCC_541\Debug\tft.o
  .debug_aranges
-                0x00000410       0x58 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00000418       0x58 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .debug_aranges
-                0x00000468       0x18 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+                0x00000470       0x18 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
  .debug_aranges
-                0x00000480       0x48 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x00000488       0x48 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
  .debug_aranges
-                0x000004c8       0x38 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RED_LED.o)
+                0x000004d0       0x38 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RED_LED.o)
  .debug_aranges
-                0x00000500       0x38 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(YELLOW_LED.o)
+                0x00000508       0x38 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(YELLOW_LED.o)
  .debug_aranges
-                0x00000538       0x38 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(GREEN_LED.o)
+                0x00000540       0x38 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(GREEN_LED.o)
  .debug_aranges
-                0x00000570       0xf0 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG.o)
+                0x00000578       0xf0 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG.o)
  .debug_aranges
-                0x00000660       0x70 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG_IntClock.o)
+                0x00000668       0x70 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG_IntClock.o)
  .debug_aranges
-                0x000006d0      0x2a0 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyLib.o)
+                0x000006d8      0x2a0 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyLib.o)
  .debug_aranges
-                0x00000970       0x98 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(cyPm.o)
+                0x00000978       0x98 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(cyPm.o)
  .debug_aranges
-                0x00000a08       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_activate.o)
+                0x00000a10       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_activate.o)
  .debug_aranges
-                0x00000a28       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_alsetrel.o)
+                0x00000a30       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_alsetrel.o)
  .debug_aranges
-                0x00000a48       0x58 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_altick.o)
+                0x00000a50       0x58 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_altick.o)
  .debug_aranges
-                0x00000aa0       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evclear.o)
+                0x00000aa8       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evclear.o)
  .debug_aranges
-                0x00000ac0       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evget.o)
+                0x00000ac8       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evget.o)
  .debug_aranges
-                0x00000ae0       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evset.o)
+                0x00000ae8       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evset.o)
  .debug_aranges
-                0x00000b00       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evwait.o)
+                0x00000b08       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evwait.o)
  .debug_aranges
-                0x00000b20       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_getcountervalue.o)
+                0x00000b28       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_getcountervalue.o)
  .debug_aranges
-                0x00000b40       0x30 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_irqendin.o)
+                0x00000b48       0x30 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_irqendin.o)
  .debug_aranges
-                0x00000b70       0x18 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_lookup.o)
+                0x00000b78       0x18 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_lookup.o)
  .debug_aranges
-                0x00000b88       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_exchg.o)
+                0x00000b90       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_exchg.o)
  .debug_aranges
-                0x00000ba8       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_first.o)
+                0x00000bb0       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_first.o)
  .debug_aranges
-                0x00000bc8       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_inser.o)
+                0x00000bd0       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_inser.o)
  .debug_aranges
-                0x00000be8       0x40 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_startos.o)
+                0x00000bf0       0x40 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_startos.o)
  .debug_aranges
-                0x00000c28       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_terminat.o)
+                0x00000c30       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_terminat.o)
  .debug_aranges
-                0x00000c48       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_cortex_mx_ee_utils.o)
+                0x00000c50       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_cortex_mx_ee_utils.o)
  .debug_aranges
-                0x00000c68       0x18 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_common_ee_hal_structs.o)
+                0x00000c70       0x18 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_common_ee_hal_structs.o)
  .debug_aranges
-                0x00000c80       0x18 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_eecfg.o)
+                0x00000c88       0x18 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_eecfg.o)
  .debug_aranges
-                0x00000c98       0x38 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ButtonRight.o)
+                0x00000ca0       0x38 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ButtonRight.o)
  .debug_aranges
-                0x00000cd0       0x38 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ButtonLeft.o)
+                0x00000cd8       0x38 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ButtonLeft.o)
  .debug_aranges
-                0x00000d08       0x38 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_DP.o)
+                0x00000d10       0x38 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_DP.o)
  .debug_aranges
-                0x00000d40       0x38 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_SELECT.o)
+                0x00000d48       0x38 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_SELECT.o)
  .debug_aranges
-                0x00000d78       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_reg.o)
+                0x00000d80       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_reg.o)
  .debug_aranges
-                0x00000da0       0xd8 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI.o)
+                0x00000da8       0xd8 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI.o)
  .debug_aranges
-                0x00000e78       0x38 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_DC.o)
+                0x00000e80       0x38 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_DC.o)
  .debug_aranges
-                0x00000eb0       0x38 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_RES.o)
+                0x00000eb8       0x38 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_RES.o)
  .debug_aranges
-                0x00000ee8       0x78 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_BackLight.o)
+                0x00000ef0       0x78 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_BackLight.o)
  .debug_aranges
-                0x00000f60       0x70 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI_IntClock.o)
+                0x00000f68       0x70 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI_IntClock.o)
  .debug_aranges
-                0x00000fd0       0x80 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_RED.o)
+                0x00000fd8       0x80 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_RED.o)
  .debug_aranges
-                0x00001050       0x80 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_YELLOW.o)
+                0x00001058       0x80 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_YELLOW.o)
  .debug_aranges
-                0x000010d0       0x80 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_GREEN.o)
+                0x000010d8       0x80 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_GREEN.o)
  .debug_aranges
-                0x00001150       0x38 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_RED.o)
+                0x00001158       0x38 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_RED.o)
  .debug_aranges
-                0x00001188       0x38 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_GREEN.o)
+                0x00001190       0x38 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_GREEN.o)
  .debug_aranges
-                0x000011c0       0x38 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_BLUE.o)
+                0x000011c8       0x38 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_BLUE.o)
  .debug_aranges
-                0x000011f8       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyBootAsmGnu.o)
+                0x00001200       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyBootAsmGnu.o)
  .debug_aranges
-                0x00001218       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_change_context_isr.o)
+                0x00001220       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_change_context_isr.o)
  .debug_aranges
-                0x00001238       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_irq_stack.o)
+                0x00001240       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_irq_stack.o)
  .debug_aranges
-                0x00001258       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_multi_context.o)
+                0x00001260       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_multi_context.o)
  .debug_aranges
-                0x00001278       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_oo.o)
+                0x00001280       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_oo.o)
  .debug_aranges
-                0x00001298       0x88 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyFlash.o)
+                0x000012a0       0x88 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyFlash.o)
  .debug_aranges
-                0x00001320       0x80 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CySpc.o)
+                0x00001328       0x80 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CySpc.o)
  .debug_aranges
-                0x000013a0       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_tnterm.o)
+                0x000013a8       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_tnterm.o)
  .debug_aranges
-                0x000013c0       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_tstub.o)
+                0x000013c8       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_tstub.o)
  .debug_aranges
-                0x000013e0       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_ulockallres.o)
+                0x000013e8       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_ulockallres.o)
  .debug_aranges
-                0x00001400       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_cortex_mx_ee_context.o)
+                0x00001408       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_cortex_mx_ee_context.o)
  .debug_aranges
-                0x00001428       0x30 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_thendin.o)
+                0x00001430       0x30 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_thendin.o)
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000    0x16352
+.debug_info     0x00000000    0x163bc
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000      0x98f .\CortexM3\ARM_GCC_541\Debug\main.o
- .debug_info    0x0000098f      0x9f9 .\CortexM3\ARM_GCC_541\Debug\TimingAnalyzer.o
- .debug_info    0x00001388      0xaa2 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.o
- .debug_info    0x00001e2a      0x51c .\CortexM3\ARM_GCC_541\Debug\ArcadianLight.o
- .debug_info    0x00002346      0x3b5 .\CortexM3\ARM_GCC_541\Debug\logging.o
- .debug_info    0x000026fb      0x59e .\CortexM3\ARM_GCC_541\Debug\seven.o
- .debug_info    0x00002c99      0x266 .\CortexM3\ARM_GCC_541\Debug\pins.o
- .debug_info    0x00002eff      0x280 .\CortexM3\ARM_GCC_541\Debug\button.o
- .debug_info    0x0000317f      0x95d .\CortexM3\ARM_GCC_541\Debug\led.o
- .debug_info    0x00003adc     0x2733 .\CortexM3\ARM_GCC_541\Debug\tft.o
- .debug_info    0x0000620f      0x617 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_info    0x00006826      0x139 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
- .debug_info    0x0000695f      0x3bb .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
- .debug_info    0x00006d1a      0x11f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RED_LED.o)
- .debug_info    0x00006e39      0x11f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(YELLOW_LED.o)
- .debug_info    0x00006f58      0x11f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(GREEN_LED.o)
- .debug_info    0x00007077      0x60c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG.o)
- .debug_info    0x00007683      0x283 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG_IntClock.o)
- .debug_info    0x00007906     0x1374 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyLib.o)
- .debug_info    0x00008c7a      0xa2a .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(cyPm.o)
- .debug_info    0x000096a4      0x80d .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_activate.o)
- .debug_info    0x00009eb1      0x5e5 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_alsetrel.o)
- .debug_info    0x0000a496      0xc3b .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_altick.o)
- .debug_info    0x0000b0d1      0x5a7 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evclear.o)
- .debug_info    0x0000b678      0x4ca .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evget.o)
- .debug_info    0x0000bb42      0x7c3 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evset.o)
- .debug_info    0x0000c305      0x85a .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evwait.o)
- .debug_info    0x0000cb5f      0x56b .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_getcountervalue.o)
- .debug_info    0x0000d0ca      0x5cb .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_irqendin.o)
- .debug_info    0x0000d695      0x3d0 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_lookup.o)
- .debug_info    0x0000da65      0x46f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_exchg.o)
- .debug_info    0x0000ded4      0x421 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_first.o)
- .debug_info    0x0000e2f5      0x475 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_inser.o)
- .debug_info    0x0000e76a     0x2040 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_startos.o)
- .debug_info    0x000107aa      0x595 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_terminat.o)
- .debug_info    0x00010d3f      0x513 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_cortex_mx_ee_utils.o)
- .debug_info    0x00011252      0x3cb .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_common_ee_hal_structs.o)
- .debug_info    0x0001161d      0x97f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_eecfg.o)
- .debug_info    0x00011f9c      0x11f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ButtonRight.o)
- .debug_info    0x000120bb      0x11f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ButtonLeft.o)
- .debug_info    0x000121da      0x11f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_DP.o)
- .debug_info    0x000122f9      0x11f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_SELECT.o)
- .debug_info    0x00012418       0xd6 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_reg.o)
- .debug_info    0x000124ee      0x4bb .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI.o)
- .debug_info    0x000129a9      0x11f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_DC.o)
- .debug_info    0x00012ac8      0x11f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_RES.o)
- .debug_info    0x00012be7      0x27e .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_BackLight.o)
- .debug_info    0x00012e65      0x283 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI_IntClock.o)
- .debug_info    0x000130e8      0x278 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_RED.o)
- .debug_info    0x00013360      0x278 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_YELLOW.o)
- .debug_info    0x000135d8      0x278 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_GREEN.o)
- .debug_info    0x00013850      0x11f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_RED.o)
- .debug_info    0x0001396f      0x11f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_GREEN.o)
- .debug_info    0x00013a8e      0x11f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_BLUE.o)
- .debug_info    0x00013bad       0x80 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyBootAsmGnu.o)
- .debug_info    0x00013c2d       0x95 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_change_context_isr.o)
- .debug_info    0x00013cc2       0x8c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_irq_stack.o)
- .debug_info    0x00013d4e       0x90 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_multi_context.o)
- .debug_info    0x00013dde       0x85 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_oo.o)
- .debug_info    0x00013e63      0x64d .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyFlash.o)
- .debug_info    0x000144b0      0x550 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CySpc.o)
- .debug_info    0x00014a00      0x473 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_tnterm.o)
- .debug_info    0x00014e73      0x487 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_tstub.o)
- .debug_info    0x000152fa      0x45e .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_ulockallres.o)
- .debug_info    0x00015758      0x501 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_cortex_mx_ee_context.o)
- .debug_info    0x00015c59      0x6f9 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_thendin.o)
+ .debug_info    0x00000000      0x9a3 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .debug_info    0x000009a3      0x9f9 .\CortexM3\ARM_GCC_541\Debug\TimingAnalyzer.o
+ .debug_info    0x0000139c      0xae2 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.o
+ .debug_info    0x00001e7e      0x532 .\CortexM3\ARM_GCC_541\Debug\ArcadianLight.o
+ .debug_info    0x000023b0      0x3b5 .\CortexM3\ARM_GCC_541\Debug\logging.o
+ .debug_info    0x00002765      0x59e .\CortexM3\ARM_GCC_541\Debug\seven.o
+ .debug_info    0x00002d03      0x266 .\CortexM3\ARM_GCC_541\Debug\pins.o
+ .debug_info    0x00002f69      0x280 .\CortexM3\ARM_GCC_541\Debug\button.o
+ .debug_info    0x000031e9      0x95d .\CortexM3\ARM_GCC_541\Debug\led.o
+ .debug_info    0x00003b46     0x2733 .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .debug_info    0x00006279      0x617 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_info    0x00006890      0x139 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .debug_info    0x000069c9      0x3bb .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_info    0x00006d84      0x11f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RED_LED.o)
+ .debug_info    0x00006ea3      0x11f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(YELLOW_LED.o)
+ .debug_info    0x00006fc2      0x11f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(GREEN_LED.o)
+ .debug_info    0x000070e1      0x60c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG.o)
+ .debug_info    0x000076ed      0x283 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG_IntClock.o)
+ .debug_info    0x00007970     0x1374 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyLib.o)
+ .debug_info    0x00008ce4      0xa2a .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(cyPm.o)
+ .debug_info    0x0000970e      0x80d .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_activate.o)
+ .debug_info    0x00009f1b      0x5e5 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_alsetrel.o)
+ .debug_info    0x0000a500      0xc3b .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_altick.o)
+ .debug_info    0x0000b13b      0x5a7 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evclear.o)
+ .debug_info    0x0000b6e2      0x4ca .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evget.o)
+ .debug_info    0x0000bbac      0x7c3 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evset.o)
+ .debug_info    0x0000c36f      0x85a .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evwait.o)
+ .debug_info    0x0000cbc9      0x56b .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_getcountervalue.o)
+ .debug_info    0x0000d134      0x5cb .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_irqendin.o)
+ .debug_info    0x0000d6ff      0x3d0 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_lookup.o)
+ .debug_info    0x0000dacf      0x46f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_exchg.o)
+ .debug_info    0x0000df3e      0x421 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_first.o)
+ .debug_info    0x0000e35f      0x475 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_inser.o)
+ .debug_info    0x0000e7d4     0x2040 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_startos.o)
+ .debug_info    0x00010814      0x595 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_terminat.o)
+ .debug_info    0x00010da9      0x513 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_cortex_mx_ee_utils.o)
+ .debug_info    0x000112bc      0x3cb .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_common_ee_hal_structs.o)
+ .debug_info    0x00011687      0x97f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_eecfg.o)
+ .debug_info    0x00012006      0x11f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ButtonRight.o)
+ .debug_info    0x00012125      0x11f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ButtonLeft.o)
+ .debug_info    0x00012244      0x11f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_DP.o)
+ .debug_info    0x00012363      0x11f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_SELECT.o)
+ .debug_info    0x00012482       0xd6 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_reg.o)
+ .debug_info    0x00012558      0x4bb .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI.o)
+ .debug_info    0x00012a13      0x11f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_DC.o)
+ .debug_info    0x00012b32      0x11f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_RES.o)
+ .debug_info    0x00012c51      0x27e .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_BackLight.o)
+ .debug_info    0x00012ecf      0x283 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI_IntClock.o)
+ .debug_info    0x00013152      0x278 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_RED.o)
+ .debug_info    0x000133ca      0x278 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_YELLOW.o)
+ .debug_info    0x00013642      0x278 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_GREEN.o)
+ .debug_info    0x000138ba      0x11f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_RED.o)
+ .debug_info    0x000139d9      0x11f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_GREEN.o)
+ .debug_info    0x00013af8      0x11f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_BLUE.o)
+ .debug_info    0x00013c17       0x80 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyBootAsmGnu.o)
+ .debug_info    0x00013c97       0x95 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_change_context_isr.o)
+ .debug_info    0x00013d2c       0x8c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_irq_stack.o)
+ .debug_info    0x00013db8       0x90 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_multi_context.o)
+ .debug_info    0x00013e48       0x85 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_oo.o)
+ .debug_info    0x00013ecd      0x64d .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyFlash.o)
+ .debug_info    0x0001451a      0x550 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CySpc.o)
+ .debug_info    0x00014a6a      0x473 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_tnterm.o)
+ .debug_info    0x00014edd      0x487 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_tstub.o)
+ .debug_info    0x00015364      0x45e .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_ulockallres.o)
+ .debug_info    0x000157c2      0x501 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_cortex_mx_ee_context.o)
+ .debug_info    0x00015cc3      0x6f9 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_thendin.o)
 
-.debug_abbrev   0x00000000     0x5801
+.debug_abbrev   0x00000000     0x5887
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x251 .\CortexM3\ARM_GCC_541\Debug\main.o
  .debug_abbrev  0x00000251      0x274 .\CortexM3\ARM_GCC_541\Debug\TimingAnalyzer.o
- .debug_abbrev  0x000004c5      0x205 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.o
- .debug_abbrev  0x000006ca      0x186 .\CortexM3\ARM_GCC_541\Debug\ArcadianLight.o
- .debug_abbrev  0x00000850      0x14a .\CortexM3\ARM_GCC_541\Debug\logging.o
- .debug_abbrev  0x0000099a      0x155 .\CortexM3\ARM_GCC_541\Debug\seven.o
- .debug_abbrev  0x00000aef       0xf2 .\CortexM3\ARM_GCC_541\Debug\pins.o
- .debug_abbrev  0x00000be1      0x100 .\CortexM3\ARM_GCC_541\Debug\button.o
- .debug_abbrev  0x00000ce1      0x217 .\CortexM3\ARM_GCC_541\Debug\led.o
- .debug_abbrev  0x00000ef8      0x2bf .\CortexM3\ARM_GCC_541\Debug\tft.o
- .debug_abbrev  0x000011b7      0x20d .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_abbrev  0x000013c4       0x77 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
- .debug_abbrev  0x0000143b      0x1e8 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
- .debug_abbrev  0x00001623       0x90 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RED_LED.o)
- .debug_abbrev  0x000016b3       0x90 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(YELLOW_LED.o)
- .debug_abbrev  0x00001743       0x90 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(GREEN_LED.o)
- .debug_abbrev  0x000017d3      0x175 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG.o)
- .debug_abbrev  0x00001948      0x139 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG_IntClock.o)
- .debug_abbrev  0x00001a81      0x254 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyLib.o)
- .debug_abbrev  0x00001cd5      0x1ab .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(cyPm.o)
- .debug_abbrev  0x00001e80      0x284 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_activate.o)
- .debug_abbrev  0x00002104      0x1f7 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_alsetrel.o)
- .debug_abbrev  0x000022fb      0x362 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_altick.o)
- .debug_abbrev  0x0000265d      0x1e0 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evclear.o)
- .debug_abbrev  0x0000283d      0x150 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evget.o)
- .debug_abbrev  0x0000298d      0x27f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evset.o)
- .debug_abbrev  0x00002c0c      0x25d .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evwait.o)
- .debug_abbrev  0x00002e69      0x1e5 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_getcountervalue.o)
- .debug_abbrev  0x0000304e      0x1da .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_irqendin.o)
- .debug_abbrev  0x00003228       0xcf .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_lookup.o)
- .debug_abbrev  0x000032f7       0xfc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_exchg.o)
- .debug_abbrev  0x000033f3       0xed .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_first.o)
- .debug_abbrev  0x000034e0      0x109 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_inser.o)
- .debug_abbrev  0x000035e9      0x4a7 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_startos.o)
- .debug_abbrev  0x00003a90      0x1de .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_terminat.o)
- .debug_abbrev  0x00003c6e      0x1e3 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_cortex_mx_ee_utils.o)
- .debug_abbrev  0x00003e51       0xcf .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_common_ee_hal_structs.o)
- .debug_abbrev  0x00003f20      0x130 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_eecfg.o)
- .debug_abbrev  0x00004050       0x90 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ButtonRight.o)
- .debug_abbrev  0x000040e0       0x90 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ButtonLeft.o)
- .debug_abbrev  0x00004170       0x90 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_DP.o)
- .debug_abbrev  0x00004200       0x90 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_SELECT.o)
- .debug_abbrev  0x00004290       0x81 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_reg.o)
- .debug_abbrev  0x00004311      0x146 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI.o)
- .debug_abbrev  0x00004457       0x90 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_DC.o)
- .debug_abbrev  0x000044e7       0x90 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_RES.o)
- .debug_abbrev  0x00004577      0x12d .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_BackLight.o)
- .debug_abbrev  0x000046a4      0x139 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI_IntClock.o)
- .debug_abbrev  0x000047dd      0x12d .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_RED.o)
- .debug_abbrev  0x0000490a      0x12d .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_YELLOW.o)
- .debug_abbrev  0x00004a37      0x12d .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_GREEN.o)
- .debug_abbrev  0x00004b64       0x90 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_RED.o)
- .debug_abbrev  0x00004bf4       0x90 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_GREEN.o)
- .debug_abbrev  0x00004c84       0x90 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_BLUE.o)
- .debug_abbrev  0x00004d14       0x14 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyBootAsmGnu.o)
- .debug_abbrev  0x00004d28       0x14 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_change_context_isr.o)
- .debug_abbrev  0x00004d3c       0x14 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_irq_stack.o)
- .debug_abbrev  0x00004d50       0x14 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_multi_context.o)
- .debug_abbrev  0x00004d64       0x14 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_oo.o)
- .debug_abbrev  0x00004d78      0x1a7 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyFlash.o)
- .debug_abbrev  0x00004f1f      0x194 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CySpc.o)
- .debug_abbrev  0x000050b3      0x190 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_tnterm.o)
- .debug_abbrev  0x00005243      0x143 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_tstub.o)
- .debug_abbrev  0x00005386       0xfc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_ulockallres.o)
- .debug_abbrev  0x00005482      0x156 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_cortex_mx_ee_context.o)
- .debug_abbrev  0x000055d8      0x229 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_thendin.o)
+ .debug_abbrev  0x000004c5      0x271 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.o
+ .debug_abbrev  0x00000736      0x1a0 .\CortexM3\ARM_GCC_541\Debug\ArcadianLight.o
+ .debug_abbrev  0x000008d6      0x14a .\CortexM3\ARM_GCC_541\Debug\logging.o
+ .debug_abbrev  0x00000a20      0x155 .\CortexM3\ARM_GCC_541\Debug\seven.o
+ .debug_abbrev  0x00000b75       0xf2 .\CortexM3\ARM_GCC_541\Debug\pins.o
+ .debug_abbrev  0x00000c67      0x100 .\CortexM3\ARM_GCC_541\Debug\button.o
+ .debug_abbrev  0x00000d67      0x217 .\CortexM3\ARM_GCC_541\Debug\led.o
+ .debug_abbrev  0x00000f7e      0x2bf .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .debug_abbrev  0x0000123d      0x20d .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_abbrev  0x0000144a       0x77 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .debug_abbrev  0x000014c1      0x1e8 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_abbrev  0x000016a9       0x90 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RED_LED.o)
+ .debug_abbrev  0x00001739       0x90 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(YELLOW_LED.o)
+ .debug_abbrev  0x000017c9       0x90 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(GREEN_LED.o)
+ .debug_abbrev  0x00001859      0x175 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG.o)
+ .debug_abbrev  0x000019ce      0x139 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG_IntClock.o)
+ .debug_abbrev  0x00001b07      0x254 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyLib.o)
+ .debug_abbrev  0x00001d5b      0x1ab .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(cyPm.o)
+ .debug_abbrev  0x00001f06      0x284 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_activate.o)
+ .debug_abbrev  0x0000218a      0x1f7 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_alsetrel.o)
+ .debug_abbrev  0x00002381      0x362 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_altick.o)
+ .debug_abbrev  0x000026e3      0x1e0 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evclear.o)
+ .debug_abbrev  0x000028c3      0x150 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evget.o)
+ .debug_abbrev  0x00002a13      0x27f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evset.o)
+ .debug_abbrev  0x00002c92      0x25d .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evwait.o)
+ .debug_abbrev  0x00002eef      0x1e5 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_getcountervalue.o)
+ .debug_abbrev  0x000030d4      0x1da .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_irqendin.o)
+ .debug_abbrev  0x000032ae       0xcf .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_lookup.o)
+ .debug_abbrev  0x0000337d       0xfc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_exchg.o)
+ .debug_abbrev  0x00003479       0xed .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_first.o)
+ .debug_abbrev  0x00003566      0x109 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_inser.o)
+ .debug_abbrev  0x0000366f      0x4a7 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_startos.o)
+ .debug_abbrev  0x00003b16      0x1de .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_terminat.o)
+ .debug_abbrev  0x00003cf4      0x1e3 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_cortex_mx_ee_utils.o)
+ .debug_abbrev  0x00003ed7       0xcf .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_common_ee_hal_structs.o)
+ .debug_abbrev  0x00003fa6      0x130 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_eecfg.o)
+ .debug_abbrev  0x000040d6       0x90 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ButtonRight.o)
+ .debug_abbrev  0x00004166       0x90 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ButtonLeft.o)
+ .debug_abbrev  0x000041f6       0x90 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_DP.o)
+ .debug_abbrev  0x00004286       0x90 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_SELECT.o)
+ .debug_abbrev  0x00004316       0x81 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_reg.o)
+ .debug_abbrev  0x00004397      0x146 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI.o)
+ .debug_abbrev  0x000044dd       0x90 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_DC.o)
+ .debug_abbrev  0x0000456d       0x90 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_RES.o)
+ .debug_abbrev  0x000045fd      0x12d .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_BackLight.o)
+ .debug_abbrev  0x0000472a      0x139 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI_IntClock.o)
+ .debug_abbrev  0x00004863      0x12d .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_RED.o)
+ .debug_abbrev  0x00004990      0x12d .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_YELLOW.o)
+ .debug_abbrev  0x00004abd      0x12d .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_GREEN.o)
+ .debug_abbrev  0x00004bea       0x90 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_RED.o)
+ .debug_abbrev  0x00004c7a       0x90 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_GREEN.o)
+ .debug_abbrev  0x00004d0a       0x90 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_BLUE.o)
+ .debug_abbrev  0x00004d9a       0x14 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyBootAsmGnu.o)
+ .debug_abbrev  0x00004dae       0x14 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_change_context_isr.o)
+ .debug_abbrev  0x00004dc2       0x14 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_irq_stack.o)
+ .debug_abbrev  0x00004dd6       0x14 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_multi_context.o)
+ .debug_abbrev  0x00004dea       0x14 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_oo.o)
+ .debug_abbrev  0x00004dfe      0x1a7 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyFlash.o)
+ .debug_abbrev  0x00004fa5      0x194 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CySpc.o)
+ .debug_abbrev  0x00005139      0x190 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_tnterm.o)
+ .debug_abbrev  0x000052c9      0x143 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_tstub.o)
+ .debug_abbrev  0x0000540c       0xfc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_ulockallres.o)
+ .debug_abbrev  0x00005508      0x156 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_cortex_mx_ee_context.o)
+ .debug_abbrev  0x0000565e      0x229 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_thendin.o)
 
-.debug_line     0x00000000     0x7b97
+.debug_line     0x00000000     0x7bb2
  *(.debug_line)
- .debug_line    0x00000000      0x587 .\CortexM3\ARM_GCC_541\Debug\main.o
- .debug_line    0x00000587      0x507 .\CortexM3\ARM_GCC_541\Debug\TimingAnalyzer.o
- .debug_line    0x00000a8e      0x40e .\CortexM3\ARM_GCC_541\Debug\ReactionGame.o
- .debug_line    0x00000e9c      0x2f6 .\CortexM3\ARM_GCC_541\Debug\ArcadianLight.o
- .debug_line    0x00001192      0x25d .\CortexM3\ARM_GCC_541\Debug\logging.o
- .debug_line    0x000013ef      0x37a .\CortexM3\ARM_GCC_541\Debug\seven.o
- .debug_line    0x00001769      0x275 .\CortexM3\ARM_GCC_541\Debug\pins.o
- .debug_line    0x000019de      0x26d .\CortexM3\ARM_GCC_541\Debug\button.o
- .debug_line    0x00001c4b      0x3ec .\CortexM3\ARM_GCC_541\Debug\led.o
- .debug_line    0x00002037      0x8b9 .\CortexM3\ARM_GCC_541\Debug\tft.o
- .debug_line    0x000028f0      0x1f8 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_line    0x00002ae8      0x13d .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
- .debug_line    0x00002c25      0x230 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
- .debug_line    0x00002e55       0x94 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RED_LED.o)
- .debug_line    0x00002ee9       0x97 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(YELLOW_LED.o)
- .debug_line    0x00002f80       0x96 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(GREEN_LED.o)
- .debug_line    0x00003016      0x2c4 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG.o)
- .debug_line    0x000032da      0x180 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG_IntClock.o)
- .debug_line    0x0000345a      0x816 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyLib.o)
- .debug_line    0x00003c70      0x367 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(cyPm.o)
- .debug_line    0x00003fd7      0x1e6 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_activate.o)
- .debug_line    0x000041bd      0x1bd .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_alsetrel.o)
- .debug_line    0x0000437a      0x2f1 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_altick.o)
- .debug_line    0x0000466b      0x1c1 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evclear.o)
- .debug_line    0x0000482c      0x14b .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evget.o)
- .debug_line    0x00004977      0x1e3 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evset.o)
- .debug_line    0x00004b5a      0x1f1 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evwait.o)
- .debug_line    0x00004d4b      0x1a9 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_getcountervalue.o)
- .debug_line    0x00004ef4      0x190 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_irqendin.o)
- .debug_line    0x00005084      0x10b .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_lookup.o)
- .debug_line    0x0000518f      0x14b .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_exchg.o)
- .debug_line    0x000052da      0x142 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_first.o)
- .debug_line    0x0000541c      0x146 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_inser.o)
- .debug_line    0x00005562      0x3e2 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_startos.o)
- .debug_line    0x00005944      0x1b0 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_terminat.o)
- .debug_line    0x00005af4      0x174 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_cortex_mx_ee_utils.o)
- .debug_line    0x00005c68       0xed .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_common_ee_hal_structs.o)
- .debug_line    0x00005d55      0x12c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_eecfg.o)
- .debug_line    0x00005e81       0x98 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ButtonRight.o)
- .debug_line    0x00005f19       0x97 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ButtonLeft.o)
- .debug_line    0x00005fb0       0x95 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_DP.o)
- .debug_line    0x00006045       0x99 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_SELECT.o)
- .debug_line    0x000060de       0x71 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_reg.o)
- .debug_line    0x0000614f      0x249 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI.o)
- .debug_line    0x00006398       0x93 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_DC.o)
- .debug_line    0x0000642b       0x94 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_RES.o)
- .debug_line    0x000064bf      0x13b .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_BackLight.o)
- .debug_line    0x000065fa      0x17f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI_IntClock.o)
- .debug_line    0x00006779      0x13c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_RED.o)
- .debug_line    0x000068b5      0x13f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_YELLOW.o)
- .debug_line    0x000069f4      0x13e .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_GREEN.o)
- .debug_line    0x00006b32       0x94 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_RED.o)
- .debug_line    0x00006bc6       0x96 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_GREEN.o)
- .debug_line    0x00006c5c       0x95 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_BLUE.o)
- .debug_line    0x00006cf1       0x66 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyBootAsmGnu.o)
- .debug_line    0x00006d57       0xac .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_change_context_isr.o)
- .debug_line    0x00006e03       0x72 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_irq_stack.o)
- .debug_line    0x00006e75       0x9b .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_multi_context.o)
- .debug_line    0x00006f10       0x97 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_oo.o)
- .debug_line    0x00006fa7      0x21a .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyFlash.o)
- .debug_line    0x000071c1      0x260 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CySpc.o)
- .debug_line    0x00007421      0x171 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_tnterm.o)
- .debug_line    0x00007592      0x160 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_tstub.o)
- .debug_line    0x000076f2      0x154 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_ulockallres.o)
- .debug_line    0x00007846      0x19a .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_cortex_mx_ee_context.o)
- .debug_line    0x000079e0      0x1b7 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_thendin.o)
+ .debug_line    0x00000000      0x588 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .debug_line    0x00000588      0x507 .\CortexM3\ARM_GCC_541\Debug\TimingAnalyzer.o
+ .debug_line    0x00000a8f      0x42f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.o
+ .debug_line    0x00000ebe      0x2ef .\CortexM3\ARM_GCC_541\Debug\ArcadianLight.o
+ .debug_line    0x000011ad      0x25d .\CortexM3\ARM_GCC_541\Debug\logging.o
+ .debug_line    0x0000140a      0x37a .\CortexM3\ARM_GCC_541\Debug\seven.o
+ .debug_line    0x00001784      0x275 .\CortexM3\ARM_GCC_541\Debug\pins.o
+ .debug_line    0x000019f9      0x26d .\CortexM3\ARM_GCC_541\Debug\button.o
+ .debug_line    0x00001c66      0x3ec .\CortexM3\ARM_GCC_541\Debug\led.o
+ .debug_line    0x00002052      0x8b9 .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .debug_line    0x0000290b      0x1f8 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_line    0x00002b03      0x13d .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .debug_line    0x00002c40      0x230 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_line    0x00002e70       0x94 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RED_LED.o)
+ .debug_line    0x00002f04       0x97 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(YELLOW_LED.o)
+ .debug_line    0x00002f9b       0x96 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(GREEN_LED.o)
+ .debug_line    0x00003031      0x2c4 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG.o)
+ .debug_line    0x000032f5      0x180 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG_IntClock.o)
+ .debug_line    0x00003475      0x816 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyLib.o)
+ .debug_line    0x00003c8b      0x367 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(cyPm.o)
+ .debug_line    0x00003ff2      0x1e6 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_activate.o)
+ .debug_line    0x000041d8      0x1bd .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_alsetrel.o)
+ .debug_line    0x00004395      0x2f1 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_altick.o)
+ .debug_line    0x00004686      0x1c1 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evclear.o)
+ .debug_line    0x00004847      0x14b .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evget.o)
+ .debug_line    0x00004992      0x1e3 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evset.o)
+ .debug_line    0x00004b75      0x1f1 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evwait.o)
+ .debug_line    0x00004d66      0x1a9 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_getcountervalue.o)
+ .debug_line    0x00004f0f      0x190 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_irqendin.o)
+ .debug_line    0x0000509f      0x10b .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_lookup.o)
+ .debug_line    0x000051aa      0x14b .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_exchg.o)
+ .debug_line    0x000052f5      0x142 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_first.o)
+ .debug_line    0x00005437      0x146 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_inser.o)
+ .debug_line    0x0000557d      0x3e2 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_startos.o)
+ .debug_line    0x0000595f      0x1b0 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_terminat.o)
+ .debug_line    0x00005b0f      0x174 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_cortex_mx_ee_utils.o)
+ .debug_line    0x00005c83       0xed .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_common_ee_hal_structs.o)
+ .debug_line    0x00005d70      0x12c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_eecfg.o)
+ .debug_line    0x00005e9c       0x98 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ButtonRight.o)
+ .debug_line    0x00005f34       0x97 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ButtonLeft.o)
+ .debug_line    0x00005fcb       0x95 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_DP.o)
+ .debug_line    0x00006060       0x99 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_SELECT.o)
+ .debug_line    0x000060f9       0x71 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_reg.o)
+ .debug_line    0x0000616a      0x249 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI.o)
+ .debug_line    0x000063b3       0x93 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_DC.o)
+ .debug_line    0x00006446       0x94 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_RES.o)
+ .debug_line    0x000064da      0x13b .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_BackLight.o)
+ .debug_line    0x00006615      0x17f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI_IntClock.o)
+ .debug_line    0x00006794      0x13c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_RED.o)
+ .debug_line    0x000068d0      0x13f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_YELLOW.o)
+ .debug_line    0x00006a0f      0x13e .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_GREEN.o)
+ .debug_line    0x00006b4d       0x94 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_RED.o)
+ .debug_line    0x00006be1       0x96 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_GREEN.o)
+ .debug_line    0x00006c77       0x95 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_BLUE.o)
+ .debug_line    0x00006d0c       0x66 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyBootAsmGnu.o)
+ .debug_line    0x00006d72       0xac .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_change_context_isr.o)
+ .debug_line    0x00006e1e       0x72 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_irq_stack.o)
+ .debug_line    0x00006e90       0x9b .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_multi_context.o)
+ .debug_line    0x00006f2b       0x97 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_gnu_oo.o)
+ .debug_line    0x00006fc2      0x21a .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyFlash.o)
+ .debug_line    0x000071dc      0x260 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CySpc.o)
+ .debug_line    0x0000743c      0x171 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_tnterm.o)
+ .debug_line    0x000075ad      0x160 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_tstub.o)
+ .debug_line    0x0000770d      0x154 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_ulockallres.o)
+ .debug_line    0x00007861      0x19a .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_cortex_mx_ee_context.o)
+ .debug_line    0x000079fb      0x1b7 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_thendin.o)
 
 .debug_frame    0x00000000     0x32a0
  *(.debug_frame)
  .debug_frame   0x00000000      0x144 .\CortexM3\ARM_GCC_541\Debug\main.o
  .debug_frame   0x00000144      0x1f8 .\CortexM3\ARM_GCC_541\Debug\TimingAnalyzer.o
- .debug_frame   0x0000033c       0xf0 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.o
- .debug_frame   0x0000042c       0xb8 .\CortexM3\ARM_GCC_541\Debug\ArcadianLight.o
+ .debug_frame   0x0000033c      0x100 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.o
+ .debug_frame   0x0000043c       0xa8 .\CortexM3\ARM_GCC_541\Debug\ArcadianLight.o
  .debug_frame   0x000004e4       0x48 .\CortexM3\ARM_GCC_541\Debug\logging.o
  .debug_frame   0x0000052c      0x104 .\CortexM3\ARM_GCC_541\Debug\seven.o
  .debug_frame   0x00000630       0x80 .\CortexM3\ARM_GCC_541\Debug\pins.o
@@ -2393,250 +2387,250 @@ END GROUP
  .debug_frame   0x00003224       0x5c c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-reent.o)
  .debug_frame   0x00003280       0x20 c:/h_da softwares & projects/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-msizer.o)
 
-.debug_str      0x00000000     0x54a1
+.debug_str      0x00000000     0x54c7
  *(.debug_str)
- .debug_str     0x00000000      0x785 .\CortexM3\ARM_GCC_541\Debug\main.o
-                                0x7f4 (size before relaxing)
- .debug_str     0x00000785      0x358 .\CortexM3\ARM_GCC_541\Debug\TimingAnalyzer.o
+ .debug_str     0x00000000      0x78d .\CortexM3\ARM_GCC_541\Debug\main.o
+                                0x7fc (size before relaxing)
+ .debug_str     0x0000078d      0x358 .\CortexM3\ARM_GCC_541\Debug\TimingAnalyzer.o
                                 0x78f (size before relaxing)
- .debug_str     0x00000add      0x263 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.o
-                                0x854 (size before relaxing)
- .debug_str     0x00000d40      0x11c .\CortexM3\ARM_GCC_541\Debug\ArcadianLight.o
-                                0x578 (size before relaxing)
- .debug_str     0x00000e5c       0xa3 .\CortexM3\ARM_GCC_541\Debug\logging.o
+ .debug_str     0x00000ae5      0x270 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.o
+                                0x869 (size before relaxing)
+ .debug_str     0x00000d55      0x12d .\CortexM3\ARM_GCC_541\Debug\ArcadianLight.o
+                                0x589 (size before relaxing)
+ .debug_str     0x00000e82       0xa3 .\CortexM3\ARM_GCC_541\Debug\logging.o
                                 0x4cf (size before relaxing)
- .debug_str     0x00000eff       0xf8 .\CortexM3\ARM_GCC_541\Debug\seven.o
+ .debug_str     0x00000f25       0xf8 .\CortexM3\ARM_GCC_541\Debug\seven.o
                                 0x542 (size before relaxing)
- .debug_str     0x00000ff7       0x74 .\CortexM3\ARM_GCC_541\Debug\pins.o
+ .debug_str     0x0000101d       0x74 .\CortexM3\ARM_GCC_541\Debug\pins.o
                                 0x2e8 (size before relaxing)
- .debug_str     0x0000106b       0x56 .\CortexM3\ARM_GCC_541\Debug\button.o
+ .debug_str     0x00001091       0x56 .\CortexM3\ARM_GCC_541\Debug\button.o
                                 0x494 (size before relaxing)
- .debug_str     0x000010c1      0x1e1 .\CortexM3\ARM_GCC_541\Debug\led.o
+ .debug_str     0x000010e7      0x1e1 .\CortexM3\ARM_GCC_541\Debug\led.o
                                 0x665 (size before relaxing)
- .debug_str     0x000012a2      0x734 .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .debug_str     0x000012c8      0x734 .\CortexM3\ARM_GCC_541\Debug\tft.o
                                 0xd08 (size before relaxing)
- .debug_str     0x000019d6      0x1a2 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_str     0x000019fc      0x1a2 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
                                 0x334 (size before relaxing)
- .debug_str     0x00001b78       0x75 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .debug_str     0x00001b9e       0x75 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
                                 0x1d4 (size before relaxing)
- .debug_str     0x00001bed      0x13f .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_str     0x00001c13      0x13f .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
                                 0x2fa (size before relaxing)
- .debug_str     0x00001d2c       0x62 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RED_LED.o)
+ .debug_str     0x00001d52       0x62 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RED_LED.o)
                                 0x1dc (size before relaxing)
- .debug_str     0x00001d8e       0x63 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(YELLOW_LED.o)
+ .debug_str     0x00001db4       0x63 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(YELLOW_LED.o)
                                 0x1eb (size before relaxing)
- .debug_str     0x00001df1       0x5f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(GREEN_LED.o)
+ .debug_str     0x00001e17       0x5f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(GREEN_LED.o)
                                 0x1e6 (size before relaxing)
- .debug_str     0x00001e50      0x32e .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG.o)
+ .debug_str     0x00001e76      0x32e .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG.o)
                                 0x4e1 (size before relaxing)
- .debug_str     0x0000217e      0x1ab .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG_IntClock.o)
+ .debug_str     0x000021a4      0x1ab .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG_IntClock.o)
                                 0x356 (size before relaxing)
- .debug_str     0x00002329      0x806 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyLib.o)
+ .debug_str     0x0000234f      0x806 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyLib.o)
                                 0xa37 (size before relaxing)
- .debug_str     0x00002b2f      0x365 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(cyPm.o)
+ .debug_str     0x00002b55      0x365 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(cyPm.o)
                                 0x723 (size before relaxing)
- .debug_str     0x00002e94      0x5af .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_activate.o)
+ .debug_str     0x00002eba      0x5af .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_activate.o)
                                 0x7f5 (size before relaxing)
- .debug_str     0x00003443       0xa1 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_alsetrel.o)
+ .debug_str     0x00003469       0xa1 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_alsetrel.o)
                                 0x5ed (size before relaxing)
- .debug_str     0x000034e4      0x230 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_altick.o)
+ .debug_str     0x0000350a      0x230 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_altick.o)
                                 0xa50 (size before relaxing)
- .debug_str     0x00003714       0x2c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evclear.o)
+ .debug_str     0x0000373a       0x2c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evclear.o)
                                 0x5cd (size before relaxing)
- .debug_str     0x00003740       0x5b .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evget.o)
+ .debug_str     0x00003766       0x5b .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evget.o)
                                 0x53d (size before relaxing)
- .debug_str     0x0000379b       0x2a .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evset.o)
+ .debug_str     0x000037c1       0x2a .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evset.o)
                                 0x7cd (size before relaxing)
- .debug_str     0x000037c5       0xa1 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evwait.o)
+ .debug_str     0x000037eb       0xa1 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evwait.o)
                                 0x825 (size before relaxing)
- .debug_str     0x00003866       0x40 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_getcountervalue.o)
+ .debug_str     0x0000388c       0x40 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_getcountervalue.o)
                                 0x59a (size before relaxing)
- .debug_str     0x000038a6       0xc8 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_irqendin.o)
+ .debug_str     0x000038cc       0xc8 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_irqendin.o)
                                 0x6aa (size before relaxing)
- .debug_str     0x0000396e       0x2b .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_lookup.o)
+ .debug_str     0x00003994       0x2b .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_lookup.o)
                                 0x479 (size before relaxing)
- .debug_str     0x00003999       0x8a .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_exchg.o)
+ .debug_str     0x000039bf       0x8a .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_exchg.o)
                                 0x4eb (size before relaxing)
- .debug_str     0x00003a23       0x2d .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_first.o)
+ .debug_str     0x00003a49       0x2d .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_first.o)
                                 0x4b6 (size before relaxing)
- .debug_str     0x00003a50       0x38 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_inser.o)
+ .debug_str     0x00003a76       0x38 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_inser.o)
                                 0x4f0 (size before relaxing)
- .debug_str     0x00003a88      0x8a1 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_startos.o)
+ .debug_str     0x00003aae      0x8a1 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_startos.o)
                                0x171c (size before relaxing)
- .debug_str     0x00004329       0x5b .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_terminat.o)
+ .debug_str     0x0000434f       0x5b .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_terminat.o)
                                 0x5ee (size before relaxing)
- .debug_str     0x00004384       0x71 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_cortex_mx_ee_utils.o)
+ .debug_str     0x000043aa       0x71 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_cortex_mx_ee_utils.o)
                                 0x548 (size before relaxing)
- .debug_str     0x000043f5       0x37 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_common_ee_hal_structs.o)
+ .debug_str     0x0000441b       0x37 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_common_ee_hal_structs.o)
                                 0x485 (size before relaxing)
- .debug_str     0x0000442c      0x1f8 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_eecfg.o)
+ .debug_str     0x00004452      0x1f8 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_eecfg.o)
                                 0x842 (size before relaxing)
- .debug_str     0x00004624       0x68 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ButtonRight.o)
+ .debug_str     0x0000464a       0x68 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ButtonRight.o)
                                 0x1f0 (size before relaxing)
- .debug_str     0x0000468c       0x64 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ButtonLeft.o)
+ .debug_str     0x000046b2       0x64 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ButtonLeft.o)
                                 0x1eb (size before relaxing)
- .debug_str     0x000046f0       0x5b .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_DP.o)
+ .debug_str     0x00004716       0x5b .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_DP.o)
                                 0x1e1 (size before relaxing)
- .debug_str     0x0000474b       0x6b .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_SELECT.o)
+ .debug_str     0x00004771       0x6b .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_SELECT.o)
                                 0x1f5 (size before relaxing)
- .debug_str     0x000047b6       0x23 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_reg.o)
+ .debug_str     0x000047dc       0x23 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_reg.o)
                                 0x1ab (size before relaxing)
- .debug_str     0x000047d9      0x249 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI.o)
+ .debug_str     0x000047ff      0x249 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI.o)
                                 0x456 (size before relaxing)
- .debug_str     0x00004a22       0x53 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_DC.o)
+ .debug_str     0x00004a48       0x53 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_DC.o)
                                 0x1d7 (size before relaxing)
- .debug_str     0x00004a75       0x57 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_RES.o)
+ .debug_str     0x00004a9b       0x57 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_RES.o)
                                 0x1dc (size before relaxing)
- .debug_str     0x00004acc      0x146 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_BackLight.o)
+ .debug_str     0x00004af2      0x146 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_BackLight.o)
                                 0x32d (size before relaxing)
- .debug_str     0x00004c12      0x156 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI_IntClock.o)
+ .debug_str     0x00004c38      0x156 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI_IntClock.o)
                                 0x34a (size before relaxing)
- .debug_str     0x00004d68      0x113 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_RED.o)
+ .debug_str     0x00004d8e      0x113 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_RED.o)
                                 0x2cf (size before relaxing)
- .debug_str     0x00004e7b      0x132 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_YELLOW.o)
+ .debug_str     0x00004ea1      0x132 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_YELLOW.o)
                                 0x2fc (size before relaxing)
- .debug_str     0x00004fad      0x125 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_GREEN.o)
+ .debug_str     0x00004fd3      0x125 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_GREEN.o)
                                 0x2ed (size before relaxing)
- .debug_str     0x000050d2       0x57 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_RED.o)
+ .debug_str     0x000050f8       0x57 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_RED.o)
                                 0x1dc (size before relaxing)
- .debug_str     0x00005129       0x5f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_GREEN.o)
+ .debug_str     0x0000514f       0x5f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_GREEN.o)
                                 0x1e6 (size before relaxing)
- .debug_str     0x00005188       0x5b .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_BLUE.o)
+ .debug_str     0x000051ae       0x5b .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_BLUE.o)
                                 0x1e1 (size before relaxing)
- .debug_str     0x000051e3       0x65 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyFlash.o)
+ .debug_str     0x00005209       0x65 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyFlash.o)
                                 0x3b0 (size before relaxing)
- .debug_str     0x00005248       0x64 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CySpc.o)
+ .debug_str     0x0000526e       0x64 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CySpc.o)
                                 0x328 (size before relaxing)
- .debug_str     0x000052ac       0x72 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_tnterm.o)
+ .debug_str     0x000052d2       0x72 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_tnterm.o)
                                 0x508 (size before relaxing)
- .debug_str     0x0000531e       0x55 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_tstub.o)
+ .debug_str     0x00005344       0x55 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_tstub.o)
                                 0x5c3 (size before relaxing)
- .debug_str     0x00005373       0x3d .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_ulockallres.o)
+ .debug_str     0x00005399       0x3d .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_ulockallres.o)
                                 0x4f7 (size before relaxing)
- .debug_str     0x000053b0       0x8a .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_cortex_mx_ee_context.o)
+ .debug_str     0x000053d6       0x8a .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_cortex_mx_ee_context.o)
                                 0x57a (size before relaxing)
- .debug_str     0x0000543a       0x67 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_thendin.o)
+ .debug_str     0x00005460       0x67 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_thendin.o)
                                 0x740 (size before relaxing)
 
-.debug_loc      0x00000000     0x6054
+.debug_loc      0x00000000     0x6046
  *(.debug_loc)
  .debug_loc     0x00000000      0x162 .\CortexM3\ARM_GCC_541\Debug\main.o
  .debug_loc     0x00000162      0x643 .\CortexM3\ARM_GCC_541\Debug\TimingAnalyzer.o
  .debug_loc     0x000007a5       0x4c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.o
- .debug_loc     0x000007f1      0x279 .\CortexM3\ARM_GCC_541\Debug\ArcadianLight.o
- .debug_loc     0x00000a6a       0x4d .\CortexM3\ARM_GCC_541\Debug\logging.o
- .debug_loc     0x00000ab7      0x1bd .\CortexM3\ARM_GCC_541\Debug\seven.o
- .debug_loc     0x00000c74       0x63 .\CortexM3\ARM_GCC_541\Debug\pins.o
- .debug_loc     0x00000cd7       0x72 .\CortexM3\ARM_GCC_541\Debug\button.o
- .debug_loc     0x00000d49      0x4e7 .\CortexM3\ARM_GCC_541\Debug\led.o
- .debug_loc     0x00001230     0x1924 .\CortexM3\ARM_GCC_541\Debug\tft.o
- .debug_loc     0x00002b54      0x288 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_loc     0x00002ddc      0x144 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
- .debug_loc     0x00002f20       0x42 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RED_LED.o)
- .debug_loc     0x00002f62       0x42 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(YELLOW_LED.o)
- .debug_loc     0x00002fa4       0x42 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(GREEN_LED.o)
- .debug_loc     0x00002fe6      0x258 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG.o)
- .debug_loc     0x0000323e      0x128 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG_IntClock.o)
- .debug_loc     0x00003366      0xa11 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyLib.o)
- .debug_loc     0x00003d77      0x1e4 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(cyPm.o)
- .debug_loc     0x00003f5b      0x12d .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_activate.o)
- .debug_loc     0x00004088      0x1ed .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_alsetrel.o)
- .debug_loc     0x00004275      0x46c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_altick.o)
- .debug_loc     0x000046e1       0xbc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evclear.o)
- .debug_loc     0x0000479d       0xa4 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evget.o)
- .debug_loc     0x00004841      0x16b .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evset.o)
- .debug_loc     0x000049ac      0x158 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evwait.o)
- .debug_loc     0x00004b04       0x7f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_getcountervalue.o)
- .debug_loc     0x00004b83       0x62 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_irqendin.o)
- .debug_loc     0x00004be5       0x4a .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_exchg.o)
- .debug_loc     0x00004c2f       0x36 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_first.o)
- .debug_loc     0x00004c65       0x1e .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_inser.o)
- .debug_loc     0x00004c83      0x1d8 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_startos.o)
- .debug_loc     0x00004e5b       0x50 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_terminat.o)
- .debug_loc     0x00004eab       0x13 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_cortex_mx_ee_utils.o)
- .debug_loc     0x00004ebe       0x42 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ButtonRight.o)
- .debug_loc     0x00004f00       0x42 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ButtonLeft.o)
- .debug_loc     0x00004f42       0x42 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_DP.o)
- .debug_loc     0x00004f84       0x42 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_SELECT.o)
- .debug_loc     0x00004fc6       0xfe .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI.o)
- .debug_loc     0x000050c4       0x42 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_DC.o)
- .debug_loc     0x00005106       0x42 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_RES.o)
- .debug_loc     0x00005148       0x13 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_BackLight.o)
- .debug_loc     0x0000515b      0x12c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI_IntClock.o)
- .debug_loc     0x00005287       0x13 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_RED.o)
- .debug_loc     0x0000529a       0x13 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_YELLOW.o)
- .debug_loc     0x000052ad       0x13 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_GREEN.o)
- .debug_loc     0x000052c0       0x42 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_RED.o)
- .debug_loc     0x00005302       0x42 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_GREEN.o)
- .debug_loc     0x00005344       0x42 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_BLUE.o)
- .debug_loc     0x00005386      0x3b2 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyFlash.o)
- .debug_loc     0x00005738      0x705 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CySpc.o)
- .debug_loc     0x00005e3d       0x75 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_ulockallres.o)
- .debug_loc     0x00005eb2       0xc5 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_cortex_mx_ee_context.o)
- .debug_loc     0x00005f77       0xdd .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_thendin.o)
+ .debug_loc     0x000007f1      0x26b .\CortexM3\ARM_GCC_541\Debug\ArcadianLight.o
+ .debug_loc     0x00000a5c       0x4d .\CortexM3\ARM_GCC_541\Debug\logging.o
+ .debug_loc     0x00000aa9      0x1bd .\CortexM3\ARM_GCC_541\Debug\seven.o
+ .debug_loc     0x00000c66       0x63 .\CortexM3\ARM_GCC_541\Debug\pins.o
+ .debug_loc     0x00000cc9       0x72 .\CortexM3\ARM_GCC_541\Debug\button.o
+ .debug_loc     0x00000d3b      0x4e7 .\CortexM3\ARM_GCC_541\Debug\led.o
+ .debug_loc     0x00001222     0x1924 .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .debug_loc     0x00002b46      0x288 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_loc     0x00002dce      0x144 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_loc     0x00002f12       0x42 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RED_LED.o)
+ .debug_loc     0x00002f54       0x42 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(YELLOW_LED.o)
+ .debug_loc     0x00002f96       0x42 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(GREEN_LED.o)
+ .debug_loc     0x00002fd8      0x258 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG.o)
+ .debug_loc     0x00003230      0x128 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG_IntClock.o)
+ .debug_loc     0x00003358      0xa11 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyLib.o)
+ .debug_loc     0x00003d69      0x1e4 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(cyPm.o)
+ .debug_loc     0x00003f4d      0x12d .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_activate.o)
+ .debug_loc     0x0000407a      0x1ed .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_alsetrel.o)
+ .debug_loc     0x00004267      0x46c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_altick.o)
+ .debug_loc     0x000046d3       0xbc .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evclear.o)
+ .debug_loc     0x0000478f       0xa4 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evget.o)
+ .debug_loc     0x00004833      0x16b .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evset.o)
+ .debug_loc     0x0000499e      0x158 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evwait.o)
+ .debug_loc     0x00004af6       0x7f .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_getcountervalue.o)
+ .debug_loc     0x00004b75       0x62 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_irqendin.o)
+ .debug_loc     0x00004bd7       0x4a .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_exchg.o)
+ .debug_loc     0x00004c21       0x36 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_first.o)
+ .debug_loc     0x00004c57       0x1e .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_inser.o)
+ .debug_loc     0x00004c75      0x1d8 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_startos.o)
+ .debug_loc     0x00004e4d       0x50 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_terminat.o)
+ .debug_loc     0x00004e9d       0x13 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_cortex_mx_ee_utils.o)
+ .debug_loc     0x00004eb0       0x42 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ButtonRight.o)
+ .debug_loc     0x00004ef2       0x42 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ButtonLeft.o)
+ .debug_loc     0x00004f34       0x42 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_DP.o)
+ .debug_loc     0x00004f76       0x42 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_SELECT.o)
+ .debug_loc     0x00004fb8       0xfe .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI.o)
+ .debug_loc     0x000050b6       0x42 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_DC.o)
+ .debug_loc     0x000050f8       0x42 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_RES.o)
+ .debug_loc     0x0000513a       0x13 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_BackLight.o)
+ .debug_loc     0x0000514d      0x12c .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI_IntClock.o)
+ .debug_loc     0x00005279       0x13 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_RED.o)
+ .debug_loc     0x0000528c       0x13 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_YELLOW.o)
+ .debug_loc     0x0000529f       0x13 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_GREEN.o)
+ .debug_loc     0x000052b2       0x42 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_RED.o)
+ .debug_loc     0x000052f4       0x42 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_GREEN.o)
+ .debug_loc     0x00005336       0x42 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_BLUE.o)
+ .debug_loc     0x00005378      0x3b2 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyFlash.o)
+ .debug_loc     0x0000572a      0x705 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CySpc.o)
+ .debug_loc     0x00005e2f       0x75 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_ulockallres.o)
+ .debug_loc     0x00005ea4       0xc5 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_cortex_mx_ee_context.o)
+ .debug_loc     0x00005f69       0xdd .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_thendin.o)
 
 .debug_macinfo
  *(.debug_macinfo)
 
-.debug_ranges   0x00000000     0x1128
+.debug_ranges   0x00000000     0x1130
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x58 .\CortexM3\ARM_GCC_541\Debug\main.o
  .debug_ranges  0x00000058       0xa8 .\CortexM3\ARM_GCC_541\Debug\TimingAnalyzer.o
- .debug_ranges  0x00000100       0x40 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.o
- .debug_ranges  0x00000140       0x30 .\CortexM3\ARM_GCC_541\Debug\ArcadianLight.o
- .debug_ranges  0x00000170       0x18 .\CortexM3\ARM_GCC_541\Debug\logging.o
- .debug_ranges  0x00000188       0x48 .\CortexM3\ARM_GCC_541\Debug\seven.o
- .debug_ranges  0x000001d0       0x28 .\CortexM3\ARM_GCC_541\Debug\pins.o
- .debug_ranges  0x000001f8       0x18 .\CortexM3\ARM_GCC_541\Debug\button.o
- .debug_ranges  0x00000210       0xb0 .\CortexM3\ARM_GCC_541\Debug\led.o
- .debug_ranges  0x000002c0      0x168 .\CortexM3\ARM_GCC_541\Debug\tft.o
- .debug_ranges  0x00000428       0x48 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_ranges  0x00000470       0x38 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
- .debug_ranges  0x000004a8       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RED_LED.o)
- .debug_ranges  0x000004d0       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(YELLOW_LED.o)
- .debug_ranges  0x000004f8       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(GREEN_LED.o)
- .debug_ranges  0x00000520       0xe0 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG.o)
- .debug_ranges  0x00000600       0x60 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG_IntClock.o)
- .debug_ranges  0x00000660      0x290 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyLib.o)
- .debug_ranges  0x000008f0       0x88 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(cyPm.o)
- .debug_ranges  0x00000978       0x40 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_activate.o)
- .debug_ranges  0x000009b8       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_alsetrel.o)
- .debug_ranges  0x000009c8       0x78 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_altick.o)
- .debug_ranges  0x00000a40       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evclear.o)
- .debug_ranges  0x00000a68       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evget.o)
- .debug_ranges  0x00000a78       0x40 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evset.o)
- .debug_ranges  0x00000ab8       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evwait.o)
- .debug_ranges  0x00000ac8       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_getcountervalue.o)
- .debug_ranges  0x00000ad8       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_irqendin.o)
- .debug_ranges  0x00000af8       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_exchg.o)
- .debug_ranges  0x00000b08       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_first.o)
- .debug_ranges  0x00000b18       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_inser.o)
- .debug_ranges  0x00000b28       0x30 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_startos.o)
- .debug_ranges  0x00000b58       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_terminat.o)
- .debug_ranges  0x00000b68       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_cortex_mx_ee_utils.o)
- .debug_ranges  0x00000b78       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ButtonRight.o)
- .debug_ranges  0x00000ba0       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ButtonLeft.o)
- .debug_ranges  0x00000bc8       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_DP.o)
- .debug_ranges  0x00000bf0       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_SELECT.o)
- .debug_ranges  0x00000c18       0x18 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_reg.o)
- .debug_ranges  0x00000c30       0xc8 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI.o)
- .debug_ranges  0x00000cf8       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_DC.o)
- .debug_ranges  0x00000d20       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_RES.o)
- .debug_ranges  0x00000d48       0x68 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_BackLight.o)
- .debug_ranges  0x00000db0       0x60 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI_IntClock.o)
- .debug_ranges  0x00000e10       0x70 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_RED.o)
- .debug_ranges  0x00000e80       0x70 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_YELLOW.o)
- .debug_ranges  0x00000ef0       0x70 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_GREEN.o)
- .debug_ranges  0x00000f60       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_RED.o)
- .debug_ranges  0x00000f88       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_GREEN.o)
- .debug_ranges  0x00000fb0       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_BLUE.o)
- .debug_ranges  0x00000fd8       0x78 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyFlash.o)
- .debug_ranges  0x00001050       0x70 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CySpc.o)
- .debug_ranges  0x000010c0       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_tnterm.o)
- .debug_ranges  0x000010d0       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_tstub.o)
- .debug_ranges  0x000010e0       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_ulockallres.o)
- .debug_ranges  0x000010f0       0x18 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_cortex_mx_ee_context.o)
- .debug_ranges  0x00001108       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_thendin.o)
+ .debug_ranges  0x00000100       0x48 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.o
+ .debug_ranges  0x00000148       0x30 .\CortexM3\ARM_GCC_541\Debug\ArcadianLight.o
+ .debug_ranges  0x00000178       0x18 .\CortexM3\ARM_GCC_541\Debug\logging.o
+ .debug_ranges  0x00000190       0x48 .\CortexM3\ARM_GCC_541\Debug\seven.o
+ .debug_ranges  0x000001d8       0x28 .\CortexM3\ARM_GCC_541\Debug\pins.o
+ .debug_ranges  0x00000200       0x18 .\CortexM3\ARM_GCC_541\Debug\button.o
+ .debug_ranges  0x00000218       0xb0 .\CortexM3\ARM_GCC_541\Debug\led.o
+ .debug_ranges  0x000002c8      0x168 .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .debug_ranges  0x00000430       0x48 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_ranges  0x00000478       0x38 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_ranges  0x000004b0       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RED_LED.o)
+ .debug_ranges  0x000004d8       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(YELLOW_LED.o)
+ .debug_ranges  0x00000500       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(GREEN_LED.o)
+ .debug_ranges  0x00000528       0xe0 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG.o)
+ .debug_ranges  0x00000608       0x60 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(UART_LOG_IntClock.o)
+ .debug_ranges  0x00000668      0x290 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyLib.o)
+ .debug_ranges  0x000008f8       0x88 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(cyPm.o)
+ .debug_ranges  0x00000980       0x40 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_activate.o)
+ .debug_ranges  0x000009c0       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_alsetrel.o)
+ .debug_ranges  0x000009d0       0x78 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_altick.o)
+ .debug_ranges  0x00000a48       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evclear.o)
+ .debug_ranges  0x00000a70       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evget.o)
+ .debug_ranges  0x00000a80       0x40 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evset.o)
+ .debug_ranges  0x00000ac0       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_evwait.o)
+ .debug_ranges  0x00000ad0       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_getcountervalue.o)
+ .debug_ranges  0x00000ae0       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_irqendin.o)
+ .debug_ranges  0x00000b00       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_exchg.o)
+ .debug_ranges  0x00000b10       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_first.o)
+ .debug_ranges  0x00000b20       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_rq_inser.o)
+ .debug_ranges  0x00000b30       0x30 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_startos.o)
+ .debug_ranges  0x00000b60       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_terminat.o)
+ .debug_ranges  0x00000b70       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_cortex_mx_ee_utils.o)
+ .debug_ranges  0x00000b80       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ButtonRight.o)
+ .debug_ranges  0x00000ba8       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ButtonLeft.o)
+ .debug_ranges  0x00000bd0       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_DP.o)
+ .debug_ranges  0x00000bf8       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_SELECT.o)
+ .debug_ranges  0x00000c20       0x18 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(SEVEN_reg.o)
+ .debug_ranges  0x00000c38       0xc8 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI.o)
+ .debug_ranges  0x00000d00       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_DC.o)
+ .debug_ranges  0x00000d28       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_RES.o)
+ .debug_ranges  0x00000d50       0x68 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_BackLight.o)
+ .debug_ranges  0x00000db8       0x60 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(TFT_SPI_IntClock.o)
+ .debug_ranges  0x00000e18       0x70 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_RED.o)
+ .debug_ranges  0x00000e88       0x70 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_YELLOW.o)
+ .debug_ranges  0x00000ef8       0x70 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(PWM_GREEN.o)
+ .debug_ranges  0x00000f68       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_RED.o)
+ .debug_ranges  0x00000f90       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_GREEN.o)
+ .debug_ranges  0x00000fb8       0x28 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(RGB_BLUE.o)
+ .debug_ranges  0x00000fe0       0x78 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CyFlash.o)
+ .debug_ranges  0x00001058       0x70 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(CySpc.o)
+ .debug_ranges  0x000010c8       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_tnterm.o)
+ .debug_ranges  0x000010d8       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_tstub.o)
+ .debug_ranges  0x000010e8       0x10 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_ulockallres.o)
+ .debug_ranges  0x000010f8       0x18 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_cortex_mx_ee_context.o)
+ .debug_ranges  0x00001110       0x20 .\CortexM3\ARM_GCC_541\Debug\ReactionGame.a(ErikaOS_ee_thendin.o)
 
 .comment        0x00000000       0x6e
  .comment       0x00000000       0x6e .\CortexM3\ARM_GCC_541\Debug\main.o

@@ -53,6 +53,7 @@ const RG_Glow_t RG_glowtable[] = {
     {0, 0, 0, 100},
     {255, 255, 255, 100}
 };
+const uint16_t RG_GlowTsbleSize = sizeof(RG_glowtable) / sizeof(RG_Glow_t); //(N3)
 
 /*****************************************************************************/
 /* Local variable definitions ('static')                                     */
@@ -61,6 +62,18 @@ const RG_Glow_t RG_glowtable[] = {
 /*****************************************************************************/
 /* Local function prototypes ('static')                                      */
 /*****************************************************************************/
+static boolean_t AL_isFaderTickDue(uint16_t tickTime_ms, uint16_t reactionTime_ms);
+
+static RC_t AL_calculateIntensity(uint8_t* red, uint8_t* yellow, uint8_t* green);
+
+/**
+ * Func is the heart of the glower state machine
+ * \param effectiveReaction     : [IN] How long the entire glow sequence should take
+ * \param tickTime_ms           : [IN] How often this function is called
+ * \param totalSteps            : [IN] Number of glow table entries
+ * \return step - tells AL_glower() which RGB entry to be shown
+ */
+static uint32_t AL_updateGlowStep(uint32_t effectiveReaction, uint32_t totalSteps, uint16_t tickTime_ms);
 
 /*****************************************************************************/
 /* Function implementation - global ('extern') and local ('static')          */
@@ -91,7 +104,7 @@ RC_t AL_fader(uint16_t tickTime_ms, uint16_t reactionTime_ms) //(N1)
     return RC_SUCCESS;
 }
 
-boolean_t AL_isFaderTickDue(uint16_t tickTime_ms, uint16_t reactionTime_ms)
+static boolean_t AL_isFaderTickDue(uint16_t tickTime_ms, uint16_t reactionTime_ms)
 {
     // static - saved individually for this function
     static uint32_t tickCounter = 0;
@@ -113,9 +126,7 @@ boolean_t AL_isFaderTickDue(uint16_t tickTime_ms, uint16_t reactionTime_ms)
     return ((++tickCounter % modulo) == 0);
 }
 
-/* Can use a lookup table containing 64 intensity values space by 4 
-in the range 0 - 255 and use an overall phase value 256 */
-RC_t AL_calculateIntensity(uint8_t* red, uint8_t* yellow, uint8_t* green)
+static RC_t AL_calculateIntensity(uint8_t* red, uint8_t* yellow, uint8_t* green) // (N4)
 {
     static uint32_t phase = 0;
     
@@ -160,11 +171,11 @@ RC_t AL_glower(uint16_t tickTime_ms, uint16_t reactionTime_ms) // (N2)
     // Compute effective reaction time with internal scaling
     uint32_t effectiveReaction = (uint32_t)reactionTime_ms * AL_GLOW_REACTION_SCALE;
 
-    // Get total number of glow steps
-    uint32_t totalSteps = sizeof(RG_glowtable) / sizeof(RG_Glow_t);
+    // Get total number of glow steps or entries of glow table
+    uint32_t totalSteps = RG_GlowTsbleSize;
 
-    // Advance step (tick counting + step advancement) and get current step
-    uint32_t currentStep = AL_updateGlowStep(effectiveReaction, tickTime_ms, totalSteps);
+    // Advance step (tick counting + step advancement) and get current step - RGB entry to be shown
+    uint32_t currentStep = AL_updateGlowStep(effectiveReaction, totalSteps, tickTime_ms);
 
     // Apply RGB values
     LED_RGB_Set(RG_glowtable[currentStep].al_red,
@@ -174,14 +185,33 @@ RC_t AL_glower(uint16_t tickTime_ms, uint16_t reactionTime_ms) // (N2)
     return RC_SUCCESS;
 }
 
-uint32_t AL_updateGlowStep(uint32_t effectiveReaction, uint16_t tickTime_ms, uint32_t totalSteps)
+/**
+ * Func is the heart of the glower state machine
+ * \param effectiveReaction     : [IN] How long the entire glow sequence should take
+ * \param tickTime_ms           : [IN] How often this function is called
+ * \param totalSteps            : [IN] Number of glow table entries
+ * \return step - tells AL_glower() which RGB entry to be shown
+ */
+static uint32_t AL_updateGlowStep(uint32_t effectiveReaction, uint32_t totalSteps, uint16_t tickTime_ms)
 {
-    static uint32_t tick = 0;
-    static uint32_t step = 0;
+    static uint32_t tick = 0;   // How many ticks we’ve already stayed in the current step
+    static uint32_t step = 0;   // Which glow table entry is currently active
 
     // Compute ticks for this step
+    /*RG_glowtable[step].al_duration      - The original duration of this step (e.g., 500 ms)
+      Multiply by effectiveReaction       - Applies external reaction speed we need
+      Divide by AL_TOTAL_GLOW_DURATION    - Normalizes against the full table duration
+      Divide by tickTime_ms               - converts milliseconds to number of OS ticks 
+      This is how the global reaction time is distributed proportionally across all glow steps.*/
     uint32_t stepTicks = (RG_glowtable[step].al_duration * effectiveReaction) / AL_TOTAL_GLOW_DURATION / tickTime_ms;
     
+    // ceil division to avoid stepTicks resulting in 0
+    /*uint32_t stepTicks = (uint32_t)(((uint64_t)RG_glowtable[step].al_duration * effectiveReaction
+                        + (uint64_t)AL_TOTAL_GLOW_DURATION * tickTime_ms - 1u)
+                        / ((uint64_t)AL_TOTAL_GLOW_DURATION * tickTime_ms)); */
+
+    
+    // This prevents: Frozen steps, Infinite skipping and Division rounding causing zero duration
     if (stepTicks == 0)
     {
         stepTicks = 1;
@@ -189,10 +219,12 @@ uint32_t AL_updateGlowStep(uint32_t effectiveReaction, uint16_t tickTime_ms, uin
 
     // Tick counting
     tick++;
+    
+    // Advancing to the next step when time expires
     if (tick >= stepTicks)
     {
-        tick = 0;
-        step = (step + 1) % totalSteps;
+        tick = 0;                       // Reset tick counter
+        step = (step + 1) % totalSteps; // Go to next RGB entry and "% totalSteps" ensures wrap around
     }
 
     return step;
@@ -205,8 +237,16 @@ uint32_t AL_updateGlowStep(uint32_t effectiveReaction, uint16_t tickTime_ms, uin
  *
  * 2. reactionTime determines the total runtime of the whole/entire glow sequence.
  * 
- * 3. 
+ * 3. sizeof() - Not a C func, It takes typedef as param value, The compiler interprets this during preprocessing 
+ * looking at a precompiled info avail in this same .c, so sizeof() will give correct value if the type and the 
+ * data structure which we are passing as param is visible in that file. If this sizeof() with this param is
+ * moved to some other file, the code will complie as long as the symbolic names are visible but the RG_glowtable
+ * might result a size of 4, bcoz its a table and internally a table is like a ptr and the sizeof(ptr) is 4.
  * 
- * 4. 
+ * 4. Can use uint8_t, where MSB 6 bits amounts to values 0 - 63 and LSB 2 bits contains quadrant info and 
+ * use a lookup table containing 64 intensity values in the range 0 - 255, thus using an overall phase value 256.
+ * 
+ * 5. 
+ * 
 */
 /* [ArcadianLight.c] END OF FILE */

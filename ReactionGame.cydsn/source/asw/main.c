@@ -54,6 +54,7 @@ TASK(tsk_init)
     TFT_setBacklight(255);
     LED_Init();
     
+    RG_init();
     TA_init(); // CySysTick causes issues with OS's cnt_systick
     
     //Reconfigure ISRs with OS parameters.
