@@ -241,7 +241,11 @@ static uint32_t AL_updateGlowStep(uint32_t effectiveReaction, uint32_t totalStep
  * looking at a precompiled info avail in this same .c, so sizeof() will give correct value if the type and the 
  * data structure which we are passing as param is visible in that file. If this sizeof() with this param is
  * moved to some other file, the code will complie as long as the symbolic names are visible but the RG_glowtable
- * might result a size of 4, bcoz its a table and internally a table is like a ptr and the sizeof(ptr) is 4.
+ * might result a size of 4, bcoz its a table and internally a table is like a ptr and the sizeof(ptr) is 4 in 32 
+ * bit MCU.
+ * Only work for a table placed in Flash (const), For a table in RAM (non const), we will be either in need of 
+ * variable taking care of the size (pass size explicitly) or a matching {0, 0, 0, 0} - (sentinel) end entry,
+ * so we can check for the last element in the code.
  * 
  * 4. Can use uint8_t, where MSB 6 bits amounts to values 0 - 63 and LSB 2 bits contains quadrant info and 
  * use a lookup table containing 64 intensity values in the range 0 - 255, thus using an overall phase value 256.
